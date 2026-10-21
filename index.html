@@ -348,14 +348,14 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 .trow .mini span{flex:1}.trow .mini span:first-child{flex:2.4}
 .trow small{margin-left:auto;font-size:11px;color:var(--muted)}
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(76px + env(safe-area-inset-bottom,0px));background:var(--fg);color:var(--bg);padding:8px 14px;border-radius:6px;font-size:13px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:40}
-body:has(#tray:not([hidden])) .toast{bottom:calc(35vh + 14px + env(safe-area-inset-bottom,0px))}
+body:has(#tray:not([hidden])) .toast{bottom:calc(35vh + 14px + env(safe-area-inset-bottom,0px))}body:has(#tray.mini:not([hidden])) .toast{bottom:calc(76px + env(safe-area-inset-bottom,0px))}
 .toast.on{opacity:1}
 .toast{white-space:pre-line;text-align:center;line-height:1.45}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 [hidden]{display:none!important}
 .pick{display:flex;flex-wrap:wrap;gap:10px}
 .tray-f{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.tgrp{display:flex;gap:10px;align-items:stretch}.tgl{flex:none;writing-mode:vertical-rl;font-size:11px;color:var(--muted);letter-spacing:.08em;border-left:2px solid var(--line);padding:2px 0 2px 5px;line-height:1;text-align:center;align-self:flex-start;box-sizing:border-box}.tgb{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:10px}.tgb .trow-l>span{width:54px;letter-spacing:-.02em}
+.tgrp{display:flex;gap:10px;align-items:stretch}.tray.mini .tgrp:nth-child(2){display:none}.tray.tray.mini{height:auto;max-height:none}.tgl{flex:none;writing-mode:vertical-rl;font-size:11px;color:var(--muted);letter-spacing:.08em;border-left:2px solid var(--line);padding:2px 0 2px 5px;line-height:1;text-align:center;align-self:flex-start;box-sizing:border-box}.tgb{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:10px}.tgb .trow-l>span{width:54px;letter-spacing:-.02em}
 .trow-l{display:flex;align-items:center;gap:10px}.trow-l>span{width:50px;flex:none;font-size:12px;color:var(--muted)}.trow-l .seg{width:auto;align-self:auto}.trow-l .seg button{font-size:12px;padding:5px 9px}.trow-l.tl-top{align-items:flex-start;flex:none}.trow-l.tl-top .tlist{flex:1 1 auto;overflow:visible;max-height:none}.trow-l.tl-top>span{padding-top:8px}.tray-x{flex:none;white-space:nowrap;font:inherit;font-size:12px;font-weight:600;background:color-mix(in srgb,var(--p-main) 14%,var(--surface));border:0;border-radius:99px;color:var(--fg);cursor:pointer;padding:5px 11px}.tray-copy{flex:none;white-space:nowrap;margin-left:auto;font:inherit;font-size:12px;font-weight:600;background:var(--p-main);color:#fff;border:0;border-radius:99px;padding:5px 11px;cursor:pointer}
 .tray-f .seg{width:auto;align-self:auto}.tray-f .seg button{font-size:12px;padding:5px 9px}
 .tray-f span{font-size:12px;color:var(--muted)}
@@ -394,7 +394,7 @@ body:has(#tray:not([hidden])) .toast{bottom:calc(35vh + 14px + env(safe-area-ins
 <div class="wrap">
   <header>
     <h1>밤비의 서류뭉치</h1>
-    <div class="howto"><p class="howto-rec"><b>권장 설정</b> ChatGPT <b>work</b> · 모드 <b>6 Astra</b> · 추론 수준 <b>Light</b> · 속도 <b>Standard</b></p><ol class="howto-steps"><li>오른쪽 아래 <b>● <span class="curname">청먹</span></b>을 누르면 설정 창이 열립니다. <b>지시문 설정</b>(작업·일러스트)은 이 페이지엔 안 보이고 지시문에만 들어가고, <b>미리보기</b>(스타일·서체·색상)는 아래 견본에 바로 반영됩니다.</li><li>그 옆 <b>복사</b>를 누릅니다.</li><li>ChatGPT에 참고할 파일(기존 서식·공고·사진)을 올리고 지시문을 그대로 붙여넣으면 끝입니다. 첨부와 달라진 내용(기간·대상·금액 등)이 있으면 지시문의 <b>내용</b> 칸에 그 부분만 적어 주세요. 첨부끼리 어긋나면 AI가 만들기 전에 한 번 묻습니다.</li></ol></div>
+    <div class="howto"><p class="howto-rec"><b>권장 설정</b> ChatGPT <b>work</b> · 모드 <b>6 Astra</b> · 추론 수준 <b>Light</b> · 속도 <b>Standard</b></p><ol class="howto-steps"><li>오른쪽 아래 <b>● <span class="curname">청먹</span></b> 누르면 설정 창이 열립니다. <b>지시문 설정</b>(작업·일러스트)은 이 페이지엔 안 보이고 지시문에만 들어가고, <b>미리보기</b>(스타일·서체·색상)는 아래 견본에 바로 반영됩니다.</li><li><b>복사</b>를 누릅니다. 지시문 설정만 담긴 작은 창이 뜨면 확인하고 그 안의 복사를 누릅니다.</li><li><b>지시문 설정</b>에서는 심플하고 깔끔한 결과를 원하면 일러스트 <b>없음</b>, 제법 꾸민 결과를 원하면 <b>풍성</b>을 고르세요. 이도 저도 아니면 <b>있음</b>입니다.</li><li>ChatGPT에 참고할 파일(기존 서식·공고·사진)을 올리고 지시문을 그대로 붙여넣으면 끝입니다. 첨부와 달라진 내용(기간·대상·금액 등)이 있으면 지시문의 <b>내용</b> 칸에 그 부분만 적어 주세요. 첨부끼리 어긋나면 AI가 만들기 전에 한 번 묻습니다. 혹은 "첫 번째 사진은 참고할 양식이고 두 번째 사진은 현재 정보야"라는 말을 덧붙이세요.</li></ol></div>
     <nav aria-label="바로가기"><a href="#card">한페이지</a><a href="#ppt">PPT 틀</a><a href="#doc">문서</a><a href="#icon">도장 아이콘</a><a href="#color" id="navcolor">색 조합</a><a href="#rule">규칙</a><a href="#ai">작업지시문</a><a href="#link">더 볼 곳</a></nav>
   </header>
 
@@ -989,7 +989,7 @@ function copyPrompt(done){updPrompt();const t=ap.value;const ok=()=>{say("붙여
 document.getElementById("copyprompt").addEventListener("click",()=>copyPrompt());
 const fabai=document.getElementById("fabai");
 function setAiPop(o){}
-fabai.addEventListener("click",()=>copyPrompt());
+fabai.addEventListener("click",()=>{if(!tray.hidden&&tray.classList.contains("mini")){setTray(false);return}tray.classList.add("mini");setTray(true)});
 function selSpec(){const r=document.createRange();r.selectNodeContents(document.getElementById("spec"));const g=getSelection();g.removeAllRanges();g.addRange(r)}
 const box=document.getElementById("pals");
 PALS.forEach(p=>{
@@ -1020,10 +1020,10 @@ function drawTray(){tlist.innerHTML="";trayOrder().forEach((p,i)=>{const b=docum
 }
 let lockY=0;function lockBody(o){if(o){lockY=scrollY;document.body.style.position="fixed";document.body.style.top=(-lockY)+"px";document.body.style.left="0";document.body.style.right="0"}else{document.body.style.position="";document.body.style.top="";document.body.style.left="";document.body.style.right="";scrollTo(0,lockY)}}
 function fitList(){document.querySelectorAll(".tgrp").forEach(g=>{const l=g.querySelector(".tgl"),cr=g.querySelector(".tl-top");l.style.height=(cr?cr.offsetTop-g.offsetTop+30:g.querySelector(".tgb").offsetHeight)+"px"})}
-function setTray(o){tray.hidden=!o;document.getElementById("fabopen").setAttribute("aria-expanded",o?"true":"false");if(o){drawTray();setAiPop(false);requestAnimationFrame(fitList)}}
-document.getElementById("fabopen").addEventListener("click",()=>setTray(tray.hidden));
+function setTray(o){if(!o)tray.classList.remove("mini");tray.hidden=!o;document.getElementById("fabopen").setAttribute("aria-expanded",o?"true":"false");if(o){drawTray();setAiPop(false);requestAnimationFrame(fitList)}}
+document.getElementById("fabopen").addEventListener("click",()=>{const was=!tray.hidden&&!tray.classList.contains("mini");tray.classList.remove("mini");setTray(!was)});
 document.getElementById("trayx").addEventListener("click",()=>{setTray(false);fab.focus()});
-document.getElementById("traycopy").addEventListener("click",()=>copyPrompt());
+document.getElementById("traycopy").addEventListener("click",()=>{copyPrompt();if(tray.classList.contains("mini"))setTray(false)});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!tray.hidden){setTray(false);fab.focus()}});
 document.addEventListener("click",e=>{if(!tray.hidden&&!tray.contains(e.target)&&!fab.contains(e.target))setTray(false)});
 box.addEventListener("click",e=>{const b=e.target.closest(".pal");if(b)cur=b.dataset.id});
