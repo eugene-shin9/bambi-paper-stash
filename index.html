@@ -32,7 +32,8 @@ h1{font-weight:700;font-size:clamp(26px,4vw,34px);line-height:1.25;margin:0;lett
 h2{font-weight:600;font-size:21px;margin:0}
 h3{font-size:16px;font-weight:600;margin:0}
 .lead{color:var(--muted);margin:0;max-width:64ch}
-.howto{display:flex;flex-direction:column;gap:10px;max-width:64ch}.howto-rec{--rec:#1F3A5F;--rec-bg:#E8EDF5;margin:0;font-size:18px;line-height:1.4;color:var(--fg);padding:10px 14px;border-left:4px solid var(--rec);background:var(--rec-bg);border-radius:0 8px 8px 0}.howto-rec b{color:var(--rec)}@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .howto-rec{--rec:#9FB9DE;--rec-bg:#1C2736}}:root[data-theme="dark"] .howto-rec{--rec:#9FB9DE;--rec-bg:#1C2736}.howto-steps{margin:0;padding-left:22px;color:var(--muted);font-size:14px;line-height:1.6;display:flex;flex-direction:column;gap:4px}.howto-steps b{color:var(--fg);font-weight:600}
+.howto{display:flex;flex-direction:column;gap:10px;max-width:64ch}
+@media (min-width:960px){.wrap.wrap{max-width:1000px}.wrap .howto,.wrap .lead,.wrap .sec-head p,.wrap .sec-head{max-width:none}}.howto-rec{--rec:#1F3A5F;--rec-bg:#E8EDF5;margin:0;font-size:18px;line-height:1.4;color:var(--fg);padding:10px 14px;border-left:4px solid var(--rec);background:var(--rec-bg);border-radius:0 8px 8px 0}.howto-rec b{color:var(--rec)}@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .howto-rec{--rec:#9FB9DE;--rec-bg:#1C2736}}:root[data-theme="dark"] .howto-rec{--rec:#9FB9DE;--rec-bg:#1C2736}.howto-steps{margin:0;padding-left:22px;color:var(--muted);font-size:14px;line-height:1.6;display:flex;flex-direction:column;gap:4px}.howto-steps b{color:var(--fg);font-weight:600}
 nav{display:flex;flex-wrap:wrap;gap:8px}
 nav a{font-size:13px;color:var(--fg);text-decoration:none;border:1px solid var(--line);border-radius:99px;padding:4px 12px;background:var(--surface)}
 nav a:hover,nav a:focus-visible{border-color:var(--accent);color:var(--accent);outline:none}
@@ -125,7 +126,8 @@ details[open] .chev::after{font-size:13px}
 .paper .brand{grid-column:1/-1;background:rgba(255,255,255,.45);border-color:rgba(0,0,0,.08);padding:18px 16px;margin-top:4px}
 .paper.dark .brand{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.28)}
 .paper.dark .brand b{color:#fff}.paper.dark .brand span{color:var(--p-tint)}
-@media (min-width:720px){.paper{grid-template-columns:repeat(6,minmax(0,1fr))}}
+@media (min-width:720px){.paper{grid-template-columns:repeat(6,minmax(0,1fr))}
+@media (min-width:960px){.paper{grid-template-columns:minmax(0,3fr) repeat(6,minmax(0,1fr));gap:12px 4px;padding:16px}.paper .brand{grid-column:1;grid-row:1/3;margin:0 8px 0 0;padding:14px 16px;align-self:stretch;gap:12px}.paper .brand svg{width:60px;height:60px}.paper .brand b{font-size:18px;letter-spacing:.12em;white-space:nowrap}.paper .brand span{font-size:11px}.paper .ic svg{width:48px;height:48px}}}
 .paper.dark .ic{color:var(--p-tint)}
 .ic svg{width:56px;height:56px}
 .brand{display:flex;align-items:center;gap:14px;padding:26px 22px;border-radius:8px;border:1px solid var(--line);background-color:var(--kraft)}
@@ -309,7 +311,7 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 
 /* 떠 있는 색 선택 */
 .fab{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;display:flex;align-items:stretch;font:inherit;font-size:14px;font-weight:600;background:var(--surface);color:var(--fg);border:1px solid var(--line);border-radius:99px;padding:0;box-shadow:0 4px 16px rgba(0,0,0,.14);overflow:hidden}
-.fab button{font:inherit;font-weight:600;color:var(--fg);background:none;border:0;cursor:pointer;display:flex;align-items:center;gap:8px}.fab-a{padding:8px 12px 8px 8px}.fab-b{padding:8px 14px 8px 12px;color:var(--p-main)}.fab-sep{width:1px;background:var(--line);margin:8px 0}.fab button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.fab button{font:inherit;font-weight:600;color:var(--fg);background:none;border:0;cursor:pointer;display:flex;align-items:center;gap:8px}.fab-a{padding:8px 12px 8px 8px}.fab-b{padding:8px 14px 8px 10px;color:var(--p-main);gap:5px}.fab-b svg{width:20px;height:20px;flex:none}.fab-sep{width:1px;background:var(--line);margin:8px 0}.fab button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
 .fab:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .fab .dot{width:24px;height:24px;border-radius:50%;border:2px solid var(--surface);box-shadow:0 0 0 1px var(--line)}
 .fab-ai{padding:8px 14px 8px 10px}.fab-low.fab-low{bottom:calc(16px + env(safe-area-inset-bottom,0px))}.fab-up.fab-up{bottom:calc(68px + env(safe-area-inset-bottom,0px))}
@@ -392,7 +394,7 @@ body:has(#tray:not([hidden])) .toast{bottom:calc(35vh + 14px + env(safe-area-ins
 <div class="wrap">
   <header>
     <h1>밤비의 서류뭉치</h1>
-    <div class="howto"><p class="howto-rec"><b>권장 설정</b> ChatGPT <b>work</b> · 모드 <b>6 Astra</b> · 추론 수준 <b>Light</b> · 속도 <b>Standard</b></p><ol class="howto-steps"><li>오른쪽 아래 <b>색 바꾸기</b>에서 고릅니다. <b>지시문 설정</b>(작업·일러스트)은 이 페이지엔 안 보이고 지시문에만 들어가고, <b>미리보기</b>(스타일·서체·색상)는 아래 견본에 바로 반영됩니다.</li><li><b>작업지시문 복사</b>를 누릅니다.</li><li>ChatGPT에 참고할 파일(기존 서식·공고·사진)을 올리고 지시문을 그대로 붙여넣으면 끝입니다. 첨부와 달라진 내용(기간·대상·금액 등)이 있으면 지시문의 <b>내용</b> 칸에 그 부분만 적어 주세요. 첨부끼리 어긋나면 AI가 만들기 전에 한 번 묻습니다.</li></ol></div>
+    <div class="howto"><p class="howto-rec"><b>권장 설정</b> ChatGPT <b>work</b> · 모드 <b>6 Astra</b> · 추론 수준 <b>Light</b> · 속도 <b>Standard</b></p><ol class="howto-steps"><li>오른쪽 아래 <b>● <span class="curname">청먹</span></b>을 누르면 설정 창이 열립니다. <b>지시문 설정</b>(작업·일러스트)은 이 페이지엔 안 보이고 지시문에만 들어가고, <b>미리보기</b>(스타일·서체·색상)는 아래 견본에 바로 반영됩니다.</li><li>그 옆 <b>복사</b>를 누릅니다.</li><li>ChatGPT에 참고할 파일(기존 서식·공고·사진)을 올리고 지시문을 그대로 붙여넣으면 끝입니다. 첨부와 달라진 내용(기간·대상·금액 등)이 있으면 지시문의 <b>내용</b> 칸에 그 부분만 적어 주세요. 첨부끼리 어긋나면 AI가 만들기 전에 한 번 묻습니다.</li></ol></div>
     <nav aria-label="바로가기"><a href="#card">한페이지</a><a href="#ppt">PPT 틀</a><a href="#doc">문서</a><a href="#icon">도장 아이콘</a><a href="#color" id="navcolor">색 조합</a><a href="#rule">규칙</a><a href="#ai">작업지시문</a><a href="#link">더 볼 곳</a></nav>
   </header>
 
@@ -871,7 +873,7 @@ body:has(#tray:not([hidden])) .toast{bottom:calc(35vh + 14px + env(safe-area-ins
   </section>
 </div>
 
-<div class="fab fab-low" id="fab"><button type="button" class="fab-a" id="fabopen" aria-expanded="false" aria-controls="tray"><span class="dot" id="fabdot"></span><span id="fabname">색 바꾸기</span></button><span class="fab-sep" aria-hidden="true"></span><button type="button" class="fab-b" id="fabai">복사</button></div>
+<div class="fab fab-low" id="fab"><button type="button" class="fab-a" id="fabopen" aria-expanded="false" aria-controls="tray"><span class="dot" id="fabdot"></span><span id="fabname">색 바꾸기</span></button><span class="fab-sep" aria-hidden="true"></span><button type="button" class="fab-b" id="fabai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="4" width="13" height="17" rx="2"/><path d="M9 4.5V3h7v1.5"/><path d="M9.5 10h6M9.5 13.5h6M9.5 17h3.5"/></svg>복사</button></div>
 <div class="tray" id="tray" hidden role="dialog" aria-label="설정"><div class="tgrp"><div class="tgl">지시문 설정</div><div class="tgb"><div class="trow-l"><span>작업</span><div class="dd" id="dd-fmt"></div><button type="button" id="traycopy" class="tray-copy">복사</button><button type="button" id="trayx" class="tray-x">닫기</button></div><div class="trow-l" id="row-sub" hidden><span>형식</span><div class="dd" id="dd-sub"></div></div><div class="trow-l"><span>일러스트</span><div class="seg" role="group" aria-label="일러스트" id="seg-ill"></div></div></div></div><div class="tgrp"><div class="tgl">미리보기</div><div class="tgb"><div class="trow-l"><span>스타일</span><div class="seg" role="group" aria-label="스타일" id="seg-t"></div></div><div class="trow-l"><span>서체</span><div class="seg" role="group" aria-label="서체" id="segf-t"></div></div><div class="trow-l tl-top"><span>색상</span><div class="tlist" id="tlist"></div></div></div></div></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
@@ -918,7 +920,7 @@ function apply(p){
   const eb=(lum(p.c.point)>lum(p.c.main)&&ratio(p.c.point,p.c.main)>=3)?p.c.point:p.c.tint; root.style.setProperty("--eb",eb);
   document.querySelectorAll(".pal,.trow").forEach(b=>b.setAttribute("aria-pressed",b.dataset.id===p.id?"true":"false"));
   document.querySelectorAll("[id^=now-]").forEach(e=>e.innerHTML="지금 보는 색: <b>"+p.name+"</b> · 글꼴: <b>"+FONTS[fnt].n+"</b>");
-  document.getElementById("fabdot").style.background=p.c.main;document.getElementById("fabname").textContent=p.name;
+  document.getElementById("fabdot").style.background=p.c.main;document.getElementById("fabname").textContent=p.name;document.querySelectorAll(".curname").forEach(e=>e.textContent=p.name);
   const r1=document.getElementById("r1"),r2=document.getElementById("r2"),r3=document.getElementById("r3");
   r1.style.background=p.c.tint;r1.style.color=p.c.ink;r2.style.background=p.c.main;r2.style.color="#fff";r3.style.background=p.c.point;r3.style.color=ratio(p.c.point,"#ffffff")>3?"#fff":p.c.ink;
   document.querySelectorAll(".shot").forEach(el=>{const k=el.dataset.k,i=+el.dataset.i,n=COUNT[k];
@@ -1009,7 +1011,7 @@ let tf="mine",cur="b3",sty="base",fnt="pre";
 const FONTS={pre:{n:"Pretendard",dir:"pre/",css:'"Pretendard","Noto Sans KR",sans-serif'},noto:{n:"Noto Sans KR",dir:"",css:'"Noto Sans KR",sans-serif'}};
 function hue(h){const r=parseInt(h.substr(1,2),16)/255,g=parseInt(h.substr(3,2),16)/255,b=parseInt(h.substr(5,2),16)/255,M=Math.max(r,g,b),m=Math.min(r,g,b),d=M-m;if(d<.08)return 999;let x=M===r?((g-b)/d)%6:M===g?(b-r)/d+2:(r-g)/d+4;x*=60;return x<0?x+360:x}
 const TOP=["lav","b3","sage","forest","wine"];
-const TAG={b3:"보고",slate:"업무",ink:"도표",steel:"발표",royal:"공문",forest:"재무",teal:"기관",dusty:"가정",sage:"아동",olive:"인쇄",lav:"교육",mocha:"전시",cobalt:"모집",blue:"강조",emerald:"행사",orange:"공고",wine:"초청",red:"주의",terra:"공지",rose:"안내",espresso:"고급"};
+const TAG={b3:"보고",slate:"보고",ink:"보고",steel:"보고",espresso:"보고",royal:"공문",forest:"재무",teal:"교육",dusty:"교육",sage:"교육",olive:"교육",lav:"교육",mocha:"교육",terra:"안내",rose:"안내",cobalt:"홍보",blue:"홍보",emerald:"홍보",orange:"홍보",wine:"초청",red:"주의"};
 const REST=["dusty","steel","slate","mocha","olive","rose","terra","royal","teal","emerald","cobalt","ink","espresso","blue","orange","red"];
 function trayOrder(){return TOP.concat(REST).map(id=>PALS.find(p=>p.id===id))}
 function drawTray(){tlist.innerHTML="";trayOrder().forEach((p,i)=>{const b=document.createElement("button");b.type="button";b.className="trow";b.id="trow-"+p.id;b.dataset.id=p.id;b.setAttribute("aria-pressed",p.id===cur?"true":"false");
@@ -1043,7 +1045,7 @@ function carousel(el){const dots=document.createElement("div");dots.className="d
   let dx=0,sx=0,sl=0,drag=false;
   el.addEventListener("pointerdown",e=>{if(e.pointerType!=="mouse")return;drag=true;dx=0;sx=e.clientX;sl=el.scrollLeft;el.classList.add("drag");el.setPointerCapture(e.pointerId)});
   el.addEventListener("pointermove",e=>{if(!drag)return;dx=e.clientX-sx;el.scrollLeft=sl-dx});
-  const end=e=>{if(!drag)return;drag=false;el.classList.remove("drag");const i=Math.round(el.scrollLeft/(el.clientWidth+16));el.scrollTo({left:i*(el.clientWidth+16),behavior:"smooth"})};
+  const end=e=>{if(!drag)return;drag=false;const step=el.clientWidth+16,cur=el.scrollLeft/step,i=Math.abs(dx)>40?(dx<0?Math.ceil(cur):Math.floor(cur)):Math.round(cur);const t=Math.max(0,Math.min(n()-1,i))*step;if(Math.abs(el.scrollLeft-t)<2){el.classList.remove("drag");return}el.scrollTo({left:t,behavior:"smooth"});let done=false;const fin=()=>{if(done)return;done=true;el.classList.remove("drag");el.removeEventListener("scrollend",fin)};el.addEventListener("scrollend",fin);setTimeout(fin,600)};
   el.addEventListener("pointerup",end);el.addEventListener("pointercancel",end);
   el.addEventListener("click",e=>{if(Math.abs(dx)>5){e.preventDefault();e.stopPropagation();dx=0}},true);
   const n=()=>Math.max(1,Math.round((el.scrollWidth+16)/(el.clientWidth+16)));
