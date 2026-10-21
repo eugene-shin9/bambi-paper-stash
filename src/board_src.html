@@ -3,8 +3,8 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<style>/*FONTFACES*/</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;600;700&family=Nanum+Gothic:wght@400;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>/*FONTFACES*/</style><style>/*NSRFACES*/</style>
 <style>
 /* 레이아웃: 오른쪽 아래 색 선택기로 고른 색이 아이콘·카드·PPT 틀(실제 파일 화면)·문서 예시 전체에 연동되는 견본첩 */
 :root{
@@ -85,7 +85,7 @@ details[open] .chev{font-size:0}
 details[open] .chev::after{font-size:13px}
 .sum:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .det-body{display:flex;flex-direction:column;gap:20px;padding-top:20px}
-.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;align-self:flex-start}
+.seg{display:inline-flex;flex-wrap:wrap;border:1px solid var(--line);border-radius:8px;overflow:hidden;align-self:flex-start}
 .seg button{font:inherit;font-size:13px;border:0;background:var(--surface);color:var(--fg);padding:6px 14px;cursor:pointer}
 .seg button+button{border-left:1px solid var(--line)}
 .seg button[aria-pressed="true"]{background:var(--p-main);color:#fff;font-weight:600}
@@ -618,7 +618,7 @@ body:has(#tray:not([hidden])) .toast{bottom:calc(35vh + 14px + env(safe-area-ins
     <div class="rules">
       <div class="rule-c"><h3>색은 주색 하나</h3><p>나머지는 그 주색의 옅은 버전과 회색. 포인트는 한 장에 한두 곳.</p></div>
       <div class="rule-c"><h3>여백을 남긴다</h3><p>가장자리와 블록 사이를 비우고, 한 장에 메시지 하나.</p></div>
-      <div class="rule-c"><h3>서체는 1종</h3><p>Pretendard, 없으면 Noto Sans KR. 남이 열어 고칠 PPT·Word만 맑은 고딕. 굵기와 크기로만 구분.</p></div>
+      <div class="rule-c"><h3>서체는 1종</h3><p>기본 Pretendard(없으면 Noto Sans KR). 고르면 나눔고딕·나눔스퀘어라운드도 가능. 남이 열어 고칠 PPT·Word만 맑은 고딕. 굵기와 크기로만 구분.</p></div>
       <div class="rule-c"><h3>아이콘은 한 장에 하나</h3><p>도장 아이콘은 제목 옆이나 빈 구석에 하나만. 글 사이에 흩뿌리지 않음.</p></div>
       <div class="rule-c"><h3>숫자는 오른쪽</h3><p>금액·기간·건수는 오른쪽 정렬, 단위는 작게.</p></div>
       <div class="rule-c"><h3>대비 확인</h3><p>색 바탕에 흰 글자를 올리면 대비 수치를 확인. 3 미만은 쓰지 않음.</p></div>
@@ -705,7 +705,7 @@ function apply(p){
   const r1=document.getElementById("r1"),r2=document.getElementById("r2"),r3=document.getElementById("r3");
   r1.style.background=p.c.tint;r1.style.color=p.c.ink;r2.style.background=p.c.main;r2.style.color="#fff";r3.style.background=p.c.point;r3.style.color=ratio(p.c.point,"#ffffff")>3?"#fff":p.c.ink;
   document.querySelectorAll(".shot").forEach(el=>{const k=el.dataset.k,i=+el.dataset.i,n=COUNT[k];
-    el.style.backgroundImage='url("prev/'+FONTS[fnt].dir+p.id+'_'+sty+'_'+k+'.jpg")';el.style.backgroundSize="100% "+(n*100)+"%";el.style.backgroundPosition="0 "+(n>1?(i/(n-1))*100:0)+"%"});
+    el.style.backgroundImage='url("prev/'+FONTS[fnt].dir+p.id+'_'+k+'.jpg")';el.style.backgroundSize="300% "+(n*100)+"%";el.style.backgroundPosition=STYX[sty]+"% "+(n>1?(i/(n-1))*100:0)+"%"});
   const keys=Object.keys(ICONS);
   document.getElementById("ic-light").innerHTML=keys.map(k=>'<div class="ic"><svg viewBox="0 0 100 100" aria-hidden="true">'+icon(k,p.c.main,p.c.point)+'</svg>'+ICONS[k].n+'</div>').join("")+'<div class="brand"><svg viewBox="0 0 100 100" aria-hidden="true">'+icon("moon",p.c.main,p.c.point)+'</svg><div><b>OFFICE NAME</b><span>로고 자리 · 아이콘과 이름 조합</span></div></div>';
   document.getElementById("ic-dark").innerHTML=keys.map(k=>'<div class="ic"><svg viewBox="0 0 100 100" aria-hidden="true">'+icon(k,"#FFFFFF","#FFFFFF")+'</svg>'+ICONS[k].n+'</div>').join("")+'<div class="brand"><svg viewBox="0 0 100 100" aria-hidden="true">'+icon("moon","#FFFFFF","#FFFFFF")+'</svg><div><b>OFFICE NAME</b><span>진한 바탕 · 흰 아이콘과 이름 조합</span></div></div>';
@@ -723,7 +723,7 @@ const PK_NOTE="";
 function aiStyle(){return sty==="light"?"심플":sty==="rich"?"풍성":"기본"}
 function makeStr(){return fmt?FMT[fmt].make+(sub?" · "+sub:""):""}
 let illust="none";
-function colorLine(p){return "이 규격서대로 "+p.name+" 색, "+aiStyle()+" 스타일로 파일(PDF)로 만들어 줘. "+(illust!=="none"?"그림 생성기는 일러스트에만 쓸 것.":"그림 생성기로 만들지 말 것.")}
+function colorLine(p){return "이 규격서대로 "+p.name+" 색, "+aiStyle()+" 스타일로 파일(PDF)로 만들어 줘. "+(illust!=="none"?"그림 생성기는 일러스트에만 쓸 것.":"그림 생성기로 만들지 말 것.")+(FONTS[fnt].ai?" "+FONTS[fnt].ai:"")}
 const ILLS={some:"일러스트(있음): 위쪽 띠 오른쪽 절반에만 글자 없는 일러스트. 평면 도형의 단순한 플랫 스타일(그림자·입체감·세밀한 묘사 금지, 사물 4~6개), 사람 얼굴보다 사물·장면 위주. 바탕은 띠 색과 정확히 같게 코드로 보정. 왼쪽은 비워 글을 코드로 얹고, 흰 패널 등 양식 구조는 그대로.",rich:"일러스트(풍성): 위쪽 띠 전체(카드뉴스는 표지 전체)를 글자 없는 한 장면 일러스트로 채울 것. 평면 플랫 스타일이되 사물·배경 요소 8~12개로 풍성, 색은 주색·보조색·옅은 바탕·포인트 4색만. 제목이 놓일 왼쪽 위는 단순한 면으로 비우고 글자 뒤에 주색 60% 면을 깔아 읽히게. 흰 패널 등 양식 구조는 그대로."};
 const ILL=()=>ILLS[illust]||"";
 function updPrompt(p){p=p||lastP;if(!p)return;const m=makeStr();
@@ -789,7 +789,8 @@ const tabs=document.getElementById("tabs");
   t.addEventListener("click",()=>{tabs.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===t?"true":"false"));document.querySelectorAll(".pal").forEach(c=>c.hidden=!(k==="all"||(k==="mine"?MINE.includes(c.dataset.id):c.dataset.grp===k)))});tabs.appendChild(t)});
 const fab=document.getElementById("fab"),tray=document.getElementById("tray"),tlist=document.getElementById("tlist");
 let tf="mine",cur="b3",sty="base",fnt="pre";
-const FONTS={pre:{n:"Pretendard",dir:"pre/",css:'"Pretendard","Noto Sans KR",sans-serif'},noto:{n:"Noto Sans KR",dir:"",css:'"Noto Sans KR",sans-serif'}};
+const FONTS={pre:{n:"Pretendard",s:"Pretendard",dir:"pre/",css:'"Pretendard","Noto Sans KR",sans-serif',ai:""},noto:{n:"Noto Sans KR",s:"Noto",dir:"noto/",css:'"Noto Sans KR",sans-serif',ai:"글꼴: Noto Sans KR."},ng:{n:"나눔고딕",s:"나눔고딕",dir:"ng/",css:'"Nanum Gothic","NanumGothic",sans-serif',ai:"글꼴: 나눔고딕 — 저장소 fonts/NanumGothic-Regular.ttf·NanumGothic-Bold.ttf 를 내려받아 임베드."},nsr:{n:"나눔스퀘어라운드",s:"나눔라운드",dir:"nsr/",css:'"NanumSquareRound",sans-serif',ai:"글꼴: 나눔스퀘어라운드 — 저장소 fonts/NanumSquareRoundR.ttf·NanumSquareRoundB.ttf 를 내려받아 임베드."}};
+const STYX={base:0,light:50,rich:100};
 function hue(h){const r=parseInt(h.substr(1,2),16)/255,g=parseInt(h.substr(3,2),16)/255,b=parseInt(h.substr(5,2),16)/255,M=Math.max(r,g,b),m=Math.min(r,g,b),d=M-m;if(d<.08)return 999;let x=M===r?((g-b)/d)%6:M===g?(b-r)/d+2:(r-g)/d+4;x*=60;return x<0?x+360:x}
 const TOP=["lav","b3","sage","forest","wine"];
 const TAG={b3:"보고",slate:"보고",ink:"보고",steel:"보고",espresso:"보고",royal:"공문",forest:"재무",teal:"교육",dusty:"교육",sage:"교육",olive:"교육",lav:"교육",mocha:"교육",terra:"안내",rose:"안내",cobalt:"홍보",blue:"홍보",emerald:"홍보",orange:"홍보",wine:"초청",red:"주의"};
@@ -812,7 +813,7 @@ let lastP=null;const _apply=apply;apply=function(p){lastP=p;_apply(p)};
 function setSty(v){sty=v;root.classList.toggle("lite",v==="light");root.classList.toggle("rich",v==="rich");document.querySelectorAll(".seg button[data-v]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.v===v?"true":"false"));if(lastP)_apply(lastP);try{localStorage.setItem("sty",v)}catch(e){}}
 ["seg-t","seg-p"].forEach(id=>{const g=document.getElementById(id);[["base","기본"],["light","심플"],["rich","풍성"]].forEach(([v,l])=>{const b=document.createElement("button");b.type="button";b.id=id+"-"+v;b.dataset.v=v;b.textContent=l;b.setAttribute("aria-pressed",v==="base"?"true":"false");b.addEventListener("click",()=>setSty(v));g.appendChild(b)})});
 function setFnt(f){fnt=f;root.style.setProperty("--p-font",FONTS[f].css);document.querySelectorAll(".seg button[data-f]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.f===f?"true":"false"));if(lastP)_apply(lastP);try{localStorage.setItem("fnt",f)}catch(e){}}
-["segf-t","segf-p"].forEach(id=>{const g=document.getElementById(id);Object.entries(FONTS).forEach(([f,o])=>{const b=document.createElement("button");b.type="button";b.id=id+"-"+f;b.dataset.f=f;b.textContent=o.n;b.style.fontFamily=o.css;b.setAttribute("aria-pressed",f===fnt?"true":"false");b.addEventListener("click",()=>setFnt(f));g.appendChild(b)})});
+["segf-t","segf-p"].forEach(id=>{const g=document.getElementById(id);Object.entries(FONTS).forEach(([f,o])=>{const b=document.createElement("button");b.type="button";b.id=id+"-"+f;b.dataset.f=f;b.textContent=o.s;b.style.fontFamily=o.css;b.setAttribute("aria-pressed",f===fnt?"true":"false");b.addEventListener("click",()=>setFnt(f));g.appendChild(b)})});
 document.getElementById("navcolor").addEventListener("click",()=>{document.getElementById("colordet").open=true});
 function openHash(){if(location.hash==="#color")document.getElementById("colordet").open=true}openHash();
 try{const s=localStorage.getItem("pal");if(s&&PALS.some(p=>p.id===s))cur=s}catch(e){}
