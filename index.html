@@ -99,6 +99,18 @@ details[open] .chev::after{font-size:13px}
 .lite .cd .big{color:var(--p-main)}
 .lite .cd .g,.lite .cd .g div{border-color:var(--p-line)}
 .lite .cd .g span{color:var(--p-sub)}
+.page .in,.slide .in{z-index:1}
+.rich .cd::before,.rich .cov::before,.rich .cardc::before{content:"";position:absolute;right:-16cqw;top:-18cqw;width:58cqw;height:58cqw;border-radius:50%;background:var(--p-sub);opacity:.45;z-index:0}
+.rich .cd::after,.rich .cov::after{content:"";position:absolute;right:-8cqw;bottom:-12cqw;width:32cqw;height:32cqw;border-radius:50%;background:var(--eb);opacity:.35;z-index:0}
+.rich .page:not(.cd) .in>.eyebrow:first-child{color:var(--p-main)}
+.rich .box,.rich .d-box,.rich .d-ov{background:var(--p-main);color:#fff}.rich .box b,.rich .d-box b{color:var(--eb)}.rich .d-ov span{color:var(--p-tint)}
+.rich .k3 div{background:var(--p-main);color:#fff}.rich .k3 span{color:var(--p-tint)}.rich .k3 b{color:#fff}
+.rich .nums div{background:var(--p-main);color:#fff}.rich .nums b{color:var(--eb)}.rich .nums span{color:var(--p-tint)}
+.rich .d-cover{border-left:0;background:var(--p-main);color:#fff;padding:6cqw 6cqw 7cqw;border-radius:2cqw;margin-top:14cqw}.rich .d-cover .k,.rich .d-cover .d-sub{color:var(--p-tint)}
+.rich .tb div.h{background:var(--p-tint);padding-left:1.5cqw;padding-right:1.5cqw}
+.rich .st i{background:var(--eb);color:var(--p-ink)}
+.rich .tl div.on::before{background:var(--eb);border-color:var(--eb)}
+.rich .g2 div:first-child b,.rich .row b{color:var(--p-main)}
 .lite .cov{background:var(--p-bg);color:var(--p-ink)}
 .lite .cov .eyebrow{color:var(--p-main)}
 .lite .cov .ft{color:var(--p-sub)}
@@ -345,7 +357,7 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 <div class="wrap">
   <header>
     <h1>밤비의 서류뭉치</h1>
-    <p class="lead">오른쪽 아래 '색 바꾸기'로 색과 스타일(기본·가볍게)을 고르면 한페이지, PPT 틀, 문서 예시, 아이콘이 전부 같이 바뀝니다. AI에 만들게 하려면 '작업지시문'을 복사해 붙이면 됩니다.</p>
+    <p class="lead">오른쪽 아래 '색 바꾸기'로 색과 스타일(기본·가볍게·풍성하게)을 고르면 한페이지, PPT 틀, 문서 예시, 아이콘이 전부 같이 바뀝니다. AI에 만들게 하려면 '작업지시문'을 복사해 붙이면 됩니다.</p>
     <nav aria-label="바로가기"><a href="#card">한페이지</a><a href="#ppt">PPT 틀</a><a href="#doc">문서</a><a href="#icon">도장 아이콘</a><a href="#color" id="navcolor">색 조합</a><a href="#rule">규칙</a><a href="#ai">작업지시문</a><a href="#link">더 볼 곳</a></nav>
   </header>
 
@@ -395,7 +407,7 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
   <section class="sec" id="ppt" aria-labelledby="h-ppt">
     <div class="sec-head">
       <h2 id="h-ppt">PPT 기본틀</h2>
-      <p>16:9 발표용 12장입니다. 네 장씩 넘겨 보세요. 21색 모두 기본·가볍게 두 가지로 만들어 두었습니다. 가볍게는 색 면과 패널을 빼고 선과 글자색만 남긴 버전입니다. 글꼴을 바꾸면 화면도 그 글꼴로 바뀝니다.</p>
+      <p>16:9 발표용 12장입니다. 네 장씩 넘겨 보세요. 21색 모두 기본·가볍게·풍성하게 세 가지로 만들어 두었습니다. 가볍게는 색 면과 패널을 빼고 선과 글자색만 남긴 버전, 풍성하게는 큰 원 장식과 주색 면을 더한 버전입니다. 글꼴을 바꾸면 화면도 그 글꼴로 바뀝니다.</p>
       <p class="now" id="now-ppt"></p>
     </div>
     <div class="pick"><div class="seg" role="group" aria-label="스타일" id="seg-p"></div><div class="seg" role="group" aria-label="글꼴" id="segf-p"></div></div>
@@ -585,9 +597,10 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 - 카드뉴스는 네 변 여백이 같고, 맨 아래 요소는 아래 여백선에 붙인다.
 - 줄 간격과 블록 간격은 정한 값 하나를 반복한다.
 
-3. 스타일 2가지
+3. 스타일 3가지
 - 기본: 표지·마무리는 주색 바탕. 강조칸·수치칸·비교 머리·준비칸은 옅은 바탕 면.
 - 가볍게: 색 면과 패널 없이 흰 바탕. 칸 대신 위쪽 선(주색 1.5pt), 강조는 글자색만. 표지·마무리도 흰 바탕.
+- 풍성하게: 기본에 장식을 더한다. 표지·띠·마무리(진한 바탕)에는 보조색 큰 원(지름 90~100mm, 투명 50%) 하나를 오른쪽 위에, 포인트색 원(지름 60mm, 투명 65%)을 오른쪽 아래에 걸치게 놓는다. 흰 바탕 장표는 위쪽에 옅은 바탕 띠(높이 34mm)를 깔고 제목을 주색으로, 제목 아래 포인트색 짧은 선(15×1.5mm). 라벨 꼬리표·핵심 칸·수치 칸·문의 칸은 주색 바탕에 흰 글자(숫자는 진한 바탕 머리말 색). 카드뉴스 마무리는 주색 바탕에 흰 버튼. 포인트는 한 장에 세 곳까지. 일러스트를 요청받으면 원 장식 대신 일러스트를 깐다.
 
 4. 양식별 치수와 배치
 [PPT 16:9] 25.4×14.29cm (10×5.625인치)
@@ -832,7 +845,7 @@ const FMT={auto:{l:"자동",make:"자동 · 내용과 첨부 서식을 보고 �
 let fmt="auto",sub=null,aiEdited=false;
 const ap=document.getElementById("aiprompt");
 const PK_NOTE="";
-function aiStyle(){return sty==="light"?"가볍게":"기본"}
+function aiStyle(){return sty==="light"?"가볍게":sty==="rich"?"풍성하게":"기본"}
 function makeStr(){return fmt?FMT[fmt].make+(sub?" · "+sub:""):""}
 let illust=false;
 function colorLine(p){return "이 규격서대로 "+p.name+" 색, "+aiStyle()+" 스타일로 파일(PDF)로 만들어 줘. "+(illust?"그림 생성기는 일러스트에만 쓸 것.":"그림 생성기로 만들지 말 것.")}
@@ -904,8 +917,8 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!tray.hidden){setTr
 document.addEventListener("click",e=>{if(!tray.hidden&&!tray.contains(e.target)&&!fab.contains(e.target))setTray(false)});
 box.addEventListener("click",e=>{const b=e.target.closest(".pal");if(b)cur=b.dataset.id});
 let lastP=null;const _apply=apply;apply=function(p){lastP=p;_apply(p)};
-function setSty(v){sty=v;root.classList.toggle("lite",v==="light");document.querySelectorAll(".seg button[data-v]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.v===v?"true":"false"));if(lastP)_apply(lastP);try{localStorage.setItem("sty",v)}catch(e){}}
-["seg-t","seg-p"].forEach(id=>{const g=document.getElementById(id);[["base","기본"],["light","가볍게"]].forEach(([v,l])=>{const b=document.createElement("button");b.type="button";b.id=id+"-"+v;b.dataset.v=v;b.textContent=l;b.setAttribute("aria-pressed",v==="base"?"true":"false");b.addEventListener("click",()=>setSty(v));g.appendChild(b)})});
+function setSty(v){sty=v;root.classList.toggle("lite",v==="light");root.classList.toggle("rich",v==="rich");document.querySelectorAll(".seg button[data-v]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.v===v?"true":"false"));if(lastP)_apply(lastP);try{localStorage.setItem("sty",v)}catch(e){}}
+["seg-t","seg-p"].forEach(id=>{const g=document.getElementById(id);[["base","기본"],["light","가볍게"],["rich","풍성하게"]].forEach(([v,l])=>{const b=document.createElement("button");b.type="button";b.id=id+"-"+v;b.dataset.v=v;b.textContent=l;b.setAttribute("aria-pressed",v==="base"?"true":"false");b.addEventListener("click",()=>setSty(v));g.appendChild(b)})});
 function setFnt(f){fnt=f;root.style.setProperty("--p-font",FONTS[f].css);document.querySelectorAll(".seg button[data-f]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.f===f?"true":"false"));if(lastP)_apply(lastP);try{localStorage.setItem("fnt",f)}catch(e){}}
 ["segf-t","segf-p"].forEach(id=>{const g=document.getElementById(id);Object.entries(FONTS).forEach(([f,o])=>{const b=document.createElement("button");b.type="button";b.id=id+"-"+f;b.dataset.f=f;b.textContent=o.n;b.style.fontFamily=o.css;b.setAttribute("aria-pressed",f===fnt?"true":"false");b.addEventListener("click",()=>setFnt(f));g.appendChild(b)})});
 document.getElementById("navcolor").addEventListener("click",()=>{document.getElementById("colordet").open=true});

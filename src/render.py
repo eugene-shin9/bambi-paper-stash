@@ -11,7 +11,7 @@ jobs=[]
 for i,p in enumerate(pals):
     if only and p['id'] not in only: continue
     d=f"{OUT}/{i+1:02d}_{p['name']}"
-    for st,suf in [('base',''),('light','_가볍게')]:
+    for st,suf in [x for x in [('base',''),('light','_가볍게'),('rich','_풍성하게')] if x[0] in os.environ.get('PSTY','base,light,rich').split(',')]:
         for kind,pat,w in KINDS: jobs.append((p,st,kind,w,f"{d}/{pat}{p['name']}{suf}.pptx"))
 subprocess.run(['python3',os.path.join(os.path.dirname(os.path.abspath(__file__)),'..','tools','uno_pdf.py')]+[j[4] for j in jobs],check=True)
 for p,st,kind,w,f in jobs:
