@@ -130,7 +130,7 @@ async function a4(p,dir,ic,L){
   T(s,'2027 상반기',{x:M,y:0.75,w:4.8,h:0.4,fontSize:16,bold:true,color:L?C.accent2:C.accent4,objectName:'머리말'});
   T(s,'교육 프로그램\n참가자 모집',{x:M,y:1.2,w:RE-IC-0.3-M,h:1.6,fontSize:34,bold:true,color:L?C.text1:C.background1,objectName:'제목'});
   place(s,ic.book,!L,IC,RE,0.8);
-  const PAD=L?0:0.4, LX=M+PAD, IW=CW-2*PAD, G=0.4, W=(IW-G)/2, R=LX+W+G, Y=[3.7,5.8,7.9];
+  const PAD=L?0:0.4, LX=M+PAD, IW=CW-2*PAD, G=0.4, W=(IW-G)/2, R=LX+W+G, Y=[3.75,5.95,8.15];
   if(L)s.addShape(pres.shapes.LINE,{x:M,y:3.25,w:CW,h:0,line:{color:C.accent1,width:1.5},objectName:'구분선'});else s.addShape(pres.shapes.ROUNDED_RECTANGLE,{x:M,y:3.15,w:CW,h:11.69-M-3.15,rectRadius:0.25,fill:{color:C.background1},line:{type:'none'},objectName:'정보패널'});
   const block=(x,y,t,body,n)=>{label(s,t,x,y,n+'라벨');T(s,body,{x,y:y+0.48,w:W,h:1.5,fontSize:13,paraSpaceAfter:4,objectName:n});};
   block(LX,Y[0],'대상',[{text:'관심 있는 누구나',options:{breakLine:true}},{text:'선착순 00명',options:{color:C.accent6}}],'대상');
@@ -143,8 +143,8 @@ async function a4(p,dir,ic,L){
     T(s,r[1],{x:R+0.95,y,w:W-0.95,h:0.36,fontSize:13,valign:'middle',objectName:'일정'+i});
     s.addShape(pres.shapes.LINE,{x:R,y:y+0.43,w:W,h:0,line:{color:C.accent3,width:0.5},objectName:'일정선'+i});});
   block(R,Y[2],'혜택',[{text:'수료증 발급',options:{breakLine:true}},{text:'교재·자료 무료'}],'혜택');
-  s.addShape(pres.shapes.LINE,{x:LX,y:10.3,w:IW,h:0,line:{color:C.accent3,width:0.75},objectName:'하단선'});
-  T(s,'문의  담당 부서 · 000-0000-0000',{x:LX,y:10.45,w:IW,h:0.35,fontSize:11,color:C.accent6,objectName:'문의'});
+  s.addShape(pres.shapes.LINE,{x:LX,y:10.45,w:IW,h:0,line:{color:C.accent3,width:0.75},objectName:'하단선'});
+  T(s,'문의  담당 부서 · 000-0000-0000',{x:LX,y:10.6,w:IW,h:0.35,fontSize:11,color:C.accent6,objectName:'문의'});
   // B: 흰 바탕 세무 안내
   s=pres.addSlide(); s.background={color:C.background1};
   const IB=1.3;
@@ -154,19 +154,19 @@ async function a4(p,dir,ic,L){
   T(s,'신고 대상, 기간, 준비할 것을 한 장에 정리합니다.',{x:M,y:3.0,w:CW,h:0.4,fontSize:13,color:C.accent6,objectName:'요약'});
   const G3=0.2, cw=(CW-2*G3)/3, CP=L?0:0.2;
   [['기간','0월 0일 ~ 0월 0일'],['대상','해당 소득이 있는 분'],['방법','홈택스·손택스\n또는 세무서']].forEach((d,i)=>{const x=M+i*(cw+G3);
-    if(L)s.addShape(pres.shapes.LINE,{x,y:3.75,w:cw,h:0,line:{color:C.accent1,width:1.5},objectName:'핵심선'+i});else s.addShape(pres.shapes.RECTANGLE,{x,y:3.75,w:cw,h:1.5,fill:{color:C.background2},line:{type:'none'},objectName:'핵심칸'+i});
-    T(s,d[0],{x:x+CP,y:3.95,w:cw-2*CP,h:0.3,fontSize:11,bold:true,color:C.accent2,objectName:'핵심라벨'+i});
-    T(s,d[1],{x:x+CP,y:4.3,w:cw-2*CP,h:0.8,fontSize:13,bold:true,color:C.accent1,objectName:'핵심값'+i});});
-  T(s,'진행 순서',{x:M,y:5.75,w:4,h:0.35,fontSize:15,bold:true,objectName:'순서제목'});
-  ['로그인','신고서 작성','내용 확인 후 제출','기한 안에 납부'].forEach((t,i)=>{const y=6.25+i*0.6;
+    if(L)s.addShape(pres.shapes.LINE,{x,y:3.85,w:cw,h:0,line:{color:C.accent1,width:1.5},objectName:'핵심선'+i});else s.addShape(pres.shapes.RECTANGLE,{x,y:3.85,w:cw,h:1.7,fill:{color:C.background2},line:{type:'none'},objectName:'핵심칸'+i});
+    T(s,d[0],{x:x+CP,y:4.08,w:cw-2*CP,h:0.3,fontSize:11,bold:true,color:C.accent2,objectName:'핵심라벨'+i});
+    T(s,d[1],{x:x+CP,y:4.45,w:cw-2*CP,h:0.9,fontSize:14,bold:true,color:C.accent1,objectName:'핵심값'+i});});
+  T(s,'진행 순서',{x:M,y:6.1,w:4,h:0.35,fontSize:15,bold:true,objectName:'순서제목'});
+  ['홈택스 로그인(공동·간편 인증)','신고서 작성 · 소득 자료 불러오기','내용 확인 후 제출 · 접수증 저장','기한 안에 납부 또는 환급 계좌 확인'].forEach((t,i)=>{const y=6.6+i*0.68;
     s.addShape(pres.shapes.OVAL,{x:M,y,w:0.38,h:0.38,fill:{color:C.accent1},line:{type:'none'},objectName:'순번원'+i});
     T(s,String(i+1),{x:M,y,w:0.38,h:0.38,fontSize:12,bold:true,color:C.background1,align:'center',valign:'middle',objectName:'순번'+i});
     T(s,t,{x:M+0.6,y,w:CW-0.6,h:0.38,fontSize:13,valign:'middle',objectName:'순서'+i});});
-  if(L)s.addShape(pres.shapes.LINE,{x:M,y:8.85,w:CW,h:0,line:{color:C.accent3,width:0.75},objectName:'준비선'});else s.addShape(pres.shapes.RECTANGLE,{x:M,y:8.85,w:CW,h:1.45,fill:{color:C.background2},line:{type:'none'},objectName:'준비칸'});
+  if(L)s.addShape(pres.shapes.LINE,{x:M,y:9.55,w:CW,h:0,line:{color:C.accent3,width:0.75},objectName:'준비선'});else s.addShape(pres.shapes.RECTANGLE,{x:M,y:9.55,w:CW,h:1.25,fill:{color:C.background2},line:{type:'none'},objectName:'준비칸'});
   const QP=L?0:0.25;
-  T(s,'준비할 것',{x:M+QP,y:9.05,w:3,h:0.3,fontSize:12,bold:true,color:C.accent1,objectName:'준비제목'});
-  T(s,[{text:'본인 인증 수단',options:{breakLine:true}},{text:'관련 증빙자료',options:{breakLine:true}},{text:'환급받을 계좌'}],{x:M+QP,y:9.4,w:CW-2*QP,h:0.8,fontSize:12,paraSpaceAfter:2,objectName:'준비목록'});
-  T(s,'문의  국번 없이 126',{x:M,y:10.75,w:CW,h:0.3,fontSize:10,color:C.accent6,objectName:'문의'});
+  T(s,'준비할 것',{x:M+QP,y:9.72,w:3,h:0.3,fontSize:12,bold:true,color:C.accent1,objectName:'준비제목'});
+  T(s,'본인 인증 수단  ·  관련 증빙자료  ·  환급받을 계좌',{x:M+QP,y:10.08,w:CW-2*QP,h:0.5,fontSize:12,objectName:'준비목록'});
+  T(s,'문의  국번 없이 126 · 가까운 세무서',{x:M,y:11.0,w:CW,h:0.3,fontSize:10,color:C.accent6,objectName:'문의'});
   const f=`${dir}/한장카드_A4_${p.name}${L?'_가볍게':''}.pptx`; await pres.writeFile({fileName:f}); await applyTheme(f,TH); require('child_process').execFileSync('python3',[__dirname+'/fixfont.py',FONT,f]); return f;
 }
 

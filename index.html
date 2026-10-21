@@ -131,6 +131,7 @@ figcaption b{color:var(--fg);font-weight:600;margin-right:6px}
 .shot.s169{aspect-ratio:16/9}.shot.a4{aspect-ratio:210/297}.shot.sq{aspect-ratio:1}
 .car{display:flex;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;gap:16px}
 .car::-webkit-scrollbar{display:none}
+.car.single{overflow-x:hidden;scroll-snap-type:none;overscroll-behavior-x:none;touch-action:pan-y}
 .car>*{flex:0 0 100%;scroll-snap-align:start;min-width:0}
 .dots{display:flex;justify-content:center;gap:6px;margin-top:4px}
 .dots button{width:8px;height:8px;border-radius:50%;border:0;padding:0;background:var(--line);cursor:pointer}
@@ -207,7 +208,7 @@ figcaption b{color:var(--fg);font-weight:600;margin-right:6px}
 table.t td i{display:block;height:2.2cqw;background:var(--p-main);border-radius:1cqw}
 table.t tr.tsum td{font-weight:700;border-top:.4cqw solid var(--p-main);border-bottom:0}
 table.t.nw td,table.t.nw th{white-space:nowrap}
-.fn{margin-top:auto;margin-bottom:4cqw;width:60%;border-top:1px solid var(--p-line);padding-top:1.4cqw;font-size:2.2cqw;color:var(--p-sub);line-height:1.5}
+.fn{margin-top:auto;margin-bottom:4cqw;width:100%;border-top:1px solid var(--p-line);padding-top:1.4cqw;font-size:2.2cqw;color:var(--p-sub);line-height:1.5}
 .fn+.pno{}
 sup{font-size:.65em;color:var(--p-main);vertical-align:super;line-height:0}
 .d-att{margin-top:auto;margin-bottom:5cqw;padding-top:3cqw;font-size:3cqw;line-height:1.7}
@@ -628,7 +629,7 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 - 여백 위·아래·좌우 20mm. 본문 11pt(줄 간격 160%), '1.' 제목 14pt 굵게, '가.' 12pt 굵게 주색, '1)' 11pt. 쪽번호 '- 2 -' 가운데 아래. 머리글(표지 제외): 왼쪽 문서 제목, 오른쪽 부서 8pt 보조색, 아래 가는 선.
 - 항목 기호는 공문서 순서대로: 1. → 가. → 1) → 가) → (1) → (가). 개조식: 명사형으로 끝내고 한 항목 2줄 이내, 한 문단에 한 가지만. 날짜는 2026. 10. 21.(수), 시간은 14:00. 붙임이 있으면 본문 끝에 '붙임 1. ○○○ 1부.' 다음 줄 '끝.'
 - 강조는 한 쪽에 옅은 바탕 칸 하나(라벨 주색)만. 표·그림마다 번호와 제목('표 1. ○○', '그림 1. ○○')을 붙이고 본문에서 그 번호로 가리킨다.
-- 각주: 수치·인용의 출처는 본문 끝에 위첨자 번호(1), 2)…)를 달고, 그 쪽 아래 왼쪽에 짧은 가는 선(내용 폭의 1/3) 밑 8pt 보조색으로 적는다. 개요와 추진 배경처럼 근거 수치가 나오는 쪽에 쓴다.
+- 각주: 수치·인용의 출처는 본문 끝에 위첨자 번호(1), 2)…)를 달고, 그 쪽 아래에 가는 선(내용 폭 전체) 밑 8pt 보조색으로 적는다. 개요와 추진 배경처럼 근거 수치가 나오는 쪽에 쓴다.
 - 페이지 8종
   ① 표지: 왼쪽 굵은 주색 세로선(4mm) + 문서 구분 11pt 보조색 + 제목 26pt 두 줄 + 부제 13pt. 아래쪽 가는 선 위에 날짜·부서·작성자 11pt. 아이콘은 오른쪽 위에 하나(선택).
   ② 목차: '목차' 18pt. 항목마다 번호(주색 굵게)·제목·쪽번호(오른쪽 정렬), 항목 사이 가는 선. 가. 수준까지만 넣고 점선은 쓰지 않는다.
@@ -909,7 +910,7 @@ lastP=PALS.find(p=>p.id===cur);root.style.setProperty("--p-font",FONTS[fnt].css)
 function carousel(el){const dots=document.createElement("div");dots.className="dots";el.after(dots);
   const n=()=>Math.max(1,Math.round((el.scrollWidth+16)/(el.clientWidth+16)));
   const upd=()=>{const i=Math.round(el.scrollLeft/(el.clientWidth+16));[...dots.children].forEach((b,j)=>b.setAttribute("aria-current",j===i?"true":"false"))};
-  const draw=()=>{const k=n();dots.innerHTML="";dots.hidden=k<2;for(let i=0;i<k;i++){const b=document.createElement("button");b.type="button";b.setAttribute("aria-label",(i+1)+"쪽");b.addEventListener("click",()=>el.scrollTo({left:i*(el.clientWidth+16),behavior:"smooth"}));dots.appendChild(b)}upd()};
+  const draw=()=>{const k=n();el.classList.toggle("single",k<2);dots.innerHTML="";dots.hidden=k<2;for(let i=0;i<k;i++){const b=document.createElement("button");b.type="button";b.setAttribute("aria-label",(i+1)+"쪽");b.addEventListener("click",()=>el.scrollTo({left:i*(el.clientWidth+16),behavior:"smooth"}));dots.appendChild(b)}upd()};
   el.addEventListener("scroll",upd,{passive:true});addEventListener("resize",draw);draw()}
 document.querySelectorAll(".car").forEach(carousel);
 </script>
