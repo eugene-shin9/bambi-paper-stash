@@ -7,7 +7,7 @@ let html = fs.readFileSync(path.join(SRC, 'board_src.html'), 'utf8');
 // 페이지 안의 RAW 색 목록(이름·분류·용도 포함)을 그대로 읽음
 const rawTxt = html.slice(html.indexOf('const RAW=') + 10, html.indexOf('];', html.indexOf('const RAW=')) + 1);
 const RAW = eval(rawTxt);
-const REC = { b3: '보고', lav: '안내', forest: '재무', teal: '교육', wine: '격식' };
+const REC = { b3: '보고', lav: '안내', forest: '재무', sage: '교육', wine: '격식' };
 const lum = h => { const v = [0, 2, 4].map(i => { let c = parseInt(h.substr(i, 2), 16) / 255; return c <= .03928 ? c / 12.92 : Math.pow((c + .055) / 1.055, 2.4) }); return .2126 * v[0] + .7152 * v[1] + .0722 * v[2] };
 const ratio = (a, b) => { const x = lum(a), y = lum(b); return (Math.max(x, y) + .05) / (Math.min(x, y) + .05) };
 

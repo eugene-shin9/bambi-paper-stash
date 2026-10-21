@@ -1,0 +1,23 @@
+module.exports = [
+ ["b3","청먹","1F3A5F","4A6A8C","EEF2F7","1C2430","D5DDE7","C9A227"],
+ ["slate","슬레이트","334155","64748B","F1F5F9","0F172A","E2E8F0","D97706"],
+ ["ink","먹색","2B2F36","6B7280","F3F4F6","111827","E5E7EB","2563EB"],
+ ["steel","스틸블루","2F5D8A","6E8FB0","EDF3F9","1B2735","D4E0EC","E0A82E"],
+ ["royal","공공 네이비","1D3C78","5873A6","EEF2FA","141E33","D3DCEE","F2B705"],
+ ["forest","차콜 그린","2F3E3A","6F807B","EFF3F1","1C2522","D9E1DE","B7791F"],
+ ["teal","딥틸","1E4E5A","5F8A93","EDF3F4","1B2A2E","D6E2E4","E08E45"],
+ ["dusty","더스티 블루","4C6A8A","8AA2BB","F0F4F8","1F2B38","DCE4EC","D98C6A"],
+ ["sage","세이지","5B7B6A","96AE9F","F1F5F2","1F2A24","DCE6DF","C9925A"],
+ ["olive","올리브 그레이","3F4A3C","7D8B74","F1F3EE","23281F","DDE2D8","C2853D"],
+ ["lav","라벤더 그레이","5B5A7A","8F8EAD","F3F2F8","22212F","E2E1EC","D4A24C"],
+ ["mocha","모카","6B5446","A08A7C","F6F2EF","2A211C","E7DED8","4F7CAC"],
+ ["cobalt","코발트","2F49A8","6E81C7","EEF1FB","1A2142","D6DCF2","F5C542"],
+ ["blue","흑백 파랑","0F62FE","6F6F6F","F4F4F4","161616","E0E0E0","161616"],
+ ["emerald","에메랄드","0F766E","4FA39A","ECF7F5","10201E","CFE7E3","F59E0B"],
+ ["orange","오렌지 차콜","C2541F","8A8F98","FBF1EB","22252A","ECE1DA","22252A"],
+ ["wine","와인","5A2A35","9A6B74","F6F0F1","2A1D20","E8DADD","C9A227"],
+ ["red","레드 경고","B3261E","7A7F87","FBEDEC","1F2328","EED5D3","1F2328"],
+ ["terra","테라코타","C4826A","D9A994","FBF0EA","2B201B","F0DED4","5A3A2C"],
+ ["rose","로즈우드","8A4A46","B07F7B","F7EFEE","2A1C1B","EBDCDA","D9A066"],
+ ["espresso","에스프레소","3B2A22","7A6458","F5EFEA","1F1712","E6DCD4","F2C9A8"]
+].map(a=>({id:a[0],name:a[1],main:a[2],sub:a[3],tint:a[4],ink:a[5],line:a[6],point:a[7]}));
