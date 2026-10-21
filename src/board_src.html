@@ -301,11 +301,12 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 .fab .dot{width:24px;height:24px;border-radius:50%;border:2px solid var(--surface);box-shadow:0 0 0 1px var(--line)}
 .fab-ai{bottom:calc(68px + env(safe-area-inset-bottom,0px));padding:8px 14px 8px 10px}
 .fab-ai svg{width:22px;height:22px;flex:none}
-.tray.tray{left:0;right:0;bottom:0;width:auto;max-width:none;max-height:40vh;z-index:32;border-radius:16px 16px 0 0;border-bottom:0;padding:16px calc(16px + env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) calc(16px + env(safe-area-inset-left,0px));box-shadow:0 -8px 28px rgba(0,0,0,.22);animation:sheetup .18s ease-out}
+.tray.tray{left:0;right:0;bottom:0;width:auto;max-width:none;max-height:min(62vh,560px);z-index:32;border-radius:16px 16px 0 0;border-bottom:0;padding:16px calc(16px + env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) calc(16px + env(safe-area-inset-left,0px));box-shadow:0 -8px 28px rgba(0,0,0,.22);animation:sheetup .18s ease-out}
 @keyframes sheetup{from{transform:translateY(100%)}to{transform:none}}
 @media (prefers-reduced-motion:reduce){.tray.tray{animation:none}}
 @media (min-width:720px){.tray.tray{left:auto;right:calc(16px + env(safe-area-inset-right,0px));width:420px}}
 .ai-copy.wide{width:100%;padding:12px}
+.aipop.aipop{max-height:min(88vh,760px);overflow:auto}
 .picker{display:flex;flex-direction:column;gap:12px;min-width:0}
 .picker .seg{display:flex;width:100%;align-self:stretch}
 .picker .seg button{flex:1;padding:9px 4px;font-size:14px}
@@ -313,17 +314,17 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 .pk-note{margin:0;font-size:13px;color:var(--muted);line-height:1.5}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .pk-ill{display:flex;align-items:center;gap:10px;margin-top:10px;flex-wrap:wrap}.pk-lab{width:48px;flex:none;font-size:12px;color:var(--muted)}.pk-ill .seg{width:auto;align-self:auto}.pk-ill .seg button{font-size:12px;padding:5px 10px}
-.pk-colors{gap:6px}.pk-c{font:inherit;font-size:12px;display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:99px;padding:4px 10px 4px 6px;cursor:pointer}.pk-c i{width:14px;height:14px;border-radius:50%}.pk-c[aria-pressed="true"]{border-color:var(--p-main);box-shadow:inset 0 0 0 1px var(--p-main);font-weight:600}.pk-more{font:inherit;font-size:12px;background:none;border:0;color:var(--accent);cursor:pointer;padding:4px 2px}
+.pk-dot{width:16px;height:16px;border-radius:50%;flex:none;border:1px solid var(--line)}.pk-sel{font:inherit;font-size:13px;padding:6px 28px 6px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23888' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right 10px center;color:var(--fg);appearance:none;-webkit-appearance:none;min-width:150px}
 .chips button{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:99px;padding:6px 14px;cursor:pointer}
 .chips button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--bg);font-weight:600}
 .chips button:focus-visible,.picker .seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.tray{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(118px + env(safe-area-inset-bottom,0px));z-index:30;width:min(340px,calc(100vw - 32px));max-height:min(40vh,460px);overflow:hidden;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 32px rgba(0,0,0,.2);padding:12px;display:flex;flex-direction:column;gap:10px}
+.tray{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(118px + env(safe-area-inset-bottom,0px));z-index:30;width:min(340px,calc(100vw - 32px));max-height:min(62vh,560px);overflow:hidden;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 32px rgba(0,0,0,.2);padding:12px;display:flex;flex-direction:column;gap:10px}
 .tray-h{display:flex;justify-content:space-between;align-items:center;gap:8px}
 .tray-h b{font-size:14px}
 .tray-h button{font:inherit;font-size:13px;background:none;border:0;color:var(--muted);cursor:pointer;padding:4px 6px}
 .tray .tabs button{font-size:12px;padding:3px 9px}
-.tlist{display:flex;flex-direction:column;gap:1px;overflow-y:auto;min-height:0;flex:1 1 auto;-webkit-overflow-scrolling:touch}
-.tray-sub{font-size:11px;color:var(--muted);padding:8px 8px 2px;letter-spacing:.02em}
+.tlist{display:flex;flex-direction:column;gap:1px;overflow-y:auto;min-height:0;flex:1 1 auto;max-height:100%;-webkit-overflow-scrolling:touch}
+.tray-sub{font-size:11px;color:var(--muted);padding:6px 8px 2px;letter-spacing:.02em}.tray-sub:first-child{padding-top:0}
 .trow{display:flex;align-items:center;gap:10px;font:inherit;font-size:14px;background:none;border:0;border-radius:8px;color:var(--fg);padding:5px 8px;cursor:pointer;text-align:left;width:100%}
 .trow:hover{background:var(--bg)}
 .trow:focus-visible{outline:2px solid var(--accent)}
@@ -337,7 +338,7 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 [hidden]{display:none!important}
 .pick{display:flex;flex-wrap:wrap;gap:10px}
 .tray-f{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.trow-l{display:flex;align-items:center;gap:10px}.trow-l>span{width:40px;flex:none;font-size:12px;color:var(--muted)}.trow-l .seg{width:auto;align-self:auto}.trow-l .seg button{font-size:12px;padding:5px 9px}.trow-l.tl-top{margin-top:2px}
+.trow-l{display:flex;align-items:center;gap:10px}.trow-l>span{width:40px;flex:none;font-size:12px;color:var(--muted)}.trow-l .seg{width:auto;align-self:auto}.trow-l .seg button{font-size:12px;padding:5px 9px}.trow-l.tl-top{align-items:flex-start;flex:1 1 auto;min-height:0}.trow-l.tl-top>span{padding-top:8px}.tray-x{margin-left:auto;font:inherit;font-size:13px;background:none;border:0;color:var(--muted);cursor:pointer;padding:4px 6px}
 .tray-f .seg{width:auto;align-self:auto}.tray-f .seg button{font-size:12px;padding:5px 9px}
 .tray-f span{font-size:12px;color:var(--muted)}
 .tray-note{margin:0;font-size:12px;color:var(--muted)}
@@ -642,7 +643,7 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 <button class="fab fab-ai" type="button" id="fabai" aria-expanded="false" aria-controls="aipop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="4" width="13" height="17" rx="2"/><path d="M9 4.5V3h7v1.5"/><path d="M9.5 10h6M9.5 13.5h6M9.5 17h3.5"/></svg>작업지시문 복사</button>
 <div class="tray aipop" id="aipop" hidden role="dialog" aria-label="작업지시문 복사하기"><div class="tray-h"><b>작업지시문 복사하기</b><button type="button" id="aipopx">닫기</button></div><div class="picker" id="pk-pop"></div><button type="button" class="ai-copy wide" id="copyprompt2">작업지시문 복사하기</button></div>
 <button class="fab" type="button" id="fab" aria-expanded="false" aria-controls="tray"><span class="dot" id="fabdot"></span><span id="fabname">색 바꾸기</span></button>
-<div class="tray" id="tray" hidden role="dialog" aria-label="색·스타일·서체 고르기"><div class="tray-h"><b>보기 설정</b><button type="button" id="trayx">닫기</button></div><div class="trow-l"><span>스타일</span><div class="seg" role="group" aria-label="스타일" id="seg-t"></div></div><div class="trow-l"><span>서체</span><div class="seg" role="group" aria-label="서체" id="segf-t"></div></div><div class="tlist" id="tlist"></div></div>
+<div class="tray" id="tray" hidden role="dialog" aria-label="색·스타일·서체 고르기"><div class="trow-l"><span>스타일</span><div class="seg" role="group" aria-label="스타일" id="seg-t"></div><button type="button" id="trayx" class="tray-x">닫기</button></div><div class="trow-l"><span>서체</span><div class="seg" role="group" aria-label="서체" id="segf-t"></div></div><div class="trow-l tl-top"><span>색상</span><div class="tlist" id="tlist"></div></div></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
@@ -725,9 +726,9 @@ function drawPickers(){document.querySelectorAll(".picker").forEach(pk=>{
       b.addEventListener("click",()=>{if(fmt===k&&k!=="auto"){fmt="auto";sub=null}else{fmt=k;sub=null}drawPickers();updPrompt()});seg.appendChild(b)});
     const s=document.createElement("div");s.className="pk-sub";pk.appendChild(seg);pk.appendChild(s);
     const il=document.createElement("div");il.className="pk-ill";const lab=document.createElement("span");lab.className="pk-lab";lab.textContent="일러스트";il.appendChild(lab);const sg=document.createElement("div");sg.className="seg";[["none","없음"],["some","있음"],["rich","풍성"]].forEach(([k,l])=>{const b=document.createElement("button");b.type="button";b.dataset.ill=k;b.textContent=l;b.addEventListener("click",()=>{illust=k;drawPickers();updPrompt()});sg.appendChild(b)});il.appendChild(sg);pk.appendChild(il);
-    const cl=document.createElement("div");cl.className="pk-ill pk-col";const lab2=document.createElement("span");lab2.className="pk-lab";lab2.textContent="색상";cl.appendChild(lab2);const ch=document.createElement("div");ch.className="chips pk-colors";cl.appendChild(ch);const more=document.createElement("button");more.type="button";more.className="pk-more";more.textContent="전체 색 보기";more.addEventListener("click",()=>{setAiPop(false);setTray(true)});cl.appendChild(more);pk.appendChild(cl)}
+    const cl=document.createElement("div");cl.className="pk-ill pk-col";const lab2=document.createElement("span");lab2.className="pk-lab";lab2.textContent="색상";cl.appendChild(lab2);const sel=document.createElement("select");sel.className="pk-sel";sel.setAttribute("aria-label","색상");const g1=document.createElement("optgroup");g1.label="추천";const g2=document.createElement("optgroup");g2.label="그 외";const TOPC=["lav","b3","sage","forest","wine"];TOPC.forEach(id=>{const p=PALS.find(x=>x.id===id);const o=document.createElement("option");o.value=p.id;o.textContent=p.name;g1.appendChild(o)});PALS.filter(p=>!TOPC.includes(p.id)).forEach(p=>{const o=document.createElement("option");o.value=p.id;o.textContent=p.name;g2.appendChild(o)});sel.appendChild(g1);sel.appendChild(g2);sel.addEventListener("change",()=>{const p=PALS.find(x=>x.id===sel.value);cur=p.id;apply(p);drawPickers()});const dot=document.createElement("i");dot.className="pk-dot";cl.appendChild(dot);cl.appendChild(sel);pk.appendChild(cl)}
   pk.querySelectorAll("button[data-ill]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.ill===illust?"true":"false"));
-  pk.querySelectorAll(".pk-colors").forEach(ch=>{ch.innerHTML="";["lav","b3","sage","forest","wine"].forEach(id=>{const p=PALS.find(x=>x.id===id);const b=document.createElement("button");b.type="button";b.className="pk-c";let isCur=false;try{isCur=p.id===cur}catch(e){}b.setAttribute("aria-pressed",isCur?"true":"false");b.innerHTML='<i style="background:'+p.c.main+'"></i>'+p.name;b.addEventListener("click",()=>{cur=p.id;apply(p);drawPickers()});ch.appendChild(b)})});
+  let curId="b3";try{curId=cur}catch(e){}const cp=PALS.find(x=>x.id===curId)||PALS[0];pk.querySelectorAll(".pk-sel").forEach(sl=>{sl.value=cp.id});pk.querySelectorAll(".pk-dot").forEach(d=>{d.style.background=cp.c.main});
   pk.querySelectorAll("button[data-fmt]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.fmt===fmt?"true":"false"));
   const s=pk.querySelector(".pk-sub");s.innerHTML="";
   if(fmt&&FMT[fmt].subs){const c=document.createElement("div");c.className="chips";c.setAttribute("role","group");c.setAttribute("aria-label","한페이지 형식");
@@ -769,7 +770,7 @@ function hue(h){const r=parseInt(h.substr(1,2),16)/255,g=parseInt(h.substr(3,2),
 const TOP=["lav","b3","sage","forest","wine"];
 const REST=["dusty","steel","slate","mocha","olive","rose","terra","royal","teal","emerald","cobalt","ink","espresso","blue","orange","red"];
 function trayOrder(){return TOP.concat(REST).map(id=>PALS.find(p=>p.id===id))}
-function drawTray(){tlist.innerHTML="";trayOrder().forEach((p,i)=>{if(i===0||i===TOP.length){const h=document.createElement("div");h.className="tray-sub";h.textContent=i===0?"색상 · 추천":"색상 · 그 외";tlist.appendChild(h)}const b=document.createElement("button");b.type="button";b.className="trow";b.id="trow-"+p.id;b.dataset.id=p.id;b.setAttribute("aria-pressed",p.id===cur?"true":"false");
+function drawTray(){tlist.innerHTML="";trayOrder().forEach((p,i)=>{if(i===0||i===TOP.length){const h=document.createElement("div");h.className="tray-sub";h.textContent=i===0?"추천":"그 외";tlist.appendChild(h)}const b=document.createElement("button");b.type="button";b.className="trow";b.id="trow-"+p.id;b.dataset.id=p.id;b.setAttribute("aria-pressed",p.id===cur?"true":"false");
   b.innerHTML='<span class="mini"><span style="background:'+p.c.main+'"></span><span style="background:'+p.c.sub+'"></span><span style="background:'+p.c.tint+'"></span><span style="background:'+p.c.point+'"></span></span>'+p.name+'<small>'+(REC[p.id]?"추천 · "+REC[p.id]:p.grp)+'</small>';
   b.addEventListener("click",()=>{cur=p.id;apply(p)});tlist.appendChild(b)});
 }
