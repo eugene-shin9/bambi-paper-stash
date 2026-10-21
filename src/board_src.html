@@ -695,7 +695,7 @@ const tabs=document.getElementById("tabs");
   t.addEventListener("click",()=>{tabs.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===t?"true":"false"));document.querySelectorAll(".pal").forEach(c=>c.hidden=!(k==="all"||(k==="mine"?MINE.includes(c.dataset.id):c.dataset.grp===k)))});tabs.appendChild(t)});
 const fab=document.getElementById("fab"),tray=document.getElementById("tray"),tlist=document.getElementById("tlist");
 let tf="mine",cur="b3",sty="base",fnt="pre";
-const FONTS={pre:{n:"Pretendard",dir:"pre/",css:'"Pretendard","Noto Sans KR",sans-serif'},noto:{n:"Noto Sans KR",dir:"",css:'"Noto Sans KR",sans-serif'},suit:{n:"SUIT",dir:"suit/",css:'"SUIT","Noto Sans KR",sans-serif'}};
+const FONTS={pre:{n:"Pretendard",dir:"pre/",css:'"Pretendard","Noto Sans KR",sans-serif'},noto:{n:"Noto Sans KR",dir:"",css:'"Noto Sans KR",sans-serif'}};
 function hue(h){const r=parseInt(h.substr(1,2),16)/255,g=parseInt(h.substr(3,2),16)/255,b=parseInt(h.substr(5,2),16)/255,M=Math.max(r,g,b),m=Math.min(r,g,b),d=M-m;if(d<.08)return 999;let x=M===r?((g-b)/d)%6:M===g?(b-r)/d+2:(r-g)/d+4;x*=60;return x<0?x+360:x}
 const TOP=["lav","b3","sage","forest","wine"];
 const REST=["dusty","steel","slate","mocha","olive","rose","terra","royal","teal","emerald","cobalt","ink","espresso","blue","orange","red"];
