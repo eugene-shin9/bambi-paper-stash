@@ -345,7 +345,7 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 [hidden]{display:none!important}
 .pick{display:flex;flex-wrap:wrap;gap:10px}
 .tray-f{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.trow-l{display:flex;align-items:center;gap:10px}.trow-l>span{width:50px;flex:none;font-size:12px;color:var(--muted)}.trow-l .seg{width:auto;align-self:auto}.trow-l .seg button{font-size:12px;padding:5px 9px}.trow-l.tl-top{align-items:flex-start;flex:1 1 auto;min-height:0;position:relative}.trow-l.tl-top .tlist{-webkit-overflow-scrolling:touch;touch-action:pan-y}.trow-l.tl-top .tlist{position:absolute;left:60px;right:0;top:0;bottom:0;max-height:none;overscroll-behavior:contain}.trow-l.tl-top::after{content:"";position:absolute;left:60px;right:0;bottom:0;height:22px;background:linear-gradient(transparent,var(--surface));pointer-events:none}.trow-l.tl-top>span{padding-top:8px}.tray-x{margin-left:auto;font:inherit;font-size:13px;background:none;border:0;color:var(--muted);cursor:pointer;padding:4px 6px}
+.trow-l{display:flex;align-items:center;gap:10px}.trow-l>span{width:50px;flex:none;font-size:12px;color:var(--muted)}.trow-l .seg{width:auto;align-self:auto}.trow-l .seg button{font-size:12px;padding:5px 9px}.trow-l.tl-top{align-items:flex-start;flex:1 1 auto;min-height:0;position:relative}.trow-l.tl-top .tlist{-webkit-overflow-scrolling:touch;touch-action:pan-y}.trow-l.tl-top .tlist{position:absolute;left:60px;right:0;top:0;bottom:0;max-height:none;overscroll-behavior:contain}.trow-l.tl-top::after{content:"";position:absolute;left:60px;right:0;bottom:0;height:22px;background:linear-gradient(transparent,var(--surface));pointer-events:none}.trow-l.tl-top>span{padding-top:8px}.tray-x{font:inherit;font-size:13px;background:none;border:0;color:var(--muted);cursor:pointer;padding:4px 6px}.tray-copy{margin-left:auto;font:inherit;font-size:12px;font-weight:600;background:var(--p-main);color:#fff;border:0;border-radius:99px;padding:5px 11px;cursor:pointer}
 .tray-f .seg{width:auto;align-self:auto}.tray-f .seg button{font-size:12px;padding:5px 9px}
 .tray-f span{font-size:12px;color:var(--muted)}
 .tray-note{margin:0;font-size:12px;color:var(--muted)}
@@ -864,7 +864,7 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 
 <button class="fab fab-ai fab-up" type="button" id="fabai" aria-label="복사"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="4" width="13" height="17" rx="2"/><path d="M9 4.5V3h7v1.5"/><path d="M9.5 10h6M9.5 13.5h6M9.5 17h3.5"/></svg>복사</button>
 <button class="fab fab-low" type="button" id="fab" aria-expanded="false" aria-controls="tray"><span class="dot" id="fabdot"></span><span id="fabname">색 바꾸기</span></button>
-<div class="tray" id="tray" hidden role="dialog" aria-label="설정"><div class="trow-l"><span>작업</span><div class="dd" id="dd-fmt"></div><button type="button" id="trayx" class="tray-x">닫기</button></div><div class="trow-l" id="row-sub" hidden><span>형식</span><div class="dd" id="dd-sub"></div></div><div class="trow-l"><span>일러스트</span><div class="seg" role="group" aria-label="일러스트" id="seg-ill"></div></div><div class="trow-l"><span>스타일</span><div class="seg" role="group" aria-label="스타일" id="seg-t"></div></div><div class="trow-l"><span>서체</span><div class="seg" role="group" aria-label="서체" id="segf-t"></div></div><div class="trow-l tl-top"><span>색상</span><div class="tlist" id="tlist"></div></div></div>
+<div class="tray" id="tray" hidden role="dialog" aria-label="설정"><div class="trow-l"><span>작업</span><div class="dd" id="dd-fmt"></div><button type="button" id="traycopy" class="tray-copy">복사</button><button type="button" id="trayx" class="tray-x">닫기</button></div><div class="trow-l" id="row-sub" hidden><span>형식</span><div class="dd" id="dd-sub"></div></div><div class="trow-l"><span>일러스트</span><div class="seg" role="group" aria-label="일러스트" id="seg-ill"></div></div><div class="trow-l"><span>스타일</span><div class="seg" role="group" aria-label="스타일" id="seg-t"></div></div><div class="trow-l"><span>서체</span><div class="seg" role="group" aria-label="서체" id="segf-t"></div></div><div class="trow-l tl-top"><span>색상</span><div class="tlist" id="tlist"></div></div></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
@@ -1012,6 +1012,7 @@ function fitList(){const row=document.querySelector(".trow-l.tl-top");if(!row||t
 function setTray(o){tray.hidden=!o;fab.setAttribute("aria-expanded",o?"true":"false");if(o){drawTray();setAiPop(false);requestAnimationFrame(fitList)}}
 fab.addEventListener("click",()=>setTray(tray.hidden));
 document.getElementById("trayx").addEventListener("click",()=>{setTray(false);fab.focus()});
+document.getElementById("traycopy").addEventListener("click",()=>copyPrompt());
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!tray.hidden){setTray(false);fab.focus()}});
 document.addEventListener("click",e=>{if(!tray.hidden&&!tray.contains(e.target)&&!fab.contains(e.target))setTray(false)});
 box.addEventListener("click",e=>{const b=e.target.closest(".pal");if(b)cur=b.dataset.id});
