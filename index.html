@@ -204,11 +204,20 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 .fab .dot{width:24px;height:24px;border-radius:50%;border:2px solid var(--surface);box-shadow:0 0 0 1px var(--line)}
 .fab-ai{bottom:calc(68px + env(safe-area-inset-bottom,0px));padding:8px 14px 8px 10px}
 .fab-ai svg{width:22px;height:22px;flex:none}
-.tray.aipop{left:0;right:0;bottom:0;width:auto;max-width:none;max-height:none;z-index:32;border-radius:16px 16px 0 0;border-bottom:0;padding:16px calc(16px + env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) calc(16px + env(safe-area-inset-left,0px));box-shadow:0 -8px 28px rgba(0,0,0,.22);animation:sheetup .18s ease-out}
+.tray.tray{left:0;right:0;bottom:0;width:auto;max-width:none;max-height:min(80vh,640px);z-index:32;border-radius:16px 16px 0 0;border-bottom:0;padding:16px calc(16px + env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) calc(16px + env(safe-area-inset-left,0px));box-shadow:0 -8px 28px rgba(0,0,0,.22);animation:sheetup .18s ease-out}
 @keyframes sheetup{from{transform:translateY(100%)}to{transform:none}}
-@media (prefers-reduced-motion:reduce){.tray.aipop{animation:none}}
-@media (min-width:720px){.tray.aipop{left:auto;right:calc(16px + env(safe-area-inset-right,0px));width:420px}}
-.tray.aipop .ai-copy{padding:8px 20px}
+@media (prefers-reduced-motion:reduce){.tray.tray{animation:none}}
+@media (min-width:720px){.tray.tray{left:auto;right:calc(16px + env(safe-area-inset-right,0px));width:420px}}
+.ai-copy.wide{width:100%;padding:12px}
+.picker{display:flex;flex-direction:column;gap:12px;min-width:0}
+.picker .seg{display:flex;width:100%;align-self:stretch}
+.picker .seg button{flex:1;padding:9px 4px;font-size:14px}
+.pk-sub{min-height:38px;display:flex;align-items:center}
+.pk-note{margin:0;font-size:13px;color:var(--muted);line-height:1.5}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:99px;padding:6px 14px;cursor:pointer}
+.chips button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--bg);font-weight:600}
+.chips button:focus-visible,.picker .seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .tray{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(118px + env(safe-area-inset-bottom,0px));z-index:30;width:min(340px,calc(100vw - 32px));max-height:min(62vh,520px);overflow:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 32px rgba(0,0,0,.2);padding:12px;display:flex;flex-direction:column;gap:10px}
 .tray-h{display:flex;justify-content:space-between;align-items:center;gap:8px}
 .tray-h b{font-size:14px}
@@ -264,14 +273,14 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 <div class="wrap">
   <header>
     <h1>밤비의 서류뭉치</h1>
-    <p class="lead">오른쪽 아래 '색 바꾸기'로 색과 스타일(기본·가볍게)을 고르면 아이콘, 카드형, PPT 틀, 문서 예시가 전부 같이 바뀝니다. 다른 AI에서 쓰려면 'AI에서 쓰기'의 글을 복사해 붙이면 됩니다.</p>
-    <nav aria-label="바로가기"><a href="#icon">도장 아이콘</a><a href="#card">카드형</a><a href="#ppt">PPT 틀</a><a href="#doc">문서</a><a href="#color" id="navcolor">색 조합</a><a href="#rule">규칙</a><a href="#ai">AI에서 쓰기</a><a href="#link">더 볼 곳</a></nav>
+    <p class="lead">오른쪽 아래 '색 바꾸기'로 색과 스타일(기본·가볍게)을 고르면 아이콘, 원페이지, PPT 틀, 문서 예시가 전부 같이 바뀝니다. 다른 AI에서 쓰려면 'AI에서 쓰기'의 글을 복사해 붙이면 됩니다.</p>
+    <nav aria-label="바로가기"><a href="#icon">도장 아이콘</a><a href="#card">원페이지</a><a href="#ppt">PPT 틀</a><a href="#doc">문서</a><a href="#color" id="navcolor">색 조합</a><a href="#rule">규칙</a><a href="#ai">AI에서 쓰기</a><a href="#link">더 볼 곳</a></nav>
   </header>
 
   <section class="sec" id="icon" aria-labelledby="h-icon">
     <div class="sec-head">
       <h2 id="h-icon">도장 느낌 아이콘 12개</h2>
-      <p>가장자리가 살짝 거칠고 잉크가 군데군데 빠진 도장 느낌으로 직접 그렸습니다. 카드형과 카드뉴스 틀에 이미 넣어 두었습니다.</p>
+      <p>가장자리가 살짝 거칠고 잉크가 군데군데 빠진 도장 느낌으로 직접 그렸습니다. 원페이지와 카드뉴스 틀에 이미 넣어 두었습니다.</p>
       <p class="now" id="now-ic"></p>
     </div>
     <div class="ic-board">
@@ -283,13 +292,13 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 
   <section class="sec" id="card" aria-labelledby="h-card">
     <div class="sec-head">
-      <h2 id="h-card">한 장 카드형</h2>
-      <p>앞의 둘은 실제 A4 파일 화면, 뒤의 둘은 추가 배치 예시입니다. 아래 셋은 카드뉴스 1:1 세 장입니다.</p>
+      <h2 id="h-card">원페이지</h2>
+      <p>A4 한 장짜리 4가지 형식입니다. 아래 셋은 카드뉴스 1:1 세 장입니다.</p>
       <p class="now" id="now-card"></p>
     </div>
     <div class="cards4">
-      <figure><div class="shot a4" data-k="a4" data-i="0" role="img" aria-label="띠와 패널형 A4 카드"></div><figcaption><b>A4</b>띠 + 패널형 · 교육 모집</figcaption></figure>
-      <figure><div class="shot a4" data-k="a4" data-i="1" role="img" aria-label="흰 바탕 안내형 A4 카드"></div><figcaption><b>A4</b>흰 바탕 안내형 · 세무 안내</figcaption></figure>
+      <figure><div class="shot a4" data-k="a4" data-i="0" role="img" aria-label="원페이지 배너형"></div><figcaption><b>배너형</b>모집·행사</figcaption></figure>
+      <figure><div class="shot a4" data-k="a4" data-i="1" role="img" aria-label="원페이지 안내형"></div><figcaption><b>안내형</b>세무·절차 안내</figcaption></figure>
     
       <figure><div class="page"><div class="in">
         <div class="eyebrow">0000 상반기</div>
@@ -301,13 +310,13 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
           <div><span>0. 0.</span><b>마무리</b><p>결과 공유</p></div>
         </div>
         <div class="box"><b>문의</b>담당 부서 · 연락처</div>
-      </div></div><figcaption><b>예시</b>일정형 · 날짜가 핵심일 때</figcaption></figure>
+      </div></div><figcaption><b>타임라인형</b>날짜가 핵심일 때</figcaption></figure>
       <figure><div class="page cd"><div class="in">
         <div class="eyebrow">마감</div>
         <div class="big">0.00</div>
         <div class="tt">기한을 꼭<br>확인하세요</div>
         <div class="g"><div><span>대상</span><b>해당하는 분</b></div><div><span>방법</span><b>온라인 신청</b></div><div><span>문의</span><b>담당 부서</b></div><div><span>기간</span><b>0. 0. ~ 0. 00.</b></div></div>
-      </div></div><figcaption><b>예시</b>큰 숫자 포스터형 · 게시판용</figcaption></figure>
+      </div></div><figcaption><b>포스터형</b>마감·게시판</figcaption></figure>
     </div>
     <div class="cards3">
       <figure><div class="shot sq" data-k="sq" data-i="0" role="img" aria-label="카드뉴스 표지"></div><figcaption><b>1</b>표지</figcaption></figure>
@@ -396,11 +405,12 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
   <section class="sec" id="ai" aria-labelledby="h-ai">
     <div class="sec-head">
       <h2 id="h-ai">AI에서 쓰기</h2>
-      <p>아래 글을 복사해 AI 대화창에 붙이고, 제목과 내용만 채워 보내면 됩니다. 규격서 링크와 지금 보는 색·스타일은 미리 들어가 있습니다.</p>
+      <p>만들 것을 고르고 복사해 AI 대화창에 붙인 뒤, 내용만 적어 보내면 됩니다. 규격서 링크와 지금 보는 색·스타일은 미리 들어가 있습니다. 오른쪽 아래 'AI 복사'로도 같은 글을 복사할 수 있습니다.</p>
     </div>
     <div class="ai-box">
-      <div class="ai-row"><div class="seg" id="seg-make" role="group" aria-label="만들 것"></div><button type="button" class="ai-copy" id="copyprompt">복사</button></div>
+      <div class="picker" id="pk-sec"></div>
       <textarea id="aiprompt" aria-label="AI에 붙여 넣을 글" spellcheck="false"></textarea>
+      <button type="button" class="ai-copy wide" id="copyprompt">복사</button>
       <p class="ai-note">AI가 링크를 열 수 없다고 하면 아래 '규격서 복사'로 규격서 전문을 함께 붙여 넣으세요.</p>
     </div>
     <div class="spec-h"><h3>AI용 규격서</h3><button type="button" id="copyspec">규격서 복사</button></div>
@@ -411,6 +421,8 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 - PPT·Word·이미지·HTML 파일이 필요하면 직접 만들어 건넨다. 사용자에게 양식을 구해 오거나 내려받으라고 안내하지 않는다.
 - 색은 아래 21조합 중 하나만 쓴다. 색을 말하지 않으면 용도에 맞는 추천 5색에서 고르고, 고른 색 이름을 한 줄로 밝힌다.
 - 스타일을 말하지 않으면 '기본'으로 만든다.
+- 만들 것을 말하지 않으면 내용에 맞는 양식을 고르고 한 줄로 밝힌다. 원페이지 형식(배너형·안내형·타임라인형·포스터형)을 말하지 않으면 내용에 맞게 고른다.
+- 제목을 주지 않으면 내용에서 15자 안팎으로 직접 뽑는다.
 - 사용자가 준 내용만 채운다. 날짜·금액·연락처처럼 받지 않은 사실은 지어내지 말고 '0000' 같은 빈칸으로 둔다.
 
 1. 공통 규칙
@@ -450,10 +462,12 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
   ⑧ 개조식 본문: 2단계까지
   ⑨ 막대 차트: 주색 한 가지, 값 표시, 세로축 숨김, 가는 가로 격자
   ⑩ 마무리: 요약 3줄, 표지와 같은 바탕
-[A4 한 장 카드] 210×297mm
+[원페이지 A4] 210×297mm · 배너형·안내형·타임라인형·포스터형
 - 사방 여백 15mm, 내용 폭 180mm.
-- A형 띠+패널(모집·행사): 위쪽 주색 바탕에 머리말 16pt · 제목 34pt 두 줄 · 흰 아이콘(약 46mm). 그 아래 흰 패널(모서리 둥글게, 안쪽 여백 10mm). 패널 안은 2단(단 사이 10mm) × 3줄, 칸마다 라벨(작은 둥근 꼬리표 11pt) + 본문 13pt. 두 단의 줄 시작 높이를 맞춘다. 맨 아래 가는 선과 문의 11pt.
-- B형 흰 바탕 안내(세무·절차): 머리말 15pt 보조색, 제목 32pt, 요약 13pt, 핵심 3칸(같은 폭, 칸 사이 5mm, 라벨 11pt + 값 13pt 주색), 진행 순서(주색 원 안 번호 + 한 줄 13pt), 준비할 것 칸, 맨 아래 문의 10pt.
+- 배너형(모집·행사): 위쪽 주색 바탕에 머리말 16pt · 제목 34pt 두 줄 · 흰 아이콘(약 46mm). 그 아래 흰 패널(모서리 둥글게, 안쪽 여백 10mm). 패널 안은 2단(단 사이 10mm) × 3줄, 칸마다 라벨(작은 둥근 꼬리표 11pt) + 본문 13pt. 두 단의 줄 시작 높이를 맞춘다. 맨 아래 가는 선과 문의 11pt.
+- 안내형(세무·절차): 머리말 15pt 보조색, 제목 32pt, 요약 13pt, 핵심 3칸(같은 폭, 칸 사이 5mm, 라벨 11pt + 값 13pt 주색), 진행 순서(주색 원 안 번호 + 한 줄 13pt), 준비할 것 칸, 맨 아래 문의 10pt.
+- 타임라인형(일정·날짜가 핵심): 머리말 15pt 보조색, 제목 32pt. 그 아래 세로 타임라인: 왼쪽에 가는 세로선(선 색), 단계마다 지름 5mm 원(주색 테두리, 지금 단계만 주색으로 채움). 단계마다 날짜 12pt 보조색 굵게 → 단계명 17pt 굵게 → 설명 12pt 보조색, 단계 사이 간격 같게. 맨 아래 옅은 바탕 문의 칸(라벨 주색).
+- 포스터형(마감·게시판): 전체 주색 바탕. 머리말 15pt 옅은 바탕색, 큰 숫자(날짜·금액·인원) 140pt 굵게 진한 바탕 머리말 색, 그 아래 한마디 38pt 두 줄. 맨 아래 2단 × 2줄(대상·방법·문의·기간), 라벨 12pt 옅은 바탕색 + 값 15pt, 줄마다 흰색 30% 가는 선. 가볍게는 흰 바탕에 큰 숫자를 주색으로.
 [카드뉴스 1:1] 1080×1080px
 - 사방 여백 104px.
   ① 표지: 주색 바탕, 왼쪽 위 머리말 37px, 오른쪽 위 흰 아이콘, 제목 82px 두 줄을 아래 여백선에 붙임
@@ -583,7 +597,7 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 </div>
 
 <button class="fab fab-ai" type="button" id="fabai" aria-expanded="false" aria-controls="aipop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="4" width="13" height="17" rx="2"/><path d="M9 4.5V3h7v1.5"/><path d="M9.5 10h6M9.5 13.5h6M9.5 17h3.5"/></svg>AI 복사</button>
-<div class="tray aipop" id="aipop" hidden role="dialog" aria-label="AI에 붙일 글 복사"><div class="tray-h"><b>AI에 붙일 글 복사</b><button type="button" id="aipopx">닫기</button></div><div class="ai-row"><div class="seg" id="seg-make2" role="group" aria-label="만들 것"></div><button type="button" class="ai-copy" id="copyprompt2">복사</button></div><p class="tray-note">지금 보는 색과 규격서 링크가 들어갑니다. AI 대화창에 붙이고 제목·내용만 적으면 됩니다.</p></div>
+<div class="tray aipop" id="aipop" hidden role="dialog" aria-label="AI에 붙일 글 복사"><div class="tray-h"><b>AI에 붙일 글 복사</b><button type="button" id="aipopx">닫기</button></div><div class="picker" id="pk-pop"></div><button type="button" class="ai-copy wide" id="copyprompt2">복사</button></div>
 <button class="fab" type="button" id="fab" aria-expanded="false" aria-controls="tray"><span class="dot" id="fabdot"></span><span id="fabname">색 바꾸기</span></button>
 <div class="tray" id="tray" hidden role="dialog" aria-label="색 조합 고르기"><div class="tray-h"><b>색 조합</b><button type="button" id="trayx">닫기</button></div><div class="seg" role="group" aria-label="스타일" id="seg-t"></div><div class="tray-f"><span>글꼴</span><div class="seg" role="group" aria-label="글꼴" id="segf-t"></div></div><p class="tray-note">맑은 고딕은 윈도 전용이라 여기서는 미리 볼 수 없습니다. 남이 고칠 PPT·Word 파일에만 씁니다.</p><div class="tabs" role="group" aria-label="목록 거르기" id="ttabs"></div><div class="tlist" id="tlist"></div></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -645,16 +659,33 @@ function apply(p){
 }
 document.getElementById("copyspec").addEventListener("click",()=>{const t=document.getElementById("spec").textContent;
   if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(()=>say("규격서 복사됨")).catch(()=>{selSpec();say("선택됨 · 길게 눌러 복사")})}else{selSpec();say("선택됨 · 길게 눌러 복사")}});
-const MAKE=[["A4 안내문 한 장","A4"],["PPT 10장","PPT"],["카드뉴스 3장","카드뉴스"]];let make=MAKE[0][0],aiEdited=false;
-const ap=document.getElementById("aiprompt"),segMake=document.getElementById("seg-make");
+const FMT={doc:{l:"문서",make:"보고서 문서(A4)",d:"A4 보고서 · 표지, 개조식 본문, 표"},one:{l:"원페이지",make:"원페이지(A4)",subs:["배너형","안내형","타임라인형","포스터형"]},ppt:{l:"PPT",make:"PPT 10장",d:"16:9 · 표지부터 마무리까지 10장"},card:{l:"카드뉴스",make:"카드뉴스 3장",d:"1:1 · 표지, 내용, 마무리 3장"}};
+let fmt=null,sub=null,aiEdited=false;
+const ap=document.getElementById("aiprompt");
+const PK_NOTE="지금 보는 색과 규격서 링크가 들어갑니다. 만들 것을 고르고 복사한 뒤, AI 대화창에서 내용만 적으면 됩니다.";
 function aiStyle(){return sty==="light"?"가볍게":"기본"}
-function updPrompt(p){if(!p)return;
-  if(!aiEdited){ap.value="https://github.com/eugene-shin9/bambi-paper-stash\n이 규격서대로 "+p.name+" 색, "+aiStyle()+" 스타일로 만들어 줘.\n만들 것: "+make+"\n제목: \n내용: \n";return}
-  ap.value=ap.value.replace(/이 규격서대로 .+? 색, .+? 스타일로/,"이 규격서대로 "+p.name+" 색, "+aiStyle()+" 스타일로").replace(/만들 것: .*/,"만들 것: "+make)}
+function makeStr(){return fmt?FMT[fmt].make+(sub?" · "+sub:""):""}
+function colorLine(p){return "이 규격서대로 "+p.name+" 색, "+aiStyle()+" 스타일로 만들어 줘."}
+function updPrompt(p){p=p||lastP;if(!p)return;const m=makeStr();
+  if(!aiEdited){ap.value="https://github.com/eugene-shin9/bambi-paper-stash\n"+colorLine(p)+"\n"+(m?"만들 것: "+m+"\n":"")+"내용: \n";return}
+  let v=ap.value.replace(/이 규격서대로 .+? 색, .+? 스타일로 만들어 줘\./,colorLine(p));
+  if(/^만들 것: .*$/m.test(v))v=m?v.replace(/^만들 것: .*$/m,"만들 것: "+m):v.replace(/^만들 것: .*\n?/m,"");
+  else if(m)v=v.replace(colorLine(p),colorLine(p)+"\n만들 것: "+m);
+  ap.value=v}
 ap.addEventListener("input",()=>{aiEdited=true});
-[segMake,document.getElementById("seg-make2")].forEach(g=>MAKE.forEach(([v,l])=>{const b=document.createElement("button");b.type="button";b.dataset.m=v;b.textContent=l;b.setAttribute("aria-pressed",v===make?"true":"false");
-  b.addEventListener("click",()=>{make=v;document.querySelectorAll("button[data-m]").forEach(x=>x.setAttribute("aria-pressed",x.dataset.m===v?"true":"false"));updPrompt(lastP)});g.appendChild(b)}));
-function copyPrompt(done){const t=ap.value;const ok=()=>{say("복사됨 · AI 대화창에 붙여 넣으세요");if(done)done()};
+function drawPickers(){document.querySelectorAll(".picker").forEach(pk=>{
+  if(!pk.firstChild){const seg=document.createElement("div");seg.className="seg";seg.setAttribute("role","group");seg.setAttribute("aria-label","만들 것");
+    Object.entries(FMT).forEach(([k,o])=>{const b=document.createElement("button");b.type="button";b.dataset.fmt=k;b.textContent=o.l;
+      b.addEventListener("click",()=>{if(fmt===k){fmt=null;sub=null}else{fmt=k;sub=null}drawPickers();updPrompt()});seg.appendChild(b)});
+    const s=document.createElement("div");s.className="pk-sub";pk.appendChild(seg);pk.appendChild(s)}
+  pk.querySelectorAll("button[data-fmt]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.fmt===fmt?"true":"false"));
+  const s=pk.querySelector(".pk-sub");s.innerHTML="";
+  if(fmt&&FMT[fmt].subs){const c=document.createElement("div");c.className="chips";c.setAttribute("role","group");c.setAttribute("aria-label","원페이지 형식");
+    FMT[fmt].subs.forEach(n=>{const b=document.createElement("button");b.type="button";b.textContent=n;b.setAttribute("aria-pressed",n===sub?"true":"false");
+      b.addEventListener("click",()=>{sub=(sub===n)?null:n;drawPickers();updPrompt()});c.appendChild(b)});s.appendChild(c)}
+  else{const p=document.createElement("p");p.className="pk-note";p.textContent=fmt?FMT[fmt].d:PK_NOTE;s.appendChild(p)}})}
+drawPickers();
+function copyPrompt(done){updPrompt();const t=ap.value;const ok=()=>{say("복사됨 · AI 대화창에 붙여 넣으세요");if(done)done()};
   if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok).catch(()=>{try{ap.focus();ap.select();if(document.execCommand("copy")){ok();return}}catch(e){}say("아래 'AI에서 쓰기' 칸을 길게 눌러 복사")})}
   else{try{ap.focus();ap.select();if(document.execCommand("copy")){ok();return}}catch(e){}say("아래 'AI에서 쓰기' 칸을 길게 눌러 복사")}}
 document.getElementById("copyprompt").addEventListener("click",()=>copyPrompt());
@@ -664,7 +695,7 @@ fabai.addEventListener("click",()=>setAiPop(aipop.hidden));
 document.getElementById("aipopx").addEventListener("click",()=>{setAiPop(false);fabai.focus()});
 document.getElementById("copyprompt2").addEventListener("click",()=>copyPrompt(()=>setAiPop(false)));
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!aipop.hidden){setAiPop(false);fabai.focus()}});
-document.addEventListener("click",e=>{if(!aipop.hidden&&!aipop.contains(e.target)&&!fabai.contains(e.target))setAiPop(false)});
+document.addEventListener("click",e=>{if(!aipop.hidden&&e.target.isConnected&&!aipop.contains(e.target)&&!fabai.contains(e.target))setAiPop(false)});
 function selSpec(){const r=document.createRange();r.selectNodeContents(document.getElementById("spec"));const g=getSelection();g.removeAllRanges();g.addRange(r)}
 const box=document.getElementById("pals");
 PALS.forEach(p=>{
