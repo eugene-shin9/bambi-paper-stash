@@ -199,10 +199,14 @@ figcaption b{color:var(--fg);font-weight:600;margin-right:6px}
 .d-chart div::after{content:attr(data-v);position:absolute;top:-4cqw;left:0;right:0;text-align:center;font-size:2.5cqw;color:var(--p-ink)}
 .d-chart div::before{content:attr(data-l);position:absolute;bottom:-4.4cqw;left:0;right:0;text-align:center;font-size:2.4cqw;color:var(--p-sub)}
 table.t td i{display:block;height:2.2cqw;background:var(--p-main);border-radius:1cqw}
-table.t tr.sum td{font-weight:700;border-top:.4cqw solid var(--p-main);border-bottom:0}
-.d-att{margin-top:auto;padding-top:3cqw;font-size:3cqw;line-height:1.7}
+table.t tr.tsum td{font-weight:700;border-top:.4cqw solid var(--p-main);border-bottom:0}
+table.t.nw td,table.t.nw th{white-space:nowrap}
+.fn{margin-top:auto;margin-bottom:4cqw;width:60%;border-top:1px solid var(--p-line);padding-top:1.4cqw;font-size:2.2cqw;color:var(--p-sub);line-height:1.5}
+.fn+.pno{}
+sup{font-size:.65em;color:var(--p-main);vertical-align:super;line-height:0}
+.d-att{margin-top:auto;margin-bottom:5cqw;padding-top:3cqw;font-size:3cqw;line-height:1.7}
 .sumline{font-size:2.7cqw;color:var(--p-sub);margin-top:2.4cqw}
-.page .k3{margin-top:4cqw}.page .tl{margin-top:3.6cqw;gap:2.4cqw}.page .tl b{font-size:3.1cqw}.page .tl span{font-size:2.3cqw}.page .tl p{font-size:2.2cqw}.page .tl div{gap:.2cqw}.page .box{padding:2.4cqw 3cqw}
+.page .k3{margin-top:4cqw}.page .tl{margin-top:3.2cqw;gap:1.7cqw}.page .tl b{font-size:3cqw}.page .tl span{font-size:2.2cqw}.page .tl p{font-size:2.1cqw}.page .tl div{gap:.1cqw}.page .box{padding:2.2cqw 3cqw}.page .k3{margin-top:3cqw}.page .k3 div{padding:1.8cqw 2cqw}
 .cd .st{margin-top:5cqw;font-size:2.7cqw;color:var(--p-bg)}.cd .st i{background:var(--p-bg);color:var(--p-main)}
 .lite .cd .st{color:var(--p-ink)}.lite .cd .st i{background:var(--p-main);color:#fff}
 .cd{background:var(--p-main);color:var(--p-bg)}
@@ -236,9 +240,9 @@ table.t tr.sum td{font-weight:700;border-top:.4cqw solid var(--p-main);border-bo
 .d-box{background:var(--p-tint);padding:3.4cqw 4cqw;margin-top:4cqw;font-size:3cqw;line-height:1.5}
 .d-box b{color:var(--p-main)}
 .pno{position:absolute;bottom:5cqw;left:0;right:0;text-align:center;font-size:2.6cqw;color:var(--p-sub)}
-table.t{width:100%;border-collapse:collapse;margin-top:4cqw;font-size:3.2cqw;font-variant-numeric:tabular-nums}
-table.t th{text-align:left;font-weight:600;color:var(--p-main);border-bottom:.4cqw solid var(--p-main);padding:1.4cqw 1.2cqw}
-table.t td{border-bottom:1px solid var(--p-line);padding:1.4cqw 1.2cqw}
+table.t{width:100%;border-collapse:collapse;margin-top:3.4cqw;font-size:2.9cqw;font-variant-numeric:tabular-nums}
+table.t th{text-align:left;font-weight:600;color:var(--p-main);border-bottom:.4cqw solid var(--p-main);padding:1.2cqw 1.2cqw}
+table.t td{border-bottom:1px solid var(--p-line);padding:1.2cqw 1.2cqw}
 table.t th:first-child,table.t td:first-child{padding-left:0}
 table.t th:last-child,table.t td:last-child{padding-right:0}
 .r{text-align:right!important}
@@ -350,7 +354,7 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
     
       <figure><div class="page"><div class="in">
         <div class="eyebrow">2026 가을 학기 · 교육팀</div>
-        <div class="tt" style="margin-top:1.6cqw">학부모 독서교실<br>운영 일정</div>
+        <div class="tt" style="margin-top:1.2cqw;font-size:6.2cqw">학부모 독서교실<br>운영 일정</div>
         <div class="sumline">함께 읽고, 질문하고, 글로 표현하는 다섯 번의 만남</div>
         <div class="k3"><div><span>기간</span><b>11. 3. ~ 12. 1.</b></div><div><span>장소</span><b>교육실 1</b></div><div><span>대상</span><b>학부모 20명</b></div></div>
         <div class="tl">
@@ -407,10 +411,11 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
         <div class="d-t">개요</div>
         <div class="d-ov"><div><span>목적</span><b>학부모 독서 지도 역량 강화</b></div><div><span>기간</span><b>2026. 11. 3. ~ 12. 1. (5회)</b></div><div><span>대상</span><b>초등 저학년 학부모 20명</b></div><div><span>장소</span><b>교육실 1 (2층)</b></div></div>
         <div class="d-sh">핵심 결론</div>
-        <div class="d-li">1) 지난 학기 만족도 4.6/5, 재참여 희망 85% → 정규 과정으로 확대</div>
+        <div class="d-li">1) 지난 학기 만족도 4.6/5, 재참여 희망 85%<sup>1)</sup> → 정규 과정으로 확대</div>
         <div class="d-li">2) 회차를 4회에서 5회로 늘리고 발표회를 추가</div>
         <div class="d-li">3) 소요 예산 000만 원(강사비·교재비), 전년 대비 10% 증가</div>
         <div class="d-box"><b>결정 요청</b> 운영 예산 000만 원 승인 및 홍보 협조</div>
+        <div class="fn">1) 2026년 1학기 시범 운영 만족도 조사(응답 13명), 교육팀</div>
         <div class="pno">- 1 -</div>
       </div></div><figcaption><b>③ 개요</b>이 한 장으로 보고 끝</figcaption></figure>
       <figure><div class="page"><div class="in">
@@ -420,12 +425,13 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
         <div class="d-li">1) 학부모가 가정에서 아이와 책을 읽고 질문하는 방법 익히기</div>
         <div class="d-li">2) 기관과 가정이 함께하는 독서 문화 조성</div>
         <div class="d-sh">나. 필요성</div>
-        <div class="d-li">1) 저학년 학부모 설문에서 '독서 지도 방법을 모른다' 응답 62%</div>
+        <div class="d-li">1) 저학년 학부모 설문에서 '독서 지도 방법을 모른다' 응답 62%<sup>2)</sup></div>
         <div class="d-li">2) 지난 학기 시범 운영 참여자의 재참여 희망 85%</div>
         <div class="d-h">2. 현황 및 문제점</div>
         <div class="d-li">1) 회차가 4회로 짧아 실습 시간 부족</div>
         <div class="d-li">2) 결과물을 나눌 자리가 없어 참여 동기 약화</div>
         <div class="d-box"><b>핵심</b> 회차 확대와 발표회 신설이 필요</div>
+        <div class="fn">2) 2026. 6. 학부모 설문(응답 48명), 교육팀</div>
         <div class="pno">- 2 -</div>
       </div></div><figcaption><b>④ 본문</b>1. → 가. → 1) 개조식</figcaption></figure>
       </div><div class="dpage">
@@ -456,7 +462,7 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
         <div class="d-h">5. 추진 일정</div>
         <table class="t gantt"><thead><tr><th>단계</th><th>담당</th><th>10월</th><th>11월</th><th>12월</th></tr></thead><tbody><tr><td>모집·홍보</td><td>교육팀</td><td><i></i></td><td></td><td></td></tr><tr><td>운영(5회)</td><td>교육팀·강사</td><td></td><td><i></i></td><td><i style="width:30%"></i></td></tr><tr><td>결과 보고</td><td>교육팀</td><td></td><td></td><td><i style="width:60%;margin-left:40%"></i></td></tr></tbody></table>
         <div class="d-h">6. 소요 예산</div>
-        <table class="t"><thead><tr><th>항목</th><th>산출 근거</th><th class="r">금액(원)</th></tr></thead><tbody><tr><td>강사비</td><td>3회 × 000,000</td><td class="r">000,000</td></tr><tr><td>교재비</td><td>20명 × 00,000</td><td class="r">000,000</td></tr><tr><td>다과비</td><td>5회 × 00,000</td><td class="r">000,000</td></tr><tr class="sum"><td>합계</td><td></td><td class="r">0,000,000</td></tr></tbody></table>
+        <table class="t nw"><thead><tr><th>항목</th><th>산출 근거</th><th class="r">금액(원)</th></tr></thead><tbody><tr><td>강사비</td><td>3회 × 000,000원</td><td class="r">000,000</td></tr><tr><td>교재비</td><td>20명 × 00,000</td><td class="r">000,000</td></tr><tr><td>다과비</td><td>5회 × 00,000</td><td class="r">000,000</td></tr><tr class="tsum"><td>합계</td><td></td><td class="r">0,000,000</td></tr></tbody></table>
         <div class="pno">- 5 -</div>
       </div></div><figcaption><b>⑦ 일정·예산</b>간트 막대 · 합계 굵게</figcaption></figure>
       <figure><div class="page"><div class="in">
