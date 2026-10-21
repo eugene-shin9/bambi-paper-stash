@@ -118,7 +118,7 @@ details[open] .chev::after{font-size:13px}
 /* 미리보기 공통 */
 figure{margin:0;display:flex;flex-direction:column;gap:8px;min-width:0}
 figcaption{margin-top:auto}
-.cards4,.cards3,.shots,.grid-d{align-items:stretch}
+.cards4,.cards3,.shots,
 figcaption{font-size:13px;color:var(--muted)}
 figcaption b{color:var(--fg);font-weight:600;margin-right:6px}
 .shot{width:100%;border:1px solid var(--line);border-radius:4px;background-color:#fff;background-repeat:no-repeat;transition:opacity .15s}
@@ -180,6 +180,31 @@ figcaption b{color:var(--fg);font-weight:600;margin-right:6px}
 .st{display:flex;flex-direction:column;gap:2cqw;font-size:2.7cqw}
 .st div{display:flex;gap:2.4cqw;align-items:center}
 .st i{width:4.2cqw;height:4.2cqw;border-radius:50%;background:var(--p-main);color:#fff;font-style:normal;font-size:2.2cqw;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none}
+.d-sub{font-size:3.2cqw;color:var(--p-sub);margin-top:2.4cqw}
+.d-hd{font-size:2.3cqw;color:var(--p-sub);display:flex;justify-content:space-between;margin-bottom:4cqw;border-bottom:1px solid var(--p-line);padding-bottom:1.6cqw}
+.d-t{font-size:5.4cqw;font-weight:700}
+.d-toc{margin-top:4cqw;display:flex;flex-direction:column}
+.d-toc div{display:flex;align-items:baseline;gap:3cqw;padding:2.8cqw 0;border-bottom:1px solid var(--p-line);font-size:3.2cqw;font-weight:600}
+.d-toc i{font-style:normal;color:var(--p-main);font-weight:700;width:5cqw;flex:none}
+.d-toc span{margin-left:auto;color:var(--p-sub);font-variant-numeric:tabular-nums;font-weight:400}
+.d-toc .sub{padding:1.6cqw 0 1.6cqw 8cqw;font-size:2.7cqw;color:var(--p-sub);font-weight:400}
+.d-ov{margin-top:4cqw;background:var(--p-tint);padding:3.4cqw 4cqw;display:grid;grid-template-columns:1fr 1fr;gap:2.6cqw 4cqw;font-size:2.8cqw}
+.d-ov div{display:flex;flex-direction:column;gap:.4cqw}.d-ov span{color:var(--p-sub);font-size:2.4cqw}.d-ov b{font-weight:600}
+.lite .d-ov{background:none;border-top:.5cqw solid var(--p-main);border-bottom:1px solid var(--p-line);padding-left:0;padding-right:0}
+.d-li{font-size:2.9cqw;line-height:1.5;margin-top:1.4cqw;padding-left:4.2cqw;text-indent:-4.2cqw}
+.d-cap{font-size:2.5cqw;color:var(--p-sub);margin-top:3cqw}
+.d-cap+table.t{margin-top:1.2cqw}
+.d-chart{margin-top:6cqw;height:28cqw;display:flex;align-items:flex-end;gap:5cqw;border-bottom:1px solid var(--p-line);padding:0 3cqw}
+.d-chart div{flex:1;background:var(--p-main);position:relative}
+.d-chart div::after{content:attr(data-v);position:absolute;top:-4cqw;left:0;right:0;text-align:center;font-size:2.5cqw;color:var(--p-ink)}
+.d-chart div::before{content:attr(data-l);position:absolute;bottom:-4.4cqw;left:0;right:0;text-align:center;font-size:2.4cqw;color:var(--p-sub)}
+table.t td i{display:block;height:2.2cqw;background:var(--p-main);border-radius:1cqw}
+table.t tr.sum td{font-weight:700;border-top:.4cqw solid var(--p-main);border-bottom:0}
+.d-att{margin-top:auto;padding-top:3cqw;font-size:3cqw;line-height:1.7}
+.sumline{font-size:2.7cqw;color:var(--p-sub);margin-top:2.4cqw}
+.page .k3{margin-top:4cqw}.page .tl{margin-top:3.6cqw;gap:2.4cqw}.page .tl b{font-size:3.1cqw}.page .tl span{font-size:2.3cqw}.page .tl p{font-size:2.2cqw}.page .tl div{gap:.2cqw}.page .box{padding:2.4cqw 3cqw}
+.cd .st{margin-top:5cqw;font-size:2.7cqw;color:var(--p-bg)}.cd .st i{background:var(--p-bg);color:var(--p-main)}
+.lite .cd .st{color:var(--p-ink)}.lite .cd .st i{background:var(--p-main);color:#fff}
 .cd{background:var(--p-main);color:var(--p-bg)}
 .cd .eyebrow{color:var(--p-tint)}
 .cd .big{font-size:24cqw;font-weight:700;line-height:1;color:var(--eb);margin-top:6cqw;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
@@ -198,7 +223,7 @@ figcaption b{color:var(--fg);font-weight:600;margin-right:6px}
 .cov .eyebrow{color:var(--eb)}
 .cov .tt{font-size:6.2cqw;margin-top:2.4cqw}
 .cov .ft{margin-top:auto;font-size:2.4cqw;color:var(--p-tint)}
-.grid-d{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+
 @media (max-width:820px){.grid-d{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .d-cover{border-left:1.2cqw solid var(--p-main);padding-left:5cqw;margin-top:18cqw}
 .d-cover .k{font-size:3.4cqw;color:var(--p-sub)}
@@ -316,7 +341,7 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
   <section class="sec" id="card" aria-labelledby="h-card">
     <div class="sec-head">
       <h2 id="h-card">한페이지</h2>
-      <p>A4 한 장짜리 양식 4가지입니다. 옆으로 넘기면 본문에 끼워 쓰는 블록 7가지가 나옵니다. 아래는 카드뉴스 1:1 세 장입니다.</p>
+      <p>A4 한 장짜리 양식 4가지입니다. 본문은 블록 7가지(정보 2단·핵심 3칸·순서·표·체크리스트·타임라인·문의)를 내용에 맞게 골라 채웁니다. 아래는 카드뉴스 1:1 다섯 장입니다.</p>
       <p class="now" id="now-card"></p>
     </div>
     <div class="car" aria-label="한페이지 양식과 블록"><div class="dpage">
@@ -324,47 +349,34 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
       <figure><div class="shot a4" data-k="a4" data-i="1" role="img" aria-label="한페이지 안내형"></div><figcaption><b>안내형</b>절차·공지·행정</figcaption></figure>
     
       <figure><div class="page"><div class="in">
-        <div class="eyebrow">0000 상반기</div>
-        <div class="tt" style="margin-top:1.6cqw">운영 일정 안내</div>
+        <div class="eyebrow">2026 가을 학기 · 교육팀</div>
+        <div class="tt" style="margin-top:1.6cqw">학부모 독서교실<br>운영 일정</div>
+        <div class="sumline">함께 읽고, 질문하고, 글로 표현하는 다섯 번의 만남</div>
+        <div class="k3"><div><span>기간</span><b>11. 3. ~ 12. 1.</b></div><div><span>장소</span><b>교육실 1</b></div><div><span>대상</span><b>학부모 20명</b></div></div>
         <div class="tl">
-          <div class="on"><span>0. 0. ~ 0. 0.</span><b>신청</b><p>신청서 제출</p></div>
-          <div><span>0. 0.</span><b>선정 발표</b><p>개별 안내</p></div>
-          <div><span>0. 0. ~ 0. 0.</span><b>운영</b><p>주 1회 진행</p></div>
-          <div><span>0. 0.</span><b>마무리</b><p>결과 공유</p></div>
+          <div class="on"><span>11. 3.(화)</span><b>오리엔테이션</b><p>과정 소개, 그림책 고르기</p></div>
+          <div><span>11. 10.(화)</span><b>그림책 함께 읽기</b><p>소리 내어 읽기와 멈춤 질문</p></div>
+          <div><span>11. 17.(화)</span><b>질문 만들기</b><p>열린 질문 카드 만들기</p></div>
+          <div><span>11. 24.(화)</span><b>아이와 글쓰기</b><p>한 줄 일기, 그림일기</p></div>
+          <div><span>12. 1.(화)</span><b>발표회</b><p>가족 발표와 수료증</p></div>
         </div>
-        <div class="box"><b>문의</b>담당 부서 · 연락처</div>
+        <div class="box"><b>문의</b>교육팀 000-0000 · 매주 화 10:00~12:00</div>
       </div></div><figcaption><b>일정형</b>일정·회차·단계</figcaption></figure>
       <figure><div class="page cd"><div class="in">
-        <div class="eyebrow">마감</div>
-        <div class="big">0.00</div>
-        <div class="tt">기한을 꼭<br>확인하세요</div>
-        <div class="g"><div><span>대상</span><b>해당하는 분</b></div><div><span>방법</span><b>온라인 신청</b></div><div><span>문의</span><b>담당 부서</b></div><div><span>기간</span><b>0. 0. ~ 0. 00.</b></div></div>
+        <div class="eyebrow">모집 마감</div>
+        <div class="big">11.1</div>
+        <div class="tt">독서교실 신청<br>잊지 마세요</div>
+        <div class="st"><div><i>1</i>누리집 신청서 작성</div><div><i>2</i>이메일 제출</div><div><i>3</i>확인 문자 수신</div></div>
+        <div class="g"><div><span>대상</span><b>초등 저학년 학부모</b></div><div><span>인원</span><b>선착순 20명</b></div><div><span>문의</span><b>교육팀 000-0000</b></div><div><span>기간</span><b>11. 3. ~ 12. 1.</b></div></div>
       </div></div><figcaption><b>포스터형</b>마감·게시판</figcaption></figure>
-      </div><div class="dpage">
-      <figure><div class="page"><div class="in">
-        <div class="bl">정보 2단</div>
-        <div class="g2 top"><div><span>대상</span><b>관심 있는 누구나</b></div><div><span>내용</span><b>강의와 실습</b></div><div><span>기간</span><b>0. 0. ~ 0. 0.</b></div><div><span>혜택</span><b>수료증 발급</b></div></div>
-        <div class="bl">핵심 3칸</div>
-        <div class="k3"><div><span>대상</span><b>누구나</b></div><div><span>비용</span><b>무료</b></div><div><span>마감</span><b>0. 0.</b></div></div>
-        <div class="bl">진행 순서</div>
-        <div class="st"><div><i>1</i>신청서 작성</div><div><i>2</i>이메일 제출</div><div><i>3</i>확인 문자 수신</div></div>
-        <div class="pf"><span>기관명 · 부서</span><span>문의 000-0000</span></div>
-      </div></div><figcaption><b>블록 ①</b>정보 2단 · 핵심 3칸 · 순서 · 문의 줄</figcaption></figure>
-      <figure><div class="page"><div class="in">
-        <div class="bl">표</div>
-        <div class="tb top"><div class="h"><span>회차</span><span>날짜</span><span>주제</span></div><div><span>1회</span><span>0. 0.</span><span>오리엔테이션</span></div><div><span>2회</span><span>0. 0.</span><span>기초 다지기</span></div></div>
-        <div class="bl">체크리스트</div>
-        <div class="ck top"><div class="on">신청서 1부</div><div>신분증 사본</div><div>증빙 자료</div></div>
-        <div class="bl">타임라인</div>
-        <div class="tl top"><div class="on"><span>0. 0.</span><b>신청</b><p>신청서 제출</p></div><div><span>0. 0.</span><b>발표</b><p>개별 안내</p></div></div>
-        <div class="box"><b>문의</b>담당 부서 · 연락처</div>
-      </div></div><figcaption><b>블록 ②</b>표 · 체크리스트 · 타임라인 · 문의 칸</figcaption></figure>
       </div>
     </div>
-    <div class="cards3 car" aria-label="카드뉴스 3장">
+    <div class="cards3 car" aria-label="카드뉴스 5장">
       <figure><div class="shot sq" data-k="sq" data-i="0" role="img" aria-label="카드뉴스 표지"></div><figcaption><b>1</b>표지</figcaption></figure>
-      <figure><div class="shot sq" data-k="sq" data-i="1" role="img" aria-label="카드뉴스 내용"></div><figcaption><b>2</b>내용</figcaption></figure>
-      <figure><div class="shot sq" data-k="sq" data-i="2" role="img" aria-label="카드뉴스 마무리"></div><figcaption><b>3</b>마무리</figcaption></figure>
+      <figure><div class="shot sq" data-k="sq" data-i="1" role="img" aria-label="카드뉴스 왜"></div><figcaption><b>2</b>왜 · 배경과 대상</figcaption></figure>
+      <figure><div class="shot sq" data-k="sq" data-i="2" role="img" aria-label="카드뉴스 무엇"></div><figcaption><b>3</b>무엇 · 내용과 방법</figcaption></figure>
+      <figure><div class="shot sq" data-k="sq" data-i="3" role="img" aria-label="카드뉴스 언제 어디서"></div><figcaption><b>4</b>언제·어떻게</figcaption></figure>
+      <figure><div class="shot sq" data-k="sq" data-i="4" role="img" aria-label="카드뉴스 마무리"></div><figcaption><b>5</b>마무리 · 신청과 문의</figcaption></figure>
     </div>
   </section>
 
@@ -379,30 +391,87 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
   </section>
 
   <section class="sec" id="doc" aria-labelledby="h-doc">
-    <div class="sec-head"><h2 id="h-doc">문서 (A4)</h2><p class="now" id="now-doc"></p></div>
-    <div class="grid-d">
+    <div class="sec-head"><h2 id="h-doc">문서 (A4)</h2><p>보고서·기획안 8쪽 구성입니다. 네 쪽씩 넘겨 보세요. 계획서·결과보고서·프로그램 기획안·공문·회의록의 목차는 규격서에 있습니다.</p><p class="now" id="now-doc"></p></div>
+    <div class="car" aria-label="문서 8쪽"><div class="dpage">
       <figure><div class="page"><div class="in">
-        <div class="d-cover"><div class="k">업무 보고</div><h5>보고서 제목을<br>적습니다</h5></div>
-        <div class="d-meta"><span>0000. 00.</span><span>부서명 · 이름</span></div>
-      </div></div><figcaption><b>표지</b>왼쪽 굵은 선 하나</figcaption></figure>
+        <div class="d-cover"><div class="k">2026년도 교육 프로그램 운영 계획</div><h5>학부모 독서교실<br>운영 계획(안)</h5><div class="d-sub">2026 가을 학기 · 1차 보고</div></div>
+        <div class="d-meta"><span>2026. 00. 00.</span><span>교육팀 · 담당자 이름</span></div>
+      </div></div><figcaption><b>① 표지</b>구분 · 제목 · 부제 · 날짜·부서</figcaption></figure>
       <figure><div class="page"><div class="in">
+        <div class="d-hd"><span>학부모 독서교실 운영 계획(안)</span><span>교육팀</span></div>
+        <div class="d-t">목차</div>
+        <div class="d-toc"><div><i>1</i>추진 배경<span>1</span></div><div><i>2</i>현황 및 문제점<span>2</span></div><div><i>3</i>추진 계획<span>3</span></div><div class="sub">가. 프로그램 구성 &nbsp; 나. 운영 일정 &nbsp; 다. 소요 예산</div><div><i>4</i>기대 효과<span>5</span></div><div><i>5</i>행정 사항<span>6</span></div><div><i></i>붙임<span>7</span></div></div>
+      </div></div><figcaption><b>② 목차</b>번호 · 제목 · 쪽번호</figcaption></figure>
+      <figure><div class="page"><div class="in">
+        <div class="d-hd"><span>학부모 독서교실 운영 계획(안)</span><span>교육팀</span></div>
+        <div class="d-t">개요</div>
+        <div class="d-ov"><div><span>목적</span><b>학부모 독서 지도 역량 강화</b></div><div><span>기간</span><b>2026. 11. 3. ~ 12. 1. (5회)</b></div><div><span>대상</span><b>초등 저학년 학부모 20명</b></div><div><span>장소</span><b>교육실 1 (2층)</b></div></div>
+        <div class="d-sh">핵심 결론</div>
+        <div class="d-li">1) 지난 학기 만족도 4.6/5, 재참여 희망 85% → 정규 과정으로 확대</div>
+        <div class="d-li">2) 회차를 4회에서 5회로 늘리고 발표회를 추가</div>
+        <div class="d-li">3) 소요 예산 000만 원(강사비·교재비), 전년 대비 10% 증가</div>
+        <div class="d-box"><b>결정 요청</b> 운영 예산 000만 원 승인 및 홍보 협조</div>
+        <div class="pno">- 1 -</div>
+      </div></div><figcaption><b>③ 개요</b>이 한 장으로 보고 끝</figcaption></figure>
+      <figure><div class="page"><div class="in">
+        <div class="d-hd"><span>학부모 독서교실 운영 계획(안)</span><span>교육팀</span></div>
         <div class="d-h">1. 추진 배경</div>
-        <div class="d-sh">가. 현황</div><div class="bar"></div><div class="bar s"></div><div class="bar x"></div>
-        <div class="d-sh">나. 문제점</div><div class="bar"></div><div class="bar s"></div>
-        <div class="d-box"><b>핵심</b> 결론을 한 문장으로 적는다.</div>
-        <div class="d-h">2. 추진 내용</div><div class="bar"></div><div class="bar s"></div>
+        <div class="d-sh">가. 목적</div>
+        <div class="d-li">1) 학부모가 가정에서 아이와 책을 읽고 질문하는 방법 익히기</div>
+        <div class="d-li">2) 기관과 가정이 함께하는 독서 문화 조성</div>
+        <div class="d-sh">나. 필요성</div>
+        <div class="d-li">1) 저학년 학부모 설문에서 '독서 지도 방법을 모른다' 응답 62%</div>
+        <div class="d-li">2) 지난 학기 시범 운영 참여자의 재참여 희망 85%</div>
+        <div class="d-h">2. 현황 및 문제점</div>
+        <div class="d-li">1) 회차가 4회로 짧아 실습 시간 부족</div>
+        <div class="d-li">2) 결과물을 나눌 자리가 없어 참여 동기 약화</div>
+        <div class="d-box"><b>핵심</b> 회차 확대와 발표회 신설이 필요</div>
         <div class="pno">- 2 -</div>
-      </div></div><figcaption><b>개조식 본문</b>1. → 가. 위계, 핵심만 옅은 바탕</figcaption></figure>
+      </div></div><figcaption><b>④ 본문</b>1. → 가. → 1) 개조식</figcaption></figure>
+      </div><div class="dpage">
       <figure><div class="page"><div class="in">
-        <div class="d-h">3. 추진 일정</div>
-        <table class="t"><thead><tr><th>단계</th><th>내용</th><th class="r">기간</th></tr></thead>
-        <tbody><tr><td>준비</td><td>계획 수립</td><td class="r">0주</td></tr><tr><td>시행</td><td>일부 적용</td><td class="r">0주</td></tr><tr><td>확대</td><td>전체 적용</td><td class="r">0주</td></tr></tbody></table>
+        <div class="d-hd"><span>학부모 독서교실 운영 계획(안)</span><span>교육팀</span></div>
+        <div class="d-h">3. 추진 계획</div>
+        <div class="d-sh">가. 프로그램 구성</div>
+        <div class="d-cap">표 1. 회차별 구성</div>
+        <table class="t"><thead><tr><th>회차</th><th>날짜</th><th>주제</th><th>강사</th></tr></thead><tbody><tr><td>1회</td><td>11. 3.</td><td>오리엔테이션</td><td>담당자</td></tr><tr><td>2회</td><td>11. 10.</td><td>그림책 함께 읽기</td><td>외부 강사</td></tr><tr><td>3회</td><td>11. 17.</td><td>질문 만들기</td><td>외부 강사</td></tr><tr><td>4회</td><td>11. 24.</td><td>아이와 글쓰기</td><td>외부 강사</td></tr><tr><td>5회</td><td>12. 1.</td><td>발표회</td><td>담당자</td></tr></tbody></table>
+        <div class="d-sh">나. 참여 인원</div>
+        <table class="t"><thead><tr><th>구분</th><th>지난 학기</th><th class="r">이번 학기(명)</th></tr></thead><tbody><tr><td>모집</td><td>15</td><td class="r">20</td></tr><tr><td>수료</td><td>13</td><td class="r">18</td></tr></tbody></table>
+        <div class="d-cap">출처: 교육팀 운영 기록</div>
         <div class="pno">- 3 -</div>
-      </div></div><figcaption><b>표 페이지</b>세로선 없이 머리줄만 굵게</figcaption></figure>
-      <figure><div class="slide cov"><div class="in"><div class="eyebrow">업무 보고 · 0000. 00.</div><div class="tt">보고서 제목을<br>두 줄 이내로 적습니다</div><div class="ft">부서명 · 이름</div></div></div>
-        <div class="slide"><div class="in"><div style="font-weight:700;font-size:4.4cqw">주요 수치</div><div class="nums"><div><b>00<small>건</small></b><span>처리 건수</span></div><div><b>00<small>%</small></b><span>개선 비율</span></div><div><b>00<small>일</small></b><span>소요 기간</span></div></div></div></div>
-        <figcaption><b>요약 장표</b>문서 앞에 붙이는 1~2장</figcaption></figure>
-    </div>
+      </div></div><figcaption><b>⑤ 표</b>번호·제목 · 머리줄만 굵게 · 출처</figcaption></figure>
+      <figure><div class="page"><div class="in">
+        <div class="d-hd"><span>학부모 독서교실 운영 계획(안)</span><span>교육팀</span></div>
+        <div class="d-h">4. 성과 분석</div>
+        <div class="d-sh">가. 회차별 참여 추이</div>
+        <div class="d-chart"><div style="height:55%" data-v="11" data-l="1회"></div><div style="height:70%" data-v="14" data-l="2회"></div><div style="height:65%" data-v="13" data-l="3회"></div><div style="height:100%" data-v="20" data-l="4회"></div></div>
+        <div class="d-cap" style="margin-top:6cqw">그림 1. 회차별 참여 인원(명)</div>
+        <div class="d-li">1) 실습이 들어간 4회차에 참여가 가장 많음</div>
+        <div class="d-li">2) 다음 학기는 실습 회차를 2회로 늘림</div>
+        <div class="d-box"><b>만족도</b> 4.6 / 5 (응답 18명)</div>
+        <div class="pno">- 4 -</div>
+      </div></div><figcaption><b>⑥ 차트</b>주색 하나 · 값 표시 · 해석 2줄</figcaption></figure>
+      <figure><div class="page"><div class="in">
+        <div class="d-hd"><span>학부모 독서교실 운영 계획(안)</span><span>교육팀</span></div>
+        <div class="d-h">5. 추진 일정</div>
+        <table class="t gantt"><thead><tr><th>단계</th><th>담당</th><th>10월</th><th>11월</th><th>12월</th></tr></thead><tbody><tr><td>모집·홍보</td><td>교육팀</td><td><i></i></td><td></td><td></td></tr><tr><td>운영(5회)</td><td>교육팀·강사</td><td></td><td><i></i></td><td><i style="width:30%"></i></td></tr><tr><td>결과 보고</td><td>교육팀</td><td></td><td></td><td><i style="width:60%;margin-left:40%"></i></td></tr></tbody></table>
+        <div class="d-h">6. 소요 예산</div>
+        <table class="t"><thead><tr><th>항목</th><th>산출 근거</th><th class="r">금액(원)</th></tr></thead><tbody><tr><td>강사비</td><td>3회 × 000,000</td><td class="r">000,000</td></tr><tr><td>교재비</td><td>20명 × 00,000</td><td class="r">000,000</td></tr><tr><td>다과비</td><td>5회 × 00,000</td><td class="r">000,000</td></tr><tr class="sum"><td>합계</td><td></td><td class="r">0,000,000</td></tr></tbody></table>
+        <div class="pno">- 5 -</div>
+      </div></div><figcaption><b>⑦ 일정·예산</b>간트 막대 · 합계 굵게</figcaption></figure>
+      <figure><div class="page"><div class="in">
+        <div class="d-hd"><span>학부모 독서교실 운영 계획(안)</span><span>교육팀</span></div>
+        <div class="d-h">7. 기대 효과</div>
+        <div class="d-li">1) 가정 독서 시간 주 1회 이상 가정 70% 이상</div>
+        <div class="d-li">2) 학부모 참여형 프로그램의 정규 과정 모델 확보</div>
+        <div class="d-li">3) 기관 교육 프로그램 만족도 향상</div>
+        <div class="d-h">8. 행정 사항</div>
+        <div class="d-li">1) 홍보: 총무팀 누리집 게시 및 문자 발송 협조</div>
+        <div class="d-li">2) 시설: 교육실 1 매주 화요일 10:00~12:00 사용 예약</div>
+        <div class="d-att"><div>붙임 &nbsp;1. 프로그램 세부 일정 1부.</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. 예산 산출 내역 1부.&nbsp;&nbsp; 끝.</div></div>
+        <div class="pno">- 6 -</div>
+      </div></div><figcaption><b>⑧ 마무리·붙임</b>기대 효과 · 행정 사항 · 붙임 · 끝</figcaption></figure>
+      </div></div>
   </section>
 
   <section class="sec" id="icon" aria-labelledby="h-icon">
@@ -527,7 +596,7 @@ function icon(k,main,acc){const i=ICONS[k];return '<g filter="url(#stamp)"><path
 const SN=["표지","목차","간지","핵심 한 문장","주요 수치","비교 2단","표","개조식 본문","막대 차트","진행 단계","사진·설명","마무리"];
 const deck=document.getElementById("deck");
 SN.forEach((n,i)=>{if(i%4===0){const pg=document.createElement("div");pg.className="dpage";deck.appendChild(pg)}const f=document.createElement("figure");f.innerHTML='<div class="shot s169" data-k="deck" data-i="'+i+'" role="img" aria-label="'+n+' 슬라이드"></div><figcaption><b>'+(i+1)+'</b>'+n+'</figcaption>';deck.lastChild.appendChild(f)});
-const COUNT={deck:12,a4:2,sq:3};
+const COUNT={deck:12,a4:2,sq:5};
 function apply(p){
   for(const k in p.c) root.style.setProperty("--p-"+k,p.c[k]);
   const eb=(lum(p.c.point)>lum(p.c.main)&&ratio(p.c.point,p.c.main)>=3)?p.c.point:p.c.tint; root.style.setProperty("--eb",eb);
@@ -546,7 +615,7 @@ function apply(p){
 }
 document.getElementById("copyspec").addEventListener("click",()=>{const t=document.getElementById("spec").textContent;
   if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(()=>say("규격서 복사됨")).catch(()=>{selSpec();say("선택됨 · 길게 눌러 복사")})}else{selSpec();say("선택됨 · 길게 눌러 복사")}});
-const FMT={auto:{l:"자동",make:"자동 · 내용과 첨부 서식을 보고 문서·한페이지·PPT·카드뉴스 중 알맞은 것을 고르고, 고른 이유를 한 줄로 밝힌다",d:"내용과 첨부 서식을 보고 AI가 알아서 고릅니다. 정해 두고 싶을 때만 오른쪽에서 고르세요."},doc:{l:"문서",make:"보고서 문서(A4)",d:"A4 보고서 · 표지, 개조식 본문, 표"},one:{l:"한페이지",make:"한페이지(A4)",subs:["홍보형","안내형","일정형","포스터형"]},ppt:{l:"PPT",make:"PPT 12장",d:"16:9 · 표지부터 마무리까지 12장"},card:{l:"카드뉴스",make:"카드뉴스 3장",d:"1:1 · 표지, 내용, 마무리 3장"}};
+const FMT={auto:{l:"자동",make:"자동 · 내용과 첨부 서식을 보고 문서·한페이지·PPT·카드뉴스 중 알맞은 것을 고르고, 고른 이유를 한 줄로 밝힌다",d:"내용과 첨부 서식을 보고 AI가 알아서 고릅니다. 정해 두고 싶을 때만 오른쪽에서 고르세요."},doc:{l:"문서",make:"보고서 문서(A4)",d:"A4 보고서 · 표지, 개조식 본문, 표"},one:{l:"한페이지",make:"한페이지(A4)",subs:["홍보형","안내형","일정형","포스터형"]},ppt:{l:"PPT",make:"PPT 12장",d:"16:9 · 표지부터 마무리까지 12장"},card:{l:"카드뉴스",make:"카드뉴스 5장",d:"1:1 · 표지, 왜, 무엇, 언제·어떻게, 마무리 5장"}};
 let fmt="auto",sub=null,aiEdited=false;
 const ap=document.getElementById("aiprompt");
 const PK_NOTE="";

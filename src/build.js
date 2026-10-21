@@ -51,15 +51,20 @@ async function deck(p,dir,L){
   let s=pres.addSlide({masterName:'표지',sectionTitle:'표지'});
   s.addText('업무 보고 · 0000. 00.',{placeholder:'eyebrow'}); s.addText('보고서 제목을\n두 줄 이내로 적습니다',{placeholder:'title'}); s.addText('부서명 · 이름',{placeholder:'meta'});
   s=pres.addSlide({masterName:'제목만',sectionTitle:'표지'}); s.addText('목차',{placeholder:'title'});
-  ['현황','검토 내용','향후 계획'].forEach((t,i)=>{const y=1.55+i*0.95;
-    T(s,String(i+1).padStart(2,'0'),{x:0.7,y,w:0.9,h:0.6,fontSize:24,bold:true,color:C.accent1,objectName:'목차번호'+(i+1)});
-    T(s,t,{x:1.7,y,w:6,h:0.6,fontSize:20,color:C.text1,valign:'middle',objectName:'목차'+(i+1)});
-    s.addShape(pres.shapes.LINE,{x:0.7,y:y+0.75,w:8.6,h:0,line:{color:C.accent3,width:0.75},objectName:'목차선'+(i+1)});});
+  [['현황','지금 어디까지 와 있는지'],['검토 내용','무엇이 문제이고 왜 그런지'],['향후 계획','무엇을 언제 누가 할지'],['행정 사항','협조와 결정이 필요한 것']].forEach(([t,d],i)=>{const y=1.5+i*0.85;
+    T(s,String(i+1).padStart(2,'0'),{x:0.7,y,w:0.9,h:0.5,fontSize:22,bold:true,color:C.accent1,objectName:'목차번호'+(i+1)});
+    T(s,t,{x:1.7,y,w:6,h:0.45,fontSize:18,bold:true,color:C.text1,valign:'middle',objectName:'목차'+(i+1)});
+    T(s,d,{x:1.7,y:y+0.4,w:6,h:0.3,fontSize:12,color:C.accent6,objectName:'목차설명'+(i+1)});
+    s.addShape(pres.shapes.LINE,{x:0.7,y:y+0.78,w:8.6,h:0,line:{color:C.accent3,width:0.75},objectName:'목차선'+(i+1)});});
   pres.addSection({title:'본문'});
   s=pres.addSlide({masterName:'간지',sectionTitle:'본문'}); s.addText('01',{placeholder:'num'}); s.addText('현황',{placeholder:'title'});
+  T(s,'이 장에서 다루는 것  ·  추진 경과  ·  현재 수치  ·  남은 과제',{x:0.7,y:3.6,w:8.4,h:0.4,fontSize:14,color:C.accent2,objectName:'간지설명'});
   s=pres.addSlide({masterName:'제목만',sectionTitle:'본문'}); s.addText('핵심 메시지',{placeholder:'title'});
-  if(!L)s.addShape(pres.shapes.RECTANGLE,{x:0.7,y:1.6,w:8.6,h:2.6,fill:{color:C.background2},line:{type:'none'},objectName:'강조배경'});
-  T(s,[{text:'가장 중요한 결론을\n'},{text:'한 문장',options:{color:C.accent1}},{text:'으로 적습니다'}],{x:L?0.7:1.1,y:1.8,w:7.8,h:2.2,fontSize:32,bold:true,color:C.text1,valign:'middle',objectName:'핵심문장'});
+  if(!L)s.addShape(pres.shapes.RECTANGLE,{x:0.7,y:1.5,w:8.6,h:1.9,fill:{color:C.background2},line:{type:'none'},objectName:'강조배경'});
+  T(s,[{text:'가장 중요한 결론을 '},{text:'한 문장',options:{color:C.accent1}},{text:'으로 적습니다'}],{x:L?0.7:1.1,y:1.6,w:7.8,h:1.7,fontSize:28,bold:true,color:C.text1,valign:'middle',objectName:'핵심문장'});
+  ['근거 1 · 수치나 사실 한 줄','근거 2 · 수치나 사실 한 줄','근거 3 · 수치나 사실 한 줄'].forEach((t,i)=>{const y=3.65+i*0.42;
+    s.addShape(pres.shapes.OVAL,{x:0.7,y:y+0.1,w:0.16,h:0.16,fill:{color:C.accent1},line:{type:'none'},objectName:'근거점'+(i+1)});
+    T(s,t,{x:1.0,y,w:8.3,h:0.36,fontSize:14,color:C.text1,valign:'middle',objectName:'근거'+(i+1)});});
   s=pres.addSlide({masterName:'제목만',sectionTitle:'본문'}); s.addText('주요 수치',{placeholder:'title'});
   [['00','건','처리 건수','비교 기준을 적습니다'],['00','%','개선 비율','전년 같은 기간 대비'],['00','일','소요 기간','평균값 기준']].forEach((d,i)=>{const x=0.7+i*2.95;
     if(L)s.addShape(pres.shapes.LINE,{x,y:1.6,w:2.7,h:0,line:{color:C.accent1,width:1.5},objectName:'수치선'+(i+1)});else s.addShape(pres.shapes.RECTANGLE,{x,y:1.6,w:2.7,h:2.9,fill:{color:C.background2},line:{type:'none'},objectName:'수치칸'+(i+1)});
@@ -100,8 +105,15 @@ async function deck(p,dir,L){
   T(s,'사진 설명 제목',{x:5.2,y:1.5,w:4.1,h:0.5,fontSize:20,bold:true,color:C.text1,objectName:'사진제목'});
   s.addText([{text:'무엇을 찍었는지 한 줄',options:{bullet:true,breakLine:true}},{text:'언제·어디서',options:{bullet:true,breakLine:true}},{text:'눈여겨볼 점',options:{bullet:true}}],{x:5.2,y:2.1,w:4.1,h:2.5,fontSize:15,color:C.text1,valign:'top',paraSpaceAfter:8,margin:0,objectName:'사진설명'});
   pres.addSection({title:'마무리'});
-  s=pres.addSlide({masterName:'마무리',sectionTitle:'마무리'}); s.addText('요약',{placeholder:'title'});
-  s.addText([{text:'첫 번째 결론',options:{bullet:true,breakLine:true}},{text:'두 번째 결론',options:{bullet:true,breakLine:true}},{text:'다음 단계와 일정',options:{bullet:true}}],{placeholder:'body'});
+  s=pres.addSlide({masterName:'마무리',sectionTitle:'마무리'}); s.addText('요약과 다음 단계',{placeholder:'title'});
+  s.addText([{text:'첫 번째 결론',options:{bullet:true,breakLine:true}},{text:'두 번째 결론',options:{bullet:true,breakLine:true}},{text:'세 번째 결론',options:{bullet:true}}],{placeholder:'body'});
+  const fc=L?C.text1:C.background1, fs=L?C.accent6:C.background2;
+  s.addShape(pres.shapes.LINE,{x:0.7,y:3.35,w:8.6,h:0,line:{color:L?C.accent3:C.accent2,width:0.75},objectName:'마무리선'});
+  T(s,'다음 단계',{x:0.7,y:3.5,w:2,h:0.35,fontSize:13,bold:true,color:L?C.accent1:C.accent4,objectName:'다음단계라벨'});
+  T(s,'0000. 00.까지 ○○ 완료  →  0000. 00. 결과 보고',{x:2.5,y:3.5,w:6.8,h:0.35,fontSize:14,color:fc,objectName:'다음단계'});
+  T(s,'결정 요청',{x:0.7,y:3.95,w:2,h:0.35,fontSize:13,bold:true,color:L?C.accent1:C.accent4,objectName:'결정라벨'});
+  T(s,'승인이 필요한 사항 한 줄',{x:2.5,y:3.95,w:6.8,h:0.35,fontSize:14,color:fc,objectName:'결정요청'});
+  T(s,'문의 · 담당 부서 000-0000',{x:0.7,y:4.75,w:8.6,h:0.3,fontSize:11,color:fs,objectName:'문의'});
   const f=`${dir}/PPT_기본틀_${p.name}${L?'_가볍게':''}.pptx`; await pres.writeFile({fileName:f}); await applyTheme(f,TH); require('child_process').execFileSync('python3',[__dirname+'/fixfont.py',FONT,f]); return f;
 }
 
@@ -174,6 +186,22 @@ async function sq(p,dir,ic,L){
   T(s,'무엇을\n확인하나요',{x:M,y:2.3,w:CW,h:1.8,fontSize:34,bold:true,objectName:'제목'});
   T(s,'핵심 내용을 두세 줄로 짧게 적습니다.\n한 장에 메시지 하나만 담습니다.',{x:M,y:BE-1.2,w:CW,h:1.2,fontSize:16,color:C.accent2,valign:'bottom',objectName:'본문'});
   s=pres.addSlide(); s.background={color:C.background1};
+  T(s,'02',{x:M,y:M,w:2,h:1.0,fontSize:54,bold:true,color:C.accent1,objectName:'번호'});
+  place(s,ic.pencil,false,1.4,RE,M+0.12);
+  T(s,'이렇게\n진행합니다',{x:M,y:2.3,w:CW,h:1.6,fontSize:32,bold:true,objectName:'제목'});
+  ['신청서 작성','이메일 제출','확인 문자 수신'].forEach((t,i)=>{const y=4.15+i*0.78;
+    s.addShape(pres.shapes.OVAL,{x:M,y,w:0.46,h:0.46,fill:{color:C.accent1},line:{type:'none'},objectName:'항목원'+(i+1)});
+    T(s,String(i+1),{x:M,y,w:0.46,h:0.46,fontSize:15,bold:true,color:C.background1,align:'center',valign:'middle',objectName:'항목번호'+(i+1)});
+    T(s,t,{x:M+0.65,y,w:CW-0.65,h:0.46,fontSize:20,valign:'middle',objectName:'항목'+(i+1)});});
+  s=pres.addSlide(); s.background={color:L?C.background1:C.background2};
+  T(s,'03',{x:M,y:M,w:2,h:1.0,fontSize:54,bold:true,color:C.accent1,objectName:'번호'});
+  place(s,ic.calendar,false,1.4,RE,M+0.12);
+  T(s,'언제, 어디서',{x:M,y:2.3,w:CW,h:0.9,fontSize:32,bold:true,objectName:'제목'});
+  [['기간','0. 0. ~ 0. 0.'],['장소','0층 강의실'],['대상','누구나'],['비용','무료']].forEach(([k,v],i)=>{const col=i%2,row=Math.floor(i/2),w=(CW-0.3)/2,x=M+col*(w+0.3),y=3.6+row*1.25;
+    T(s,k,{x,y,w,h:0.35,fontSize:15,color:C.accent6,objectName:'정보라벨'+(i+1)});
+    T(s,v,{x,y:y+0.38,w,h:0.5,fontSize:22,bold:true,objectName:'정보값'+(i+1)});
+    s.addShape(pres.shapes.LINE,{x,y:y+1.0,w,h:0,line:{color:C.accent3,width:0.75},objectName:'정보선'+(i+1)});});
+  s=pres.addSlide(); s.background={color:C.background1};
   T(s,'기한 안에\n꼭 확인하세요',{x:M,y:M,w:CW,h:1.9,fontSize:34,bold:true,objectName:'제목'});
   T(s,'자세한 내용은 기관 누리집에서 볼 수 있습니다.',{x:M,y:2.8,w:CW,h:0.5,fontSize:15,color:C.accent6,objectName:'설명'});
   const btn={x:M,y:BE-1.35,w:CW,h:0.8,fontSize:20,bold:true,shape:pres.shapes.ROUNDED_RECTANGLE,rectRadius:0.12,align:'center',valign:'middle',objectName:'버튼'};
@@ -184,4 +212,4 @@ async function sq(p,dir,ic,L){
 
 (async()=>{for(const p of PALS){ if(only&&!only.includes(p.id))continue;
   const dir=`${OUT}/${String(PALS.indexOf(p)+1).padStart(2,'0')}_${p.name}`; fs.mkdirSync(dir,{recursive:true});
-  const ic=await icons(p,dir); for(const L of [false,true]){await deck(p,dir,L); if(process.env.PONLY==='deck')continue; await a4(p,dir,ic,L); await sq(p,dir,ic,L);} console.log('built',p.name);}})().catch(e=>{console.error(e);process.exit(1)});
+  const ic=await icons(p,dir); const ONLY=(process.env.PONLY||'deck,a4,sq').split(','); for(const L of [false,true]){if(ONLY.includes('deck'))await deck(p,dir,L); if(ONLY.includes('a4'))await a4(p,dir,ic,L); if(ONLY.includes('sq'))await sq(p,dir,ic,L);} console.log('built',p.name);}})().catch(e=>{console.error(e);process.exit(1)});

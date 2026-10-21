@@ -6,7 +6,7 @@ only=sys.argv[1].split(',') if len(sys.argv)>1 else None
 OUT=os.environ.get('POUT','out'); SP=os.environ.get('PSP','sprites')
 os.makedirs(SP,exist_ok=True)
 KINDS=[('deck','PPT_기본틀_',640),('a4','한장카드_A4_',400),('sq','카드뉴스_1대1_',360)]
-if os.environ.get('PONLY'): KINDS=[k for k in KINDS if k[0]==os.environ['PONLY']]
+if os.environ.get('PONLY'): KINDS=[k for k in KINDS if k[0] in os.environ['PONLY'].split(',')]
 jobs=[]
 for i,p in enumerate(pals):
     if only and p['id'] not in only: continue
