@@ -129,14 +129,14 @@ figcaption b{color:var(--fg);font-weight:600;margin-right:6px}
 .dots{display:flex;justify-content:center;gap:6px;margin-top:4px}
 .dots button{width:8px;height:8px;border-radius:50%;border:0;padding:0;background:var(--line);cursor:pointer}
 .dots button[aria-current=true]{background:var(--p-main)}
-.dpage{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.dpage{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-content:start;align-items:start}
 @media (min-width:720px){.dpage{grid-template-columns:repeat(4,minmax(0,1fr))}}
 .shots{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
 @media (max-width:820px){.shots{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.cards4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+
 .cards3.car>figure{flex-basis:100%}
 @media (min-width:720px){.cards3.car>figure{flex-basis:calc((100% - 32px)/3)}}
-@media (max-width:820px){.cards4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
 
 .page,.slide{font-family:var(--p-font);container-type:inline-size;background:var(--p-bg);color:var(--p-ink);border:1px solid var(--line);border-radius:4px;overflow:hidden;position:relative}
 .page{aspect-ratio:210/297}.slide{aspect-ratio:16/9}
@@ -170,6 +170,16 @@ figcaption b{color:var(--fg);font-weight:600;margin-right:6px}
 .ck div{display:flex;gap:2.6cqw;align-items:center}
 .ck div::before{content:"";width:3.4cqw;height:3.4cqw;border:.5cqw solid var(--p-main);box-sizing:border-box;border-radius:.7cqw;flex:none}
 .ck div.on::before{background:var(--p-main)}
+.bl{font-size:2.2cqw;color:var(--p-sub);margin:4cqw 0 1.6cqw;letter-spacing:.04em;font-weight:600}
+.bl:first-child{margin-top:0}
+.g2.top,.tb.top,.ck.top,.tl.top{margin-top:0}
+.k3{display:grid;grid-template-columns:repeat(3,1fr);gap:2cqw}
+.k3 div{background:var(--p-tint);padding:2.2cqw;font-size:2.3cqw;display:flex;flex-direction:column;gap:.6cqw}
+.k3 span{color:var(--p-sub)}.k3 b{color:var(--p-main);font-size:3cqw}
+.lite .k3 div{background:none;border-top:.5cqw solid var(--p-main);padding-left:0;padding-right:0}
+.st{display:flex;flex-direction:column;gap:2cqw;font-size:2.7cqw}
+.st div{display:flex;gap:2.4cqw;align-items:center}
+.st i{width:4.2cqw;height:4.2cqw;border-radius:50%;background:var(--p-main);color:#fff;font-style:normal;font-size:2.2cqw;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none}
 .cd{background:var(--p-main);color:var(--p-bg)}
 .cd .eyebrow{color:var(--p-tint)}
 .cd .big{font-size:24cqw;font-weight:700;line-height:1;color:var(--eb);margin-top:6cqw;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
@@ -227,7 +237,7 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 .fab .dot{width:24px;height:24px;border-radius:50%;border:2px solid var(--surface);box-shadow:0 0 0 1px var(--line)}
 .fab-ai{bottom:calc(68px + env(safe-area-inset-bottom,0px));padding:8px 14px 8px 10px}
 .fab-ai svg{width:22px;height:22px;flex:none}
-.tray.tray{left:0;right:0;bottom:0;width:auto;max-width:none;max-height:35vh;z-index:32;border-radius:16px 16px 0 0;border-bottom:0;padding:16px calc(16px + env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) calc(16px + env(safe-area-inset-left,0px));box-shadow:0 -8px 28px rgba(0,0,0,.22);animation:sheetup .18s ease-out}
+.tray.tray{left:0;right:0;bottom:0;width:auto;max-width:none;max-height:40vh;z-index:32;border-radius:16px 16px 0 0;border-bottom:0;padding:16px calc(16px + env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) calc(16px + env(safe-area-inset-left,0px));box-shadow:0 -8px 28px rgba(0,0,0,.22);animation:sheetup .18s ease-out}
 @keyframes sheetup{from{transform:translateY(100%)}to{transform:none}}
 @media (prefers-reduced-motion:reduce){.tray.tray{animation:none}}
 @media (min-width:720px){.tray.tray{left:auto;right:calc(16px + env(safe-area-inset-right,0px));width:420px}}
@@ -241,7 +251,7 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 .chips button{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:99px;padding:6px 14px;cursor:pointer}
 .chips button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--bg);font-weight:600}
 .chips button:focus-visible,.picker .seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.tray{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(118px + env(safe-area-inset-bottom,0px));z-index:30;width:min(340px,calc(100vw - 32px));max-height:min(35vh,420px);overflow:hidden;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 32px rgba(0,0,0,.2);padding:12px;display:flex;flex-direction:column;gap:10px}
+.tray{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(118px + env(safe-area-inset-bottom,0px));z-index:30;width:min(340px,calc(100vw - 32px));max-height:min(40vh,460px);overflow:hidden;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 32px rgba(0,0,0,.2);padding:12px;display:flex;flex-direction:column;gap:10px}
 .tray-h{display:flex;justify-content:space-between;align-items:center;gap:8px}
 .tray-h b{font-size:14px}
 .tray-h button{font:inherit;font-size:13px;background:none;border:0;color:var(--muted);cursor:pointer;padding:4px 6px}
@@ -306,12 +316,12 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
   <section class="sec" id="card" aria-labelledby="h-card">
     <div class="sec-head">
       <h2 id="h-card">한페이지</h2>
-      <p>A4 한 장짜리 8가지 형식입니다. 아래는 카드뉴스 1:1 세 장입니다.</p>
+      <p>A4 한 장짜리 양식 4가지입니다. 옆으로 넘기면 본문에 끼워 쓰는 블록 7가지가 나옵니다. 아래는 카드뉴스 1:1 세 장입니다.</p>
       <p class="now" id="now-card"></p>
     </div>
-    <div class="cards4">
-      <figure><div class="shot a4" data-k="a4" data-i="0" role="img" aria-label="한페이지 배너형"></div><figcaption><b>배너형</b>모집·행사</figcaption></figure>
-      <figure><div class="shot a4" data-k="a4" data-i="1" role="img" aria-label="한페이지 안내형"></div><figcaption><b>안내형</b>세무·절차 안내</figcaption></figure>
+    <div class="car" aria-label="한페이지 양식과 블록"><div class="dpage">
+      <figure><div class="shot a4" data-k="a4" data-i="0" role="img" aria-label="한페이지 홍보형"></div><figcaption><b>홍보형</b>모집·행사·전시 (색 띠 또는 사진)</figcaption></figure>
+      <figure><div class="shot a4" data-k="a4" data-i="1" role="img" aria-label="한페이지 안내형"></div><figcaption><b>안내형</b>절차·공지·행정</figcaption></figure>
     
       <figure><div class="page"><div class="in">
         <div class="eyebrow">0000 상반기</div>
@@ -323,39 +333,33 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
           <div><span>0. 0.</span><b>마무리</b><p>결과 공유</p></div>
         </div>
         <div class="box"><b>문의</b>담당 부서 · 연락처</div>
-      </div></div><figcaption><b>타임라인형</b>날짜가 핵심일 때</figcaption></figure>
+      </div></div><figcaption><b>일정형</b>일정·회차·단계</figcaption></figure>
       <figure><div class="page cd"><div class="in">
         <div class="eyebrow">마감</div>
         <div class="big">0.00</div>
         <div class="tt">기한을 꼭<br>확인하세요</div>
         <div class="g"><div><span>대상</span><b>해당하는 분</b></div><div><span>방법</span><b>온라인 신청</b></div><div><span>문의</span><b>담당 부서</b></div><div><span>기간</span><b>0. 0. ~ 0. 00.</b></div></div>
       </div></div><figcaption><b>포스터형</b>마감·게시판</figcaption></figure>
+      </div><div class="dpage">
       <figure><div class="page"><div class="in">
-        <div class="eyebrow">기관명 · 부서</div>
-        <div class="tt" style="font-size:5.6cqw;margin-top:1.6cqw">0000년 행사 운영 안내</div>
-        <div class="bars"><i></i><i class="s"></i><i class="x"></i></div>
-        <div class="tb"><div class="h"><span>구분</span><span>일시</span><span>내용</span></div><div><span>접수</span><span>0. 0.</span><span>신청서 제출</span></div><div><span>심사</span><span>0. 0.</span><span>서류 검토</span></div><div><span>발표</span><span>0. 0.</span><span>개별 통보</span></div></div>
-        <div class="bars"><i></i><i class="s"></i></div>
-        <div class="pf"><span>기관명</span><span>문의 000-0000</span></div>
-      </div></div><figcaption><b>공문형</b>공지·안내문</figcaption></figure>
+        <div class="bl">정보 2단</div>
+        <div class="g2 top"><div><span>대상</span><b>관심 있는 누구나</b></div><div><span>내용</span><b>강의와 실습</b></div><div><span>기간</span><b>0. 0. ~ 0. 0.</b></div><div><span>혜택</span><b>수료증 발급</b></div></div>
+        <div class="bl">핵심 3칸</div>
+        <div class="k3"><div><span>대상</span><b>누구나</b></div><div><span>비용</span><b>무료</b></div><div><span>마감</span><b>0. 0.</b></div></div>
+        <div class="bl">진행 순서</div>
+        <div class="st"><div><i>1</i>신청서 작성</div><div><i>2</i>이메일 제출</div><div><i>3</i>확인 문자 수신</div></div>
+        <div class="pf"><span>기관명 · 부서</span><span>문의 000-0000</span></div>
+      </div></div><figcaption><b>블록 ①</b>정보 2단 · 핵심 3칸 · 순서 · 문의 줄</figcaption></figure>
       <figure><div class="page"><div class="in">
-        <div class="eyebrow">교육 프로그램</div>
-        <div class="tt" style="margin-top:1.6cqw">8주 과정<br>회차 안내</div>
-        <div class="tb"><div class="h"><span>회차</span><span>날짜</span><span>주제</span></div><div><span>1회</span><span>0. 0.</span><span>오리엔테이션</span></div><div><span>2회</span><span>0. 0.</span><span>기초 다지기</span></div><div><span>3회</span><span>0. 0.</span><span>실습</span></div><div><span>4회</span><span>0. 0.</span><span>발표와 나눔</span></div></div>
-        <div class="box"><b>장소 · 대상</b>강의실 000 · 누구나</div>
-      </div></div><figcaption><b>회차표형</b>강좌·프로그램</figcaption></figure>
-      <figure><div class="page"><div class="in">
-        <div class="ph">사진 자리</div>
-        <div class="eyebrow" style="margin-top:5cqw">전시 · 행사</div>
-        <div class="tt" style="font-size:6cqw">전시 제목을<br>두 줄로</div>
-        <div class="g2"><div><span>기간</span><b>0. 0. ~ 0. 0.</b></div><div><span>장소</span><b>0층 전시실</b></div><div><span>관람</span><b>10:00 ~ 18:00</b></div><div><span>문의</span><b>000-0000</b></div></div>
-      </div></div><figcaption><b>사진형</b>전시·행사 홍보</figcaption></figure>
-      <figure><div class="page"><div class="in">
-        <div class="eyebrow">제출 전 확인</div>
-        <div class="tt" style="margin-top:1.6cqw">준비 서류<br>체크리스트</div>
-        <div class="ck"><div class="on">신청서 1부</div><div class="on">신분증 사본</div><div>증빙 자료</div><div>동의서</div><div>통장 사본</div></div>
-        <div class="box"><b>제출</b>이메일 또는 방문 · 마감 0. 0.</div>
-      </div></div><figcaption><b>체크리스트형</b>준비물·제출서류</figcaption></figure>
+        <div class="bl">표</div>
+        <div class="tb top"><div class="h"><span>회차</span><span>날짜</span><span>주제</span></div><div><span>1회</span><span>0. 0.</span><span>오리엔테이션</span></div><div><span>2회</span><span>0. 0.</span><span>기초 다지기</span></div></div>
+        <div class="bl">체크리스트</div>
+        <div class="ck top"><div class="on">신청서 1부</div><div>신분증 사본</div><div>증빙 자료</div></div>
+        <div class="bl">타임라인</div>
+        <div class="tl top"><div class="on"><span>0. 0.</span><b>신청</b><p>신청서 제출</p></div><div><span>0. 0.</span><b>발표</b><p>개별 안내</p></div></div>
+        <div class="box"><b>문의</b>담당 부서 · 연락처</div>
+      </div></div><figcaption><b>블록 ②</b>표 · 체크리스트 · 타임라인 · 문의 칸</figcaption></figure>
+      </div>
     </div>
     <div class="cards3 car" aria-label="카드뉴스 3장">
       <figure><div class="shot sq" data-k="sq" data-i="0" role="img" aria-label="카드뉴스 표지"></div><figcaption><b>1</b>표지</figcaption></figure>
@@ -542,7 +546,7 @@ function apply(p){
 }
 document.getElementById("copyspec").addEventListener("click",()=>{const t=document.getElementById("spec").textContent;
   if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(()=>say("규격서 복사됨")).catch(()=>{selSpec();say("선택됨 · 길게 눌러 복사")})}else{selSpec();say("선택됨 · 길게 눌러 복사")}});
-const FMT={auto:{l:"자동",make:"자동 · 내용과 첨부 서식을 보고 문서·한페이지·PPT·카드뉴스 중 알맞은 것을 고르고, 고른 이유를 한 줄로 밝힌다",d:"내용과 첨부 서식을 보고 AI가 알아서 고릅니다. 정해 두고 싶을 때만 오른쪽에서 고르세요."},doc:{l:"문서",make:"보고서 문서(A4)",d:"A4 보고서 · 표지, 개조식 본문, 표"},one:{l:"한페이지",make:"한페이지(A4)",subs:["배너형","안내형","타임라인형","포스터형","공문형","회차표형","사진형","체크리스트형"]},ppt:{l:"PPT",make:"PPT 12장",d:"16:9 · 표지부터 마무리까지 12장"},card:{l:"카드뉴스",make:"카드뉴스 3장",d:"1:1 · 표지, 내용, 마무리 3장"}};
+const FMT={auto:{l:"자동",make:"자동 · 내용과 첨부 서식을 보고 문서·한페이지·PPT·카드뉴스 중 알맞은 것을 고르고, 고른 이유를 한 줄로 밝힌다",d:"내용과 첨부 서식을 보고 AI가 알아서 고릅니다. 정해 두고 싶을 때만 오른쪽에서 고르세요."},doc:{l:"문서",make:"보고서 문서(A4)",d:"A4 보고서 · 표지, 개조식 본문, 표"},one:{l:"한페이지",make:"한페이지(A4)",subs:["홍보형","안내형","일정형","포스터형"]},ppt:{l:"PPT",make:"PPT 12장",d:"16:9 · 표지부터 마무리까지 12장"},card:{l:"카드뉴스",make:"카드뉴스 3장",d:"1:1 · 표지, 내용, 마무리 3장"}};
 let fmt="auto",sub=null,aiEdited=false;
 const ap=document.getElementById("aiprompt");
 const PK_NOTE="";
