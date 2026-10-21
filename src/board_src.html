@@ -312,7 +312,8 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 .pk-sub{min-height:38px;display:flex;align-items:center}
 .pk-note{margin:0;font-size:13px;color:var(--muted);line-height:1.5}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
-.pk-ill{align-items:center;margin-top:10px}.pk-illnote{font-size:12px;color:var(--muted)}
+.pk-ill{display:flex;align-items:center;gap:10px;margin-top:10px;flex-wrap:wrap}.pk-lab{width:48px;flex:none;font-size:12px;color:var(--muted)}.pk-ill .seg{width:auto;align-self:auto}.pk-ill .seg button{font-size:12px;padding:5px 10px}
+.pk-colors{gap:6px}.pk-c{font:inherit;font-size:12px;display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:99px;padding:4px 10px 4px 6px;cursor:pointer}.pk-c i{width:14px;height:14px;border-radius:50%}.pk-c[aria-pressed="true"]{border-color:var(--p-main);box-shadow:inset 0 0 0 1px var(--p-main);font-weight:600}.pk-more{font:inherit;font-size:12px;background:none;border:0;color:var(--accent);cursor:pointer;padding:4px 2px}
 .chips button{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:99px;padding:6px 14px;cursor:pointer}
 .chips button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--bg);font-weight:600}
 .chips button:focus-visible,.picker .seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
@@ -336,6 +337,7 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 [hidden]{display:none!important}
 .pick{display:flex;flex-wrap:wrap;gap:10px}
 .tray-f{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.trow-l{display:flex;align-items:center;gap:10px}.trow-l>span{width:40px;flex:none;font-size:12px;color:var(--muted)}.trow-l .seg{width:auto;align-self:auto}.trow-l .seg button{font-size:12px;padding:5px 9px}.trow-l.tl-top{margin-top:2px}
 .tray-f .seg{width:auto;align-self:auto}.tray-f .seg button{font-size:12px;padding:5px 9px}
 .tray-f span{font-size:12px;color:var(--muted)}
 .tray-note{margin:0;font-size:12px;color:var(--muted)}
@@ -640,7 +642,7 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 <button class="fab fab-ai" type="button" id="fabai" aria-expanded="false" aria-controls="aipop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="4" width="13" height="17" rx="2"/><path d="M9 4.5V3h7v1.5"/><path d="M9.5 10h6M9.5 13.5h6M9.5 17h3.5"/></svg>작업지시문 복사</button>
 <div class="tray aipop" id="aipop" hidden role="dialog" aria-label="작업지시문 복사하기"><div class="tray-h"><b>작업지시문 복사하기</b><button type="button" id="aipopx">닫기</button></div><div class="picker" id="pk-pop"></div><button type="button" class="ai-copy wide" id="copyprompt2">작업지시문 복사하기</button></div>
 <button class="fab" type="button" id="fab" aria-expanded="false" aria-controls="tray"><span class="dot" id="fabdot"></span><span id="fabname">색 바꾸기</span></button>
-<div class="tray" id="tray" hidden role="dialog" aria-label="색 조합 고르기"><div class="tray-h"><b>색 조합</b><button type="button" id="trayx">닫기</button></div><div class="tray-f"><div class="seg" role="group" aria-label="스타일" id="seg-t"></div><div class="seg" role="group" aria-label="글꼴" id="segf-t"></div></div><div class="tlist" id="tlist"></div></div>
+<div class="tray" id="tray" hidden role="dialog" aria-label="색·스타일·서체 고르기"><div class="tray-h"><b>보기 설정</b><button type="button" id="trayx">닫기</button></div><div class="trow-l"><span>스타일</span><div class="seg" role="group" aria-label="스타일" id="seg-t"></div></div><div class="trow-l"><span>서체</span><div class="seg" role="group" aria-label="서체" id="segf-t"></div></div><div class="tlist" id="tlist"></div></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
@@ -705,13 +707,14 @@ const ap=document.getElementById("aiprompt");
 const PK_NOTE="";
 function aiStyle(){return sty==="light"?"가볍게":sty==="rich"?"풍성하게":"기본"}
 function makeStr(){return fmt?FMT[fmt].make+(sub?" · "+sub:""):""}
-let illust=false;
-function colorLine(p){return "이 규격서대로 "+p.name+" 색, "+aiStyle()+" 스타일로 파일(PDF)로 만들어 줘. "+(illust?"그림 생성기는 일러스트에만 쓸 것.":"그림 생성기로 만들지 말 것.")}
-const ILL="일러스트: 위쪽 띠 오른쪽 절반에만 글자 없는 일러스트를 깔 것. 평면 도형의 단순한 플랫 스타일(그림자·입체감·세밀한 묘사 금지, 사물 4~6개), 사람 얼굴보다 사물·장면 위주. 왼쪽은 비워 글을 코드로 얹고, 흰 패널 등 양식 구조는 그대로.";
+let illust="none";
+function colorLine(p){return "이 규격서대로 "+p.name+" 색, "+aiStyle()+" 스타일로 파일(PDF)로 만들어 줘. "+(illust!=="none"?"그림 생성기는 일러스트에만 쓸 것.":"그림 생성기로 만들지 말 것.")}
+const ILLS={some:"일러스트(있음): 위쪽 띠 오른쪽 절반에만 글자 없는 일러스트. 평면 도형의 단순한 플랫 스타일(그림자·입체감·세밀한 묘사 금지, 사물 4~6개), 사람 얼굴보다 사물·장면 위주. 바탕은 띠 색과 정확히 같게 코드로 보정. 왼쪽은 비워 글을 코드로 얹고, 흰 패널 등 양식 구조는 그대로.",rich:"일러스트(풍성): 위쪽 띠 전체(카드뉴스는 표지 전체)를 글자 없는 한 장면 일러스트로 채울 것. 평면 플랫 스타일이되 사물·배경 요소 8~12개로 풍성하게, 색은 주색·보조색·옅은 바탕·포인트 4색만. 제목이 놓일 왼쪽 위는 단순한 면으로 비우고 글자 뒤에 주색 60% 면을 깔아 읽히게. 흰 패널 등 양식 구조는 그대로."};
+const ILL=()=>ILLS[illust]||"";
 function updPrompt(p){p=p||lastP;if(!p)return;const m=makeStr();
-  if(!aiEdited){ap.value=colorLine(p)+"\n첨부한 서식이 있으면 기관명·로고·문의처만 가져오고, 디자인은 규격서대로. 내용 칸이 비어 있으면 첨부한 자료의 내용을 그대로 쓰고 되묻지 말 것.\n"+(m?"만들 것: "+m+"\n":"")+(illust?ILL+"\n":"")+"내용: (비우면 첨부한 자료의 내용을 그대로 씀)\n\n규격서 링크: https://github.com/eugene-shin9/bambi-paper-stash \n";return}
+  if(!aiEdited){ap.value=colorLine(p)+"\n첨부한 서식이 있으면 기관명·로고·문의처만 가져오고, 디자인은 규격서대로. 내용 칸이 비어 있으면 첨부한 자료의 내용을 그대로 쓰고 되묻지 말 것.\n"+(m?"만들 것: "+m+"\n":"")+(illust!=="none"?ILL()+"\n":"")+"내용: (비우면 첨부한 자료의 내용을 그대로 씀)\n\n규격서 링크: https://github.com/eugene-shin9/bambi-paper-stash \n";return}
   let v=ap.value.replace(/이 규격서대로 .+? 색, .+? 스타일로 파일\(PDF\)로 만들어 줘\. 그림 생성기[^\n]*\./,colorLine(p));
-  if(/^일러스트: .*$/m.test(v)){if(!illust)v=v.replace(/^일러스트: .*\n?/m,"")}else if(illust)v=v.replace(/^내용: /m,ILL+"\n내용: ");
+  if(/^일러스트(\(.*?\))?: .*$/m.test(v)){v=illust==="none"?v.replace(/^일러스트(\(.*?\))?: .*\n?/m,""):v.replace(/^일러스트(\(.*?\))?: .*$/m,ILL())}else if(illust!=="none")v=v.replace(/^내용: /m,ILL()+"\n내용: ");
   if(/^만들 것: .*$/m.test(v))v=m?v.replace(/^만들 것: .*$/m,"만들 것: "+m):v.replace(/^만들 것: .*\n?/m,"");
   else if(m)v=v.replace(colorLine(p),colorLine(p)+"\n만들 것: "+m);
   ap.value=v}
@@ -721,8 +724,10 @@ function drawPickers(){document.querySelectorAll(".picker").forEach(pk=>{
     Object.entries(FMT).forEach(([k,o])=>{const b=document.createElement("button");b.type="button";b.dataset.fmt=k;b.textContent=o.l;
       b.addEventListener("click",()=>{if(fmt===k&&k!=="auto"){fmt="auto";sub=null}else{fmt=k;sub=null}drawPickers();updPrompt()});seg.appendChild(b)});
     const s=document.createElement("div");s.className="pk-sub";pk.appendChild(seg);pk.appendChild(s);
-    const il=document.createElement("div");il.className="chips pk-ill";const ib=document.createElement("button");ib.type="button";ib.dataset.ill="1";ib.textContent="일러스트 넣기";ib.addEventListener("click",()=>{illust=!illust;drawPickers();updPrompt()});il.appendChild(ib);const note=document.createElement("span");note.className="pk-illnote";il.appendChild(note);pk.appendChild(il)}
-  pk.querySelectorAll("button[data-ill]").forEach(b=>b.setAttribute("aria-pressed",illust?"true":"false"));pk.querySelectorAll(".pk-illnote").forEach(n=>n.textContent=illust?"위쪽 띠 자리에 글자 없는 그림을 깝니다. 꼭 필요할 때만.":"기본은 도장 아이콘");
+    const il=document.createElement("div");il.className="pk-ill";const lab=document.createElement("span");lab.className="pk-lab";lab.textContent="일러스트";il.appendChild(lab);const sg=document.createElement("div");sg.className="seg";[["none","없음"],["some","있음"],["rich","풍성"]].forEach(([k,l])=>{const b=document.createElement("button");b.type="button";b.dataset.ill=k;b.textContent=l;b.addEventListener("click",()=>{illust=k;drawPickers();updPrompt()});sg.appendChild(b)});il.appendChild(sg);pk.appendChild(il);
+    const cl=document.createElement("div");cl.className="pk-ill pk-col";const lab2=document.createElement("span");lab2.className="pk-lab";lab2.textContent="색상";cl.appendChild(lab2);const ch=document.createElement("div");ch.className="chips pk-colors";cl.appendChild(ch);const more=document.createElement("button");more.type="button";more.className="pk-more";more.textContent="전체 색 보기";more.addEventListener("click",()=>{setAiPop(false);setTray(true)});cl.appendChild(more);pk.appendChild(cl)}
+  pk.querySelectorAll("button[data-ill]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.ill===illust?"true":"false"));
+  pk.querySelectorAll(".pk-colors").forEach(ch=>{ch.innerHTML="";["lav","b3","sage","forest","wine"].forEach(id=>{const p=PALS.find(x=>x.id===id);const b=document.createElement("button");b.type="button";b.className="pk-c";let isCur=false;try{isCur=p.id===cur}catch(e){}b.setAttribute("aria-pressed",isCur?"true":"false");b.innerHTML='<i style="background:'+p.c.main+'"></i>'+p.name;b.addEventListener("click",()=>{cur=p.id;apply(p);drawPickers()});ch.appendChild(b)})});
   pk.querySelectorAll("button[data-fmt]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.fmt===fmt?"true":"false"));
   const s=pk.querySelector(".pk-sub");s.innerHTML="";
   if(fmt&&FMT[fmt].subs){const c=document.createElement("div");c.className="chips";c.setAttribute("role","group");c.setAttribute("aria-label","한페이지 형식");
@@ -764,7 +769,7 @@ function hue(h){const r=parseInt(h.substr(1,2),16)/255,g=parseInt(h.substr(3,2),
 const TOP=["lav","b3","sage","forest","wine"];
 const REST=["dusty","steel","slate","mocha","olive","rose","terra","royal","teal","emerald","cobalt","ink","espresso","blue","orange","red"];
 function trayOrder(){return TOP.concat(REST).map(id=>PALS.find(p=>p.id===id))}
-function drawTray(){tlist.innerHTML="";trayOrder().forEach((p,i)=>{if(i===0||i===TOP.length){const h=document.createElement("div");h.className="tray-sub";h.textContent=i===0?"추천":"그 외";tlist.appendChild(h)}const b=document.createElement("button");b.type="button";b.className="trow";b.id="trow-"+p.id;b.dataset.id=p.id;b.setAttribute("aria-pressed",p.id===cur?"true":"false");
+function drawTray(){tlist.innerHTML="";trayOrder().forEach((p,i)=>{if(i===0||i===TOP.length){const h=document.createElement("div");h.className="tray-sub";h.textContent=i===0?"색상 · 추천":"색상 · 그 외";tlist.appendChild(h)}const b=document.createElement("button");b.type="button";b.className="trow";b.id="trow-"+p.id;b.dataset.id=p.id;b.setAttribute("aria-pressed",p.id===cur?"true":"false");
   b.innerHTML='<span class="mini"><span style="background:'+p.c.main+'"></span><span style="background:'+p.c.sub+'"></span><span style="background:'+p.c.tint+'"></span><span style="background:'+p.c.point+'"></span></span>'+p.name+'<small>'+(REC[p.id]?"추천 · "+REC[p.id]:p.grp)+'</small>';
   b.addEventListener("click",()=>{cur=p.id;apply(p)});tlist.appendChild(b)});
 }
