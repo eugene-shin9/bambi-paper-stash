@@ -105,7 +105,7 @@ details[open] .chev::after{font-size:13px}
 .paper.dark{background-color:var(--p-main);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .18 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
 .ic{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:11px;color:#5A4B3A}
 .paper .brand{grid-column:1/-1;background:rgba(255,255,255,.45);border-color:rgba(0,0,0,.08);padding:18px 16px;margin-top:4px}
-.paper.dark .brand{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.28);flex-direction:column;text-align:center;gap:6px}
+.paper.dark .brand{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.28)}
 .paper.dark .brand b{color:#fff}.paper.dark .brand span{color:var(--p-tint)}
 @media (min-width:720px){.paper{grid-template-columns:repeat(6,minmax(0,1fr))}}
 .paper.dark .ic{color:var(--p-tint)}
@@ -123,7 +123,7 @@ figcaption{font-size:13px;color:var(--muted)}
 figcaption b{color:var(--fg);font-weight:600;margin-right:6px}
 .shot{width:100%;border:1px solid var(--line);border-radius:4px;background-color:#fff;background-repeat:no-repeat;transition:opacity .15s}
 .shot.s169{aspect-ratio:16/9}.shot.a4{aspect-ratio:210/297}.shot.sq{aspect-ratio:1}
-.car{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;gap:16px}
+.car{display:flex;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;gap:16px}
 .car::-webkit-scrollbar{display:none}
 .car>*{flex:0 0 100%;scroll-snap-align:start;min-width:0}
 .dots{display:flex;justify-content:center;gap:6px;margin-top:4px}
@@ -154,6 +154,22 @@ figcaption b{color:var(--fg);font-weight:600;margin-right:6px}
 .tl span{font-size:2.5cqw;color:var(--p-sub);font-weight:600;font-variant-numeric:tabular-nums}
 .tl b{font-size:3.5cqw}
 .tl p{margin:0;font-size:2.4cqw;color:var(--p-sub)}
+.bars{margin-top:4cqw;display:flex;flex-direction:column;gap:1.8cqw}
+.bars i{display:block;height:1.5cqw;background:var(--p-line);border-radius:1cqw}
+.bars i.s{width:72%}.bars i.x{width:46%}
+.tb{margin-top:4.5cqw;font-size:2.5cqw;border-top:.5cqw solid var(--p-main)}
+.tb div{display:grid;grid-template-columns:1.1fr 1.3fr 2.6fr;gap:2cqw;padding:2cqw 0;border-bottom:1px solid var(--p-line)}
+.tb div.h{color:var(--p-main);font-weight:700}
+.pf{margin-top:auto;border-top:1px solid var(--p-line);padding-top:2cqw;font-size:2.4cqw;color:var(--p-sub);display:flex;justify-content:space-between}
+.ph{aspect-ratio:4/3;background:var(--p-tint);display:flex;align-items:center;justify-content:center;color:var(--p-sub);font-size:2.6cqw}
+.lite .ph{background:none;border:1px solid var(--p-line)}
+.g2{margin-top:auto;display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--p-line)}
+.g2 div{padding:2.2cqw 0;border-bottom:1px solid var(--p-line);font-size:2.4cqw;display:flex;flex-direction:column}
+.g2 span{color:var(--p-sub)}.g2 b{font-size:2.9cqw}
+.ck{margin-top:5cqw;display:flex;flex-direction:column;gap:3.2cqw;font-size:3cqw}
+.ck div{display:flex;gap:2.6cqw;align-items:center}
+.ck div::before{content:"";width:3.4cqw;height:3.4cqw;border:.5cqw solid var(--p-main);box-sizing:border-box;border-radius:.7cqw;flex:none}
+.ck div.on::before{background:var(--p-main)}
 .cd{background:var(--p-main);color:var(--p-bg)}
 .cd .eyebrow{color:var(--p-tint)}
 .cd .big{font-size:24cqw;font-weight:700;line-height:1;color:var(--eb);margin-top:6cqw;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
@@ -211,7 +227,7 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 .fab .dot{width:24px;height:24px;border-radius:50%;border:2px solid var(--surface);box-shadow:0 0 0 1px var(--line)}
 .fab-ai{bottom:calc(68px + env(safe-area-inset-bottom,0px));padding:8px 14px 8px 10px}
 .fab-ai svg{width:22px;height:22px;flex:none}
-.tray.tray{left:0;right:0;bottom:0;width:auto;max-width:none;max-height:min(56vh,460px);z-index:32;border-radius:16px 16px 0 0;border-bottom:0;padding:16px calc(16px + env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) calc(16px + env(safe-area-inset-left,0px));box-shadow:0 -8px 28px rgba(0,0,0,.22);animation:sheetup .18s ease-out}
+.tray.tray{left:0;right:0;bottom:0;width:auto;max-width:none;max-height:35vh;z-index:32;border-radius:16px 16px 0 0;border-bottom:0;padding:16px calc(16px + env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) calc(16px + env(safe-area-inset-left,0px));box-shadow:0 -8px 28px rgba(0,0,0,.22);animation:sheetup .18s ease-out}
 @keyframes sheetup{from{transform:translateY(100%)}to{transform:none}}
 @media (prefers-reduced-motion:reduce){.tray.tray{animation:none}}
 @media (min-width:720px){.tray.tray{left:auto;right:calc(16px + env(safe-area-inset-right,0px));width:420px}}
@@ -225,7 +241,7 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 .chips button{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:99px;padding:6px 14px;cursor:pointer}
 .chips button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--bg);font-weight:600}
 .chips button:focus-visible,.picker .seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.tray{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(118px + env(safe-area-inset-bottom,0px));z-index:30;width:min(340px,calc(100vw - 32px));max-height:min(56vh,460px);overflow:hidden;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 32px rgba(0,0,0,.2);padding:12px;display:flex;flex-direction:column;gap:10px}
+.tray{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(118px + env(safe-area-inset-bottom,0px));z-index:30;width:min(340px,calc(100vw - 32px));max-height:min(35vh,420px);overflow:hidden;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 32px rgba(0,0,0,.2);padding:12px;display:flex;flex-direction:column;gap:10px}
 .tray-h{display:flex;justify-content:space-between;align-items:center;gap:8px}
 .tray-h b{font-size:14px}
 .tray-h button{font:inherit;font-size:13px;background:none;border:0;color:var(--muted);cursor:pointer;padding:4px 6px}
@@ -290,7 +306,7 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
   <section class="sec" id="card" aria-labelledby="h-card">
     <div class="sec-head">
       <h2 id="h-card">한페이지</h2>
-      <p>A4 한 장짜리 4가지 형식입니다. 아래 셋은 카드뉴스 1:1 세 장입니다.</p>
+      <p>A4 한 장짜리 8가지 형식입니다. 아래는 카드뉴스 1:1 세 장입니다.</p>
       <p class="now" id="now-card"></p>
     </div>
     <div class="cards4">
@@ -314,6 +330,32 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
         <div class="tt">기한을 꼭<br>확인하세요</div>
         <div class="g"><div><span>대상</span><b>해당하는 분</b></div><div><span>방법</span><b>온라인 신청</b></div><div><span>문의</span><b>담당 부서</b></div><div><span>기간</span><b>0. 0. ~ 0. 00.</b></div></div>
       </div></div><figcaption><b>포스터형</b>마감·게시판</figcaption></figure>
+      <figure><div class="page"><div class="in">
+        <div class="eyebrow">기관명 · 부서</div>
+        <div class="tt" style="font-size:5.6cqw;margin-top:1.6cqw">0000년 행사 운영 안내</div>
+        <div class="bars"><i></i><i class="s"></i><i class="x"></i></div>
+        <div class="tb"><div class="h"><span>구분</span><span>일시</span><span>내용</span></div><div><span>접수</span><span>0. 0.</span><span>신청서 제출</span></div><div><span>심사</span><span>0. 0.</span><span>서류 검토</span></div><div><span>발표</span><span>0. 0.</span><span>개별 통보</span></div></div>
+        <div class="bars"><i></i><i class="s"></i></div>
+        <div class="pf"><span>기관명</span><span>문의 000-0000</span></div>
+      </div></div><figcaption><b>공문형</b>공지·안내문</figcaption></figure>
+      <figure><div class="page"><div class="in">
+        <div class="eyebrow">교육 프로그램</div>
+        <div class="tt" style="margin-top:1.6cqw">8주 과정<br>회차 안내</div>
+        <div class="tb"><div class="h"><span>회차</span><span>날짜</span><span>주제</span></div><div><span>1회</span><span>0. 0.</span><span>오리엔테이션</span></div><div><span>2회</span><span>0. 0.</span><span>기초 다지기</span></div><div><span>3회</span><span>0. 0.</span><span>실습</span></div><div><span>4회</span><span>0. 0.</span><span>발표와 나눔</span></div></div>
+        <div class="box"><b>장소 · 대상</b>강의실 000 · 누구나</div>
+      </div></div><figcaption><b>회차표형</b>강좌·프로그램</figcaption></figure>
+      <figure><div class="page"><div class="in">
+        <div class="ph">사진 자리</div>
+        <div class="eyebrow" style="margin-top:5cqw">전시 · 행사</div>
+        <div class="tt" style="font-size:6cqw">전시 제목을<br>두 줄로</div>
+        <div class="g2"><div><span>기간</span><b>0. 0. ~ 0. 0.</b></div><div><span>장소</span><b>0층 전시실</b></div><div><span>관람</span><b>10:00 ~ 18:00</b></div><div><span>문의</span><b>000-0000</b></div></div>
+      </div></div><figcaption><b>사진형</b>전시·행사 홍보</figcaption></figure>
+      <figure><div class="page"><div class="in">
+        <div class="eyebrow">제출 전 확인</div>
+        <div class="tt" style="margin-top:1.6cqw">준비 서류<br>체크리스트</div>
+        <div class="ck"><div class="on">신청서 1부</div><div class="on">신분증 사본</div><div>증빙 자료</div><div>동의서</div><div>통장 사본</div></div>
+        <div class="box"><b>제출</b>이메일 또는 방문 · 마감 0. 0.</div>
+      </div></div><figcaption><b>체크리스트형</b>준비물·제출서류</figcaption></figure>
     </div>
     <div class="cards3 car" aria-label="카드뉴스 3장">
       <figure><div class="shot sq" data-k="sq" data-i="0" role="img" aria-label="카드뉴스 표지"></div><figcaption><b>1</b>표지</figcaption></figure>
@@ -493,17 +535,17 @@ function apply(p){
   document.querySelectorAll(".shot").forEach(el=>{const k=el.dataset.k,i=+el.dataset.i,n=COUNT[k];
     el.style.backgroundImage='url("prev/'+FONTS[fnt].dir+p.id+'_'+sty+'_'+k+'.jpg")';el.style.backgroundSize="100% "+(n*100)+"%";el.style.backgroundPosition="0 "+(n>1?(i/(n-1))*100:0)+"%"});
   const keys=Object.keys(ICONS);
-  document.getElementById("ic-light").innerHTML=keys.map(k=>'<div class="ic"><svg viewBox="0 0 100 100" aria-hidden="true">'+icon(k,p.c.main,p.c.point)+'</svg>'+ICONS[k].n+'</div>').join("")+'<div class="brand"><svg viewBox="0 0 100 100" aria-hidden="true">'+icon("moon",p.c.main,p.c.point)+'</svg><div><b>OFFICE NAME</b><span>아이콘 + 이름 가로 조합</span></div></div>';
-  document.getElementById("ic-dark").innerHTML=keys.map(k=>'<div class="ic"><svg viewBox="0 0 100 100" aria-hidden="true">'+icon(k,"#FFFFFF","#FFFFFF")+'</svg>'+ICONS[k].n+'</div>').join("")+'<div class="brand"><svg viewBox="0 0 100 100" aria-hidden="true">'+icon("moon","#FFFFFF","#FFFFFF")+'</svg><div><b>OFFICE NAME</b><span>진한 바탕 · 세로 조합</span></div></div>';
+  document.getElementById("ic-light").innerHTML=keys.map(k=>'<div class="ic"><svg viewBox="0 0 100 100" aria-hidden="true">'+icon(k,p.c.main,p.c.point)+'</svg>'+ICONS[k].n+'</div>').join("")+'<div class="brand"><svg viewBox="0 0 100 100" aria-hidden="true">'+icon("moon",p.c.main,p.c.point)+'</svg><div><b>OFFICE NAME</b><span>로고 자리 · 아이콘과 이름 조합</span></div></div>';
+  document.getElementById("ic-dark").innerHTML=keys.map(k=>'<div class="ic"><svg viewBox="0 0 100 100" aria-hidden="true">'+icon(k,"#FFFFFF","#FFFFFF")+'</svg>'+ICONS[k].n+'</div>').join("")+'<div class="brand"><svg viewBox="0 0 100 100" aria-hidden="true">'+icon("moon","#FFFFFF","#FFFFFF")+'</svg><div><b>OFFICE NAME</b><span>진한 바탕 · 흰 아이콘과 이름 조합</span></div></div>';
   updPrompt(p);
   try{localStorage.setItem("pal",p.id)}catch(e){}
 }
 document.getElementById("copyspec").addEventListener("click",()=>{const t=document.getElementById("spec").textContent;
   if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(()=>say("규격서 복사됨")).catch(()=>{selSpec();say("선택됨 · 길게 눌러 복사")})}else{selSpec();say("선택됨 · 길게 눌러 복사")}});
-const FMT={doc:{l:"문서",make:"보고서 문서(A4)",d:"A4 보고서 · 표지, 개조식 본문, 표"},one:{l:"한페이지",make:"한페이지(A4)",subs:["배너형","안내형","타임라인형","포스터형"]},ppt:{l:"PPT",make:"PPT 12장",d:"16:9 · 표지부터 마무리까지 12장"},card:{l:"카드뉴스",make:"카드뉴스 3장",d:"1:1 · 표지, 내용, 마무리 3장"}};
-let fmt=null,sub=null,aiEdited=false;
+const FMT={auto:{l:"자동",make:"자동 · 내용과 첨부 서식을 보고 문서·한페이지·PPT·카드뉴스 중 알맞은 것을 고르고, 고른 이유를 한 줄로 밝힌다",d:"내용과 첨부 서식을 보고 AI가 알아서 고릅니다. 정해 두고 싶을 때만 오른쪽에서 고르세요."},doc:{l:"문서",make:"보고서 문서(A4)",d:"A4 보고서 · 표지, 개조식 본문, 표"},one:{l:"한페이지",make:"한페이지(A4)",subs:["배너형","안내형","타임라인형","포스터형","공문형","회차표형","사진형","체크리스트형"]},ppt:{l:"PPT",make:"PPT 12장",d:"16:9 · 표지부터 마무리까지 12장"},card:{l:"카드뉴스",make:"카드뉴스 3장",d:"1:1 · 표지, 내용, 마무리 3장"}};
+let fmt="auto",sub=null,aiEdited=false;
 const ap=document.getElementById("aiprompt");
-const PK_NOTE="지금 보는 색과 규격서 링크가 들어갑니다. 만들 것을 고르고 복사한 뒤, AI 대화창에서 내용만 적으면 됩니다.";
+const PK_NOTE="";
 function aiStyle(){return sty==="light"?"가볍게":"기본"}
 function makeStr(){return fmt?FMT[fmt].make+(sub?" · "+sub:""):""}
 function colorLine(p){return "이 규격서대로 "+p.name+" 색, "+aiStyle()+" 스타일로 파일(PDF)로 만들어 줘. 그림 생성기로 만들지 말 것."}
@@ -517,7 +559,7 @@ ap.addEventListener("input",()=>{aiEdited=true});
 function drawPickers(){document.querySelectorAll(".picker").forEach(pk=>{
   if(!pk.firstChild){const seg=document.createElement("div");seg.className="seg";seg.setAttribute("role","group");seg.setAttribute("aria-label","만들 것");
     Object.entries(FMT).forEach(([k,o])=>{const b=document.createElement("button");b.type="button";b.dataset.fmt=k;b.textContent=o.l;
-      b.addEventListener("click",()=>{if(fmt===k){fmt=null;sub=null}else{fmt=k;sub=null}drawPickers();updPrompt()});seg.appendChild(b)});
+      b.addEventListener("click",()=>{if(fmt===k&&k!=="auto"){fmt="auto";sub=null}else{fmt=k;sub=null}drawPickers();updPrompt()});seg.appendChild(b)});
     const s=document.createElement("div");s.className="pk-sub";pk.appendChild(seg);pk.appendChild(s)}
   pk.querySelectorAll("button[data-fmt]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.fmt===fmt?"true":"false"));
   const s=pk.querySelector(".pk-sub");s.innerHTML="";
