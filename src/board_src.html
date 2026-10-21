@@ -99,11 +99,11 @@ details[open] .chev::after{font-size:13px}
 .lite .nums div{background:none;border-top:.5cqw solid var(--p-main);padding:2cqw 0 0}
 .lite .box,.lite .d-box{background:none;border-top:1px solid var(--p-line);padding-left:0;padding-right:0}
 /* 아이콘 */
-.ic-board{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
-.paper{border-radius:8px;border:1px solid var(--line);padding:22px;display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:18px 10px;
+.ic-board{display:flex;flex-direction:column;gap:12px}
+.paper{border-radius:8px;border:1px solid var(--line);padding:18px 16px;display:flex;overflow-x:auto;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;gap:14px;scrollbar-width:thin;
   background-color:var(--kraft);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .28 0 0 0 0 .2 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
 .paper.dark{background-color:var(--p-main);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .18 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
-.ic{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:11px;color:#5A4B3A}
+.ic{flex:none;width:68px;scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:11px;color:#5A4B3A}
 .paper.dark .ic{color:var(--p-tint)}
 .ic svg{width:56px;height:56px}
 .brand{display:flex;align-items:center;gap:14px;padding:26px 22px;border-radius:8px;border:1px solid var(--line);background-color:var(--kraft)}
@@ -218,6 +218,7 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 .tray-h button{font:inherit;font-size:13px;background:none;border:0;color:var(--muted);cursor:pointer;padding:4px 6px}
 .tray .tabs button{font-size:12px;padding:3px 9px}
 .tlist{display:flex;flex-direction:column;gap:2px}
+.tray-sub{font-size:11px;color:var(--muted);padding:8px 8px 2px;letter-spacing:.02em}
 .trow{display:flex;align-items:center;gap:10px;font:inherit;font-size:14px;background:none;border:0;border-radius:8px;color:var(--fg);padding:7px 8px;cursor:pointer;text-align:left;width:100%}
 .trow:hover{background:var(--bg)}
 .trow:focus-visible{outline:2px solid var(--accent)}
@@ -267,22 +268,10 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 <div class="wrap">
   <header>
     <h1>밤비의 서류뭉치</h1>
-    <p class="lead">오른쪽 아래 '색 바꾸기'로 색과 스타일(기본·가볍게)을 고르면 아이콘, 한페이지, PPT 틀, 문서 예시가 전부 같이 바뀝니다. AI에 만들게 하려면 '작업지시문'을 복사해 붙이면 됩니다.</p>
-    <nav aria-label="바로가기"><a href="#icon">도장 아이콘</a><a href="#card">한페이지</a><a href="#ppt">PPT 틀</a><a href="#doc">문서</a><a href="#color" id="navcolor">색 조합</a><a href="#rule">규칙</a><a href="#ai">작업지시문</a><a href="#link">더 볼 곳</a></nav>
+    <p class="lead">오른쪽 아래 '색 바꾸기'로 색과 스타일(기본·가볍게)을 고르면 한페이지, PPT 틀, 문서 예시, 아이콘이 전부 같이 바뀝니다. AI에 만들게 하려면 '작업지시문'을 복사해 붙이면 됩니다.</p>
+    <nav aria-label="바로가기"><a href="#card">한페이지</a><a href="#ppt">PPT 틀</a><a href="#doc">문서</a><a href="#icon">도장 아이콘</a><a href="#color" id="navcolor">색 조합</a><a href="#rule">규칙</a><a href="#ai">작업지시문</a><a href="#link">더 볼 곳</a></nav>
   </header>
 
-  <section class="sec" id="icon" aria-labelledby="h-icon">
-    <div class="sec-head">
-      <h2 id="h-icon">도장 느낌 아이콘 12개</h2>
-      <p>가장자리가 살짝 거칠고 잉크가 군데군데 빠진 도장 느낌으로 직접 그렸습니다. 한페이지와 카드뉴스 틀에 이미 넣어 두었습니다.</p>
-      <p class="now" id="now-ic"></p>
-    </div>
-    <div class="ic-board">
-      <div class="paper" id="ic-light" aria-label="크라프트지 위 아이콘"></div>
-      <div class="paper dark" id="ic-dark" aria-label="주색 바탕 위 흰 아이콘"></div>
-    </div>
-    <div class="brand"><svg viewBox="0 0 100 100" aria-hidden="true" id="brand-ic"></svg><div><b>OFFICE NAME</b><span>로고 자리 · 아이콘 + 이름 조합 예시</span></div></div>
-  </section>
 
   <section class="sec" id="card" aria-labelledby="h-card">
     <div class="sec-head">
@@ -356,6 +345,19 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
     </div>
   </section>
 
+  <section class="sec" id="icon" aria-labelledby="h-icon">
+    <div class="sec-head">
+      <h2 id="h-icon">도장 느낌 아이콘 12개</h2>
+      <p>가장자리가 살짝 거칠고 잉크가 군데군데 빠진 도장 느낌으로 직접 그렸습니다. 옆으로 밀어 보세요. 한페이지와 카드뉴스 틀에 이미 넣어 두었습니다.</p>
+      <p class="now" id="now-ic"></p>
+    </div>
+    <div class="ic-board">
+      <div class="paper" id="ic-light" aria-label="크라프트지 위 아이콘"></div>
+      <div class="paper dark" id="ic-dark" aria-label="주색 바탕 위 흰 아이콘"></div>
+    </div>
+    <div class="brand"><svg viewBox="0 0 100 100" aria-hidden="true" id="brand-ic"></svg><div><b>OFFICE NAME</b><span>로고 자리 · 아이콘 + 이름 조합 예시</span></div></div>
+  </section>
+
   <section class="sec" id="color" aria-labelledby="h-color">
     <details id="colordet">
     <summary class="sum"><span><h2 id="h-color">색 조합 21개 자세히</h2><small>색 코드·대비 수치·비율·피할 조합</small></span><span class="chev" aria-hidden="true">펼치기</span></summary>
@@ -423,10 +425,10 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
   </section>
 </div>
 
-<button class="fab fab-ai" type="button" id="fabai" aria-expanded="false" aria-controls="aipop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="4" width="13" height="17" rx="2"/><path d="M9 4.5V3h7v1.5"/><path d="M9.5 10h6M9.5 13.5h6M9.5 17h3.5"/></svg>작업지시문</button>
+<button class="fab fab-ai" type="button" id="fabai" aria-expanded="false" aria-controls="aipop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="4" width="13" height="17" rx="2"/><path d="M9 4.5V3h7v1.5"/><path d="M9.5 10h6M9.5 13.5h6M9.5 17h3.5"/></svg>작업지시문 복사</button>
 <div class="tray aipop" id="aipop" hidden role="dialog" aria-label="작업지시문 복사하기"><div class="tray-h"><b>작업지시문 복사하기</b><button type="button" id="aipopx">닫기</button></div><div class="picker" id="pk-pop"></div><button type="button" class="ai-copy wide" id="copyprompt2">작업지시문 복사하기</button></div>
 <button class="fab" type="button" id="fab" aria-expanded="false" aria-controls="tray"><span class="dot" id="fabdot"></span><span id="fabname">색 바꾸기</span></button>
-<div class="tray" id="tray" hidden role="dialog" aria-label="색 조합 고르기"><div class="tray-h"><b>색 조합</b><button type="button" id="trayx">닫기</button></div><div class="seg" role="group" aria-label="스타일" id="seg-t"></div><div class="tray-f"><span>글꼴</span><div class="seg" role="group" aria-label="글꼴" id="segf-t"></div></div><p class="tray-note">맑은 고딕은 윈도 전용이라 여기서는 미리 볼 수 없습니다. 남이 고칠 PPT·Word 파일에만 씁니다.</p><div class="tabs" role="group" aria-label="목록 거르기" id="ttabs"></div><div class="tlist" id="tlist"></div></div>
+<div class="tray" id="tray" hidden role="dialog" aria-label="색 조합 고르기"><div class="tray-h"><b>색 조합</b><button type="button" id="trayx">닫기</button></div><div class="seg" role="group" aria-label="스타일" id="seg-t"></div><div class="tray-f"><span>글꼴</span><div class="seg" role="group" aria-label="글꼴" id="segf-t"></div></div><p class="tray-note">맑은 고딕은 윈도 전용이라 여기서는 미리 볼 수 없습니다. 남이 고칠 PPT·Word 파일에만 씁니다.</p><div class="tlist" id="tlist"></div></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
@@ -494,7 +496,7 @@ function aiStyle(){return sty==="light"?"가볍게":"기본"}
 function makeStr(){return fmt?FMT[fmt].make+(sub?" · "+sub:""):""}
 function colorLine(p){return "이 규격서대로 "+p.name+" 색, "+aiStyle()+" 스타일로 파일(PDF)로 만들어 줘. 그림 생성기로 만들지 말 것."}
 function updPrompt(p){p=p||lastP;if(!p)return;const m=makeStr();
-  if(!aiEdited){ap.value=colorLine(p)+"\n"+(m?"만들 것: "+m+"\n":"")+"내용: \n\n규격서 링크: https://github.com/eugene-shin9/bambi-paper-stash \n";return}
+  if(!aiEdited){ap.value=colorLine(p)+"\n첨부한 서식이 있으면 기관명·로고·문의처만 가져오고, 디자인은 규격서대로.\n"+(m?"만들 것: "+m+"\n":"")+"내용: \n\n규격서 링크: https://github.com/eugene-shin9/bambi-paper-stash \n";return}
   let v=ap.value.replace(/이 규격서대로 .+? 색, .+? 스타일로 파일\(PDF\)로 만들어 줘\. 그림 생성기로 만들지 말 것\./,colorLine(p));
   if(/^만들 것: .*$/m.test(v))v=m?v.replace(/^만들 것: .*$/m,"만들 것: "+m):v.replace(/^만들 것: .*\n?/m,"");
   else if(m)v=v.replace(colorLine(p),colorLine(p)+"\n만들 것: "+m);
@@ -539,14 +541,16 @@ PALS.forEach(p=>{
 const tabs=document.getElementById("tabs");
 [["all","전체 21"],["mine","추천 5"],["업무","업무·보고"],["교육","교육·기관"],["홍보","홍보·포스터"]].forEach(([k,l],i)=>{const t=document.createElement("button");t.type="button";t.id="tab-"+i;t.textContent=l;t.setAttribute("aria-pressed",k==="all"?"true":"false");
   t.addEventListener("click",()=>{tabs.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===t?"true":"false"));document.querySelectorAll(".pal").forEach(c=>c.hidden=!(k==="all"||(k==="mine"?MINE.includes(c.dataset.id):c.dataset.grp===k)))});tabs.appendChild(t)});
-const fab=document.getElementById("fab"),tray=document.getElementById("tray"),tlist=document.getElementById("tlist"),ttabs=document.getElementById("ttabs");
+const fab=document.getElementById("fab"),tray=document.getElementById("tray"),tlist=document.getElementById("tlist");
 let tf="mine",cur="b3",sty="base",fnt="pre";
 const FONTS={pre:{n:"Pretendard",dir:"pre/",css:'"Pretendard","Noto Sans KR",sans-serif'},noto:{n:"Noto Sans KR",dir:"",css:'"Noto Sans KR",sans-serif'},suit:{n:"SUIT",dir:"suit/",css:'"SUIT","Noto Sans KR",sans-serif'}};
-function drawTray(){tlist.innerHTML="";PALS.filter(p=>tf==="all"||MINE.includes(p.id)).forEach(p=>{const b=document.createElement("button");b.type="button";b.className="trow";b.id="trow-"+p.id;b.dataset.id=p.id;b.setAttribute("aria-pressed",p.id===cur?"true":"false");
+function hue(h){const r=parseInt(h.substr(1,2),16)/255,g=parseInt(h.substr(3,2),16)/255,b=parseInt(h.substr(5,2),16)/255,M=Math.max(r,g,b),m=Math.min(r,g,b),d=M-m;if(d<.08)return 999;let x=M===r?((g-b)/d)%6:M===g?(b-r)/d+2:(r-g)/d+4;x*=60;return x<0?x+360:x}
+const TOP=["lav","b3","sage","forest","wine"];
+function trayOrder(){const rest=PALS.filter(p=>!TOP.includes(p.id)).sort((a,b)=>hue(a.c.main)-hue(b.c.main));return TOP.map(id=>PALS.find(p=>p.id===id)).concat(rest)}
+function drawTray(){tlist.innerHTML="";trayOrder().forEach((p,i)=>{if(i===0||i===TOP.length){const h=document.createElement("div");h.className="tray-sub";h.textContent=i===0?"추천":"그 외 · 색상환 순";tlist.appendChild(h)}const b=document.createElement("button");b.type="button";b.className="trow";b.id="trow-"+p.id;b.dataset.id=p.id;b.setAttribute("aria-pressed",p.id===cur?"true":"false");
   b.innerHTML='<span class="mini"><span style="background:'+p.c.main+'"></span><span style="background:'+p.c.sub+'"></span><span style="background:'+p.c.tint+'"></span><span style="background:'+p.c.point+'"></span></span>'+p.name+'<small>'+(REC[p.id]?"추천 · "+REC[p.id]:p.grp)+'</small>';
   b.addEventListener("click",()=>{cur=p.id;apply(p)});tlist.appendChild(b)});
-  const rows=tlist.children;if(tf==="all"&&rows.length>5){const h=rows[4].offsetTop+rows[4].offsetHeight-rows[0].offsetTop;tlist.style.maxHeight=h+"px";tlist.style.overflowY="auto"}else{tlist.style.maxHeight="";tlist.style.overflowY=""}}
-[["mine","추천 5"],["all","전체 21"]].forEach(([k,l])=>{const t=document.createElement("button");t.type="button";t.id="ttab-"+k;t.textContent=l;t.setAttribute("aria-pressed",k===tf?"true":"false");t.addEventListener("click",()=>{tf=k;ttabs.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===t?"true":"false"));drawTray()});ttabs.appendChild(t)});
+  const rows=tlist.children;if(rows.length>8){const h=rows[7].offsetTop+rows[7].offsetHeight-rows[0].offsetTop;tlist.style.maxHeight=h+"px";tlist.style.overflowY="auto"}}
 function setTray(o){tray.hidden=!o;fab.setAttribute("aria-expanded",o?"true":"false");if(o){drawTray();setAiPop(false)}}
 fab.addEventListener("click",()=>setTray(tray.hidden));
 document.getElementById("trayx").addEventListener("click",()=>{setTray(false);fab.focus()});
