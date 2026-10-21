@@ -198,8 +198,11 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 .fab .dot{width:24px;height:24px;border-radius:50%;border:2px solid var(--surface);box-shadow:0 0 0 1px var(--line)}
 .fab-ai{bottom:calc(68px + env(safe-area-inset-bottom,0px));padding:8px 14px 8px 10px}
 .fab-ai svg{width:22px;height:22px;flex:none}
-.aipop{width:auto;max-width:calc(100vw - 32px)}
-.aipop .ai-copy{padding:8px 20px}
+.tray.aipop{left:0;right:0;bottom:0;width:auto;max-width:none;max-height:none;z-index:32;border-radius:16px 16px 0 0;border-bottom:0;padding:16px calc(16px + env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) calc(16px + env(safe-area-inset-left,0px));box-shadow:0 -8px 28px rgba(0,0,0,.22);animation:sheetup .18s ease-out}
+@keyframes sheetup{from{transform:translateY(100%)}to{transform:none}}
+@media (prefers-reduced-motion:reduce){.tray.aipop{animation:none}}
+@media (min-width:720px){.tray.aipop{left:auto;right:calc(16px + env(safe-area-inset-right,0px));width:420px}}
+.tray.aipop .ai-copy{padding:8px 20px}
 .tray{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(118px + env(safe-area-inset-bottom,0px));z-index:30;width:min(340px,calc(100vw - 32px));max-height:min(62vh,520px);overflow:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 32px rgba(0,0,0,.2);padding:12px;display:flex;flex-direction:column;gap:10px}
 .tray-h{display:flex;justify-content:space-between;align-items:center;gap:8px}
 .tray-h b{font-size:14px}
