@@ -301,12 +301,12 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 .fab .dot{width:24px;height:24px;border-radius:50%;border:2px solid var(--surface);box-shadow:0 0 0 1px var(--line)}
 .fab-ai{bottom:calc(68px + env(safe-area-inset-bottom,0px));padding:8px 14px 8px 10px}
 .fab-ai svg{width:22px;height:22px;flex:none}
-.tray.tray{left:0;right:0;bottom:0;width:auto;max-width:none;max-height:40vh;z-index:32;border-radius:16px 16px 0 0;border-bottom:0;padding:16px calc(16px + env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) calc(16px + env(safe-area-inset-left,0px));box-shadow:0 -8px 28px rgba(0,0,0,.22);animation:sheetup .18s ease-out}
+.tray.tray{left:0;right:0;bottom:0;width:auto;max-width:none;height:40vh;max-height:40vh;z-index:32;border-radius:16px 16px 0 0;border-bottom:0;padding:16px calc(16px + env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) calc(16px + env(safe-area-inset-left,0px));box-shadow:0 -8px 28px rgba(0,0,0,.22);animation:sheetup .18s ease-out}
 @keyframes sheetup{from{transform:translateY(100%)}to{transform:none}}
 @media (prefers-reduced-motion:reduce){.tray.tray{animation:none}}
 @media (min-width:720px){.tray.tray{left:auto;right:calc(16px + env(safe-area-inset-right,0px));width:420px}}
 .ai-copy.wide{width:100%;padding:12px}
-.aipop.aipop{max-height:min(88vh,760px);overflow:auto}
+
 .picker{display:flex;flex-direction:column;gap:12px;min-width:0}
 .picker .seg{display:flex;width:100%;align-self:stretch}
 .picker .seg button{flex:1;padding:9px 4px;font-size:14px}
@@ -318,7 +318,7 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 .chips button{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:99px;padding:6px 14px;cursor:pointer}
 .chips button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--bg);font-weight:600}
 .chips button:focus-visible,.picker .seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.tray{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(118px + env(safe-area-inset-bottom,0px));z-index:30;width:min(340px,calc(100vw - 32px));max-height:min(40vh,460px);overflow:hidden;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 32px rgba(0,0,0,.2);padding:12px;display:flex;flex-direction:column;gap:10px}
+.tray{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(118px + env(safe-area-inset-bottom,0px));z-index:30;width:min(340px,calc(100vw - 32px));max-height:min(40vh,460px);overflow:hidden;overscroll-behavior:contain;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 32px rgba(0,0,0,.2);padding:12px;display:flex;flex-direction:column;gap:10px}
 .tray-h{display:flex;justify-content:space-between;align-items:center;gap:8px}
 .tray-h b{font-size:14px}
 .tray-h button{font:inherit;font-size:13px;background:none;border:0;color:var(--muted);cursor:pointer;padding:4px 6px}
@@ -338,7 +338,7 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 [hidden]{display:none!important}
 .pick{display:flex;flex-wrap:wrap;gap:10px}
 .tray-f{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.trow-l{display:flex;align-items:center;gap:10px}.trow-l>span{width:40px;flex:none;font-size:12px;color:var(--muted)}.trow-l .seg{width:auto;align-self:auto}.trow-l .seg button{font-size:12px;padding:5px 9px}.trow-l.tl-top{align-items:flex-start;flex:1 1 auto;min-height:0;position:relative}.trow-l.tl-top::after{content:"";position:absolute;left:50px;right:0;bottom:0;height:22px;background:linear-gradient(transparent,var(--surface));pointer-events:none}.trow-l.tl-top>span{padding-top:8px}.tray-x{margin-left:auto;font:inherit;font-size:13px;background:none;border:0;color:var(--muted);cursor:pointer;padding:4px 6px}
+.trow-l{display:flex;align-items:center;gap:10px}.trow-l>span{width:50px;flex:none;font-size:12px;color:var(--muted)}.trow-l .seg{width:auto;align-self:auto}.trow-l .seg button{font-size:12px;padding:5px 9px}.trow-l.tl-top{align-items:flex-start;flex:1 1 auto;min-height:0;position:relative}.trow-l.tl-top .tlist{position:absolute;left:60px;right:0;top:0;bottom:0;max-height:none;overscroll-behavior:contain}.trow-l.tl-top::after{content:"";position:absolute;left:60px;right:0;bottom:0;height:22px;background:linear-gradient(transparent,var(--surface));pointer-events:none}.trow-l.tl-top>span{padding-top:8px}.tray-x{margin-left:auto;font:inherit;font-size:13px;background:none;border:0;color:var(--muted);cursor:pointer;padding:4px 6px}
 .tray-f .seg{width:auto;align-self:auto}.tray-f .seg button{font-size:12px;padding:5px 9px}
 .tray-f span{font-size:12px;color:var(--muted)}
 .tray-note{margin:0;font-size:12px;color:var(--muted)}
@@ -640,10 +640,9 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
   </section>
 </div>
 
-<button class="fab fab-ai" type="button" id="fabai" aria-expanded="false" aria-controls="aipop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="4" width="13" height="17" rx="2"/><path d="M9 4.5V3h7v1.5"/><path d="M9.5 10h6M9.5 13.5h6M9.5 17h3.5"/></svg>작업지시문 복사</button>
-<div class="tray aipop" id="aipop" hidden role="dialog" aria-label="작업지시문 복사하기"><div class="tray-h"><b>작업지시문 복사하기</b><button type="button" id="aipopx">닫기</button></div><div class="picker" id="pk-pop"></div><button type="button" class="ai-copy wide" id="copyprompt2">작업지시문 복사하기</button></div>
+<button class="fab fab-ai" type="button" id="fabai" aria-label="작업지시문 복사"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="4" width="13" height="17" rx="2"/><path d="M9 4.5V3h7v1.5"/><path d="M9.5 10h6M9.5 13.5h6M9.5 17h3.5"/></svg>작업지시문 복사</button>
 <button class="fab" type="button" id="fab" aria-expanded="false" aria-controls="tray"><span class="dot" id="fabdot"></span><span id="fabname">색 바꾸기</span></button>
-<div class="tray" id="tray" hidden role="dialog" aria-label="색·스타일·서체 고르기"><div class="trow-l"><span>스타일</span><div class="seg" role="group" aria-label="스타일" id="seg-t"></div><button type="button" id="trayx" class="tray-x">닫기</button></div><div class="trow-l"><span>서체</span><div class="seg" role="group" aria-label="서체" id="segf-t"></div></div><div class="trow-l tl-top"><span>색상</span><div class="tlist" id="tlist"></div></div></div>
+<div class="tray" id="tray" hidden role="dialog" aria-label="설정"><div class="trow-l"><span>만들 것</span><div class="dd" id="dd-fmt"></div><button type="button" id="trayx" class="tray-x">닫기</button></div><div class="trow-l"><span>일러스트</span><div class="seg" role="group" aria-label="일러스트" id="seg-ill"></div></div><div class="trow-l"><span>스타일</span><div class="seg" role="group" aria-label="스타일" id="seg-t"></div></div><div class="trow-l"><span>서체</span><div class="seg" role="group" aria-label="서체" id="segf-t"></div></div><div class="trow-l tl-top"><span>색상</span><div class="tlist" id="tlist"></div></div></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
@@ -699,7 +698,7 @@ function apply(p){
   document.getElementById("ic-dark").innerHTML=keys.map(k=>'<div class="ic"><svg viewBox="0 0 100 100" aria-hidden="true">'+icon(k,"#FFFFFF","#FFFFFF")+'</svg>'+ICONS[k].n+'</div>').join("")+'<div class="brand"><svg viewBox="0 0 100 100" aria-hidden="true">'+icon("moon","#FFFFFF","#FFFFFF")+'</svg><div><b>OFFICE NAME</b><span>진한 바탕 · 흰 아이콘과 이름 조합</span></div></div>';
   try{cur=p.id}catch(e){}
   updPrompt(p);
-  document.querySelectorAll(".dd-b").forEach(b=>{b.innerHTML='<i style="background:'+p.c.main+'"></i>'+p.name+'<span class="dd-ar"></span>'});document.querySelectorAll(".dd-o").forEach(o=>o.setAttribute("aria-selected",o.dataset.id===p.id?"true":"false"));
+  document.querySelectorAll(".pk-col .dd-b").forEach(b=>{b.innerHTML='<i style="background:'+p.c.main+'"></i>'+p.name+'<span class="dd-ar"></span>'});document.querySelectorAll(".dd-o").forEach(o=>o.setAttribute("aria-selected",o.dataset.id===p.id?"true":"false"));
   try{localStorage.setItem("pal",p.id)}catch(e){}
 }
 document.getElementById("copyspec").addEventListener("click",()=>{const t=document.getElementById("spec").textContent;
@@ -730,7 +729,8 @@ function drawPickers(){document.querySelectorAll(".picker").forEach(pk=>{
     const il=document.createElement("div");il.className="pk-ill";const lab=document.createElement("span");lab.className="pk-lab";lab.textContent="일러스트";il.appendChild(lab);const sg=document.createElement("div");sg.className="seg";[["none","없음"],["some","있음"],["rich","풍성"]].forEach(([k,l])=>{const b=document.createElement("button");b.type="button";b.dataset.ill=k;b.textContent=l;b.addEventListener("click",()=>{illust=k;drawPickers();updPrompt()});sg.appendChild(b)});il.appendChild(sg);pk.appendChild(il);
     const cl=document.createElement("div");cl.className="pk-ill pk-col";const lab2=document.createElement("span");lab2.className="pk-lab";lab2.textContent="색상";cl.appendChild(lab2);const dd=document.createElement("div");dd.className="dd";const db=document.createElement("button");db.type="button";db.className="dd-b";db.setAttribute("aria-haspopup","listbox");db.setAttribute("aria-expanded","false");const dl=document.createElement("div");dl.className="dd-l";dl.setAttribute("role","listbox");dl.hidden=true;const TOPC=["lav","b3","sage","forest","wine"];TOPC.concat(PALS.filter(p=>!TOPC.includes(p.id)).map(p=>p.id)).forEach(id=>{const p=PALS.find(x=>x.id===id);const o=document.createElement("button");o.type="button";o.className="dd-o";o.dataset.id=p.id;o.setAttribute("role","option");o.innerHTML='<i style="background:'+p.c.main+'"></i>'+p.name+(TOPC.includes(p.id)?'<small>추천</small>':"");o.addEventListener("click",()=>{cur=p.id;apply(p);dl.hidden=true;db.setAttribute("aria-expanded","false");drawPickers()});dl.appendChild(o)});db.addEventListener("click",()=>{const o=dl.hidden;document.querySelectorAll(".dd-l").forEach(x=>x.hidden=true);if(o){const r=db.getBoundingClientRect();dl.style.left=r.left+"px";dl.style.bottom=(innerHeight-r.top+4)+"px";dl.style.width=Math.max(r.width,220)+"px"}dl.hidden=!o;db.setAttribute("aria-expanded",o?"true":"false")});
     document.addEventListener("click",e=>{if(!dd.contains(e.target))dl.hidden=true},true);dd.appendChild(db);dd.appendChild(dl);cl.appendChild(dd);pk.appendChild(cl)}
-  pk.querySelectorAll("button[data-ill]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.ill===illust?"true":"false"));
+  pk.querySelectorAll("button[data-ill]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.ill===illust?"true":"false"));});
+  const tdb=document.querySelector("#dd-fmt .dd-b");if(tdb){tdb.innerHTML=fmtLabel()+'<span class="dd-ar"></span>';document.querySelectorAll("#dd-fmt .dd-o").forEach(o=>o.setAttribute("aria-selected",(o.dataset.k===fmt&&(o.dataset.s||"")===(sub||""))?"true":"false"))}document.querySelectorAll("#seg-ill button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.ill===illust?"true":"false"));(()=>{
   let curId="b3";try{curId=cur}catch(e){}const cp=PALS.find(x=>x.id===curId)||PALS[0];pk.querySelectorAll(".dd-b").forEach(b=>{b.innerHTML='<i style="background:'+cp.c.main+'"></i>'+cp.name+'<span class="dd-ar"></span>'});pk.querySelectorAll(".dd-o").forEach(o=>o.setAttribute("aria-selected",o.dataset.id===cp.id?"true":"false"));
   pk.querySelectorAll("button[data-fmt]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.fmt===fmt?"true":"false"));
   const s=pk.querySelector(".pk-sub");s.innerHTML="";
@@ -738,18 +738,22 @@ function drawPickers(){document.querySelectorAll(".picker").forEach(pk=>{
     FMT[fmt].subs.forEach(n=>{const b=document.createElement("button");b.type="button";b.textContent=n;b.setAttribute("aria-pressed",n===sub?"true":"false");
       b.addEventListener("click",()=>{sub=(sub===n)?null:n;drawPickers();updPrompt()});c.appendChild(b)});s.appendChild(c)}
   else{const p=document.createElement("p");p.className="pk-note";p.textContent=fmt?FMT[fmt].d:PK_NOTE;s.appendChild(p)}})}
+(function(){const ddf=document.getElementById("dd-fmt");if(!ddf)return;const db=document.createElement("button");db.type="button";db.className="dd-b";db.setAttribute("aria-haspopup","listbox");const dl=document.createElement("div");dl.className="dd-l";dl.setAttribute("role","listbox");dl.hidden=true;
+  const opts=[["auto",null,"자동"],["doc",null,"문서"],["one",null,"한페이지"]].concat(FMT.one.subs.map(s=>["one",s,"한페이지 · "+s])).concat([["ppt",null,"PPT"],["card",null,"카드뉴스"]]);
+  opts.forEach(([k,s,l])=>{const o=document.createElement("button");o.type="button";o.className="dd-o";o.setAttribute("role","option");o.textContent=l;o.dataset.k=k;o.dataset.s=s||"";o.addEventListener("click",()=>{fmt=k;sub=s;dl.hidden=true;db.setAttribute("aria-expanded","false");drawPickers();updPrompt()});dl.appendChild(o)});
+  db.addEventListener("click",()=>{const o=dl.hidden;document.querySelectorAll(".dd-l").forEach(x=>x.hidden=true);if(o){const r=db.getBoundingClientRect();dl.style.left=r.left+"px";dl.style.top=(r.bottom+4)+"px";dl.style.bottom="auto";dl.style.width=Math.max(r.width,220)+"px";dl.style.maxHeight=Math.max(140,innerHeight-r.bottom-24)+"px"}dl.hidden=!o;db.setAttribute("aria-expanded",o?"true":"false")});
+  document.addEventListener("click",e=>{if(!ddf.contains(e.target))dl.hidden=true},true);
+  ddf.appendChild(db);ddf.appendChild(dl);
+  const sg=document.getElementById("seg-ill");[["none","없음"],["some","있음"],["rich","풍성"]].forEach(([k,l])=>{const b=document.createElement("button");b.type="button";b.dataset.ill=k;b.textContent=l;b.addEventListener("click",()=>{illust=k;drawPickers();updPrompt()});sg.appendChild(b)});})();
+function fmtLabel(){return fmt==="auto"?"자동":(FMT[fmt].l+(sub?" · "+sub:""))}
 drawPickers();
-function copyPrompt(done){updPrompt();const t=ap.value;const ok=()=>{say("복사됨 · AI 대화창에 붙여 넣으세요");if(done)done()};
+function copyPrompt(done){updPrompt();const t=ap.value;const ok=()=>{say("복사했습니다. 붙여넣으시면 됩니다.");if(done)done()};
   if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok).catch(()=>{try{ap.focus();ap.select();if(document.execCommand("copy")){ok();return}}catch(e){}say("아래 '작업지시문' 칸을 길게 눌러 복사")})}
   else{try{ap.focus();ap.select();if(document.execCommand("copy")){ok();return}}catch(e){}say("아래 '작업지시문' 칸을 길게 눌러 복사")}}
 document.getElementById("copyprompt").addEventListener("click",()=>copyPrompt());
-const aipop=document.getElementById("aipop"),fabai=document.getElementById("fabai");
-function setAiPop(o){aipop.hidden=!o;fabai.setAttribute("aria-expanded",o?"true":"false");if(o&&typeof setTray==="function")setTray(false)}
-fabai.addEventListener("click",()=>setAiPop(aipop.hidden));
-document.getElementById("aipopx").addEventListener("click",()=>{setAiPop(false);fabai.focus()});
-document.getElementById("copyprompt2").addEventListener("click",()=>copyPrompt(()=>setAiPop(false)));
-document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!aipop.hidden){setAiPop(false);fabai.focus()}});
-document.addEventListener("click",e=>{if(!aipop.hidden&&e.target.isConnected&&!aipop.contains(e.target)&&!fabai.contains(e.target))setAiPop(false)});
+const fabai=document.getElementById("fabai");
+function setAiPop(o){}
+fabai.addEventListener("click",()=>copyPrompt());
 function selSpec(){const r=document.createRange();r.selectNodeContents(document.getElementById("spec"));const g=getSelection();g.removeAllRanges();g.addRange(r)}
 const box=document.getElementById("pals");
 PALS.forEach(p=>{
