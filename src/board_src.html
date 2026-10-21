@@ -196,7 +196,11 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 .fab{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;display:flex;align-items:center;gap:8px;font:inherit;font-size:14px;font-weight:600;background:var(--surface);color:var(--fg);border:1px solid var(--line);border-radius:99px;padding:8px 14px 8px 8px;box-shadow:0 4px 16px rgba(0,0,0,.14);cursor:pointer}
 .fab:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .fab .dot{width:24px;height:24px;border-radius:50%;border:2px solid var(--surface);box-shadow:0 0 0 1px var(--line)}
-.tray{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(68px + env(safe-area-inset-bottom,0px));z-index:30;width:min(340px,calc(100vw - 32px));max-height:min(62vh,520px);overflow:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 32px rgba(0,0,0,.2);padding:12px;display:flex;flex-direction:column;gap:10px}
+.fab-ai{bottom:calc(68px + env(safe-area-inset-bottom,0px));padding:8px 14px 8px 10px}
+.fab-ai svg{width:22px;height:22px;flex:none}
+.aipop{width:auto;max-width:calc(100vw - 32px)}
+.aipop .ai-copy{padding:8px 20px}
+.tray{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(118px + env(safe-area-inset-bottom,0px));z-index:30;width:min(340px,calc(100vw - 32px));max-height:min(62vh,520px);overflow:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 32px rgba(0,0,0,.2);padding:12px;display:flex;flex-direction:column;gap:10px}
 .tray-h{display:flex;justify-content:space-between;align-items:center;gap:8px}
 .tray-h b{font-size:14px}
 .tray-h button{font:inherit;font-size:13px;background:none;border:0;color:var(--muted);cursor:pointer;padding:4px 6px}
@@ -406,6 +410,8 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
   </section>
 </div>
 
+<button class="fab fab-ai" type="button" id="fabai" aria-expanded="false" aria-controls="aipop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="4" width="13" height="17" rx="2"/><path d="M9 4.5V3h7v1.5"/><path d="M9.5 10h6M9.5 13.5h6M9.5 17h3.5"/></svg>AI 복사</button>
+<div class="tray aipop" id="aipop" hidden role="dialog" aria-label="AI에 붙일 글 복사"><div class="tray-h"><b>AI에 붙일 글 복사</b><button type="button" id="aipopx">닫기</button></div><div class="ai-row"><div class="seg" id="seg-make2" role="group" aria-label="만들 것"></div><button type="button" class="ai-copy" id="copyprompt2">복사</button></div><p class="tray-note">지금 보는 색과 규격서 링크가 들어갑니다. AI 대화창에 붙이고 제목·내용만 적으면 됩니다.</p></div>
 <button class="fab" type="button" id="fab" aria-expanded="false" aria-controls="tray"><span class="dot" id="fabdot"></span><span id="fabname">색 바꾸기</span></button>
 <div class="tray" id="tray" hidden role="dialog" aria-label="색 조합 고르기"><div class="tray-h"><b>색 조합</b><button type="button" id="trayx">닫기</button></div><div class="seg" role="group" aria-label="스타일" id="seg-t"></div><div class="tray-f"><span>글꼴</span><div class="seg" role="group" aria-label="글꼴" id="segf-t"></div></div><p class="tray-note">맑은 고딕은 윈도 전용이라 여기서는 미리 볼 수 없습니다. 남이 고칠 PPT·Word 파일에만 씁니다.</p><div class="tabs" role="group" aria-label="목록 거르기" id="ttabs"></div><div class="tlist" id="tlist"></div></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -474,10 +480,19 @@ function updPrompt(p){if(!p)return;
   if(!aiEdited){ap.value="https://github.com/eugene-shin9/bambi-paper-stash\n이 규격서대로 "+p.name+" 색, "+aiStyle()+" 스타일로 만들어 줘.\n만들 것: "+make+"\n제목: \n내용: \n";return}
   ap.value=ap.value.replace(/이 규격서대로 .+? 색, .+? 스타일로/,"이 규격서대로 "+p.name+" 색, "+aiStyle()+" 스타일로").replace(/만들 것: .*/,"만들 것: "+make)}
 ap.addEventListener("input",()=>{aiEdited=true});
-MAKE.forEach(([v,l])=>{const b=document.createElement("button");b.type="button";b.dataset.m=v;b.textContent=l;b.setAttribute("aria-pressed",v===make?"true":"false");
-  b.addEventListener("click",()=>{make=v;segMake.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b?"true":"false"));updPrompt(lastP)});segMake.appendChild(b)});
-document.getElementById("copyprompt").addEventListener("click",()=>{const t=ap.value;
-  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(()=>say("복사됨 · AI 대화창에 붙여 넣으세요")).catch(()=>{ap.select();say("선택됨 · 길게 눌러 복사")})}else{ap.select();say("선택됨 · 길게 눌러 복사")}});
+[segMake,document.getElementById("seg-make2")].forEach(g=>MAKE.forEach(([v,l])=>{const b=document.createElement("button");b.type="button";b.dataset.m=v;b.textContent=l;b.setAttribute("aria-pressed",v===make?"true":"false");
+  b.addEventListener("click",()=>{make=v;document.querySelectorAll("button[data-m]").forEach(x=>x.setAttribute("aria-pressed",x.dataset.m===v?"true":"false"));updPrompt(lastP)});g.appendChild(b)}));
+function copyPrompt(done){const t=ap.value;const ok=()=>{say("복사됨 · AI 대화창에 붙여 넣으세요");if(done)done()};
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok).catch(()=>{try{ap.focus();ap.select();if(document.execCommand("copy")){ok();return}}catch(e){}say("아래 'AI에서 쓰기' 칸을 길게 눌러 복사")})}
+  else{try{ap.focus();ap.select();if(document.execCommand("copy")){ok();return}}catch(e){}say("아래 'AI에서 쓰기' 칸을 길게 눌러 복사")}}
+document.getElementById("copyprompt").addEventListener("click",()=>copyPrompt());
+const aipop=document.getElementById("aipop"),fabai=document.getElementById("fabai");
+function setAiPop(o){aipop.hidden=!o;fabai.setAttribute("aria-expanded",o?"true":"false");if(o&&typeof setTray==="function")setTray(false)}
+fabai.addEventListener("click",()=>setAiPop(aipop.hidden));
+document.getElementById("aipopx").addEventListener("click",()=>{setAiPop(false);fabai.focus()});
+document.getElementById("copyprompt2").addEventListener("click",()=>copyPrompt(()=>setAiPop(false)));
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!aipop.hidden){setAiPop(false);fabai.focus()}});
+document.addEventListener("click",e=>{if(!aipop.hidden&&!aipop.contains(e.target)&&!fabai.contains(e.target))setAiPop(false)});
 function selSpec(){const r=document.createRange();r.selectNodeContents(document.getElementById("spec"));const g=getSelection();g.removeAllRanges();g.addRange(r)}
 const box=document.getElementById("pals");
 PALS.forEach(p=>{
@@ -501,7 +516,7 @@ function drawTray(){tlist.innerHTML="";PALS.filter(p=>tf==="all"||MINE.includes(
   b.innerHTML='<span class="mini"><span style="background:'+p.c.main+'"></span><span style="background:'+p.c.sub+'"></span><span style="background:'+p.c.tint+'"></span><span style="background:'+p.c.point+'"></span></span>'+p.name+'<small>'+(REC[p.id]?"추천 · "+REC[p.id]:p.grp)+'</small>';
   b.addEventListener("click",()=>{cur=p.id;apply(p)});tlist.appendChild(b)})}
 [["mine","추천 5"],["all","전체 21"]].forEach(([k,l])=>{const t=document.createElement("button");t.type="button";t.id="ttab-"+k;t.textContent=l;t.setAttribute("aria-pressed",k===tf?"true":"false");t.addEventListener("click",()=>{tf=k;ttabs.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===t?"true":"false"));drawTray()});ttabs.appendChild(t)});
-function setTray(o){tray.hidden=!o;fab.setAttribute("aria-expanded",o?"true":"false");if(o)drawTray()}
+function setTray(o){tray.hidden=!o;fab.setAttribute("aria-expanded",o?"true":"false");if(o){drawTray();setAiPop(false)}}
 fab.addEventListener("click",()=>setTray(tray.hidden));
 document.getElementById("trayx").addEventListener("click",()=>{setTray(false);fab.focus()});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!tray.hidden){setTray(false);fab.focus()}});
