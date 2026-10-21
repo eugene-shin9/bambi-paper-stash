@@ -147,6 +147,7 @@ figcaption b{color:var(--fg);font-weight:600;margin-right:6px}
 .car>*{flex:0 0 100%;scroll-snap-align:start;min-width:0}
 .dots{display:flex;justify-content:center;gap:6px;margin-top:4px}
 .dots button{width:8px;height:8px;border-radius:50%;border:0;padding:0;background:var(--line);cursor:pointer}
+.carw{position:relative}.carw .arr{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--fg);box-shadow:0 2px 8px rgba(0,0,0,.14);display:none;align-items:center;justify-content:center;cursor:pointer;z-index:2;font-size:18px;line-height:1;padding:0;opacity:0;transition:opacity .15s}.carw .arr.l{left:-6px}.carw .arr.r{right:-6px}.carw .arr[disabled],.carw.single .arr{opacity:0!important;pointer-events:none}@media (hover:hover) and (pointer:fine){.carw .arr{display:flex}.carw:hover .arr{opacity:.95}.car{cursor:grab}.car.drag{cursor:grabbing;scroll-snap-type:none;user-select:none}}
 .dots button[aria-current=true]{background:var(--p-main)}
 .dpage{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-content:start;align-items:start}
 @media (min-width:720px){.dpage{grid-template-columns:repeat(4,minmax(0,1fr))}}
@@ -307,7 +308,8 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 @media (max-width:560px){.links a{flex-direction:column;gap:2px}.ld{text-align:left}}
 
 /* 떠 있는 색 선택 */
-.fab{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;display:flex;align-items:center;gap:8px;font:inherit;font-size:14px;font-weight:600;background:var(--surface);color:var(--fg);border:1px solid var(--line);border-radius:99px;padding:8px 14px 8px 8px;box-shadow:0 4px 16px rgba(0,0,0,.14);cursor:pointer}
+.fab{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;display:flex;align-items:stretch;font:inherit;font-size:14px;font-weight:600;background:var(--surface);color:var(--fg);border:1px solid var(--line);border-radius:99px;padding:0;box-shadow:0 4px 16px rgba(0,0,0,.14);overflow:hidden}
+.fab button{font:inherit;font-weight:600;color:var(--fg);background:none;border:0;cursor:pointer;display:flex;align-items:center;gap:8px}.fab-a{padding:8px 12px 8px 8px}.fab-b{padding:8px 14px 8px 12px;color:var(--p-main)}.fab-sep{width:1px;background:var(--line);margin:8px 0}.fab button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
 .fab:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .fab .dot{width:24px;height:24px;border-radius:50%;border:2px solid var(--surface);box-shadow:0 0 0 1px var(--line)}
 .fab-ai{padding:8px 14px 8px 10px}.fab-low.fab-low{bottom:calc(16px + env(safe-area-inset-bottom,0px))}.fab-up.fab-up{bottom:calc(68px + env(safe-area-inset-bottom,0px))}
@@ -315,7 +317,7 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 .tray.tray{left:0;right:0;bottom:0;width:auto;max-width:none;height:35vh;max-height:35vh;z-index:32;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;border-radius:16px 16px 0 0;border-bottom:0;padding:16px calc(16px + env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) calc(16px + env(safe-area-inset-left,0px));box-shadow:0 -8px 28px rgba(0,0,0,.22);animation:sheetup .18s ease-out}
 @keyframes sheetup{from{transform:translateY(100%)}to{transform:none}}
 @media (prefers-reduced-motion:reduce){.tray.tray{animation:none}}
-@media (min-width:720px){.tray.tray{left:auto;right:calc(16px + env(safe-area-inset-right,0px));width:420px}}
+@media (min-width:720px){.tray.tray{left:auto;right:calc(16px + env(safe-area-inset-right,0px));width:440px;height:auto;max-height:min(70vh,640px);bottom:calc(68px + env(safe-area-inset-bottom,0px));border-radius:16px;border-bottom:1px solid var(--line);animation:none}.tray.tray .tgrp{flex-direction:column;gap:8px}.tray.tray .tgl{writing-mode:horizontal-tb;height:auto!important;border-left:0;border-bottom:1px solid var(--line);padding:0 0 4px;letter-spacing:.04em;text-align:left;align-self:stretch}.tray.tray .tgb .trow-l>span{width:50px}body:has(#tray:not([hidden])) .toast.toast{bottom:auto;top:16px;left:50%;transform:translateX(-50%)}}
 .ai-copy.wide{width:100%;padding:12px}
 
 .picker{display:flex;flex-direction:column;gap:12px;min-width:0}
@@ -869,8 +871,7 @@ body:has(#tray:not([hidden])) .toast{bottom:calc(35vh + 14px + env(safe-area-ins
   </section>
 </div>
 
-<button class="fab fab-ai fab-up" type="button" id="fabai" aria-label="복사"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="4" width="13" height="17" rx="2"/><path d="M9 4.5V3h7v1.5"/><path d="M9.5 10h6M9.5 13.5h6M9.5 17h3.5"/></svg>복사</button>
-<button class="fab fab-low" type="button" id="fab" aria-expanded="false" aria-controls="tray"><span class="dot" id="fabdot"></span><span id="fabname">색 바꾸기</span></button>
+<div class="fab fab-low" id="fab"><button type="button" class="fab-a" id="fabopen" aria-expanded="false" aria-controls="tray"><span class="dot" id="fabdot"></span><span id="fabname">색 바꾸기</span></button><span class="fab-sep" aria-hidden="true"></span><button type="button" class="fab-b" id="fabai">복사</button></div>
 <div class="tray" id="tray" hidden role="dialog" aria-label="설정"><div class="tgrp"><div class="tgl">지시문 설정</div><div class="tgb"><div class="trow-l"><span>작업</span><div class="dd" id="dd-fmt"></div><button type="button" id="traycopy" class="tray-copy">복사</button><button type="button" id="trayx" class="tray-x">닫기</button></div><div class="trow-l" id="row-sub" hidden><span>형식</span><div class="dd" id="dd-sub"></div></div><div class="trow-l"><span>일러스트</span><div class="seg" role="group" aria-label="일러스트" id="seg-ill"></div></div></div></div><div class="tgrp"><div class="tgl">미리보기</div><div class="tgb"><div class="trow-l"><span>스타일</span><div class="seg" role="group" aria-label="스타일" id="seg-t"></div></div><div class="trow-l"><span>서체</span><div class="seg" role="group" aria-label="서체" id="segf-t"></div></div><div class="trow-l tl-top"><span>색상</span><div class="tlist" id="tlist"></div></div></div></div></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
@@ -1017,8 +1018,8 @@ function drawTray(){tlist.innerHTML="";trayOrder().forEach((p,i)=>{const b=docum
 }
 let lockY=0;function lockBody(o){if(o){lockY=scrollY;document.body.style.position="fixed";document.body.style.top=(-lockY)+"px";document.body.style.left="0";document.body.style.right="0"}else{document.body.style.position="";document.body.style.top="";document.body.style.left="";document.body.style.right="";scrollTo(0,lockY)}}
 function fitList(){document.querySelectorAll(".tgrp").forEach(g=>{const l=g.querySelector(".tgl"),cr=g.querySelector(".tl-top");l.style.height=(cr?cr.offsetTop-g.offsetTop+30:g.querySelector(".tgb").offsetHeight)+"px"})}
-function setTray(o){tray.hidden=!o;fab.setAttribute("aria-expanded",o?"true":"false");if(o){drawTray();setAiPop(false);requestAnimationFrame(fitList)}}
-fab.addEventListener("click",()=>setTray(tray.hidden));
+function setTray(o){tray.hidden=!o;document.getElementById("fabopen").setAttribute("aria-expanded",o?"true":"false");if(o){drawTray();setAiPop(false);requestAnimationFrame(fitList)}}
+document.getElementById("fabopen").addEventListener("click",()=>setTray(tray.hidden));
 document.getElementById("trayx").addEventListener("click",()=>{setTray(false);fab.focus()});
 document.getElementById("traycopy").addEventListener("click",()=>copyPrompt());
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!tray.hidden){setTray(false);fab.focus()}});
@@ -1036,9 +1037,18 @@ try{const v=localStorage.getItem("sty");if(v==="light"||v==="base")sty=v}catch(e
 try{const f=localStorage.getItem("fnt");if(f&&FONTS[f])fnt=f}catch(e){}
 lastP=PALS.find(p=>p.id===cur);root.style.setProperty("--p-font",FONTS[fnt].css);document.querySelectorAll(".seg button[data-f]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.f===fnt?"true":"false"));setSty(sty);
 function carousel(el){const dots=document.createElement("div");dots.className="dots";el.after(dots);
+  const w=document.createElement("div");w.className="carw";el.parentNode.insertBefore(w,el);w.appendChild(el);
+  const mk=(c,t,d)=>{const a=document.createElement("button");a.type="button";a.className="arr "+c;a.textContent=t;a.setAttribute("aria-label",d>0?"다음":"이전");a.addEventListener("click",()=>{const i=Math.round(el.scrollLeft/(el.clientWidth+16));el.scrollTo({left:(i+d)*(el.clientWidth+16),behavior:"smooth"})});w.appendChild(a);return a};
+  const al=mk("l","‹",-1),ar=mk("r","›",1);
+  let dx=0,sx=0,sl=0,drag=false;
+  el.addEventListener("pointerdown",e=>{if(e.pointerType!=="mouse")return;drag=true;dx=0;sx=e.clientX;sl=el.scrollLeft;el.classList.add("drag");el.setPointerCapture(e.pointerId)});
+  el.addEventListener("pointermove",e=>{if(!drag)return;dx=e.clientX-sx;el.scrollLeft=sl-dx});
+  const end=e=>{if(!drag)return;drag=false;el.classList.remove("drag");const i=Math.round(el.scrollLeft/(el.clientWidth+16));el.scrollTo({left:i*(el.clientWidth+16),behavior:"smooth"})};
+  el.addEventListener("pointerup",end);el.addEventListener("pointercancel",end);
+  el.addEventListener("click",e=>{if(Math.abs(dx)>5){e.preventDefault();e.stopPropagation();dx=0}},true);
   const n=()=>Math.max(1,Math.round((el.scrollWidth+16)/(el.clientWidth+16)));
-  const upd=()=>{const i=Math.round(el.scrollLeft/(el.clientWidth+16));[...dots.children].forEach((b,j)=>b.setAttribute("aria-current",j===i?"true":"false"))};
-  const draw=()=>{const k=n();el.classList.toggle("single",k<2);dots.innerHTML="";dots.hidden=k<2;for(let i=0;i<k;i++){const b=document.createElement("button");b.type="button";b.setAttribute("aria-label",(i+1)+"쪽");b.addEventListener("click",()=>el.scrollTo({left:i*(el.clientWidth+16),behavior:"smooth"}));dots.appendChild(b)}upd()};
+  const upd=()=>{const i=Math.round(el.scrollLeft/(el.clientWidth+16));[...dots.children].forEach((b,j)=>b.setAttribute("aria-current",j===i?"true":"false"));al.disabled=i<=0;ar.disabled=i>=n()-1};
+  const draw=()=>{const k=n();el.classList.toggle("single",k<2);w.classList.toggle("single",k<2);dots.innerHTML="";dots.hidden=k<2;for(let i=0;i<k;i++){const b=document.createElement("button");b.type="button";b.setAttribute("aria-label",(i+1)+"쪽");b.addEventListener("click",()=>el.scrollTo({left:i*(el.clientWidth+16),behavior:"smooth"}));dots.appendChild(b)}upd()};
   el.addEventListener("scroll",upd,{passive:true});addEventListener("resize",draw);draw()}
 document.querySelectorAll(".car").forEach(carousel);
 </script>
