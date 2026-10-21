@@ -418,7 +418,7 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 
 [이 규격서를 읽는 AI에게]
 - 사용자가 이 페이지 링크나 이 글을 주고 자료를 부탁하면, 아래 규칙대로 결과물을 직접 만들어 준다.
-- PPT·Word·이미지·HTML 파일이 필요하면 직접 만들어 건넨다. 사용자에게 양식을 구해 오거나 내려받으라고 안내하지 않는다.
+- 결과물은 파일로 건넨다: 한페이지·문서는 PDF, PPT는 PPTX, 카드뉴스는 PNG. 코드(파이썬 등)로 그려서 만들고, 그림 생성기(이미지 생성 모델)로는 만들지 않는다. 사용자에게 양식을 구해 오거나 내려받으라고 안내하지 않는다.
 - 색은 아래 21조합 중 하나만 쓴다. 색을 말하지 않으면 용도에 맞는 추천 5색에서 고르고, 고른 색 이름을 한 줄로 밝힌다.
 - 스타일을 말하지 않으면 '기본'으로 만든다.
 - 만들 것을 말하지 않으면 내용에 맞는 양식을 고르고 한 줄로 밝힌다. 한페이지 형식(배너형·안내형·타임라인형·포스터형)을 말하지 않으면 내용에 맞게 고른다.
@@ -667,10 +667,10 @@ const ap=document.getElementById("aiprompt");
 const PK_NOTE="지금 보는 색과 규격서 링크가 들어갑니다. 만들 것을 고르고 복사한 뒤, AI 대화창에서 내용만 적으면 됩니다.";
 function aiStyle(){return sty==="light"?"가볍게":"기본"}
 function makeStr(){return fmt?FMT[fmt].make+(sub?" · "+sub:""):""}
-function colorLine(p){return "이 규격서대로 "+p.name+" 색, "+aiStyle()+" 스타일로 만들어 줘."}
+function colorLine(p){return "이 규격서대로 "+p.name+" 색, "+aiStyle()+" 스타일로 파일(PDF)로 만들어 줘. 그림 생성기로 만들지 말 것."}
 function updPrompt(p){p=p||lastP;if(!p)return;const m=makeStr();
   if(!aiEdited){ap.value="https://github.com/eugene-shin9/bambi-paper-stash\n"+colorLine(p)+"\n"+(m?"만들 것: "+m+"\n":"")+"내용: \n";return}
-  let v=ap.value.replace(/이 규격서대로 .+? 색, .+? 스타일로 만들어 줘\./,colorLine(p));
+  let v=ap.value.replace(/이 규격서대로 .+? 색, .+? 스타일로 파일\(PDF\)로 만들어 줘\. 그림 생성기로 만들지 말 것\./,colorLine(p));
   if(/^만들 것: .*$/m.test(v))v=m?v.replace(/^만들 것: .*$/m,"만들 것: "+m):v.replace(/^만들 것: .*\n?/m,"");
   else if(m)v=v.replace(colorLine(p),colorLine(p)+"\n만들 것: "+m);
   ap.value=v}

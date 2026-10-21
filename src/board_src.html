@@ -492,10 +492,10 @@ const ap=document.getElementById("aiprompt");
 const PK_NOTE="지금 보는 색과 규격서 링크가 들어갑니다. 만들 것을 고르고 복사한 뒤, AI 대화창에서 내용만 적으면 됩니다.";
 function aiStyle(){return sty==="light"?"가볍게":"기본"}
 function makeStr(){return fmt?FMT[fmt].make+(sub?" · "+sub:""):""}
-function colorLine(p){return "이 규격서대로 "+p.name+" 색, "+aiStyle()+" 스타일로 만들어 줘."}
+function colorLine(p){return "이 규격서대로 "+p.name+" 색, "+aiStyle()+" 스타일로 파일(PDF)로 만들어 줘. 그림 생성기로 만들지 말 것."}
 function updPrompt(p){p=p||lastP;if(!p)return;const m=makeStr();
   if(!aiEdited){ap.value="https://github.com/eugene-shin9/bambi-paper-stash\n"+colorLine(p)+"\n"+(m?"만들 것: "+m+"\n":"")+"내용: \n";return}
-  let v=ap.value.replace(/이 규격서대로 .+? 색, .+? 스타일로 만들어 줘\./,colorLine(p));
+  let v=ap.value.replace(/이 규격서대로 .+? 색, .+? 스타일로 파일\(PDF\)로 만들어 줘\. 그림 생성기로 만들지 말 것\./,colorLine(p));
   if(/^만들 것: .*$/m.test(v))v=m?v.replace(/^만들 것: .*$/m,"만들 것: "+m):v.replace(/^만들 것: .*\n?/m,"");
   else if(m)v=v.replace(colorLine(p),colorLine(p)+"\n만들 것: "+m);
   ap.value=v}
