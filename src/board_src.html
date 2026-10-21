@@ -305,7 +305,7 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 .fab .dot{width:24px;height:24px;border-radius:50%;border:2px solid var(--surface);box-shadow:0 0 0 1px var(--line)}
 .fab-ai{padding:8px 14px 8px 10px}.fab-low.fab-low{bottom:calc(16px + env(safe-area-inset-bottom,0px))}.fab-up.fab-up{bottom:calc(68px + env(safe-area-inset-bottom,0px))}
 .fab-ai svg{width:22px;height:22px;flex:none}
-.tray.tray{left:0;right:0;bottom:0;width:auto;max-width:none;height:40vh;max-height:40vh;z-index:32;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;border-radius:16px 16px 0 0;border-bottom:0;padding:16px calc(16px + env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) calc(16px + env(safe-area-inset-left,0px));box-shadow:0 -8px 28px rgba(0,0,0,.22);animation:sheetup .18s ease-out}
+.tray.tray{left:0;right:0;bottom:0;width:auto;max-width:none;height:35vh;max-height:35vh;z-index:32;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;border-radius:16px 16px 0 0;border-bottom:0;padding:16px calc(16px + env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) calc(16px + env(safe-area-inset-left,0px));box-shadow:0 -8px 28px rgba(0,0,0,.22);animation:sheetup .18s ease-out}
 @keyframes sheetup{from{transform:translateY(100%)}to{transform:none}}
 @media (prefers-reduced-motion:reduce){.tray.tray{animation:none}}
 @media (min-width:720px){.tray.tray{left:auto;right:calc(16px + env(safe-area-inset-right,0px));width:420px}}
@@ -336,13 +336,15 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 .trow .mini{display:flex;border-radius:4px;overflow:hidden;width:64px;height:18px;flex:none;border:1px solid var(--line)}
 .trow .mini span{flex:1}.trow .mini span:first-child{flex:2.4}
 .trow small{margin-left:auto;font-size:11px;color:var(--muted)}
-.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(76px + env(safe-area-inset-bottom,0px));background:var(--fg);color:var(--bg);padding:8px 14px;border-radius:6px;font-size:13px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:31}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(76px + env(safe-area-inset-bottom,0px));background:var(--fg);color:var(--bg);padding:8px 14px;border-radius:6px;font-size:13px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:40}
+body:has(#tray:not([hidden])) .toast{bottom:calc(35vh + 14px + env(safe-area-inset-bottom,0px))}
 .toast.on{opacity:1}
 .toast{white-space:pre-line;text-align:center;line-height:1.45}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 [hidden]{display:none!important}
 .pick{display:flex;flex-wrap:wrap;gap:10px}
 .tray-f{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tgrp{display:flex;gap:10px;align-items:stretch}.tgl{flex:none;writing-mode:vertical-rl;font-size:11px;color:var(--muted);letter-spacing:.08em;border-left:2px solid var(--line);padding:2px 0 2px 5px;line-height:1}.tgb{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:10px}.tgb .trow-l>span{width:54px;letter-spacing:-.02em}
 .trow-l{display:flex;align-items:center;gap:10px}.trow-l>span{width:50px;flex:none;font-size:12px;color:var(--muted)}.trow-l .seg{width:auto;align-self:auto}.trow-l .seg button{font-size:12px;padding:5px 9px}.trow-l.tl-top{align-items:flex-start;flex:none}.trow-l.tl-top .tlist{flex:1 1 auto;overflow:visible;max-height:none}.trow-l.tl-top>span{padding-top:8px}.tray-x{font:inherit;font-size:13px;background:none;border:0;color:var(--muted);cursor:pointer;padding:4px 6px}.tray-copy{margin-left:auto;font:inherit;font-size:12px;font-weight:600;background:var(--p-main);color:#fff;border:0;border-radius:99px;padding:5px 11px;cursor:pointer}
 .tray-f .seg{width:auto;align-self:auto}.tray-f .seg button{font-size:12px;padding:5px 9px}
 .tray-f span{font-size:12px;color:var(--muted)}
@@ -647,7 +649,7 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 
 <button class="fab fab-ai fab-up" type="button" id="fabai" aria-label="복사"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="4" width="13" height="17" rx="2"/><path d="M9 4.5V3h7v1.5"/><path d="M9.5 10h6M9.5 13.5h6M9.5 17h3.5"/></svg>복사</button>
 <button class="fab fab-low" type="button" id="fab" aria-expanded="false" aria-controls="tray"><span class="dot" id="fabdot"></span><span id="fabname">색 바꾸기</span></button>
-<div class="tray" id="tray" hidden role="dialog" aria-label="설정"><div class="tray-sub">지시문에만 반영</div><div class="trow-l"><span>작업</span><div class="dd" id="dd-fmt"></div><button type="button" id="traycopy" class="tray-copy">복사</button><button type="button" id="trayx" class="tray-x">닫기</button></div><div class="trow-l" id="row-sub" hidden><span>형식</span><div class="dd" id="dd-sub"></div></div><div class="trow-l"><span>일러스트</span><div class="seg" role="group" aria-label="일러스트" id="seg-ill"></div></div><div class="tray-sub">미리보기에도 반영</div><div class="trow-l"><span>스타일</span><div class="seg" role="group" aria-label="스타일" id="seg-t"></div></div><div class="trow-l"><span>서체</span><div class="seg" role="group" aria-label="서체" id="segf-t"></div></div><div class="trow-l tl-top"><span>색상</span><div class="tlist" id="tlist"></div></div></div>
+<div class="tray" id="tray" hidden role="dialog" aria-label="설정"><div class="tgrp"><div class="tgl">지시문 설정</div><div class="tgb"><div class="trow-l"><span>작업</span><div class="dd" id="dd-fmt"></div><button type="button" id="traycopy" class="tray-copy">복사</button><button type="button" id="trayx" class="tray-x">닫기</button></div><div class="trow-l" id="row-sub" hidden><span>형식</span><div class="dd" id="dd-sub"></div></div><div class="trow-l"><span>일러스트</span><div class="seg" role="group" aria-label="일러스트" id="seg-ill"></div></div></div></div><div class="tgrp"><div class="tgl">미리보기 반영</div><div class="tgb"><div class="trow-l"><span>스타일</span><div class="seg" role="group" aria-label="스타일" id="seg-t"></div></div><div class="trow-l"><span>서체</span><div class="seg" role="group" aria-label="서체" id="segf-t"></div></div><div class="trow-l tl-top"><span>색상</span><div class="tlist" id="tlist"></div></div></div></div></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
