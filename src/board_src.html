@@ -99,11 +99,15 @@ details[open] .chev::after{font-size:13px}
 .lite .nums div{background:none;border-top:.5cqw solid var(--p-main);padding:2cqw 0 0}
 .lite .box,.lite .d-box{background:none;border-top:1px solid var(--p-line);padding-left:0;padding-right:0}
 /* 아이콘 */
-.ic-board{display:flex;flex-direction:column;gap:12px}
-.paper{border-radius:8px;border:1px solid var(--line);padding:18px 16px;display:flex;overflow-x:auto;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;gap:14px;scrollbar-width:thin;
+.ic-board>.paper{box-sizing:border-box}
+.paper{border-radius:8px;border:1px solid var(--line);padding:18px 16px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px 8px;
   background-color:var(--kraft);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .28 0 0 0 0 .2 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
 .paper.dark{background-color:var(--p-main);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .18 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
-.ic{flex:none;width:68px;scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:11px;color:#5A4B3A}
+.ic{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:11px;color:#5A4B3A}
+.paper .brand{grid-column:1/-1;background:rgba(255,255,255,.45);border-color:rgba(0,0,0,.08);padding:18px 16px;margin-top:4px}
+.paper.dark .brand{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.28);flex-direction:column;text-align:center;gap:6px}
+.paper.dark .brand b{color:#fff}.paper.dark .brand span{color:var(--p-tint)}
+@media (min-width:720px){.paper{grid-template-columns:repeat(6,minmax(0,1fr))}}
 .paper.dark .ic{color:var(--p-tint)}
 .ic svg{width:56px;height:56px}
 .brand{display:flex;align-items:center;gap:14px;padding:26px 22px;border-radius:8px;border:1px solid var(--line);background-color:var(--kraft)}
@@ -119,12 +123,21 @@ figcaption{font-size:13px;color:var(--muted)}
 figcaption b{color:var(--fg);font-weight:600;margin-right:6px}
 .shot{width:100%;border:1px solid var(--line);border-radius:4px;background-color:#fff;background-repeat:no-repeat;transition:opacity .15s}
 .shot.s169{aspect-ratio:16/9}.shot.a4{aspect-ratio:210/297}.shot.sq{aspect-ratio:1}
+.car{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;gap:16px}
+.car::-webkit-scrollbar{display:none}
+.car>*{flex:0 0 100%;scroll-snap-align:start;min-width:0}
+.dots{display:flex;justify-content:center;gap:6px;margin-top:4px}
+.dots button{width:8px;height:8px;border-radius:50%;border:0;padding:0;background:var(--line);cursor:pointer}
+.dots button[aria-current=true]{background:var(--p-main)}
+.dpage{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media (min-width:720px){.dpage{grid-template-columns:repeat(4,minmax(0,1fr))}}
 .shots{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
 @media (max-width:820px){.shots{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .cards4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-.cards3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.cards3.car>figure{flex-basis:100%}
+@media (min-width:720px){.cards3.car>figure{flex-basis:calc((100% - 32px)/3)}}
 @media (max-width:820px){.cards4{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:560px){.cards3{grid-template-columns:minmax(0,1fr);max-width:400px}}
+
 .page,.slide{font-family:var(--p-font);container-type:inline-size;background:var(--p-bg);color:var(--p-ink);border:1px solid var(--line);border-radius:4px;overflow:hidden;position:relative}
 .page{aspect-ratio:210/297}.slide{aspect-ratio:16/9}
 .in{position:absolute;inset:0;padding:7.26cqw;display:flex;flex-direction:column}
@@ -198,7 +211,7 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 .fab .dot{width:24px;height:24px;border-radius:50%;border:2px solid var(--surface);box-shadow:0 0 0 1px var(--line)}
 .fab-ai{bottom:calc(68px + env(safe-area-inset-bottom,0px));padding:8px 14px 8px 10px}
 .fab-ai svg{width:22px;height:22px;flex:none}
-.tray.tray{left:0;right:0;bottom:0;width:auto;max-width:none;max-height:min(80vh,640px);z-index:32;border-radius:16px 16px 0 0;border-bottom:0;padding:16px calc(16px + env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) calc(16px + env(safe-area-inset-left,0px));box-shadow:0 -8px 28px rgba(0,0,0,.22);animation:sheetup .18s ease-out}
+.tray.tray{left:0;right:0;bottom:0;width:auto;max-width:none;max-height:min(56vh,460px);z-index:32;border-radius:16px 16px 0 0;border-bottom:0;padding:16px calc(16px + env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) calc(16px + env(safe-area-inset-left,0px));box-shadow:0 -8px 28px rgba(0,0,0,.22);animation:sheetup .18s ease-out}
 @keyframes sheetup{from{transform:translateY(100%)}to{transform:none}}
 @media (prefers-reduced-motion:reduce){.tray.tray{animation:none}}
 @media (min-width:720px){.tray.tray{left:auto;right:calc(16px + env(safe-area-inset-right,0px));width:420px}}
@@ -212,14 +225,14 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 .chips button{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:99px;padding:6px 14px;cursor:pointer}
 .chips button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--bg);font-weight:600}
 .chips button:focus-visible,.picker .seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.tray{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(118px + env(safe-area-inset-bottom,0px));z-index:30;width:min(340px,calc(100vw - 32px));max-height:min(62vh,520px);overflow:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 32px rgba(0,0,0,.2);padding:12px;display:flex;flex-direction:column;gap:10px}
+.tray{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(118px + env(safe-area-inset-bottom,0px));z-index:30;width:min(340px,calc(100vw - 32px));max-height:min(56vh,460px);overflow:hidden;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 32px rgba(0,0,0,.2);padding:12px;display:flex;flex-direction:column;gap:10px}
 .tray-h{display:flex;justify-content:space-between;align-items:center;gap:8px}
 .tray-h b{font-size:14px}
 .tray-h button{font:inherit;font-size:13px;background:none;border:0;color:var(--muted);cursor:pointer;padding:4px 6px}
 .tray .tabs button{font-size:12px;padding:3px 9px}
-.tlist{display:flex;flex-direction:column;gap:2px}
+.tlist{display:flex;flex-direction:column;gap:1px;overflow-y:auto;min-height:0;flex:1 1 auto;-webkit-overflow-scrolling:touch}
 .tray-sub{font-size:11px;color:var(--muted);padding:8px 8px 2px;letter-spacing:.02em}
-.trow{display:flex;align-items:center;gap:10px;font:inherit;font-size:14px;background:none;border:0;border-radius:8px;color:var(--fg);padding:7px 8px;cursor:pointer;text-align:left;width:100%}
+.trow{display:flex;align-items:center;gap:10px;font:inherit;font-size:14px;background:none;border:0;border-radius:8px;color:var(--fg);padding:5px 8px;cursor:pointer;text-align:left;width:100%}
 .trow:hover{background:var(--bg)}
 .trow:focus-visible{outline:2px solid var(--accent)}
 .trow[aria-pressed="true"]{background:var(--bg);font-weight:600}
@@ -232,6 +245,7 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 [hidden]{display:none!important}
 .pick{display:flex;flex-wrap:wrap;gap:10px}
 .tray-f{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tray-f .seg{width:auto;align-self:auto}.tray-f .seg button{font-size:12px;padding:5px 9px}
 .tray-f span{font-size:12px;color:var(--muted)}
 .tray-note{margin:0;font-size:12px;color:var(--muted)}
 .page,.slide,.shot{max-width:100%}
@@ -301,7 +315,7 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
         <div class="g"><div><span>대상</span><b>해당하는 분</b></div><div><span>방법</span><b>온라인 신청</b></div><div><span>문의</span><b>담당 부서</b></div><div><span>기간</span><b>0. 0. ~ 0. 00.</b></div></div>
       </div></div><figcaption><b>포스터형</b>마감·게시판</figcaption></figure>
     </div>
-    <div class="cards3">
+    <div class="cards3 car" aria-label="카드뉴스 3장">
       <figure><div class="shot sq" data-k="sq" data-i="0" role="img" aria-label="카드뉴스 표지"></div><figcaption><b>1</b>표지</figcaption></figure>
       <figure><div class="shot sq" data-k="sq" data-i="1" role="img" aria-label="카드뉴스 내용"></div><figcaption><b>2</b>내용</figcaption></figure>
       <figure><div class="shot sq" data-k="sq" data-i="2" role="img" aria-label="카드뉴스 마무리"></div><figcaption><b>3</b>마무리</figcaption></figure>
@@ -311,11 +325,11 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
   <section class="sec" id="ppt" aria-labelledby="h-ppt">
     <div class="sec-head">
       <h2 id="h-ppt">PPT 기본틀</h2>
-      <p>16:9 발표용 10장입니다. 21색 모두 기본·가볍게 두 가지로 만들어 두었습니다. 가볍게는 색 면과 패널을 빼고 선과 글자색만 남긴 버전입니다. 글꼴을 바꾸면 화면도 그 글꼴로 바뀝니다.</p>
+      <p>16:9 발표용 12장입니다. 네 장씩 넘겨 보세요. 21색 모두 기본·가볍게 두 가지로 만들어 두었습니다. 가볍게는 색 면과 패널을 빼고 선과 글자색만 남긴 버전입니다. 글꼴을 바꾸면 화면도 그 글꼴로 바뀝니다.</p>
       <p class="now" id="now-ppt"></p>
     </div>
     <div class="pick"><div class="seg" role="group" aria-label="스타일" id="seg-p"></div><div class="seg" role="group" aria-label="글꼴" id="segf-p"></div></div>
-    <div class="shots" id="deck"></div>
+    <div class="car" id="deck" aria-label="PPT 12장"></div>
   </section>
 
   <section class="sec" id="doc" aria-labelledby="h-doc">
@@ -348,14 +362,13 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
   <section class="sec" id="icon" aria-labelledby="h-icon">
     <div class="sec-head">
       <h2 id="h-icon">도장 느낌 아이콘 12개</h2>
-      <p>가장자리가 살짝 거칠고 잉크가 군데군데 빠진 도장 느낌으로 직접 그렸습니다. 옆으로 밀어 보세요. 한페이지와 카드뉴스 틀에 이미 넣어 두었습니다.</p>
+      <p>가장자리가 살짝 거칠고 잉크가 군데군데 빠진 도장 느낌으로 직접 그렸습니다. 옆으로 넘기면 진한 바탕 판이 나옵니다. 한페이지와 카드뉴스 틀에 이미 넣어 두었습니다.</p>
       <p class="now" id="now-ic"></p>
     </div>
-    <div class="ic-board">
+    <div class="ic-board car" aria-label="아이콘 2장">
       <div class="paper" id="ic-light" aria-label="크라프트지 위 아이콘"></div>
       <div class="paper dark" id="ic-dark" aria-label="주색 바탕 위 흰 아이콘"></div>
     </div>
-    <div class="brand"><svg viewBox="0 0 100 100" aria-hidden="true" id="brand-ic"></svg><div><b>OFFICE NAME</b><span>로고 자리 · 아이콘 + 이름 조합 예시</span></div></div>
   </section>
 
   <section class="sec" id="color" aria-labelledby="h-color">
@@ -428,7 +441,7 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 <button class="fab fab-ai" type="button" id="fabai" aria-expanded="false" aria-controls="aipop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="4" width="13" height="17" rx="2"/><path d="M9 4.5V3h7v1.5"/><path d="M9.5 10h6M9.5 13.5h6M9.5 17h3.5"/></svg>작업지시문 복사</button>
 <div class="tray aipop" id="aipop" hidden role="dialog" aria-label="작업지시문 복사하기"><div class="tray-h"><b>작업지시문 복사하기</b><button type="button" id="aipopx">닫기</button></div><div class="picker" id="pk-pop"></div><button type="button" class="ai-copy wide" id="copyprompt2">작업지시문 복사하기</button></div>
 <button class="fab" type="button" id="fab" aria-expanded="false" aria-controls="tray"><span class="dot" id="fabdot"></span><span id="fabname">색 바꾸기</span></button>
-<div class="tray" id="tray" hidden role="dialog" aria-label="색 조합 고르기"><div class="tray-h"><b>색 조합</b><button type="button" id="trayx">닫기</button></div><div class="seg" role="group" aria-label="스타일" id="seg-t"></div><div class="tray-f"><span>글꼴</span><div class="seg" role="group" aria-label="글꼴" id="segf-t"></div></div><p class="tray-note">맑은 고딕은 윈도 전용이라 여기서는 미리 볼 수 없습니다. 남이 고칠 PPT·Word 파일에만 씁니다.</p><div class="tlist" id="tlist"></div></div>
+<div class="tray" id="tray" hidden role="dialog" aria-label="색 조합 고르기"><div class="tray-h"><b>색 조합</b><button type="button" id="trayx">닫기</button></div><div class="tray-f"><div class="seg" role="group" aria-label="스타일" id="seg-t"></div><div class="seg" role="group" aria-label="글꼴" id="segf-t"></div></div><div class="tlist" id="tlist"></div></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
@@ -465,10 +478,10 @@ function ratio(a,b){const x=lum(a),y=lum(b);return (Math.max(x,y)+.05)/(Math.min
 let tT;function say(m){toast.textContent=m;toast.classList.add("on");clearTimeout(tT);tT=setTimeout(()=>toast.classList.remove("on"),1400)}
 function copy(v){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(v).then(()=>say(v+" 복사됨")).catch(()=>say(v+" (길게 눌러 복사)"))}else say(v+" (길게 눌러 복사)")}
 function icon(k,main,acc){const i=ICONS[k];return '<g filter="url(#stamp)"><path fill="'+main+'" fill-rule="evenodd" d="'+i.m+'"/>'+(i.a?'<path fill="'+acc+'" fill-rule="evenodd" d="'+i.a+'"/>':'')+'</g>'}
-const SN=["표지","목차","간지","핵심 한 문장","주요 수치","비교 2단","표","개조식 본문","막대 차트","마무리"];
+const SN=["표지","목차","간지","핵심 한 문장","주요 수치","비교 2단","표","개조식 본문","막대 차트","진행 단계","사진·설명","마무리"];
 const deck=document.getElementById("deck");
-SN.forEach((n,i)=>{const f=document.createElement("figure");f.innerHTML='<div class="shot s169" data-k="deck" data-i="'+i+'" role="img" aria-label="'+n+' 슬라이드"></div><figcaption><b>'+(i+1)+'</b>'+n+'</figcaption>';deck.appendChild(f)});
-const COUNT={deck:10,a4:2,sq:3};
+SN.forEach((n,i)=>{if(i%4===0){const pg=document.createElement("div");pg.className="dpage";deck.appendChild(pg)}const f=document.createElement("figure");f.innerHTML='<div class="shot s169" data-k="deck" data-i="'+i+'" role="img" aria-label="'+n+' 슬라이드"></div><figcaption><b>'+(i+1)+'</b>'+n+'</figcaption>';deck.lastChild.appendChild(f)});
+const COUNT={deck:12,a4:2,sq:3};
 function apply(p){
   for(const k in p.c) root.style.setProperty("--p-"+k,p.c[k]);
   const eb=(lum(p.c.point)>lum(p.c.main)&&ratio(p.c.point,p.c.main)>=3)?p.c.point:p.c.tint; root.style.setProperty("--eb",eb);
@@ -480,15 +493,14 @@ function apply(p){
   document.querySelectorAll(".shot").forEach(el=>{const k=el.dataset.k,i=+el.dataset.i,n=COUNT[k];
     el.style.backgroundImage='url("prev/'+FONTS[fnt].dir+p.id+'_'+sty+'_'+k+'.jpg")';el.style.backgroundSize="100% "+(n*100)+"%";el.style.backgroundPosition="0 "+(n>1?(i/(n-1))*100:0)+"%"});
   const keys=Object.keys(ICONS);
-  document.getElementById("ic-light").innerHTML=keys.map(k=>'<div class="ic"><svg viewBox="0 0 100 100" aria-hidden="true">'+icon(k,p.c.main,p.c.point)+'</svg>'+ICONS[k].n+'</div>').join("");
-  document.getElementById("ic-dark").innerHTML=keys.map(k=>'<div class="ic"><svg viewBox="0 0 100 100" aria-hidden="true">'+icon(k,"#FFFFFF","#FFFFFF")+'</svg>'+ICONS[k].n+'</div>').join("");
-  document.getElementById("brand-ic").innerHTML=icon("moon",p.c.main,p.c.point);
+  document.getElementById("ic-light").innerHTML=keys.map(k=>'<div class="ic"><svg viewBox="0 0 100 100" aria-hidden="true">'+icon(k,p.c.main,p.c.point)+'</svg>'+ICONS[k].n+'</div>').join("")+'<div class="brand"><svg viewBox="0 0 100 100" aria-hidden="true">'+icon("moon",p.c.main,p.c.point)+'</svg><div><b>OFFICE NAME</b><span>아이콘 + 이름 가로 조합</span></div></div>';
+  document.getElementById("ic-dark").innerHTML=keys.map(k=>'<div class="ic"><svg viewBox="0 0 100 100" aria-hidden="true">'+icon(k,"#FFFFFF","#FFFFFF")+'</svg>'+ICONS[k].n+'</div>').join("")+'<div class="brand"><svg viewBox="0 0 100 100" aria-hidden="true">'+icon("moon","#FFFFFF","#FFFFFF")+'</svg><div><b>OFFICE NAME</b><span>진한 바탕 · 세로 조합</span></div></div>';
   updPrompt(p);
   try{localStorage.setItem("pal",p.id)}catch(e){}
 }
 document.getElementById("copyspec").addEventListener("click",()=>{const t=document.getElementById("spec").textContent;
   if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(()=>say("규격서 복사됨")).catch(()=>{selSpec();say("선택됨 · 길게 눌러 복사")})}else{selSpec();say("선택됨 · 길게 눌러 복사")}});
-const FMT={doc:{l:"문서",make:"보고서 문서(A4)",d:"A4 보고서 · 표지, 개조식 본문, 표"},one:{l:"한페이지",make:"한페이지(A4)",subs:["배너형","안내형","타임라인형","포스터형"]},ppt:{l:"PPT",make:"PPT 10장",d:"16:9 · 표지부터 마무리까지 10장"},card:{l:"카드뉴스",make:"카드뉴스 3장",d:"1:1 · 표지, 내용, 마무리 3장"}};
+const FMT={doc:{l:"문서",make:"보고서 문서(A4)",d:"A4 보고서 · 표지, 개조식 본문, 표"},one:{l:"한페이지",make:"한페이지(A4)",subs:["배너형","안내형","타임라인형","포스터형"]},ppt:{l:"PPT",make:"PPT 12장",d:"16:9 · 표지부터 마무리까지 12장"},card:{l:"카드뉴스",make:"카드뉴스 3장",d:"1:1 · 표지, 내용, 마무리 3장"}};
 let fmt=null,sub=null,aiEdited=false;
 const ap=document.getElementById("aiprompt");
 const PK_NOTE="지금 보는 색과 규격서 링크가 들어갑니다. 만들 것을 고르고 복사한 뒤, AI 대화창에서 내용만 적으면 됩니다.";
@@ -546,11 +558,12 @@ let tf="mine",cur="b3",sty="base",fnt="pre";
 const FONTS={pre:{n:"Pretendard",dir:"pre/",css:'"Pretendard","Noto Sans KR",sans-serif'},noto:{n:"Noto Sans KR",dir:"",css:'"Noto Sans KR",sans-serif'},suit:{n:"SUIT",dir:"suit/",css:'"SUIT","Noto Sans KR",sans-serif'}};
 function hue(h){const r=parseInt(h.substr(1,2),16)/255,g=parseInt(h.substr(3,2),16)/255,b=parseInt(h.substr(5,2),16)/255,M=Math.max(r,g,b),m=Math.min(r,g,b),d=M-m;if(d<.08)return 999;let x=M===r?((g-b)/d)%6:M===g?(b-r)/d+2:(r-g)/d+4;x*=60;return x<0?x+360:x}
 const TOP=["lav","b3","sage","forest","wine"];
-function trayOrder(){const rest=PALS.filter(p=>!TOP.includes(p.id)).sort((a,b)=>hue(a.c.main)-hue(b.c.main));return TOP.map(id=>PALS.find(p=>p.id===id)).concat(rest)}
-function drawTray(){tlist.innerHTML="";trayOrder().forEach((p,i)=>{if(i===0||i===TOP.length){const h=document.createElement("div");h.className="tray-sub";h.textContent=i===0?"추천":"그 외 · 색상환 순";tlist.appendChild(h)}const b=document.createElement("button");b.type="button";b.className="trow";b.id="trow-"+p.id;b.dataset.id=p.id;b.setAttribute("aria-pressed",p.id===cur?"true":"false");
+const REST=["dusty","steel","slate","mocha","olive","rose","terra","royal","teal","emerald","cobalt","ink","espresso","blue","orange","red"];
+function trayOrder(){return TOP.concat(REST).map(id=>PALS.find(p=>p.id===id))}
+function drawTray(){tlist.innerHTML="";trayOrder().forEach((p,i)=>{if(i===0||i===TOP.length){const h=document.createElement("div");h.className="tray-sub";h.textContent=i===0?"추천":"그 외";tlist.appendChild(h)}const b=document.createElement("button");b.type="button";b.className="trow";b.id="trow-"+p.id;b.dataset.id=p.id;b.setAttribute("aria-pressed",p.id===cur?"true":"false");
   b.innerHTML='<span class="mini"><span style="background:'+p.c.main+'"></span><span style="background:'+p.c.sub+'"></span><span style="background:'+p.c.tint+'"></span><span style="background:'+p.c.point+'"></span></span>'+p.name+'<small>'+(REC[p.id]?"추천 · "+REC[p.id]:p.grp)+'</small>';
   b.addEventListener("click",()=>{cur=p.id;apply(p)});tlist.appendChild(b)});
-  const rows=tlist.children;if(rows.length>8){const h=rows[7].offsetTop+rows[7].offsetHeight-rows[0].offsetTop;tlist.style.maxHeight=h+"px";tlist.style.overflowY="auto"}}
+}
 function setTray(o){tray.hidden=!o;fab.setAttribute("aria-expanded",o?"true":"false");if(o){drawTray();setAiPop(false)}}
 fab.addEventListener("click",()=>setTray(tray.hidden));
 document.getElementById("trayx").addEventListener("click",()=>{setTray(false);fab.focus()});
@@ -568,4 +581,10 @@ try{const s=localStorage.getItem("pal");if(s&&PALS.some(p=>p.id===s))cur=s}catch
 try{const v=localStorage.getItem("sty");if(v==="light"||v==="base")sty=v}catch(e){}
 try{const f=localStorage.getItem("fnt");if(f&&FONTS[f])fnt=f}catch(e){}
 lastP=PALS.find(p=>p.id===cur);root.style.setProperty("--p-font",FONTS[fnt].css);document.querySelectorAll(".seg button[data-f]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.f===fnt?"true":"false"));setSty(sty);
+function carousel(el){const dots=document.createElement("div");dots.className="dots";el.after(dots);
+  const n=()=>Math.max(1,Math.round((el.scrollWidth+16)/(el.clientWidth+16)));
+  const upd=()=>{const i=Math.round(el.scrollLeft/(el.clientWidth+16));[...dots.children].forEach((b,j)=>b.setAttribute("aria-current",j===i?"true":"false"))};
+  const draw=()=>{const k=n();dots.innerHTML="";dots.hidden=k<2;for(let i=0;i<k;i++){const b=document.createElement("button");b.type="button";b.setAttribute("aria-label",(i+1)+"쪽");b.addEventListener("click",()=>el.scrollTo({left:i*(el.clientWidth+16),behavior:"smooth"}));dots.appendChild(b)}upd()};
+  el.addEventListener("scroll",upd,{passive:true});addEventListener("resize",draw);draw()}
+document.querySelectorAll(".car").forEach(carousel);
 </script>
