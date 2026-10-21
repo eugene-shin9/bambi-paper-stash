@@ -273,14 +273,14 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 <div class="wrap">
   <header>
     <h1>밤비의 서류뭉치</h1>
-    <p class="lead">오른쪽 아래 '색 바꾸기'로 색과 스타일(기본·가볍게)을 고르면 아이콘, 원페이지, PPT 틀, 문서 예시가 전부 같이 바뀝니다. 다른 AI에서 쓰려면 'AI에서 쓰기'의 글을 복사해 붙이면 됩니다.</p>
-    <nav aria-label="바로가기"><a href="#icon">도장 아이콘</a><a href="#card">원페이지</a><a href="#ppt">PPT 틀</a><a href="#doc">문서</a><a href="#color" id="navcolor">색 조합</a><a href="#rule">규칙</a><a href="#ai">AI에서 쓰기</a><a href="#link">더 볼 곳</a></nav>
+    <p class="lead">오른쪽 아래 '색 바꾸기'로 색과 스타일(기본·가볍게)을 고르면 아이콘, 한페이지, PPT 틀, 문서 예시가 전부 같이 바뀝니다. 다른 AI에서 쓰려면 'AI에서 쓰기'의 글을 복사해 붙이면 됩니다.</p>
+    <nav aria-label="바로가기"><a href="#icon">도장 아이콘</a><a href="#card">한페이지</a><a href="#ppt">PPT 틀</a><a href="#doc">문서</a><a href="#color" id="navcolor">색 조합</a><a href="#rule">규칙</a><a href="#ai">AI에서 쓰기</a><a href="#link">더 볼 곳</a></nav>
   </header>
 
   <section class="sec" id="icon" aria-labelledby="h-icon">
     <div class="sec-head">
       <h2 id="h-icon">도장 느낌 아이콘 12개</h2>
-      <p>가장자리가 살짝 거칠고 잉크가 군데군데 빠진 도장 느낌으로 직접 그렸습니다. 원페이지와 카드뉴스 틀에 이미 넣어 두었습니다.</p>
+      <p>가장자리가 살짝 거칠고 잉크가 군데군데 빠진 도장 느낌으로 직접 그렸습니다. 한페이지와 카드뉴스 틀에 이미 넣어 두었습니다.</p>
       <p class="now" id="now-ic"></p>
     </div>
     <div class="ic-board">
@@ -292,13 +292,13 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 
   <section class="sec" id="card" aria-labelledby="h-card">
     <div class="sec-head">
-      <h2 id="h-card">원페이지</h2>
+      <h2 id="h-card">한페이지</h2>
       <p>A4 한 장짜리 4가지 형식입니다. 아래 셋은 카드뉴스 1:1 세 장입니다.</p>
       <p class="now" id="now-card"></p>
     </div>
     <div class="cards4">
-      <figure><div class="shot a4" data-k="a4" data-i="0" role="img" aria-label="원페이지 배너형"></div><figcaption><b>배너형</b>모집·행사</figcaption></figure>
-      <figure><div class="shot a4" data-k="a4" data-i="1" role="img" aria-label="원페이지 안내형"></div><figcaption><b>안내형</b>세무·절차 안내</figcaption></figure>
+      <figure><div class="shot a4" data-k="a4" data-i="0" role="img" aria-label="한페이지 배너형"></div><figcaption><b>배너형</b>모집·행사</figcaption></figure>
+      <figure><div class="shot a4" data-k="a4" data-i="1" role="img" aria-label="한페이지 안내형"></div><figcaption><b>안내형</b>세무·절차 안내</figcaption></figure>
     
       <figure><div class="page"><div class="in">
         <div class="eyebrow">0000 상반기</div>
@@ -414,19 +414,21 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
       <p class="ai-note">AI가 링크를 열 수 없다고 하면 아래 '규격서 복사'로 규격서 전문을 함께 붙여 넣으세요.</p>
     </div>
     <div class="spec-h"><h3>AI용 규격서</h3><button type="button" id="copyspec">규격서 복사</button></div>
-    <pre class="spec" id="spec" tabindex="0" aria-label="AI용 규격서 전문">밤비의 서류뭉치 · AI용 규격서 (2026-10-21 판)
+    <pre class="spec" id="spec" tabindex="0" aria-label="AI용 규격서 전문">밤비의 서류뭉치 · AI용 규격서 (2026-10-21 2판)
 
 [이 규격서를 읽는 AI에게]
 - 사용자가 이 페이지 링크나 이 글을 주고 자료를 부탁하면, 아래 규칙대로 결과물을 직접 만들어 준다.
 - PPT·Word·이미지·HTML 파일이 필요하면 직접 만들어 건넨다. 사용자에게 양식을 구해 오거나 내려받으라고 안내하지 않는다.
 - 색은 아래 21조합 중 하나만 쓴다. 색을 말하지 않으면 용도에 맞는 추천 5색에서 고르고, 고른 색 이름을 한 줄로 밝힌다.
 - 스타일을 말하지 않으면 '기본'으로 만든다.
-- 만들 것을 말하지 않으면 내용에 맞는 양식을 고르고 한 줄로 밝힌다. 원페이지 형식(배너형·안내형·타임라인형·포스터형)을 말하지 않으면 내용에 맞게 고른다.
+- 만들 것을 말하지 않으면 내용에 맞는 양식을 고르고 한 줄로 밝힌다. 한페이지 형식(배너형·안내형·타임라인형·포스터형)을 말하지 않으면 내용에 맞게 고른다.
 - 제목을 주지 않으면 내용에서 15자 안팎으로 직접 뽑는다.
-- 사용자가 준 내용만 채운다. 날짜·금액·연락처처럼 받지 않은 사실은 지어내지 말고 '0000' 같은 빈칸으로 둔다.
+- 사용자가 준 내용만 채운다. 날짜·금액·연락처처럼 받지 않은 사실은 지어내지 말고 '0000' 같은 빈칸으로 둔다. 준 내용을 넘어서는 설명·일정·대상·조건은 추측해 넣지 않는다. 머리말·부제 같은 짧은 꾸밈 문구만 더해도 된다.
+- 여백을 남긴다. 한 장을 빡빡하게 채우려고 글을 늘리거나 칸을 더 만들지 않는다. 내용이 적으면 적은 대로 두고 요소 사이 간격을 넓힌다.
 
 1. 공통 규칙
-- 서체 1종: Pretendard, 없으면 Noto Sans KR. PDF·이미지·카드뉴스·웹 결과물은 이 순서로 쓴다. 남이 열어 고칠 PPT·Word 원본만 맑은 고딕으로 만든다(받는 PC에 글꼴이 없으면 줄바꿈과 정렬이 틀어지므로). 굵기와 크기로만 구분한다.
+- 서체 1종: Pretendard. 글꼴 파일은 이 저장소 fonts/ 폴더에 있다(Regular·Medium·SemiBold·Bold TTF). PDF·이미지·카드뉴스는 만들기 전에 아래 주소에서 내려받아 등록하고, 결과물 파일 안에 글꼴을 포함(임베드)한다. 내려받을 수 없으면 Noto Sans KR, 그것도 없으면 설치된 한글 고딕을 쓰고 어떤 글꼴을 썼는지 한 줄로 밝힌다. 명조·바탕 계열과 글꼴 미포함 PDF는 안 된다. 남이 열어 고칠 PPT·Word 원본만 맑은 고딕으로 만든다(받는 PC에 글꼴이 없으면 줄바꿈과 정렬이 틀어지므로). 굵기와 크기로만 구분한다.
+  글꼴 주소: https://raw.githubusercontent.com/eugene-shin9/bambi-paper-stash/main/fonts/Pretendard-Regular.ttf (Medium·SemiBold·Bold는 파일명만 바꾼다)
 - 색은 6역할: 주색·보조·옅은 바탕·글자·선·포인트. 바탕은 흰색 #FFFFFF.
 - 면적 비율: 흰색과 옅은 바탕 70, 주색 20, 포인트 10. 포인트는 한 장에 한두 곳(날짜·금액·머리말)만.
 - 주색 바탕 위 흰 글자는 아래 색 목록의 '흰 글자 대비'를 따른다.
@@ -462,11 +464,11 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
   ⑧ 개조식 본문: 2단계까지
   ⑨ 막대 차트: 주색 한 가지, 값 표시, 세로축 숨김, 가는 가로 격자
   ⑩ 마무리: 요약 3줄, 표지와 같은 바탕
-[원페이지 A4] 210×297mm · 배너형·안내형·타임라인형·포스터형
+[한페이지 A4] 210×297mm · 배너형·안내형·타임라인형·포스터형
 - 사방 여백 15mm, 내용 폭 180mm.
 - 배너형(모집·행사): 위쪽 주색 바탕에 머리말 16pt · 제목 34pt 두 줄 · 흰 아이콘(약 46mm). 그 아래 흰 패널(모서리 둥글게, 안쪽 여백 10mm). 패널 안은 2단(단 사이 10mm) × 3줄, 칸마다 라벨(작은 둥근 꼬리표 11pt) + 본문 13pt. 두 단의 줄 시작 높이를 맞춘다. 맨 아래 가는 선과 문의 11pt.
 - 안내형(세무·절차): 머리말 15pt 보조색, 제목 32pt, 요약 13pt, 핵심 3칸(같은 폭, 칸 사이 5mm, 라벨 11pt + 값 13pt 주색), 진행 순서(주색 원 안 번호 + 한 줄 13pt), 준비할 것 칸, 맨 아래 문의 10pt.
-- 타임라인형(일정·날짜가 핵심): 머리말 15pt 보조색, 제목 32pt. 그 아래 세로 타임라인: 왼쪽에 가는 세로선(선 색), 단계마다 지름 5mm 원(주색 테두리, 지금 단계만 주색으로 채움). 단계마다 날짜 12pt 보조색 굵게 → 단계명 17pt 굵게 → 설명 12pt 보조색, 단계 사이 간격 같게. 맨 아래 옅은 바탕 문의 칸(라벨 주색).
+- 타임라인형(일정·날짜가 핵심): 머리말 15pt 보조색, 제목 32pt. 그 아래 세로 타임라인: 왼쪽에 가는 세로선(선 색), 단계마다 지름 5mm 원(주색 테두리, 지금 단계만 주색으로 채움). 단계마다 날짜 12pt 보조색 굵게 → 단계명 17pt 굵게 → 설명 12pt 보조색, 단계 사이 간격 같게. 맨 아래 옅은 바탕 문의 칸(라벨 주색). 쓰지 않는 것: 위쪽 색 띠, 단계마다 카드 상자, 원 전부 채우기, 날짜와 단계명을 옆으로 나란히 놓기.
 - 포스터형(마감·게시판): 전체 주색 바탕. 머리말 15pt 옅은 바탕색, 큰 숫자(날짜·금액·인원) 140pt 굵게 진한 바탕 머리말 색, 그 아래 한마디 38pt 두 줄. 맨 아래 2단 × 2줄(대상·방법·문의·기간), 라벨 12pt 옅은 바탕색 + 값 15pt, 줄마다 흰색 30% 가는 선. 가볍게는 흰 바탕에 큰 숫자를 주색으로.
 [카드뉴스 1:1] 1080×1080px
 - 사방 여백 104px.
@@ -659,7 +661,7 @@ function apply(p){
 }
 document.getElementById("copyspec").addEventListener("click",()=>{const t=document.getElementById("spec").textContent;
   if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(()=>say("규격서 복사됨")).catch(()=>{selSpec();say("선택됨 · 길게 눌러 복사")})}else{selSpec();say("선택됨 · 길게 눌러 복사")}});
-const FMT={doc:{l:"문서",make:"보고서 문서(A4)",d:"A4 보고서 · 표지, 개조식 본문, 표"},one:{l:"원페이지",make:"원페이지(A4)",subs:["배너형","안내형","타임라인형","포스터형"]},ppt:{l:"PPT",make:"PPT 10장",d:"16:9 · 표지부터 마무리까지 10장"},card:{l:"카드뉴스",make:"카드뉴스 3장",d:"1:1 · 표지, 내용, 마무리 3장"}};
+const FMT={doc:{l:"문서",make:"보고서 문서(A4)",d:"A4 보고서 · 표지, 개조식 본문, 표"},one:{l:"한페이지",make:"한페이지(A4)",subs:["배너형","안내형","타임라인형","포스터형"]},ppt:{l:"PPT",make:"PPT 10장",d:"16:9 · 표지부터 마무리까지 10장"},card:{l:"카드뉴스",make:"카드뉴스 3장",d:"1:1 · 표지, 내용, 마무리 3장"}};
 let fmt=null,sub=null,aiEdited=false;
 const ap=document.getElementById("aiprompt");
 const PK_NOTE="지금 보는 색과 규격서 링크가 들어갑니다. 만들 것을 고르고 복사한 뒤, AI 대화창에서 내용만 적으면 됩니다.";
@@ -680,7 +682,7 @@ function drawPickers(){document.querySelectorAll(".picker").forEach(pk=>{
     const s=document.createElement("div");s.className="pk-sub";pk.appendChild(seg);pk.appendChild(s)}
   pk.querySelectorAll("button[data-fmt]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.fmt===fmt?"true":"false"));
   const s=pk.querySelector(".pk-sub");s.innerHTML="";
-  if(fmt&&FMT[fmt].subs){const c=document.createElement("div");c.className="chips";c.setAttribute("role","group");c.setAttribute("aria-label","원페이지 형식");
+  if(fmt&&FMT[fmt].subs){const c=document.createElement("div");c.className="chips";c.setAttribute("role","group");c.setAttribute("aria-label","한페이지 형식");
     FMT[fmt].subs.forEach(n=>{const b=document.createElement("button");b.type="button";b.textContent=n;b.setAttribute("aria-pressed",n===sub?"true":"false");
       b.addEventListener("click",()=>{sub=(sub===n)?null:n;drawPickers();updPrompt()});c.appendChild(b)});s.appendChild(c)}
   else{const p=document.createElement("p");p.className="pk-note";p.textContent=fmt?FMT[fmt].d:PK_NOTE;s.appendChild(p)}})}
