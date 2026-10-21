@@ -236,6 +236,13 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 .spec-h{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
 .spec-h button{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--accent);background:var(--surface);color:var(--accent);border-radius:8px;padding:6px 14px;cursor:pointer}
 .spec-h button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ai-box{display:flex;flex-direction:column;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;min-width:0}
+.ai-row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.ai-box textarea{font-family:var(--f-body);font-size:16px;line-height:1.6;background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:12px;min-height:250px;resize:vertical;width:100%;box-sizing:border-box;margin:0}
+.ai-box textarea:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.ai-copy{font:inherit;font-size:15px;font-weight:700;border:0;background:var(--accent);color:var(--bg);border-radius:8px;padding:9px 22px;cursor:pointer}
+.ai-copy:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ai-note{margin:0;font-size:13px;color:var(--muted)}
 .spec{font-family:var(--f-body);font-size:13px;line-height:1.65;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;margin:0;max-height:460px;overflow:auto;white-space:pre-wrap;word-break:break-word;color:var(--fg)}
 </style>
 
@@ -250,7 +257,7 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
 <div class="wrap">
   <header>
     <h1>밤비의 서류뭉치</h1>
-    <p class="lead">오른쪽 아래 '색 바꾸기'로 색과 스타일(기본·가볍게)을 고르면 아이콘, 카드형, PPT 틀, 문서 예시가 전부 같이 바뀝니다. 다른 AI에서 쓰려면 이 링크를 붙이고 만들 것을 말하면 됩니다.</p>
+    <p class="lead">오른쪽 아래 '색 바꾸기'로 색과 스타일(기본·가볍게)을 고르면 아이콘, 카드형, PPT 틀, 문서 예시가 전부 같이 바뀝니다. 다른 AI에서 쓰려면 'AI에서 쓰기'의 글을 복사해 붙이면 됩니다.</p>
     <nav aria-label="바로가기"><a href="#icon">도장 아이콘</a><a href="#card">카드형</a><a href="#ppt">PPT 틀</a><a href="#doc">문서</a><a href="#color" id="navcolor">색 조합</a><a href="#rule">규칙</a><a href="#ai">AI에서 쓰기</a><a href="#link">더 볼 곳</a></nav>
   </header>
 
@@ -382,14 +389,12 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
   <section class="sec" id="ai" aria-labelledby="h-ai">
     <div class="sec-head">
       <h2 id="h-ai">AI에서 쓰기</h2>
-      <p>다른 AI는 이 페이지(claude.ai) 링크를 열지 못합니다. 대신 아래 규격서 링크를 주면 같은 색과 배치로 자료를 만듭니다.</p>
-      <p class="doclink"><a href="https://github.com/eugene-shin9/bambi-paper-stash" target="_blank" rel="noopener">규격서 링크 (GitHub)</a><span>https://github.com/eugene-shin9/bambi-paper-stash</span></p>
+      <p>아래 글을 복사해 AI 대화창에 붙이고, 제목과 내용만 채워 보내면 됩니다. 규격서 링크와 지금 보는 색·스타일은 미리 들어가 있습니다.</p>
     </div>
-    <div class="ai-how">
-      <div class="ai-step"><h3>1. 링크를 붙이고 말하기</h3><pre class="say">[규격서 링크]
-이 규격서대로, 청먹 색 기본 스타일로 교육 안내 A4 한 장 만들어 줘. 내용은 아래와 같아.</pre></div>
-      <div class="ai-step"><h3>2. 색·스타일만 바꿔 말하기</h3><p>"딥틸 가볍게로", "와인 색 PPT 10장으로"처럼 색 이름과 양식 이름을 그대로 쓰면 됩니다.</p></div>
-      <div class="ai-step"><h3>3. 링크를 못 읽는다고 하면</h3><p>'규격서 복사'를 눌러 대화창에 붙여 넣고 같은 말을 하면 됩니다.</p></div>
+    <div class="ai-box">
+      <div class="ai-row"><div class="seg" id="seg-make" role="group" aria-label="만들 것"></div><button type="button" class="ai-copy" id="copyprompt">복사</button></div>
+      <textarea id="aiprompt" aria-label="AI에 붙여 넣을 글" spellcheck="false"></textarea>
+      <p class="ai-note">AI가 링크를 열 수 없다고 하면 아래 '규격서 복사'로 규격서 전문을 함께 붙여 넣으세요.</p>
     </div>
     <div class="spec-h"><h3>AI용 규격서</h3><button type="button" id="copyspec">규격서 복사</button></div>
     <pre class="spec" id="spec" tabindex="0" aria-label="AI용 규격서 전문">밤비의 서류뭉치 · AI용 규격서 (2026-10-21 판)
@@ -626,10 +631,22 @@ function apply(p){
   document.getElementById("ic-light").innerHTML=keys.map(k=>'<div class="ic"><svg viewBox="0 0 100 100" aria-hidden="true">'+icon(k,p.c.main,p.c.point)+'</svg>'+ICONS[k].n+'</div>').join("");
   document.getElementById("ic-dark").innerHTML=keys.map(k=>'<div class="ic"><svg viewBox="0 0 100 100" aria-hidden="true">'+icon(k,"#FFFFFF","#FFFFFF")+'</svg>'+ICONS[k].n+'</div>').join("");
   document.getElementById("brand-ic").innerHTML=icon("moon",p.c.main,p.c.point);
+  updPrompt(p);
   try{localStorage.setItem("pal",p.id)}catch(e){}
 }
 document.getElementById("copyspec").addEventListener("click",()=>{const t=document.getElementById("spec").textContent;
   if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(()=>say("규격서 복사됨")).catch(()=>{selSpec();say("선택됨 · 길게 눌러 복사")})}else{selSpec();say("선택됨 · 길게 눌러 복사")}});
+const MAKE=[["A4 안내문 한 장","A4"],["PPT 10장","PPT"],["카드뉴스 3장","카드뉴스"]];let make=MAKE[0][0],aiEdited=false;
+const ap=document.getElementById("aiprompt"),segMake=document.getElementById("seg-make");
+function aiStyle(){return sty==="light"?"가볍게":"기본"}
+function updPrompt(p){if(!p)return;
+  if(!aiEdited){ap.value="https://github.com/eugene-shin9/bambi-paper-stash\n이 규격서대로 "+p.name+" 색, "+aiStyle()+" 스타일로 만들어 줘.\n만들 것: "+make+"\n제목: \n내용: \n";return}
+  ap.value=ap.value.replace(/이 규격서대로 .+? 색, .+? 스타일로/,"이 규격서대로 "+p.name+" 색, "+aiStyle()+" 스타일로").replace(/만들 것: .*/,"만들 것: "+make)}
+ap.addEventListener("input",()=>{aiEdited=true});
+MAKE.forEach(([v,l])=>{const b=document.createElement("button");b.type="button";b.dataset.m=v;b.textContent=l;b.setAttribute("aria-pressed",v===make?"true":"false");
+  b.addEventListener("click",()=>{make=v;segMake.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b?"true":"false"));updPrompt(lastP)});segMake.appendChild(b)});
+document.getElementById("copyprompt").addEventListener("click",()=>{const t=ap.value;
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(()=>say("복사됨 · AI 대화창에 붙여 넣으세요")).catch(()=>{ap.select();say("선택됨 · 길게 눌러 복사")})}else{ap.select();say("선택됨 · 길게 눌러 복사")}});
 function selSpec(){const r=document.createRange();r.selectNodeContents(document.getElementById("spec"));const g=getSelection();g.removeAllRanges();g.addRange(r)}
 const box=document.getElementById("pals");
 PALS.forEach(p=>{
