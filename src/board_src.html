@@ -94,17 +94,12 @@ details[open] .chev::after{font-size:13px}
 .lite .cd .g,.lite .cd .g div{border-color:var(--p-line)}
 .lite .cd .g span{color:var(--p-sub)}
 .page .in,.slide .in{z-index:1}
-.rich .cd::before,.rich .cov::before,.rich .cardc::before{content:"";position:absolute;right:-16cqw;top:-18cqw;width:58cqw;height:58cqw;border-radius:50%;background:var(--p-sub);opacity:.45;z-index:0}
-.rich .cd::after,.rich .cov::after{content:"";position:absolute;right:-8cqw;bottom:-12cqw;width:32cqw;height:32cqw;border-radius:50%;background:var(--eb);opacity:.35;z-index:0}
-.rich .page:not(.cd) .in>.eyebrow:first-child{color:var(--p-main)}
-.rich .box,.rich .d-box,.rich .d-ov{background:var(--p-main);color:#fff}.rich .box b,.rich .d-box b{color:var(--eb)}.rich .d-ov span{color:var(--p-tint)}
-.rich .k3 div{background:var(--p-main);color:#fff}.rich .k3 span{color:var(--p-tint)}.rich .k3 b{color:#fff}
-.rich .nums div{background:var(--p-main);color:#fff}.rich .nums b{color:var(--eb)}.rich .nums span{color:var(--p-tint)}
-.rich .d-cover{border-left:0;background:var(--p-main);color:#fff;padding:6cqw 6cqw 7cqw;border-radius:2cqw;margin-top:14cqw}.rich .d-cover .k,.rich .d-cover .d-sub{color:var(--p-tint)}
-.rich .tb div.h{background:var(--p-tint);padding-left:1.5cqw;padding-right:1.5cqw}
-.rich .st i{background:var(--eb);color:var(--p-ink)}
-.rich .tl div.on::before{background:var(--eb);border-color:var(--eb)}
-.rich .g2 div:first-child b,.rich .row b{color:var(--p-main)}
+.rich .cd::before,.rich .cov::before{content:"";position:absolute;right:-18cqw;top:-22cqw;width:62cqw;height:62cqw;border-radius:50%;background:var(--p-sub);opacity:.4;z-index:0}
+.rich .page:not(.cd) .tt::after{content:"";display:block;width:7cqw;height:.8cqw;background:var(--eb);margin-top:2.2cqw}
+.rich .st i,.rich .tl div.on::before{background:var(--eb);border-color:var(--eb)}
+.rich .k3 span,.rich .g2 span{color:var(--p-main)}
+.rich .d-cover{background:var(--p-tint);border-left:0;padding:6cqw;border-radius:1.6cqw;margin-top:14cqw}
+.rich .d-toc i,.rich .d-h{color:var(--p-main)}
 .lite .cov{background:var(--p-bg);color:var(--p-ink)}
 .lite .cov .eyebrow{color:var(--p-main)}
 .lite .cov .ft{color:var(--p-sub)}
@@ -222,6 +217,33 @@ sup{font-size:.65em;color:var(--p-main);vertical-align:super;line-height:0}
 .page .k3{margin-top:4cqw}.page .tl{margin-top:3.2cqw;gap:1.7cqw}.page .tl b{font-size:3cqw}.page .tl span{font-size:2.2cqw}.page .tl p{font-size:2.1cqw}.page .tl div{gap:.1cqw}.page .box{padding:2.2cqw 3cqw}.page .k3{margin-top:3cqw}.page .k3 div{padding:1.8cqw 2cqw}
 .cd .st{margin-top:5cqw;font-size:2.7cqw;color:var(--p-bg)}.cd .st i{background:var(--p-bg);color:var(--p-main)}
 .lite .cd .st{color:var(--p-ink)}.lite .cd .st i{background:var(--p-main);color:#fff}
+.pr .pr-top{text-align:center;font-size:3.2cqw;color:var(--p-sub);letter-spacing:.2em;margin-top:22cqw}
+.pr .pr-title{text-align:center;font-size:6.2cqw;font-weight:700;line-height:1.35;margin-top:4cqw;padding:5cqw 0;border-top:.5cqw solid var(--p-main);border-bottom:.5cqw solid var(--p-main)}
+.pr .pr-sub{text-align:center;font-size:3cqw;color:var(--p-sub);margin-top:3cqw}
+.pr .pr-info{margin:auto 0 6cqw;width:100%;border-collapse:collapse;font-size:2.8cqw}
+.pr .pr-info th{width:28%;background:var(--p-tint);color:var(--p-main);font-weight:600;padding:2cqw;border:1px solid var(--p-line)}
+.pr .pr-info td{padding:2cqw;border:1px solid var(--p-line)}
+.pr .pr-hd{font-size:2.2cqw;color:var(--p-sub);text-align:right;margin-bottom:5cqw}
+.pr .pr-toc-t{text-align:center;font-size:5.6cqw;font-weight:700;letter-spacing:.3em;margin-top:1cqw}
+.pr .pr-toc-t small{display:block;font-size:2.2cqw;letter-spacing:.2em;color:var(--p-sub);font-weight:400;margin-top:1cqw}
+.pr .pr-toc{margin-top:4cqw;border-top:.5cqw solid var(--p-main);border-bottom:.5cqw solid var(--p-main)}
+.pr .pr-toc>div{display:flex;align-items:center;gap:4cqw;padding:1.7cqw 0;border-bottom:1px solid var(--p-line)}
+.pr .pr-toc>div:last-child{border-bottom:0}
+.pr .pr-toc i{font-style:normal;width:9cqw;height:6cqw;background:var(--p-tint);color:var(--p-main);font-weight:700;font-size:3cqw;display:flex;align-items:center;justify-content:center;flex:none}
+.pr .pr-toc>div>div{line-height:1.25}.pr .pr-toc b{display:block;font-size:3.1cqw}.pr .pr-toc span{font-size:2.1cqw;color:var(--p-sub)}
+.pr .pr-toc em{margin-left:auto;font-style:normal;font-size:3cqw;font-variant-numeric:tabular-nums}
+.pr .pr-sec{display:flex;align-items:center;gap:3cqw;background:var(--p-tint);font-size:3.6cqw;font-weight:700;margin-top:4cqw;padding-right:3cqw}
+.pr .pr-sec:first-of-type{margin-top:0}
+.pr .pr-sec i{font-style:normal;width:9cqw;height:7.6cqw;background:var(--p-main);color:#fff;display:flex;align-items:center;justify-content:center;font-size:3cqw;flex:none}
+.pr .pr-p{font-size:2.7cqw;line-height:1.65;margin-top:2.6cqw;text-align:justify}
+.pr .pr-3{display:grid;grid-template-columns:repeat(3,1fr);gap:2cqw;margin-top:3cqw}
+.pr .pr-3 div{background:var(--p-tint);padding:2.4cqw;font-size:2.4cqw;line-height:1.5}
+.pr .pr-3 b{display:block;color:var(--p-main);font-size:2.8cqw;margin-bottom:1cqw;text-align:center;border-bottom:1px solid var(--p-line);padding-bottom:1cqw}
+.pr table.pr-t{margin-top:2.4cqw;font-size:2.6cqw}.pr table.pr-t td,.pr table.pr-t th{padding:1cqw 1.2cqw}.pr table.pr-t th{background:var(--p-tint);border-bottom:1px solid var(--p-line);padding-left:1.5cqw}
+.pr .pno{font-size:2.4cqw}
+.lite .pr .pr-sec{background:none;border-bottom:1px solid var(--p-line)}
+.lite .pr .pr-3 div,.lite .pr .pr-info th,.lite .pr table.pr-t th,.lite .pr .pr-toc i{background:none}
+.lite .pr .pr-3 div{border-top:.5cqw solid var(--p-main);padding-left:0;padding-right:0}
 .cd{background:var(--p-main);color:var(--p-bg)}
 .cd .eyebrow{color:var(--p-tint)}
 .cd .big{font-size:24cqw;font-weight:700;line-height:1;color:var(--eb);margin-top:6cqw;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
@@ -409,7 +431,7 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
   </section>
 
   <section class="sec" id="doc" aria-labelledby="h-doc">
-    <div class="sec-head"><h2 id="h-doc">문서 (A4)</h2><p>보고서·기획안 8쪽 구성입니다. 네 쪽씩 넘겨 보세요. 계획서·결과보고서·프로그램 기획안·공문·회의록의 목차는 규격서에 있습니다.</p><p class="now" id="now-doc"></p></div>
+    <div class="sec-head"><h2 id="h-doc">문서 (A4)</h2><p>보고서형 8쪽과 제안서형 4쪽입니다. 네 쪽씩 넘겨 보세요. 보고서형은 개조식(1. → 가.), 제안서형은 로마 숫자 섹션과 서술식입니다. 종류별 목차는 규격서에 있습니다.</p><p class="now" id="now-doc"></p></div>
     <div class="car" aria-label="문서 8쪽"><div class="dpage">
       <figure><div class="page"><div class="in">
         <div class="d-cover"><div class="k">2026년도 교육 프로그램 운영 계획</div><h5>학부모 독서교실<br>운영 계획(안)</h5><div class="d-sub">2026 가을 학기 · 1차 보고</div></div>
@@ -491,6 +513,48 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
         <div class="d-att"><div>붙임 &nbsp;1. 프로그램 세부 일정 1부.</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. 예산 산출 내역 1부.&nbsp;&nbsp; 끝.</div></div>
         <div class="pno">- 6 -</div>
       </div></div><figcaption><b>⑧ 마무리·붙임</b>기대 효과 · 행정 사항 · 붙임 · 끝</figcaption></figure>
+      </div>
+      <div class="dpage">
+      <figure><div class="page pr"><div class="in">
+        <div class="pr-top">제안서</div>
+        <div class="pr-title">청소년 미술 체험 프로그램<br>「나의 첫 전시」 운영 제안</div>
+        <div class="pr-sub">2027년 상반기 교육 프로그램 기획</div>
+        <table class="pr-info"><tr><th>제출처</th><td>교육기획팀</td></tr><tr><th>사업 기간</th><td>2027. 3. ~ 2027. 6.</td></tr><tr><th>작성자</th><td>교육팀 담당자</td></tr><tr><th>작성일</th><td>2026. 11. 00.</td></tr></table>
+        <div class="pno">1</div>
+      </div></div><figcaption><b>① 표지</b>가운데 정렬 · 위아래 선 · 정보 표</figcaption></figure>
+      <figure><div class="page pr"><div class="in">
+        <div class="pr-hd">청소년 미술 체험 프로그램 운영 제안서</div>
+        <div class="pr-toc-t">목 차<small>CONTENTS</small></div>
+        <div class="pr-toc">
+          <div><i>I</i><div><b>제안 배경</b><span>왜 지금 청소년 체험 프로그램인가</span></div><em>3</em></div>
+          <div><i>II</i><div><b>사업 목표</b><span>참여 · 연계 · 기록 세 가지</span></div><em>3</em></div>
+          <div><i>III</i><div><b>프로그램 구성</b><span>4회차 흐름과 결과 전시</span></div><em>4</em></div>
+          <div><i>IV</i><div><b>운영 계획</b><span>대상 · 장소 · 인력 · 홍보</span></div><em>4</em></div>
+          <div><i>V</i><div><b>소요 예산과 일정</b><span>항목별 산출 근거</span></div><em>5</em></div>
+          <div><i>VI</i><div><b>기대 효과</b><span>참여 청소년과 기관에 남는 것</span></div><em>5</em></div>
+        </div>
+        <div class="pno">2</div>
+      </div></div><figcaption><b>② 목차</b>로마 숫자 · 한 줄 설명 · 쪽번호</figcaption></figure>
+      <figure><div class="page pr"><div class="in">
+        <div class="pr-hd">청소년 미술 체험 프로그램 운영 제안서</div>
+        <div class="pr-sec"><i>I</i>제안 배경</div>
+        <div class="pr-p">관내 청소년이 미술관을 '관람하는 곳'에서 '만드는 곳'으로 경험하도록, 작품 감상과 제작·전시를 한 과정으로 묶은 4회차 체험 프로그램을 제안한다. 2026년 시범 운영에서 참여자의 86%가 「다시 참여하고 싶다」고 답했고, 보호자 설문에서는 「결과물을 전시하는 경험」이 가장 높은 만족 요인이었다.</div>
+        <div class="pr-sec"><i>II</i>사업 목표</div>
+        <div class="pr-3"><div><b>참여</b>회차당 20명, 총 80명의 청소년이 감상·제작·전시를 한 흐름으로 경험한다.</div><div><b>연계</b>지역 중학교 미술 교과와 연계해 학교 밖 수업으로 인정받는다.</div><div><b>기록</b>참여 과정을 기록해 다음 기획의 근거 자료로 남긴다.</div></div>
+        <div class="pr-sec"><i>III</i>프로그램 구성</div>
+        <div class="pr-p">「감상 → 질문 → 제작 → 전시」 네 단계를 회차마다 하나씩 다루고, 마지막 회차에는 참여자가 직접 작품 설명 카드를 써서 소규모 전시를 연다.</div>
+        <div class="pno">3</div>
+      </div></div><figcaption><b>③ 본문</b>섹션 띠 · 서술식 · 핵심 3칸</figcaption></figure>
+      <figure><div class="page pr"><div class="in">
+        <div class="pr-hd">청소년 미술 체험 프로그램 운영 제안서</div>
+        <div class="pr-sec"><i>IV</i>운영 계획</div>
+        <table class="t pr-t"><thead><tr><th>회차</th><th>주제</th><th>활동</th><th>장소</th></tr></thead><tbody><tr><td>1회</td><td>감상</td><td>상설 전시 도슨트 투어</td><td>전시실</td></tr><tr><td>2회</td><td>질문</td><td>작품 질문 카드 만들기</td><td>교육실 1</td></tr><tr><td>3회</td><td>제작</td><td>나만의 작품 제작</td><td>창작실</td></tr><tr><td>4회</td><td>전시</td><td>작품 설명 카드 · 미니 전시</td><td>로비</td></tr></tbody></table>
+        <div class="pr-p">「대상」 관내 중학생 1~3학년, 회차당 20명 선착순. 「인력」 교육팀 1명, 도슨트 1명, 보조 강사 1명. 「홍보」 학교 공문과 기관 누리집·SNS, 개강 3주 전부터.</div>
+        <div class="pr-sec"><i>V</i>소요 예산과 일정</div>
+        <table class="t pr-t nw"><thead><tr><th>항목</th><th>산출 근거</th><th class="r">금액(원)</th></tr></thead><tbody><tr><td>강사비</td><td>4회 × 000,000</td><td class="r">000,000</td></tr><tr><td>재료비</td><td>80명 × 00,000</td><td class="r">000,000</td></tr><tr><td>전시 설치</td><td>1식</td><td class="r">000,000</td></tr><tr class="tsum"><td>합계</td><td></td><td class="r">0,000,000</td></tr></tbody></table>
+        <div class="pr-p">「일정」 1~2월 학교 협의와 모집, 3~6월 운영(월 1회차), 7월 결과 보고.</div>
+        <div class="pno">4</div>
+      </div></div><figcaption><b>④ 표·일정</b>머리줄 옅은 바탕 · 가로선만</figcaption></figure>
       </div></div>
   </section>
 

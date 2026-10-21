@@ -23,10 +23,8 @@ async function icons(p,dir){
 // 아이콘을 눈에 보이는 오른쪽 끝·위 끝 기준으로 놓기
 function place(s,icon,white,size,re,top,name){const b=icon.b;s.addImage({data:white?icon.w:icon.c,x:re-size*b[2],y:top-size*b[1],w:size,h:size,objectName:name||'아이콘'});}
 let RICH=false; const SUF=()=>RICH?'_풍성하게':'';
-function deco(s,pres,C,dark,W,H){if(!RICH)return;
-  s.addShape(pres.shapes.OVAL,{x:W-2.8,y:-1.5,w:3.9,h:3.9,fill:{color:dark?C.accent2:C.accent1,transparency:dark?50:88},line:{type:'none'},objectName:'장식원1'});
-  s.addShape(pres.shapes.OVAL,{x:W-1.3,y:H-1.7,w:2.5,h:2.5,fill:{color:C.accent5,transparency:dark?65:80},line:{type:'none'},objectName:'장식원2'});
-  s.addShape(pres.shapes.OVAL,{x:W-3.3,y:H-0.9,w:0.7,h:0.7,fill:{color:dark?C.accent4:C.accent2,transparency:dark?40:70},line:{type:'none'},objectName:'장식원3'});}
+function deco(s,pres,C,dark,W,H){if(!RICH||!dark)return;
+  s.addShape(pres.shapes.OVAL,{x:W-3.2,y:-1.9,w:4.6,h:4.6,fill:{color:C.accent2,transparency:60},line:{type:'none'},objectName:'장식원'});}
 function theme(p){
   const eb = (lum(p.point)>lum(p.main)&&ratio(p.point,p.main)>=3)?p.point:p.tint;
   return {name:p.name,headFontFace:FONT,bodyFontFace:FONT,colors:{dk1:p.ink,lt1:'FFFFFF',dk2:p.main,lt2:p.tint,accent1:p.main,accent2:p.sub,accent3:p.line,accent4:eb,accent5:p.point,accent6:'5E6876',hlink:p.main,folHlink:p.sub}};
@@ -45,8 +43,8 @@ async function deck(p,dir,L){
   pres.defineSlideMaster({title:'간지',background:{color:L?C.background1:C.background2},objects:[
     {placeholder:{options:{name:'num',type:'body',x:0.7,y:1.55,w:3,h:0.9,fontSize:54,bold:true,color:C.accent1,margin:0},text:'01'}},
     {placeholder:{options:{name:'title',type:'title',align:'left',x:0.7,y:2.55,w:8.4,h:0.9,fontSize:32,bold:true,color:C.text1,margin:0,valign:'top'},text:'단원 제목'}}]});
-  const band=()=>RICH?[{rect:{x:0,y:0,w:10,h:1.35,fill:{color:C.background2}}},{rect:{x:0.7,y:1.22,w:0.6,h:0.06,fill:{color:C.accent5}}}]:[];
-  const TITLE2=()=>Object.assign(TITLE(),RICH?{color:C.accent1}:{});
+  const band=()=>RICH?[{rect:{x:0.7,y:1.22,w:0.5,h:0.05,fill:{color:C.accent5}}}]:[];
+  const TITLE2=()=>TITLE();
   pres.defineSlideMaster({title:'제목만',background:{color:C.background1},slideNumber:num(),objects:[...band(),foot(),{placeholder:{options:TITLE2(),text:'장표 제목'}}]});
   pres.defineSlideMaster({title:'제목+본문',background:{color:C.background1},slideNumber:num(),objects:[...band(),foot(),{placeholder:{options:TITLE2(),text:'장표 제목'}},
     {placeholder:{options:{name:'body',type:'body',x:0.7,y:1.45,w:8.6,h:3.4,fontSize:16,color:C.text1,margin:0,valign:'top',paraSpaceAfter:8},text:'본문을 입력하세요'}}]});
@@ -74,11 +72,11 @@ async function deck(p,dir,L){
     T(s,t,{x:1.0,y,w:8.3,h:0.36,fontSize:14,color:C.text1,valign:'middle',objectName:'근거'+(i+1)});});
   s=pres.addSlide({masterName:'제목만',sectionTitle:'본문'}); s.addText('주요 수치',{placeholder:'title'});
   [['00','건','처리 건수','비교 기준을 적습니다'],['00','%','개선 비율','전년 같은 기간 대비'],['00','일','소요 기간','평균값 기준']].forEach((d,i)=>{const x=0.7+i*2.95;
-    if(L)s.addShape(pres.shapes.LINE,{x,y:1.6,w:2.7,h:0,line:{color:C.accent1,width:1.5},objectName:'수치선'+(i+1)});else s.addShape(pres.shapes.RECTANGLE,{x,y:1.6,w:2.7,h:2.9,fill:{color:RICH?C.accent1:C.background2},line:{type:'none'},objectName:'수치칸'+(i+1)});
+    if(L)s.addShape(pres.shapes.LINE,{x,y:1.6,w:2.7,h:0,line:{color:C.accent1,width:1.5},objectName:'수치선'+(i+1)});else s.addShape(pres.shapes.RECTANGLE,{x,y:1.6,w:2.7,h:2.9,fill:{color:C.background2},line:{type:'none'},objectName:'수치칸'+(i+1)});
     const px=L?x:x+0.3;
-    T(s,[{text:d[0],options:{fontSize:48,bold:true}},{text:' '+d[1],options:{fontSize:18,bold:true}}],{x:px,y:1.85,w:2.2,h:1.0,color:RICH?C.accent4:C.accent1,valign:'bottom',objectName:'수치'+(i+1)});
-    T(s,d[2],{x:px,y:3.0,w:2.2,h:0.4,fontSize:15,bold:true,color:RICH?C.background1:C.text1,objectName:'수치제목'+(i+1)});
-    T(s,d[3],{x:px,y:3.45,w:2.2,h:0.8,fontSize:12,color:RICH?C.background2:C.accent6,valign:'top',objectName:'수치설명'+(i+1)});});
+    T(s,[{text:d[0],options:{fontSize:48,bold:true}},{text:' '+d[1],options:{fontSize:18,bold:true}}],{x:px,y:1.85,w:2.2,h:1.0,color:C.accent1,valign:'bottom',objectName:'수치'+(i+1)});
+    T(s,d[2],{x:px,y:3.0,w:2.2,h:0.4,fontSize:15,bold:true,color:C.text1,objectName:'수치제목'+(i+1)});
+    T(s,d[3],{x:px,y:3.45,w:2.2,h:0.8,fontSize:12,color:C.accent6,valign:'top',objectName:'수치설명'+(i+1)});});
   s=pres.addSlide({masterName:'제목만',sectionTitle:'본문'}); s.addText('현행과 개선',{placeholder:'title'});
   [['현행',['절차가 여러 단계로 나뉨','서식이 부서마다 다름','진행 상황 공유가 늦음']],['개선',['한 번에 처리하도록 통합','공통 서식으로 정리','공유 일정표로 관리']]].forEach(([h,items],i)=>{const x=0.7+i*4.45,on=i===1;
     const IN=L?0:0.16;
@@ -132,7 +130,7 @@ async function a4(p,dir,ic,L){
   const M=0.6, CW=8.27-2*M, RE=M+CW;
   const label=(s,t,x,y,name)=>L?T(s,t,{x,y,w:2.5,h:0.32,fontSize:12,bold:true,color:C.accent1,valign:'middle',objectName:name}):T(s,t,{x,y,w:1.5,h:0.32,fontSize:11,bold:true,color:RICH?C.background1:C.accent1,fill:{color:RICH?C.accent1:C.background2},shape:pres.shapes.ROUNDED_RECTANGLE,rectRadius:0.16,align:'center',valign:'middle',objectName:name});
   // A: 띠 + 패널 (교육 모집)
-  let s=pres.addSlide(); s.background={color:L?C.background1:C.text2}; if(RICH){s.addShape(pres.shapes.OVAL,{x:5.3,y:-1.6,w:4.2,h:4.2,fill:{color:C.accent2,transparency:50},line:{type:'none'},objectName:'장식원1'});s.addShape(pres.shapes.OVAL,{x:-1.2,y:1.6,w:2.2,h:2.2,fill:{color:C.accent5,transparency:65},line:{type:'none'},objectName:'장식원2'});}
+  let s=pres.addSlide(); s.background={color:L?C.background1:C.text2}; if(RICH){s.addShape(pres.shapes.OVAL,{x:4.9,y:-2.0,w:4.8,h:4.8,fill:{color:C.accent2,transparency:60},line:{type:'none'},objectName:'장식원'});}
   const IC=1.8;
   T(s,'2027 상반기',{x:M,y:0.75,w:4.8,h:0.4,fontSize:16,bold:true,color:L?C.accent2:C.accent4,objectName:'머리말'});
   T(s,'교육 프로그램\n참가자 모집',{x:M,y:1.2,w:RE-IC-0.3-M,h:1.6,fontSize:34,bold:true,color:L?C.text1:C.background1,objectName:'제목'});
@@ -155,16 +153,15 @@ async function a4(p,dir,ic,L){
   // B: 흰 바탕 세무 안내
   s=pres.addSlide(); s.background={color:C.background1};
   const IB=1.3;
-  if(RICH){s.addShape(pres.shapes.RECTANGLE,{x:0,y:0,w:8.27,h:3.55,fill:{color:C.accent1},line:{type:'none'},objectName:'머리띠'});s.addShape(pres.shapes.OVAL,{x:5.6,y:-1.4,w:3.6,h:3.6,fill:{color:C.accent2,transparency:50},line:{type:'none'},objectName:'장식원1'});}
-  place(s,ic.doc,RICH,IB,RE,0.85);
-  T(s,'세무 안내',{x:M,y:0.8,w:5,h:0.4,fontSize:15,bold:true,color:RICH?C.accent4:C.accent2,objectName:'머리말'});
-  T(s,'신고 기간과 방법을\n확인하세요',{x:M,y:1.25,w:RE-IB-0.3-M,h:1.7,fontSize:32,bold:true,color:RICH?C.background1:C.text1,objectName:'제목'});
-  T(s,'신고 대상, 기간, 준비할 것을 한 장에 정리합니다.',{x:M,y:3.0,w:CW,h:0.4,fontSize:13,color:RICH?C.background2:C.accent6,objectName:'요약'});
+  place(s,ic.doc,false,IB,RE,0.85);
+  T(s,'세무 안내',{x:M,y:0.8,w:5,h:0.4,fontSize:15,bold:true,color:C.accent2,objectName:'머리말'});
+  T(s,'신고 기간과 방법을\n확인하세요',{x:M,y:1.25,w:RE-IB-0.3-M,h:1.7,fontSize:32,bold:true,objectName:'제목'});
+  T(s,'신고 대상, 기간, 준비할 것을 한 장에 정리합니다.',{x:M,y:3.0,w:CW,h:0.4,fontSize:13,color:C.accent6,objectName:'요약'});
   const G3=0.2, cw=(CW-2*G3)/3, CP=L?0:0.2;
   [['기간','0월 0일 ~ 0월 0일'],['대상','해당 소득이 있는 분'],['방법','홈택스·손택스\n또는 세무서']].forEach((d,i)=>{const x=M+i*(cw+G3);
-    if(L)s.addShape(pres.shapes.LINE,{x,y:3.85,w:cw,h:0,line:{color:C.accent1,width:1.5},objectName:'핵심선'+i});else s.addShape(pres.shapes.RECTANGLE,{x,y:3.85,w:cw,h:1.7,fill:{color:RICH?C.accent1:C.background2},line:{type:'none'},objectName:'핵심칸'+i});
-    T(s,d[0],{x:x+CP,y:4.08,w:cw-2*CP,h:0.3,fontSize:11,bold:true,color:RICH?C.accent4:C.accent2,objectName:'핵심라벨'+i});
-    T(s,d[1],{x:x+CP,y:4.45,w:cw-2*CP,h:0.9,fontSize:14,bold:true,color:RICH?C.background1:C.accent1,objectName:'핵심값'+i});});
+    if(L)s.addShape(pres.shapes.LINE,{x,y:3.85,w:cw,h:0,line:{color:C.accent1,width:1.5},objectName:'핵심선'+i});else s.addShape(pres.shapes.RECTANGLE,{x,y:3.85,w:cw,h:1.7,fill:{color:C.background2},line:{type:'none'},objectName:'핵심칸'+i});
+    T(s,d[0],{x:x+CP,y:4.08,w:cw-2*CP,h:0.3,fontSize:11,bold:true,color:C.accent2,objectName:'핵심라벨'+i});
+    T(s,d[1],{x:x+CP,y:4.45,w:cw-2*CP,h:0.9,fontSize:14,bold:true,color:C.accent1,objectName:'핵심값'+i});});
   T(s,'진행 순서',{x:M,y:6.1,w:4,h:0.35,fontSize:15,bold:true,objectName:'순서제목'});
   ['홈택스 로그인(공동·간편 인증)','신고서 작성 · 소득 자료 불러오기','내용 확인 후 제출 · 접수증 저장','기한 안에 납부 또는 환급 계좌 확인'].forEach((t,i)=>{const y=6.6+i*0.68;
     s.addShape(pres.shapes.OVAL,{x:M,y,w:0.38,h:0.38,fill:{color:C.accent1},line:{type:'none'},objectName:'순번원'+i});
@@ -209,12 +206,12 @@ async function sq(p,dir,ic,L){
     T(s,k,{x,y,w,h:0.35,fontSize:15,color:C.accent6,objectName:'정보라벨'+(i+1)});
     T(s,v,{x,y:y+0.38,w,h:0.5,fontSize:22,bold:true,objectName:'정보값'+(i+1)});
     s.addShape(pres.shapes.LINE,{x,y:y+1.0,w,h:0,line:{color:C.accent3,width:0.75},objectName:'정보선'+(i+1)});});
-  s=pres.addSlide(); s.background={color:RICH?C.text2:C.background1}; deco(s,pres,C,true,7.29,7.29);
-  T(s,'기한 안에\n꼭 확인하세요',{x:M,y:M,w:CW,h:1.9,fontSize:34,bold:true,color:RICH?C.background1:C.text1,objectName:'제목'});
-  T(s,'자세한 내용은 기관 누리집에서 볼 수 있습니다.',{x:M,y:2.8,w:CW,h:0.5,fontSize:15,color:RICH?C.background2:C.accent6,objectName:'설명'});
+  s=pres.addSlide(); s.background={color:C.background1};
+  T(s,'기한 안에\n꼭 확인하세요',{x:M,y:M,w:CW,h:1.9,fontSize:34,bold:true,objectName:'제목'});
+  T(s,'자세한 내용은 기관 누리집에서 볼 수 있습니다.',{x:M,y:2.8,w:CW,h:0.5,fontSize:15,color:C.accent6,objectName:'설명'});
   const btn={x:M,y:BE-1.35,w:CW,h:0.8,fontSize:20,bold:true,shape:pres.shapes.ROUNDED_RECTANGLE,rectRadius:0.12,align:'center',valign:'middle',objectName:'버튼'};
-  T(s,'자세히 보기',L?Object.assign(btn,{color:C.accent1,line:{color:C.accent1,width:1.5}}):RICH?Object.assign(btn,{color:C.accent1,fill:{color:C.background1}}):Object.assign(btn,{color:C.background1,fill:{color:C.accent1}}));
-  T(s,'기관명',{x:M,y:BE-0.35,w:CW,h:0.35,fontSize:12,color:RICH?C.background2:C.accent6,align:'center',valign:'bottom',objectName:'기관명'});
+  T(s,'자세히 보기',L?Object.assign(btn,{color:C.accent1,line:{color:C.accent1,width:1.5}}):Object.assign(btn,{color:C.background1,fill:{color:C.accent1}}));
+  T(s,'기관명',{x:M,y:BE-0.35,w:CW,h:0.35,fontSize:12,color:C.accent6,align:'center',valign:'bottom',objectName:'기관명'});
   const f=`${dir}/카드뉴스_1대1_${p.name}${L?'_가볍게':SUF()}.pptx`; await pres.writeFile({fileName:f}); await applyTheme(f,TH); require('child_process').execFileSync('python3',[__dirname+'/fixfont.py',FONT,f]); return f;
 }
 
