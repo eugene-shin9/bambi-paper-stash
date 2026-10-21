@@ -862,8 +862,8 @@ table.t th:last-child,table.t td:last-child{padding-right:0}
   </section>
 </div>
 
-<button class="fab fab-ai fab-low" type="button" id="fabai" aria-label="작업지시문 복사"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="4" width="13" height="17" rx="2"/><path d="M9 4.5V3h7v1.5"/><path d="M9.5 10h6M9.5 13.5h6M9.5 17h3.5"/></svg>작업지시문 복사</button>
-<button class="fab fab-up" type="button" id="fab" aria-expanded="false" aria-controls="tray"><span class="dot" id="fabdot"></span><span id="fabname">색 바꾸기</span></button>
+<button class="fab fab-ai fab-up" type="button" id="fabai" aria-label="복사"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="4" width="13" height="17" rx="2"/><path d="M9 4.5V3h7v1.5"/><path d="M9.5 10h6M9.5 13.5h6M9.5 17h3.5"/></svg>복사</button>
+<button class="fab fab-low" type="button" id="fab" aria-expanded="false" aria-controls="tray"><span class="dot" id="fabdot"></span><span id="fabname">색 바꾸기</span></button>
 <div class="tray" id="tray" hidden role="dialog" aria-label="설정"><div class="trow-l"><span>작업</span><div class="dd" id="dd-fmt"></div><button type="button" id="trayx" class="tray-x">닫기</button></div><div class="trow-l" id="row-sub" hidden><span>형식</span><div class="dd" id="dd-sub"></div></div><div class="trow-l"><span>일러스트</span><div class="seg" role="group" aria-label="일러스트" id="seg-ill"></div></div><div class="trow-l"><span>스타일</span><div class="seg" role="group" aria-label="스타일" id="seg-t"></div></div><div class="trow-l"><span>서체</span><div class="seg" role="group" aria-label="서체" id="segf-t"></div></div><div class="trow-l tl-top"><span>색상</span><div class="tlist" id="tlist"></div></div></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
@@ -973,7 +973,7 @@ function drawPickers(){document.querySelectorAll(".picker").forEach(pk=>{
   const sg=document.getElementById("seg-ill");[["none","없음"],["some","있음"],["rich","풍성"]].forEach(([k,l])=>{const b=document.createElement("button");b.type="button";b.dataset.ill=k;b.textContent=l;b.addEventListener("click",()=>{illust=k;drawPickers();updPrompt()});sg.appendChild(b)});})();
 function fmtLabel(){return fmt==="auto"?"자동":FMT[fmt].l}
 drawPickers();
-function copyPrompt(done){updPrompt();const t=ap.value;const ok=()=>{say("복사했습니다\n붙여넣으시면 됩니다");if(done)done()};
+function copyPrompt(done){updPrompt();const t=ap.value;const ok=()=>{say("붙여넣으시면 됩니다.");if(done)done()};
   if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok).catch(()=>{try{ap.focus();ap.select();if(document.execCommand("copy")){ok();return}}catch(e){}say("아래 '작업지시문' 칸을 길게 눌러 복사")})}
   else{try{ap.focus();ap.select();if(document.execCommand("copy")){ok();return}}catch(e){}say("아래 '작업지시문' 칸을 길게 눌러 복사")}}
 document.getElementById("copyprompt").addEventListener("click",()=>copyPrompt());
@@ -1009,7 +1009,7 @@ function drawTray(){tlist.innerHTML="";trayOrder().forEach((p,i)=>{const b=docum
 }
 let lockY=0;function lockBody(o){if(o){lockY=scrollY;document.body.style.position="fixed";document.body.style.top=(-lockY)+"px";document.body.style.left="0";document.body.style.right="0"}else{document.body.style.position="";document.body.style.top="";document.body.style.left="";document.body.style.right="";scrollTo(0,lockY)}}
 function fitList(){const row=document.querySelector(".trow-l.tl-top");if(!row||tray.hidden)return;const h=tray.clientHeight-row.offsetTop-parseFloat(getComputedStyle(tray).paddingBottom||0);row.style.height=Math.max(80,h)+"px"}
-function setTray(o){tray.hidden=!o;fab.setAttribute("aria-expanded",o?"true":"false");lockBody(o);if(o){drawTray();setAiPop(false);requestAnimationFrame(fitList)}}
+function setTray(o){tray.hidden=!o;fab.setAttribute("aria-expanded",o?"true":"false");if(o){drawTray();setAiPop(false);requestAnimationFrame(fitList)}}
 fab.addEventListener("click",()=>setTray(tray.hidden));
 document.getElementById("trayx").addEventListener("click",()=>{setTray(false);fab.focus()});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!tray.hidden){setTray(false);fab.focus()}});
