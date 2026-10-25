@@ -8,8 +8,12 @@ for f in sys.argv[2:]:
             d=zi.read(it.filename)
             if it.filename=='ppt/theme/theme1.xml':
                 x=d.decode('utf8')
-                x=re.sub(r'<a:ea typeface="[^"]*"',f'<a:ea typeface="{font}"',x)
-                x=re.sub(r'(<a:font script="Hang" typeface=")[^"]*"',rf'\g<1>{font}"',x)
+                def fix(blk,fn):
+                    blk=re.sub(r'<a:ea typeface="[^"]*"',f'<a:ea typeface="{fn}"',blk)
+                    return re.sub(r'(<a:font script="Hang" typeface=")[^"]*"',rf'\g<1>{fn}"',blk)
+                head=os.environ.get('PHEAD') or font  # 미리보기 전용: 제목 글꼴(major)만 따로
+                x=re.sub(r'<a:majorFont>.*?</a:majorFont>',lambda m:fix(m.group(0),head),x,flags=re.S)
+                x=re.sub(r'<a:minorFont>.*?</a:minorFont>',lambda m:fix(m.group(0),font),x,flags=re.S)
                 d=x.encode('utf8')
             zo.writestr(it,d)
     os.replace(tmp,f)

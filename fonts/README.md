@@ -1,6 +1,7 @@
-# Pretendard 글꼴
+# 페이퍼로지 ExtraBold
 
-Pretendard 1.3.9 (길형진, SIL Open Font License 1.1). 원본: https://github.com/orioncactus/pretendard
+Paperlogy 1.001 (Copyright 2024 The PAPERLOGY Authors, SIL Open Font License 1.1 — OFL-Paperlogy.txt). 원본: https://github.com/Freesentation/paperlogy
+제목·큰 숫자에만 씀(본문은 나눔고딕).
 
 AI가 PDF·이미지를 만들 때 내려받아 포함(임베드)하는 용도.
 

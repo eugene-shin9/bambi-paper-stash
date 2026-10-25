@@ -6,6 +6,13 @@ const ratio=(a,b)=>{const x=lum(a),y=lum(b);return (Math.max(x,y)+.05)/(Math.min
 const only=process.argv[2]?process.argv[2].split(','):null;
 // 키트 파일은 맑은 고딕. 미리보기용으로만 PFONT(글꼴 이름)·POUT(출력 폴더)를 바꿔 다른 글꼴 판을 만든다
 const FONT=process.env.PFONT||'맑은 고딕', OUT=process.env.POUT||'out';
+// 미리보기 전용: PHEAD(제목 글꼴)를 주면 굵은 20pt 이상 글자(제목·큰 숫자)와 제목 자리만 그 글꼴로 그린다
+const HEAD=process.env.PHEAD||'';
+if(HEAD){const big=o=>o&&o.bold&&(o.fontSize||0)>=20;const fx=o=>{if(big(o))o.fontFace=HEAD;return o};
+  const SP=Object.getPrototypeOf(new pptxgen().addSlide()),_at=SP.addText;
+  SP.addText=function(t,o){if(Array.isArray(t))t.forEach(r=>r&&r.options&&fx(r.options));fx(o);return _at.call(this,t,o)};
+  const _dm=pptxgen.prototype.defineSlideMaster;
+  pptxgen.prototype.defineSlideMaster=function(m){(m.objects||[]).forEach(x=>{if(x.text&&x.text.options)fx(x.text.options);if(x.placeholder&&x.placeholder.options&&x.placeholder.options.type!=='title')fx(x.placeholder.options)});return _dm.call(this,m)};}
 
 async function icons(p,dir){
   fs.mkdirSync(`${dir}/아이콘`,{recursive:true}); const out={};
@@ -27,7 +34,7 @@ function deco(s,pres,C,dark,W,H){if(!RICH||!dark)return;
   s.addShape(pres.shapes.OVAL,{x:W-3.2,y:-1.9,w:4.6,h:4.6,fill:{color:C.accent2,transparency:60},line:{type:'none'},objectName:'장식원'});}
 function theme(p){
   const eb = (lum(p.point)>lum(p.main)&&ratio(p.point,p.main)>=3)?p.point:p.tint;
-  return {name:p.name,headFontFace:FONT,bodyFontFace:FONT,colors:{dk1:p.ink,lt1:'FFFFFF',dk2:p.main,lt2:p.tint,accent1:p.main,accent2:p.sub,accent3:p.line,accent4:eb,accent5:p.point,accent6:'5E6876',hlink:p.main,folHlink:p.sub}};
+  return {name:p.name,headFontFace:HEAD||FONT,bodyFontFace:FONT,colors:{dk1:p.ink,lt1:'FFFFFF',dk2:p.main,lt2:p.tint,accent1:p.main,accent2:p.sub,accent3:p.line,accent4:eb,accent5:p.point,accent6:'5E6876',hlink:p.main,folHlink:p.sub}};
 }
 
 async function deck(p,dir,L){

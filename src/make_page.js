@@ -47,8 +47,8 @@ const spec = `밤비의 서류뭉치 · AI용 규격서 (2026-10-21 2판)
 - 뺄 것을 정한다: 지면에 안 들어가면 원문을 줄이지 말고 덜 중요한 칸(예: 세부 유의사항)을 빼고, 뺀 항목은 '자세한 내용은 ○○ 참고' 한 줄로 대신한다. 한페이지·포스터·카드뉴스 한 장은 절대 두 장으로 늘리지 않는다(뒷장·상세 요강 추가 금지). 두 장이 꼭 필요하면 양식을 '문서'로 바꾸고 그 이유를 한 줄로 밝힌다.
 
 1. 공통 규칙
-- 서체 1종: 기본 Pretendard. 지시문에 "글꼴: 나눔고딕" 또는 "글꼴: 나눔스퀘어라운드"가 있으면 그 글꼴 1종을 쓴다(둘 다 네이버 오픈 라이선스, fonts/ 폴더에 TTF 있음: NanumGothic-Regular·Bold·ExtraBold, NanumSquareRoundL·R·B·EB). 글꼴 파일은 이 저장소 fonts/ 폴더에 있다(Pretendard Regular·Medium·SemiBold·Bold TTF). PDF·이미지·카드뉴스는 만들기 전에 아래 주소에서 내려받아 등록하고, 결과물 파일 안에 글꼴을 포함(임베드)한다. 내려받을 수 없으면 Noto Sans KR, 그것도 없으면 설치된 한글 고딕을 쓰고 어떤 글꼴을 썼는지 한 줄로 밝힌다. 명조·바탕 계열과 글꼴 미포함 PDF는 안 된다. 남이 열어 고칠 PPT·Word 원본만 맑은 고딕으로 만든다(받는 PC에 글꼴이 없으면 줄바꿈과 정렬이 틀어지므로). 굵기와 크기로만 구분한다.
-  글꼴 주소: https://raw.githubusercontent.com/eugene-shin9/bambi-paper-stash/main/fonts/Pretendard-Regular.ttf (Medium·SemiBold·Bold는 파일명만 바꾼다)
+- 서체: 기본 나눔고딕 1종. 지시문에 "글꼴: 나눔스퀘어라운드"가 있으면 그 글꼴 1종을 쓰고, "글꼴: 페이퍼로지"가 있으면 제목·큰 숫자만 페이퍼로지 ExtraBold, 나머지는 나눔고딕으로 쓴다. 이 세 가지 말고 다른 글꼴은 쓰지 않는다. 세 글꼴 모두 무료(SIL Open Font License)이고 이 저장소 fonts/ 폴더에 TTF가 있다(NanumGothic-Regular·Bold·ExtraBold, NanumSquareRoundL·R·B·EB, Paperlogy-8ExtraBold). PDF·이미지·카드뉴스는 만들기 전에 아래 주소에서 내려받아 등록하고, 결과물 파일 안에 글꼴을 포함(임베드)한다. 내려받을 수 없으면 설치된 한글 고딕(Noto Sans CJK KR 등)을 쓰고 어떤 글꼴을 썼는지 한 줄로 밝힌다. 명조·바탕 계열과 글꼴 미포함 PDF는 안 된다. 남이 열어 고칠 PPT·Word 원본만 맑은 고딕으로 만든다(받는 PC에 글꼴이 없으면 줄바꿈과 정렬이 틀어지므로). 굵기와 크기로만 구분한다.
+  글꼴 주소: https://raw.githubusercontent.com/eugene-shin9/bambi-paper-stash/main/fonts/NanumGothic-Regular.ttf (NanumGothic-Bold.ttf, NanumSquareRoundR.ttf, Paperlogy-8ExtraBold.ttf 등은 파일명만 바꾼다)
 - 색은 6역할: 주색·보조·옅은 바탕·글자·선·포인트. 바탕은 흰색 #FFFFFF.
 - 면적 비율: 흰색과 옅은 바탕 70, 주색 20, 포인트 10. 포인트는 한 장에 한두 곳(날짜·금액·머리말)만.
 - 주색 바탕 위 흰 글자는 아래 색 목록의 '흰 글자 대비'를 따른다.
