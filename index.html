@@ -503,10 +503,21 @@ body:has(#tray:not([hidden])) .toast{bottom:calc(35vh + 14px + env(safe-area-ins
 .tplsec .t-p8 .t-job time{color:var(--p-sub);font-variant-numeric:tabular-nums;font-size:2.2cqw}
 .tplsec .t-p8 .t-job b{display:block;font-size:2.7cqw}
 .tplsec .t-p8 .t-bar{height:.25cqw;background:var(--p-line);margin:1cqw 0 3cqw}
-.tplsec .t-p9{aspect-ratio:4/5;background:var(--p-tint)}
-.tplsec .t-p9 .t-q{position:absolute;left:8cqw;top:4cqw;font-size:34cqw;font-weight:800;color:var(--p-point);line-height:1}
-.tplsec .t-p9 blockquote{position:absolute;left:8cqw;right:10cqw;top:34cqw;margin:0;font-size:7.6cqw;font-weight:700;line-height:1.38;color:var(--p-main);letter-spacing:-.03em}
-.tplsec .t-p9 .t-by{position:absolute;left:8cqw;bottom:16cqw;font-size:3.4cqw;color:var(--p-sub);display:flex;align-items:center;gap:2.4cqw}
+/* 명함 로고 */
+.tplsec .t-logo{position:absolute;object-fit:contain}
+.tplsec .t-logo-f{right:8cqw;top:9cqw;width:16cqw;height:16cqw}
+.tplsec .t-logo-k{right:8cqw;top:7cqw;width:19cqw;height:19cqw;background:#fff;border-radius:1.5cqw;padding:1.5cqw}
+.tplsec .t-item.has-logo .t-stamp{display:none}
+.tplsec .t-logo-b{border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;font-size:12.5px;padding:3px 10px;cursor:pointer;white-space:nowrap}
+.tplsec .t-logo-b:focus-within{outline:2px solid var(--accent);outline-offset:2px}
+.tplsec .t-logo-x{border:0;background:none;color:var(--muted);font:inherit;font-size:12.5px;text-decoration:underline;cursor:pointer;padding:2px}
+/* 카드뉴스 인용 장(카드뉴스 줄 안) */
+.t-inq .t-item{margin:0;gap:8px}
+.t-inq .t-acts{display:inline-flex;margin-left:8px;vertical-align:middle}
+.tplsec .t-p9{aspect-ratio:1/1;background:var(--p-tint)}
+.tplsec .t-p9 .t-q{position:absolute;left:8cqw;top:3cqw;font-size:30cqw;font-weight:800;color:var(--p-point);line-height:1}
+.tplsec .t-p9 blockquote{position:absolute;left:8cqw;right:10cqw;top:27cqw;margin:0;font-size:7.2cqw;font-weight:700;line-height:1.38;color:var(--p-main);letter-spacing:-.03em}
+.tplsec .t-p9 .t-by{position:absolute;left:8cqw;bottom:15cqw;font-size:3.4cqw;color:var(--p-sub);display:flex;align-items:center;gap:2.4cqw}
 .tplsec .t-p9 .t-by::before{content:"";width:7cqw;height:.4cqw;background:var(--p-sub)}
 .tplsec .t-p9 .t-foot{position:absolute;left:8cqw;right:8cqw;bottom:7cqw;display:flex;justify-content:space-between;align-items:center;font-size:2.8cqw;color:var(--p-sub)}
 .tplsec .t-p9 .t-dots{display:flex;gap:1.4cqw}
@@ -575,13 +586,19 @@ body:has(#tray:not([hidden])) .toast{bottom:calc(35vh + 14px + env(safe-area-ins
       </div></div><figcaption><b>포스터형</b>마감·게시판<button type="button" class="cbtn sm" data-make="한페이지(A4) · 포스터형">지시문 복사</button></figcaption></figure>
       </div>
     </div>
-    <div class="cbar"><b>카드뉴스</b><span>1:1 · 5장</span><button type="button" class="cbtn" data-make="카드뉴스 5장">지시문 복사</button></div>
+    <div class="cbar"><b>카드뉴스</b><span>1:1 · 5장 (인용 장은 따로 복사)</span><button type="button" class="cbtn" data-make="카드뉴스 5장">지시문 복사</button></div>
     <div class="cards3 car" aria-label="카드뉴스 5장">
       <figure><div class="shot sq" data-k="sq" data-i="0" role="img" aria-label="카드뉴스 표지"></div><figcaption><b>1</b>표지</figcaption></figure>
       <figure><div class="shot sq" data-k="sq" data-i="1" role="img" aria-label="카드뉴스 왜"></div><figcaption><b>2</b>왜 · 배경과 대상</figcaption></figure>
       <figure><div class="shot sq" data-k="sq" data-i="2" role="img" aria-label="카드뉴스 무엇"></div><figcaption><b>3</b>무엇 · 내용과 방법</figcaption></figure>
       <figure><div class="shot sq" data-k="sq" data-i="3" role="img" aria-label="카드뉴스 언제 어디서"></div><figcaption><b>4</b>언제·어떻게</figcaption></figure>
       <figure><div class="shot sq" data-k="sq" data-i="4" role="img" aria-label="카드뉴스 마무리"></div><figcaption><b>5</b>마무리 · 신청과 문의</figcaption></figure>
+      <figure class="tplsec t-inq"><div class="t-item" data-t="quote"><div class="t-pg t-p9">
+        <div class="t-q">“</div>
+        <blockquote contenteditable>그림을 다 그린 아이에게 먼저 물어보세요.<br>“이건 무슨 이야기야?”</blockquote>
+        <div class="t-by" contenteditable>어린이 미술교육 노트</div>
+        <div class="t-foot"><span contenteditable>@hanbit_art_edu</span></div>
+      </div><figcaption><b>+</b>인용 장 · 글자를 눌러 고치기<span class="t-acts"><button class="t-reset" type="button">처음대로</button><button class="t-copy" type="button">지시문 복사</button></span></figcaption></div></figure>
     </div>
   </section>
 
@@ -728,8 +745,8 @@ body:has(#tray:not([hidden])) .toast{bottom:calc(35vh + 14px + env(safe-area-ins
 
   <section class="sec tplsec" id="tpl" aria-labelledby="h-tpl">
     <div class="sec-head">
-      <h2 id="h-tpl">홍보물·서식 10종</h2>
-      <p>포스터·스토리·할인 게시물·발표 표지·개업 전단·초대장·썸네일·이력서·인용 카드·명함입니다. 색과 서체는 오른쪽 아래에서 고른 그대로 따라옵니다. 글자를 눌러 내 내용으로 고친 뒤 <b>지시문 복사</b>를 눌러 ChatGPT에 그대로 붙여넣으세요. 고친 글자는 이 기기에만 남습니다. 견본 속 기관·사람·연락처는 지어낸 예시입니다.</p>
+      <h2 id="h-tpl">홍보물·서식 9종</h2>
+      <p>포스터·스토리·할인 게시물·발표 표지·개업 전단·초대장·썸네일·이력서·명함입니다. 인용 카드는 카드뉴스 줄로 옮겼습니다. 명함은 <b>로고 넣기</b>로 우리 로고를 도장 자리에 넣을 수 있습니다. 색과 서체는 오른쪽 아래에서 고른 그대로 따라옵니다. 글자를 눌러 내 내용으로 고친 뒤 <b>지시문 복사</b>를 눌러 ChatGPT에 그대로 붙여넣으세요. 고친 글자는 이 기기에만 남습니다. 견본 속 기관·사람·연락처는 지어낸 예시입니다.</p>
       <p class="now" id="now-tpl"></p>
     </div>
     <div class="t-board">
@@ -876,18 +893,10 @@ body:has(#tray:not([hidden])) .toast{bottom:calc(35vh + 14px + env(safe-area-ins
   </div></div>
 </article>
 
-<article class="t-item" data-t="quote">
-  <div class="t-meta"><b>인용 카드뉴스</b><span>4:5 · 1080×1350px</span><div class="t-acts"><button class="t-reset" type="button">처음대로</button><button class="t-copy" type="button">지시문 복사</button></div></div>
-  <div class="t-frame"><div class="t-pg t-p9">
-    <div class="t-q">“</div>
-    <blockquote contenteditable>그림을 다 그린 아이에게 먼저 물어보세요.<br>“이건 무슨 이야기야?”</blockquote>
-    <div class="t-by" contenteditable>어린이 미술교육 노트</div>
-    <div class="t-foot"><span contenteditable>@hanbit_art_edu</span><div class="t-dots"><i class="t-on"></i><i></i><i></i><i></i><i></i></div></div>
-  </div></div>
-</article>
+
 
 <article class="t-item" data-t="card">
-  <div class="t-meta"><b>명함 앞·뒤</b><span>90×50mm</span><div class="t-acts"><button class="t-reset" type="button">처음대로</button><button class="t-copy" type="button">지시문 복사</button></div></div>
+  <div class="t-meta"><b>명함 앞·뒤</b><span>90×50mm</span><div class="t-acts"><label class="t-logo-b">로고 넣기<input type="file" accept="image/*" class="t-logo-in" hidden></label><button class="t-logo-x" type="button" hidden>로고 빼기</button><button class="t-reset" type="button">처음대로</button><button class="t-copy" type="button">지시문 복사</button></div></div>
   <div class="t-frame"><div class="t-cards">
     <div class="t-pg t-p10">
       <div class="t-name" contenteditable>정다온</div>
@@ -895,9 +904,11 @@ body:has(#tray:not([hidden])) .toast{bottom:calc(35vh + 14px + env(safe-area-ins
       <div class="t-line"></div>
       <div class="t-info" contenteditable>053-000-0000 · 010-0000-0000<br>daon@example.com<br>대구 중구 동성로 00길 12</div>
       <div class="t-stamp" contenteditable>한빛</div>
+      <img class="t-logo t-logo-f" alt="로고" hidden>
     </div>
     <div class="t-pg t-p10b">
       <div class="t-stamp" contenteditable>한빛<br>미술관</div>
+      <img class="t-logo t-logo-k" alt="로고" hidden>
       <div class="t-en" contenteditable>HANBIT CHILDREN'S ART MUSEUM</div>
       <div class="t-org" contenteditable>한빛어린이미술관</div>
     </div>
@@ -1467,15 +1478,26 @@ lay:`- 배경: 흰색. 장식 없음.
 - 왼쪽 항목: 글자 {2.5}, 줄간격 1.5. 항목 안 ↵ 아래 줄(기관·연도)은 {2.2} 보조색. 항목 사이 {2.2}.
 - 오른쪽 경력·성과: 기간 열 폭 {15}(글자 {2.2} 보조색) + 내용. 기관명 {2.7} Bold, 설명 {2.5}, 줄간격 1.5. 항목 사이 {3.6}.
 - 경력과 성과 사이: 선색 가는 선(두께 {0.25}), 위 {1}·아래 {3}.`},
-quote:{name:"인용 카드뉴스",W:1080,H:1350,out:"PNG 1080×1350px 1장",
+quote:{name:"카드뉴스 인용 장",W:1080,H:1080,out:"PNG 1080×1080px 1장",
 labels:["인용문","출처","계정"],
 lay:`- 배경: 옅은 면으로 전체.
-- 큰 따옴표(“) 장식: 왼쪽 {8}, 위 {4}, 글자 {34} ExtraBold, 포인트색.
-- 인용문: 왼쪽 {8}, 오른쪽 {10}, 위 {34}, 글자 {7.6} Bold, 주색, 줄간격 1.38, 자간 -3%.
-- 출처: 왼쪽 {8}, 바닥 {16}, 글자 {3.4} 보조색. 앞에 가로선(폭 {7}, 두께 {0.4}, 보조색), 선과 글자 사이 {2.4}.
-- 아랫줄: 좌우 {8}, 바닥 {7}. 왼쪽에 계정 {2.8} 보조색, 오른쪽에 넘김 점 5개(지름 {1.8}, 간격 {1.4}, 첫 점 주색·나머지 선색).`},
+- 큰 따옴표(“) 장식: 왼쪽 {8}, 위 {3}, 글자 {30} ExtraBold, 포인트색.
+- 인용문: 왼쪽 {8}, 오른쪽 {10}, 위 {27}, 글자 {7.2} Bold, 주색, 줄간격 1.38, 자간 -3%.
+- 출처: 왼쪽 {8}, 바닥 {15}, 글자 {3.4} 보조색. 앞에 가로선(폭 {7}, 두께 {0.4}, 보조색), 선과 글자 사이 {2.4}.
+- 계정: 왼쪽 {8}, 바닥 {7}, 글자 {2.8}, 보조색.`},
 card:{name:"명함 앞·뒤",W:1063,H:591,out:"PNG 앞면·뒷면 각 1063×591px 2장 + PDF 90×50mm 2쪽(1쪽 앞면, 2쪽 뒷면)",
 labels:["앞면 이름","앞면 소속·직함","앞면 연락처","앞면 도장 글자","뒷면 도장 글자","뒷면 영문","뒷면 기관명"],
+layLogo:`- 앞면 배경: 흰색.
+- 이름: 왼쪽 {8}, 위 {8}, 글자 {8} ExtraBold, 주색, 자간 2%.
+- 소속·직함: 왼쪽 {8}, 위 {19}, 글자 {3.6}, 보조색.
+- 짧은 선: 왼쪽 {8}, 위 {26.5}, 폭 {10}, 두께 {0.6}, 포인트색.
+- 연락처: 왼쪽 {8}, 바닥 {6}, 글자 {3.3}, 줄간격 1.6.
+- 로고 파일: 이 지시문과 함께 첨부한 로고 이미지. 첨부가 없으면 만들지 말고 "로고 파일을 첨부해 줘"라고만 답해. 로고를 다시 그리거나 색·모양을 바꾸지 말 것(원본 그대로, 투명 배경이면 그대로 유지).
+- 앞면 로고: 오른쪽 {8}, 위 {9}, 가로·세로 {16} 칸 안에 비율을 지켜 맞춤(자르거나 늘리지 말 것).
+- 뒷면 배경: 주색.
+- 뒷면 로고: 오른쪽 {8}, 위 {7}, {19}×{19} 흰색 둥근 사각형(모서리 {1.5}) 안에 안쪽 여백 {1.5}을 두고 비율을 지켜 맞춤.
+- 영문: 왼쪽 {8}, 바닥 {19}, 글자 {2.8}, 흰색 65%, 자간 14%.
+- 기관명: 왼쪽 {8}, 바닥 {9}, 글자 {6.4} ExtraBold, 흰색.`,
 lay:`- 앞면 배경: 흰색.
 - 이름: 왼쪽 {8}, 위 {8}, 글자 {8} ExtraBold, 주색, 자간 2%.
 - 소속·직함: 왼쪽 {8}, 위 {19}, 글자 {3.6}, 보조색.
@@ -1510,7 +1532,8 @@ function tMd(id,sec){
   const sp=SPEC[id],p=PALS.find(x=>x.id===cur)||PALS[0],W=sp.W,k=["main","sub","tint","ink","line","point"],rk=["m","s","b","t","l","a"];
   const eds=[...sec.querySelectorAll("[contenteditable]")];
   const cols=k.map((x,i)=>ROLE[rk[i]]+" "+p.c[x].toUpperCase()).join(" · ");
-  const content=eds.map((e,i)=>"- "+(sp.labels[i]||("항목"+(i+1)))+": "+tTxt(e)).join("\n");
+  const lg=id==="card"&&sec.classList.contains("has-logo");
+  const content=eds.map((e,i)=>lg&&(i===3||i===4)?"":"- "+(sp.labels[i]||("항목"+(i+1)))+": "+tTxt(e)).filter(Boolean).join("\n");
   return pxs(W,`# 작업지시: ${sp.name} (${p.name} 색 · ${FONTS[fnt].n})
 
 시작 전에 이 지시문을 끝까지 읽어. 결과물은 반드시 코드 실행(Python 등)으로 실제 파일을 만들어 내려받기로 줘. 글자가 들어간 이미지는 절대 이미지 생성 도구로 만들지 마. 코드 실행으로 파일을 못 만들면 아무것도 만들지 말고 "코드 실행이 안 돼"라고만 답해.
@@ -1528,7 +1551,7 @@ function tMd(id,sec){
 ${sp.stamp?"- "+STAMP+"\n":""}- 아래 배치에 없는 장식·그림·사진·그림자·그러데이션은 넣지 않는다.
 
 ## 3. 배치
-${sp.lay}
+${lg?sp.layLogo:sp.lay}
 
 ## 4. 내용
 ${content}
@@ -1548,8 +1571,18 @@ ${content}
     eds.forEach((e,i)=>{e.setAttribute("spellcheck","false");const k=id+":"+i;if(st[k]!=null)e.innerHTML=st[k];e.addEventListener("input",()=>{st[k]=e.innerHTML;sv()})});
     sec.querySelector(".t-reset").addEventListener("click",()=>{eds.forEach((e,i)=>{e.innerHTML=orig[i];delete st[id+":"+i]});sv()});
     sec.querySelector(".t-copy").addEventListener("click",()=>{const t=tMd(id,sec);
-      try{navigator.clipboard.writeText(t).then(()=>say("복사됨 · ChatGPT에 붙여넣으세요"),()=>showFb(t))}catch(e){showFb(t)}});
+      try{navigator.clipboard.writeText(t).then(()=>say(sec.classList.contains("has-logo")?"복사됨 · 로고 파일도 함께 첨부하세요":"복사됨 · ChatGPT에 붙여넣으세요"),()=>showFb(t))}catch(e){showFb(t)}});
   });
+})();
+
+/* 명함 로고: 올린 그림을 도장 자리에 넣고 이 기기에 저장 */
+(function(){const sec=document.querySelector('.t-item[data-t="card"]');if(!sec)return;
+  const inp=sec.querySelector(".t-logo-in"),x=sec.querySelector(".t-logo-x"),ims=sec.querySelectorAll(".t-logo");
+  const set=u=>{ims.forEach(i=>{if(u)i.src=u;else i.removeAttribute("src");i.hidden=!u});sec.classList.toggle("has-logo",!!u);x.hidden=!u};
+  try{const u=localStorage.getItem("tpl-logo");if(u)set(u)}catch(e){}
+  inp.addEventListener("change",()=>{const f=inp.files&&inp.files[0];if(!f)return;const r=new FileReader();
+    r.onload=()=>{const im=new Image();im.onload=()=>{const k=Math.min(1,600/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext("2d").drawImage(im,0,0,c.width,c.height);let u;try{u=c.toDataURL("image/png")}catch(e){u=r.result}set(u);try{localStorage.setItem("tpl-logo",u)}catch(e){}say("로고를 넣었어요. 지시문 복사 후 로고 파일도 함께 첨부하세요")};im.src=r.result};r.readAsDataURL(f);inp.value=""});
+  x.addEventListener("click",()=>{set(null);try{localStorage.removeItem("tpl-logo")}catch(e){}});
 })();
 </script>
 
