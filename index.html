@@ -379,6 +379,14 @@ body:has(#tray:not([hidden])) .toast{bottom:calc(35vh + 14px + env(safe-area-ins
 .ai-copy:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .ai-note{margin:0;font-size:13px;color:var(--muted)}
 .spec{font-family:var(--f-body);font-size:13px;line-height:1.65;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;margin:0;max-height:460px;overflow:auto;white-space:pre-wrap;word-break:break-word;color:var(--fg)}
+/* 양식마다 바로 쓰는 지시문 복사 단추 */
+.cbar{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.cbar b{font-size:15px;font-weight:600}
+.cbar span{color:var(--muted);font-size:12.5px}
+.cbar .cgap{margin-left:14px}
+.cbtn{border:1px solid var(--fg);background:var(--fg);color:var(--surface);border-radius:999px;font:inherit;font-size:12.5px;font-weight:600;padding:4px 12px;cursor:pointer;white-space:nowrap}
+.cbtn.sm{margin-left:8px;padding:2px 10px;font-size:12px;vertical-align:1px}
+.cbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 /* 제목 글꼴: 페이퍼로지EB를 고르면 제목·큰 숫자만 바뀜 */
 .tt,.d-t,.pr .pr-title,.pr .pr-toc-t,.cd .big,.nums b,.d-cover h5,.d-h{font-family:var(--p-head)}
 
@@ -541,8 +549,8 @@ body:has(#tray:not([hidden])) .toast{bottom:calc(35vh + 14px + env(safe-area-ins
       <p class="now" id="now-card"></p>
     </div>
     <div class="car" aria-label="한페이지 양식과 블록"><div class="dpage">
-      <figure><div class="shot a4" data-k="a4" data-i="0" role="img" aria-label="한페이지 홍보형"></div><figcaption><b>홍보형</b>모집·행사·전시 (색 띠 또는 사진)</figcaption></figure>
-      <figure><div class="shot a4" data-k="a4" data-i="1" role="img" aria-label="한페이지 안내형"></div><figcaption><b>안내형</b>절차·공지·행정</figcaption></figure>
+      <figure><div class="shot a4" data-k="a4" data-i="0" role="img" aria-label="한페이지 홍보형"></div><figcaption><b>홍보형</b>모집·행사·전시 (색 띠 또는 사진)<button type="button" class="cbtn sm" data-make="한페이지(A4) · 홍보형">지시문 복사</button></figcaption></figure>
+      <figure><div class="shot a4" data-k="a4" data-i="1" role="img" aria-label="한페이지 안내형"></div><figcaption><b>안내형</b>절차·공지·행정<button type="button" class="cbtn sm" data-make="한페이지(A4) · 안내형">지시문 복사</button></figcaption></figure>
     
       <figure><div class="page"><div class="in">
         <div class="eyebrow">2026 가을 학기 · 교육팀</div>
@@ -557,16 +565,17 @@ body:has(#tray:not([hidden])) .toast{bottom:calc(35vh + 14px + env(safe-area-ins
           <div><span>12. 1.(화)</span><b>발표회</b><p>가족 발표와 수료증</p></div>
         </div>
         <div class="box"><b>문의</b>교육팀 000-0000 · 매주 화 10:00~12:00</div>
-      </div></div><figcaption><b>일정형</b>일정·회차·단계</figcaption></figure>
+      </div></div><figcaption><b>일정형</b>일정·회차·단계<button type="button" class="cbtn sm" data-make="한페이지(A4) · 일정형">지시문 복사</button></figcaption></figure>
       <figure><div class="page cd"><div class="in">
         <div class="eyebrow">모집 마감</div>
         <div class="big">11.1</div>
         <div class="tt">독서교실 신청<br>잊지 마세요</div>
         <div class="st"><div><i>1</i>누리집 신청서 작성</div><div><i>2</i>이메일 제출</div><div><i>3</i>확인 문자 수신</div></div>
         <div class="g"><div><span>대상</span><b>초등 저학년 학부모</b></div><div><span>인원</span><b>선착순 20명</b></div><div><span>문의</span><b>교육팀 000-0000</b></div><div><span>기간</span><b>11. 3. ~ 12. 1.</b></div></div>
-      </div></div><figcaption><b>포스터형</b>마감·게시판</figcaption></figure>
+      </div></div><figcaption><b>포스터형</b>마감·게시판<button type="button" class="cbtn sm" data-make="한페이지(A4) · 포스터형">지시문 복사</button></figcaption></figure>
       </div>
     </div>
+    <div class="cbar"><b>카드뉴스</b><span>1:1 · 5장</span><button type="button" class="cbtn" data-make="카드뉴스 5장">지시문 복사</button></div>
     <div class="cards3 car" aria-label="카드뉴스 5장">
       <figure><div class="shot sq" data-k="sq" data-i="0" role="img" aria-label="카드뉴스 표지"></div><figcaption><b>1</b>표지</figcaption></figure>
       <figure><div class="shot sq" data-k="sq" data-i="1" role="img" aria-label="카드뉴스 왜"></div><figcaption><b>2</b>왜 · 배경과 대상</figcaption></figure>
@@ -582,12 +591,14 @@ body:has(#tray:not([hidden])) .toast{bottom:calc(35vh + 14px + env(safe-area-ins
       <p>16:9 발표용 12장입니다. 네 장씩 넘겨 보세요. 21색 모두 기본·심플·풍성 세 가지로 만들어 두었습니다. 심플은 색 면과 패널을 빼고 선과 글자색만 남긴 버전, 풍성 스타일은 큰 원 장식과 주색 면을 더한 버전입니다. 글꼴을 바꾸면 화면도 그 글꼴로 바뀝니다.</p>
       <p class="now" id="now-ppt"></p>
     </div>
+    <div class="cbar"><b>PPT</b><span>16:9 · 12장</span><button type="button" class="cbtn" data-make="PPT 12장">지시문 복사</button></div>
     <div class="pick"><div class="seg" role="group" aria-label="스타일" id="seg-p"></div><div class="seg" role="group" aria-label="글꼴" id="segf-p"></div></div>
     <div class="car" id="deck" aria-label="PPT 12장"></div>
   </section>
 
   <section class="sec" id="doc" aria-labelledby="h-doc">
     <div class="sec-head"><h2 id="h-doc">문서 (A4)</h2><p>보고서형 8쪽과 제안서형 4쪽입니다. 네 쪽씩 넘겨 보세요. 보고서형은 개조식(1. → 가.), 제안서형은 로마 숫자 섹션과 서술식입니다. 종류별 목차는 규격서에 있습니다.</p><p class="now" id="now-doc"></p></div>
+    <div class="cbar"><b>보고서형</b><span>A4 · 개조식</span><button type="button" class="cbtn" data-make="보고서 문서(A4) · 보고서형">지시문 복사</button><b class="cgap">제안서형</b><span>A4 · 서술식</span><button type="button" class="cbtn" data-make="보고서 문서(A4) · 제안서형(기획서·제안서·직무수행계획서처럼 설득하는 문서)">지시문 복사</button></div>
     <div class="car" aria-label="문서 8쪽"><div class="dpage">
       <figure><div class="page"><div class="in">
         <div class="d-cover"><div class="k">2026년도 교육 프로그램 운영 계획</div><h5>학부모 독서교실<br>운영 계획(안)</h5><div class="d-sub">2026 가을 학기 · 1차 보고</div></div>
@@ -1263,8 +1274,9 @@ let illust="none";
 function colorLine(p){return "이 규격서대로 "+p.name+" 색, "+aiStyle()+" 스타일로 파일(PDF)로 만들어 줘. "+(illust!=="none"?"그림 생성기는 일러스트에만 쓸 것.":"그림 생성기로 만들지 말 것.")+(FONTS[fnt].ai?" "+FONTS[fnt].ai:"")}
 const ILLS={some:"일러스트(있음): 위쪽 띠 오른쪽 절반에만 글자 없는 일러스트. 평면 도형의 단순한 플랫 스타일(그림자·입체감·세밀한 묘사 금지, 사물 4~6개), 사람 얼굴보다 사물·장면 위주. 바탕은 띠 색과 정확히 같게 코드로 보정. 왼쪽은 비워 글을 코드로 얹고, 흰 패널 등 양식 구조는 그대로.",rich:"일러스트(풍성): 위쪽 띠 전체(카드뉴스는 표지 전체)를 글자 없는 한 장면 일러스트로 채울 것. 평면 플랫 스타일이되 사물·배경 요소 8~12개로 풍성, 색은 주색·보조색·옅은 바탕·포인트 4색만. 제목이 놓일 왼쪽 위는 단순한 면으로 비우고 글자 뒤에 주색 60% 면을 깔아 읽히게. 흰 패널 등 양식 구조는 그대로."};
 const ILL=()=>ILLS[illust]||"";
+function defPrompt(p,m){return "시작 전에 규격서 링크를 반드시 직접 열어 끝까지 읽어. 열지 못했으면 추측해서 만들지 말고 \"규격서를 못 열었어\"라고만 답해. 결과물은 반드시 코드 실행으로 실제 파일을 만들어 내려받기로 줘. 일러스트를 넣을 때만 이미지 생성 도구로 그려. 글자가 들어간 이미지는 절대 생성하지 마. 코드 실행으로 파일을 못 만들면 아무것도 만들지 말고 \"코드 실행이 안 돼\"라고만 답해.\n"+colorLine(p)+"\n첨부한 서식이 있으면 기관명·로고·문의처만 가져오고, 디자인은 규격서대로. 내용 칸이 비어 있으면 첨부한 자료의 내용을 그대로 쓰고 되묻지 말 것. 내용 칸의 글과 첨부가 다르면 내용 칸의 글을 우선. 첨부끼리 또는 첨부 안에서 날짜·기간·학기·금액이 어긋나면 만들지 말고 어느 쪽이 맞는지 먼저 물을 것.\n"+(m?"만들 것: "+m+"\n":"")+(illust!=="none"?ILL()+"\n":"")+"내용: (비우면 첨부한 자료의 내용을 그대로 씀)\n\n규격서 링크: https://github.com/eugene-shin9/bambi-paper-stash \n"}
 function updPrompt(p){p=p||lastP;if(!p)return;const m=makeStr();
-  if(!aiEdited){ap.value="시작 전에 규격서 링크를 반드시 직접 열어 끝까지 읽어. 열지 못했으면 추측해서 만들지 말고 \"규격서를 못 열었어\"라고만 답해. 결과물은 반드시 코드 실행으로 실제 파일을 만들어 내려받기로 줘. 일러스트를 넣을 때만 이미지 생성 도구로 그려. 글자가 들어간 이미지는 절대 생성하지 마. 코드 실행으로 파일을 못 만들면 아무것도 만들지 말고 \"코드 실행이 안 돼\"라고만 답해.\n"+colorLine(p)+"\n첨부한 서식이 있으면 기관명·로고·문의처만 가져오고, 디자인은 규격서대로. 내용 칸이 비어 있으면 첨부한 자료의 내용을 그대로 쓰고 되묻지 말 것. 내용 칸의 글과 첨부가 다르면 내용 칸의 글을 우선. 첨부끼리 또는 첨부 안에서 날짜·기간·학기·금액이 어긋나면 만들지 말고 어느 쪽이 맞는지 먼저 물을 것.\n"+(m?"만들 것: "+m+"\n":"")+(illust!=="none"?ILL()+"\n":"")+"내용: (비우면 첨부한 자료의 내용을 그대로 씀)\n\n규격서 링크: https://github.com/eugene-shin9/bambi-paper-stash \n";return}
+  if(!aiEdited){ap.value=defPrompt(p,m);return}
   let v=ap.value.replace(/이 규격서대로 .+? 색, .+? 스타일로 파일\(PDF\)로 만들어 줘\. 그림 생성기[^\n]*\./,colorLine(p));
   if(/^일러스트(\(.*?\))?: .*$/m.test(v)){v=illust==="none"?v.replace(/^일러스트(\(.*?\))?: .*\n?/m,""):v.replace(/^일러스트(\(.*?\))?: .*$/m,ILL())}else if(illust!=="none")v=v.replace(/^내용: /m,ILL()+"\n내용: ");
   if(/^만들 것: .*$/m.test(v))v=m?v.replace(/^만들 것: .*$/m,"만들 것: "+m):v.replace(/^만들 것: .*\n?/m,"");
@@ -1373,6 +1385,10 @@ function carousel(el){const dots=document.createElement("div");dots.className="d
   el.addEventListener("scroll",upd,{passive:true});addEventListener("resize",draw);draw()}
 document.querySelectorAll(".car").forEach(carousel);
 
+/* 양식마다 지시문 복사: 위 '작업' 설정을 건드리지 않고 그 양식으로 바로 복사 */
+function cShowFb(t){const fb=document.getElementById("tfb"),x=document.getElementById("tfbt");x.value=t;fb.hidden=false;x.focus();x.select()}
+document.querySelectorAll(".cbtn[data-make]").forEach(b=>b.addEventListener("click",e=>{e.stopPropagation();const t=defPrompt(lastP||PALS[0],b.dataset.make);
+  try{navigator.clipboard.writeText(t).then(()=>say("붙여넣으시면 됩니다."),()=>cShowFb(t))}catch(err){cShowFb(t)}}));
 /* 홍보물·서식 10종: 지시문(md) 만들기 */
 const ROLE={m:"주색",s:"보조색",b:"옅은 면",t:"글자색",l:"선색",a:"포인트색"};
 const STAMP="도장: 원형, 바깥 테두리 두께 {0.7}, 안쪽으로 {1.1} 들어가 가는 원(두께 {0.25})을 한 겹 더, 글자는 가운데 Bold, 도장 전체 -9° 회전, 불투명도 88%.";
