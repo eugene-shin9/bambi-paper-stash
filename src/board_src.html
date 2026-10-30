@@ -547,7 +547,7 @@ body:has(#tray:not([hidden])) .toast{bottom:calc(35vh + 14px + env(safe-area-ins
 <div class="wrap">
   <header>
     <h1>밤비의 서류뭉치</h1>
-    <div class="howto"><p class="howto-rec">오른쪽 아래 <b>복사</b>를 눌러 ChatGPT에 <b>참고할 서류</b>와 함께 붙여넣으면 끝입니다.</p><p class="howto-deco"><b>꾸밈 정도:</b> 오른쪽 아래 <b>● <span class="curname">청먹</span></b> → 지시문 설정에서 심플깔끔한 놈을 원한다면 일러스트에 <b>없음</b>, 제법 꾸민 놈을 원한다면 <b>풍성</b>, 이도 저도 아닌 놈은 <b>있음</b>. 작업은 헷갈리면 그냥 <b>자동</b> 하세요.</p><details class="howto-more"><summary>혹시 원하는 퀄리티가 안 나오면</summary><ol class="howto-steps"><li><b>ChatGPT 설정:</b> <b>Work</b> · 모드 <b>6 Astra</b> · 추론 수준 <b>Light</b> · 속도 <b>Standard</b>로 바꿔 보세요. 3만원 요금제에서 5시간마다 <b>10장 정도</b> 출력 가능합니다. (Work-6.1 Sol 혹은 Chat 사용 시 더 많은 출력이 가능하지만 퀄리티가 내려갑니다.)</li><li><b>색·서체:</b> 같은 창 <b>미리보기</b>에서 스타일·서체·색상을 고르면 아래 견본과 지시문에 같이 들어갑니다.</li><li><b>내용이 틀리면:</b> 첨부와 <b>달라진 내용</b>(기간·대상·금액 등)은 지시문의 <b>내용</b> 칸에 그 부분만 적어 주세요. 혹은 <b>"첫 번째 사진은 참고할 양식이고 두 번째 사진은 현재 정보야"</b>라는 말을 덧붙이세요.</li></ol></details></div>
+    <div class="howto"><p class="howto-rec">오른쪽 아래 <b>복사</b>를 눌러 ChatGPT에 <b>참고할 서류</b>와 함께 붙여넣으면 끝입니다.</p><p class="howto-deco">모든 양식은 AI가 그리지 않고 <b>키트(스크립트)</b>가 그립니다. ChatGPT Work는 자료만 올리면 되고, Chat은 <a href="https://github.com/eugene-shin9/bambi-paper-stash/raw/main/make/bambi_doc_kit.zip" target="_blank" rel="noopener"><b>키트 zip</b></a>을 한 번 받아 자료와 함께 첨부하세요(ChatGPT 프로젝트에 올려 두면 매번 첨부하지 않아도 됩니다).</p><p class="howto-deco"><b>꾸밈 정도:</b> 오른쪽 아래 <b>● <span class="curname">청먹</span></b> → 지시문 설정에서 심플깔끔한 놈을 원한다면 일러스트에 <b>없음</b>, 제법 꾸민 놈을 원한다면 <b>풍성</b>, 이도 저도 아닌 놈은 <b>있음</b>. 작업은 헷갈리면 그냥 <b>자동</b> 하세요.</p><details class="howto-more"><summary>혹시 원하는 퀄리티가 안 나오면</summary><ol class="howto-steps"><li><b>ChatGPT 설정:</b> <b>Work</b> · 모드 <b>6 Astra</b> · 추론 수준 <b>Light</b> · 속도 <b>Standard</b>로 바꿔 보세요. 3만원 요금제에서 5시간마다 <b>10장 정도</b> 출력 가능합니다. (Work-6.1 Sol 혹은 Chat 사용 시 더 많은 출력이 가능하지만 퀄리티가 내려갑니다.)</li><li><b>색·서체:</b> 같은 창 <b>미리보기</b>에서 스타일·서체·색상을 고르면 아래 견본과 지시문에 같이 들어갑니다.</li><li><b>내용이 틀리면:</b> 첨부와 <b>달라진 내용</b>(기간·대상·금액 등)은 지시문의 <b>내용</b> 칸에 그 부분만 적어 주세요. 혹은 <b>"첫 번째 사진은 참고할 양식이고 두 번째 사진은 현재 정보야"</b>라는 말을 덧붙이세요.</li></ol></details></div>
     <nav aria-label="바로가기"><a href="#card">한페이지</a><a href="#ppt">PPT 틀</a><a href="#doc">보고서형</a><a href="#doc2">제안서형</a><a href="#tpl">홍보물·서식</a><a href="#icon">도장 아이콘</a><a href="#color" id="navcolor">색 조합</a><a href="#rule">규칙</a><a href="#ai">작업지시문</a><a href="#link">더 볼 곳</a></nav>
   </header>
 
@@ -613,7 +613,7 @@ body:has(#tray:not([hidden])) .toast{bottom:calc(35vh + 14px + env(safe-area-ins
   </section>
 
   <section class="sec" id="doc" aria-labelledby="h-doc">
-    <div class="sec-head"><h2 id="h-doc">문서 ① 보고서형 (A4)</h2><p>회의 자료·계획서·결과보고처럼 <b>사실을 정리해 보고하는 문서</b>. 개조식(1. → 가. → 1)), 8쪽 견본. 월간회의 자료는 이쪽입니다.<br>문서는 AI가 그리지 않고 <b>문서키트(스크립트)</b>가 그립니다. 한 번 받아 두고, ChatGPT에 <b>자료 + 키트 zip</b>을 첨부한 뒤 지시문을 붙여넣으세요.</p><p class="now" id="now-doc"></p></div>
+    <div class="sec-head"><h2 id="h-doc">문서 ① 보고서형 (A4)</h2><p>회의 자료·계획서·결과보고처럼 <b>사실을 정리해 보고하는 문서</b>. 개조식(1. → 가. → 1)), 8쪽 견본. 월간회의 자료는 이쪽입니다.</p><p class="now" id="now-doc"></p></div>
     <div class="cbar"><b>보고서형</b><span>A4 · 개조식 · 표지·목차·개요 + 본문</span><a class="cbtn kit" href="https://github.com/eugene-shin9/bambi-paper-stash/raw/main/make/bambi_doc_kit.zip" target="_blank" rel="noopener">문서키트 받기</a><button type="button" class="cbtn" data-make="보고서 문서(A4) · 보고서형">지시문 복사</button></div>
     <div class="car" aria-label="문서 8쪽"><div class="dpage">
       <figure><div class="page"><div class="in">
@@ -1074,9 +1074,20 @@ let illust="none";
 function colorLine(p){return "이 규격서대로 "+p.name+" 색, "+aiStyle()+" 스타일로 파일(PDF)로 만들어 줘. "+(illust!=="none"?"그림 생성기는 일러스트에만 쓸 것.":"그림 생성기로 만들지 말 것.")+(FONTS[fnt].ai?" "+FONTS[fnt].ai:"")}
 const ILLS={some:"일러스트(있음): 위쪽 띠 오른쪽 절반에만 글자 없는 일러스트. 평면 도형의 단순한 플랫 스타일(그림자·입체감·세밀한 묘사 금지, 사물 4~6개), 사람 얼굴보다 사물·장면 위주. 바탕은 띠 색과 정확히 같게 코드로 보정. 왼쪽은 비워 글을 코드로 얹고, 흰 패널 등 양식 구조는 그대로.",rich:"일러스트(풍성): 위쪽 띠 전체(카드뉴스는 표지 전체)를 글자 없는 한 장면 일러스트로 채울 것. 평면 플랫 스타일이되 사물·배경 요소 8~12개로 풍성, 색은 주색·보조색·옅은 바탕·포인트 4색만. 제목이 놓일 왼쪽 위는 단순한 면으로 비우고 글자 뒤에 주색 60% 면을 깔아 읽히게. 흰 패널 등 양식 구조는 그대로."};
 const ILL=()=>ILLS[illust]||"";
-function docPrompt(p,type){const F={ng:"ng",nsr:"nsr",pg:"pg"}[fnt]||"ng",ST={base:"base",light:"light",rich:"rich"}[sty]||"base";
-  return "첨부: 자료 파일 (+ 가능하면 bambi_doc_kit.zip)\n1. 첨부에 zip이 있으면 풀어 make_doc.py와 fonts/를 둔다. 없으면 https://raw.githubusercontent.com/eugene-shin9/bambi-paper-stash/main/make/make_doc.py 를 내려받는다(글꼴은 스크립트가 스스로 받는다). 둘 다 안 되면 만들지 말고 \"키트 zip을 첨부해 줘\"라고만 답한다. make_doc.py는 고치지 않는다.\n2. python make_doc.py --schema 를 실행해 예시를 본 뒤, 첨부 자료의 내용만으로 content.json을 쓴다. 원문에 없는 날짜·수치·담당자는 넣지 않고, 번호(1. 가. 1))는 쓰지 않는다.\n3. python make_doc.py content.json --pal "+p.id+" --font "+F+" --style "+ST+" --type "+type+"\n4. 오류가 나오면 make_doc.py가 아니라 content.json을 고쳐 다시 실행한다.\n5. 완료 줄(쪽 수·장·항목 수)과 미리보기 png를 그대로 보여 주고 PDF를 내려받기로 준다.\n"}
-function defPrompt(p,m){if(/^보고서 문서\(A4\)/.test(m||""))return docPrompt(p,/제안서형/.test(m)?"proposal":"report");return "시작 전에 규격서 링크를 반드시 직접 열어 끝까지 읽어. 열지 못했으면 추측해서 만들지 말고 \"규격서를 못 열었어\"라고만 답해. 결과물은 반드시 코드 실행으로 실제 파일을 만들어 내려받기로 줘. 일러스트를 넣을 때만 이미지 생성 도구로 그려. 글자가 들어간 이미지는 절대 생성하지 마. 코드 실행으로 파일을 못 만들면 아무것도 만들지 말고 \"코드 실행이 안 돼\"라고만 답해.\n"+colorLine(p)+"\n첨부한 서식이 있으면 기관명·로고·문의처만 가져오고, 디자인은 규격서대로. 내용 칸이 비어 있으면 첨부한 자료의 내용을 그대로 쓰고 되묻지 말 것. 내용 칸의 글과 첨부가 다르면 내용 칸의 글을 우선. 첨부끼리 또는 첨부 안에서 날짜·기간·학기·금액이 어긋나면 만들지 말고 어느 쪽이 맞는지 먼저 물을 것.\n"+(m?"만들 것: "+m+"\n":"")+(illust!=="none"?ILL()+"\n":"")+"내용: (비우면 첨부한 자료의 내용을 그대로 씀)\n\n넘기기 전 확인: 문서면 표지·목차·개요가 있고 목차 쪽번호가 맞는지, 날짜·인원·금액이 굵게+주색인지, 본문 11pt인지, 쪽 아래가 비지 않았는지, 같은 단계 글줄의 왼쪽 끝이 전부 같은 선에 있는지, 목차·표의 한 줄 안에서 칸·글·쪽번호가 세로 가운데로 맞는지, 글자 잘림·깨짐·오타가 없는지 직접 열어 보고, 아니면 고친 뒤 줘.\n\n규격서 링크: https://github.com/eugene-shin9/bambi-paper-stash \n"}
+function kitPrompt(script,cmd,json){const base="https://raw.githubusercontent.com/eugene-shin9/bambi-paper-stash/main/make/";
+  let t="첨부: "+(json?"":"자료 파일 ")+"(+ 가능하면 bambi_doc_kit.zip)\n1. 첨부에 zip이 있으면 풀어 "+script+"·bambi_common.py·fonts/를 둔다. 없으면 "+base+script+" 와 "+base+"bambi_common.py 를 내려받는다(글꼴은 스크립트가 스스로 받는다). 둘 다 안 되면 만들지 말고 \"키트 zip을 첨부해 줘\"라고만 답한다. 스크립트·글꼴·크기는 고치지 않는다.\n";
+  if(json)t+="2. 아래 JSON을 글자 그대로 content.json으로 저장한다.\n";
+  else t+="2. python "+script+" --schema 를 실행해 예시를 본 뒤, 첨부 자료의 내용만으로 content.json을 쓴다. 원문에 없는 날짜·수치·담당자는 넣지 않고, 번호(1. 가. 1))는 쓰지 않는다.\n";
+  t+="3. python "+script+" content.json "+cmd+"\n4. 오류가 나오면 스크립트가 아니라 content.json만 고쳐 다시 실행한다.\n5. 완료 줄과 미리보기(PNG)를 그대로 보여 주고 결과 파일을 내려받기로 준다.\n";
+  if(json)t+="\n```json\n"+JSON.stringify(json,null,1)+"\n```\n";return t}
+function kitArgs(){return "--pal "+(lastP||PALS[0]).id+" --font "+(FONTS[fnt]?fnt:"ng")+" --style "+(sty||"base")}
+function docPrompt(p,type){return kitPrompt("make_doc.py",kitArgs()+" --type "+type)}
+function defPrompt(p,m){m=m||"";
+  if(/^보고서 문서\(A4\)/.test(m))return docPrompt(p,/제안서형/.test(m)?"proposal":"report");
+  if(/^한페이지/.test(m)){const f={홍보형:"promo",안내형:"guide",일정형:"schedule",포스터형:"poster"};const k=Object.keys(f).find(x=>m.includes(x));return kitPrompt("make_one.py",kitArgs()+(k?" --form "+f[k]:""))}
+  if(/^PPT/.test(m))return kitPrompt("make_ppt.py","--pal "+(lastP||PALS[0]).id+" --style "+(sty||"base"));
+  if(/^카드뉴스/.test(m))return kitPrompt("make_cards.py",kitArgs());
+  return "첨부: 자료 파일 (+ 가능하면 bambi_doc_kit.zip)\n1. 첨부에 zip이 있으면 풀어 두고, 없으면 https://raw.githubusercontent.com/eugene-shin9/bambi-paper-stash/main/make/ 에서 bambi_common.py와 필요한 스크립트를 내려받는다. 둘 다 안 되면 만들지 말고 \"키트 zip을 첨부해 줘\"라고만 답한다. 스크립트는 고치지 않는다.\n2. 자료를 보고 양식을 고른다: 여러 쪽 보고·회의 자료 → make_doc.py(--type report) · 기획서·제안서 → make_doc.py(--type proposal) · 모집·안내 한 장 → make_one.py(--form promo|guide|schedule|poster) · 발표 → make_ppt.py · SNS 여러 장 → make_cards.py. 고른 이유를 한 줄로 밝힌다.\n3. python <스크립트> --schema 를 실행해 예시를 본 뒤, 첨부 자료의 내용만으로 content.json을 쓴다. 원문에 없는 값은 넣지 않고, 번호는 쓰지 않는다.\n4. python <스크립트> content.json "+kitArgs()+" (make_ppt.py는 --font 없이)\n5. 오류가 나오면 content.json만 고쳐 다시 실행하고, 완료 줄과 미리보기를 보여 준 뒤 결과 파일을 내려받기로 준다.\n"}
 function updPrompt(p){p=p||lastP;if(!p)return;const m=makeStr();
   if(!aiEdited){ap.value=defPrompt(p,m);return}
   let v=ap.value.replace(/이 규격서대로 .+? 색, .+? 스타일로 파일\(PDF\)로 만들어 줘\. 그림 생성기[^\n]*\./,colorLine(p));
@@ -1319,38 +1330,24 @@ function tTxt(e){
   c.querySelectorAll("span,div,p").forEach(s=>{if(s.textContent.trim())s.prepend("↵")});
   return c.textContent.replace(/\s*↵\s*/g,"↵").replace(/^↵+|↵+$/g,"").replace(/[ \t\n]+/g," ").trim();
 }
-function tMd(id,sec){
-  const sp=SPEC[id],p=PALS.find(x=>x.id===cur)||PALS[0],W=sp.W,k=["main","sub","tint","ink","line","point"],rk=["m","s","b","t","l","a"];
-  const eds=[...sec.querySelectorAll("[contenteditable]")];
-  const cols=k.map((x,i)=>ROLE[rk[i]]+" "+p.c[x].toUpperCase()).join(" · ");
-  const lg=id==="card"&&sec.classList.contains("has-logo");
-  const content=eds.map((e,i)=>lg&&(i===3||i===4)?"":"- "+(sp.labels[i]||("항목"+(i+1)))+": "+tTxt(e)).filter(Boolean).join("\n");
-  return pxs(W,`# 작업지시: ${sp.name} (${p.name} 색 · ${FONTS[fnt].n})
-
-시작 전에 이 지시문을 끝까지 읽어. 결과물은 반드시 코드 실행(Python 등)으로 실제 파일을 만들어 내려받기로 줘. 글자가 들어간 이미지는 절대 이미지 생성 도구로 만들지 마. 코드 실행으로 파일을 못 만들면 아무것도 만들지 말고 "코드 실행이 안 돼"라고만 답해.
-
-## 1. 결과물
-- ${sp.out}
-- 캔버스 ${sp.W}×${sp.H}px 기준으로 그린다.
-
-## 2. 공통 규칙
-- 좌표·크기는 모두 px. "왼쪽 N·위 N"은 캔버스 왼쪽 위 끝에서, "오른쪽 N"은 오른쪽 끝에서, "바닥 N"은 아래 끝에서 잰 거리.
-- 글꼴: ${TFONT[fnt]||TFONT.ng} 못 받으면 설치된 한글 고딕(Noto Sans CJK KR 등)을 쓰고 쓴 글꼴을 한 줄로 밝혀. 명조 금지. 한글이 □로 깨지면 실패.
-- 색: ${cols}. 이 6색 말고는 흰색만 쓴다. "흰색 70%"는 흰색을 불투명도 70%로.
-- 내용 칸 글자는 한 글자도 바꾸지 않는다(맞춤법·띄어쓰기 그대로). 빠진 내용을 지어내지 않는다.
-- ↵ 자리는 반드시 줄바꿈. 그 밖의 줄바꿈은 어절 단위로. 칸을 넘치면 먼저 줄을 바꾸고, 그래도 넘치면 그 글자만 10%씩 줄인다.
-${sp.stamp?"- "+STAMP+"\n":""}- 아래 배치에 없는 장식·그림·사진·그림자·그러데이션은 넣지 않는다.
-
-## 3. 배치
-${lg?sp.layLogo:sp.lay}
-
-## 4. 내용
-${content}
-
-## 5. 넘기기 전 확인
-- 만든 PNG를 직접 열어 보고 글자 잘림·겹침·넘침·깨진 글자·오타가 없을 때만 준다. 있으면 고친 뒤 준다.
-`);
-}
+function tJson(id,T){const L=s=>String(s||"").split("↵").map(x=>x.trim()).filter(Boolean);const nl=s=>String(s||"").replace(/↵/g,"\\n");
+  switch(id){
+  case "poster":return {kind:"poster",eyebrow:T[0],title:nl(T[1]),sub:nl(T[2]),stamp:nl(T[3]),info:[[T[4],T[5]],[T[6],T[7]],[T[8],T[9]],[T[10],T[11]]],org:T[12],contact:T[13]};
+  case "story":return {kind:"story",top:T[0],date:T[1],day:T[2],title:nl(T[3]),items:[[T[4],T[5]],[T[6],T[7]],[T[8],T[9]]],cta:T[10],org:T[11]};
+  case "sale":{const m=String(T[1]).match(/^([\d.,]+)\s*(.*)$/)||[0,T[1],""];return {kind:"sale",tag:T[0],big:m[1],unit:m[2],title:nl(T[2]),when:T[3],stamp:nl(T[4]),shop:T[5],account:T[6]}}
+  case "deck":return {kind:"deck",eyebrow:T[0],title:nl(T[1]),sub:nl(T[2]),who:T[3],stamp:nl(T[4]),no:T[5]};
+  case "flyer":return {kind:"flyer",k:T[0],name:nl(T[1]),open_label:T[2],open:T[3],stamp:nl(T[4]),perks:[[T[5],T[6]],[T[7],T[8]],[T[9],T[10]]],where:[[T[11],[T[12],T[13]]],[T[14],[T[15],T[16]]]],org:T[17],contact:T[18]};
+  case "invite":return {kind:"invite",k:T[0],title:nl(T[1]),msg:nl(T[2]),info:[[T[3],T[4]],[T[5],T[6]],[T[7],T[8]]],host:T[9]};
+  case "thumb":return {kind:"thumb",title:nl(T[0]),num:T[1],num_label:T[2],sub:T[3]};
+  case "resume":{const it=s=>{const a=L(s);return [a[0]||"",a.slice(1).join(" ")]};return {kind:"resume",name:T[0],role:T[1],contacts:[T[2],T[3],T[4]],
+    left:[[T[5],[it(T[6]),it(T[7])]],[T[8],[it(T[9]),it(T[10])]],[T[11],[it(T[12])]]],
+    right:[[T[13],[[T[14],T[15],T[16]],[T[17],T[18],T[19]],[T[20],T[21],T[22]]]],[T[23],[[T[24],"",T[25]],[T[26],"",T[27]]]]]}}
+  case "quote":return {kind:"quote",text:nl(T[0]),by:T[1],account:T[2]};
+  case "card":return {kind:"card",name:T[0],title:T[1],info:L(T[2]),stamp:nl(T[3]),back_stamp:nl(T[4]),en:T[5],org:T[6]};
+  }return {}}
+function tMd(id,sec){const eds=[...sec.querySelectorAll("[contenteditable]")],T=eds.map(tTxt);const j=tJson(id,T);const lg=id==="card"&&sec.classList.contains("has-logo");
+  if(lg){delete j.stamp;delete j.back_stamp}
+  return kitPrompt("make_promo.py","--pal "+(lastP||PALS[0]).id+" --font "+(FONTS[fnt]?fnt:"ng")+(lg?" --logo <첨부한 로고 파일>":""),j)+(lg?"로고 파일을 함께 첨부하고 --logo 뒤에 그 파일 이름을 넣는다.\n":"")}
 (function(){
   const K="tpl-text";let st={};try{st=JSON.parse(localStorage.getItem(K)||"{}")||{}}catch(e){st={}}
   const sv=()=>{try{localStorage.setItem(K,JSON.stringify(st))}catch(e){}};
