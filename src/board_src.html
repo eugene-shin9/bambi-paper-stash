@@ -547,7 +547,7 @@ body:has(#tray:not([hidden])) .toast{bottom:calc(35vh + 14px + env(safe-area-ins
   <header>
     <h1>밤비의 서류뭉치</h1>
     <div class="howto"><p class="howto-rec">오른쪽 아래 <b>복사</b>를 눌러 ChatGPT에 <b>참고할 서류</b>와 함께 붙여넣으면 끝입니다.</p><p class="howto-deco"><b>꾸밈 정도:</b> 오른쪽 아래 <b>● <span class="curname">청먹</span></b> → 지시문 설정에서 심플깔끔한 놈을 원한다면 일러스트에 <b>없음</b>, 제법 꾸민 놈을 원한다면 <b>풍성</b>, 이도 저도 아닌 놈은 <b>있음</b>. 작업은 헷갈리면 그냥 <b>자동</b> 하세요.</p><details class="howto-more"><summary>혹시 원하는 퀄리티가 안 나오면</summary><ol class="howto-steps"><li><b>ChatGPT 설정:</b> <b>Work</b> · 모드 <b>6 Astra</b> · 추론 수준 <b>Light</b> · 속도 <b>Standard</b>로 바꿔 보세요. 3만원 요금제에서 5시간마다 <b>10장 정도</b> 출력 가능합니다. (Work-6.1 Sol 혹은 Chat 사용 시 더 많은 출력이 가능하지만 퀄리티가 내려갑니다.)</li><li><b>색·서체:</b> 같은 창 <b>미리보기</b>에서 스타일·서체·색상을 고르면 아래 견본과 지시문에 같이 들어갑니다.</li><li><b>내용이 틀리면:</b> 첨부와 <b>달라진 내용</b>(기간·대상·금액 등)은 지시문의 <b>내용</b> 칸에 그 부분만 적어 주세요. 혹은 <b>"첫 번째 사진은 참고할 양식이고 두 번째 사진은 현재 정보야"</b>라는 말을 덧붙이세요.</li></ol></details></div>
-    <nav aria-label="바로가기"><a href="#card">한페이지</a><a href="#ppt">PPT 틀</a><a href="#doc">문서</a><a href="#tpl">홍보물·서식</a><a href="#icon">도장 아이콘</a><a href="#color" id="navcolor">색 조합</a><a href="#rule">규칙</a><a href="#ai">작업지시문</a><a href="#link">더 볼 곳</a></nav>
+    <nav aria-label="바로가기"><a href="#card">한페이지</a><a href="#ppt">PPT 틀</a><a href="#doc">보고서형</a><a href="#doc2">제안서형</a><a href="#tpl">홍보물·서식</a><a href="#icon">도장 아이콘</a><a href="#color" id="navcolor">색 조합</a><a href="#rule">규칙</a><a href="#ai">작업지시문</a><a href="#link">더 볼 곳</a></nav>
   </header>
 
 
@@ -612,8 +612,8 @@ body:has(#tray:not([hidden])) .toast{bottom:calc(35vh + 14px + env(safe-area-ins
   </section>
 
   <section class="sec" id="doc" aria-labelledby="h-doc">
-    <div class="sec-head"><h2 id="h-doc">문서 (A4)</h2><p>보고서형 8쪽과 제안서형 4쪽입니다. 네 쪽씩 넘겨 보세요. 보고서형은 개조식(1. → 가.), 제안서형은 로마 숫자 섹션과 서술식입니다. 종류별 목차는 규격서에 있습니다.</p><p class="now" id="now-doc"></p></div>
-    <div class="cbar"><b>보고서형</b><span>A4 · 개조식</span><button type="button" class="cbtn" data-make="보고서 문서(A4) · 보고서형">지시문 복사</button><b class="cgap">제안서형</b><span>A4 · 서술식</span><button type="button" class="cbtn" data-make="보고서 문서(A4) · 제안서형(기획서·제안서·직무수행계획서처럼 설득하는 문서)">지시문 복사</button></div>
+    <div class="sec-head"><h2 id="h-doc">문서 ① 보고서형 (A4)</h2><p>회의 자료·계획서·결과보고처럼 <b>사실을 정리해 보고하는 문서</b>. 개조식(1. → 가. → 1)), 8쪽 견본. 월간회의 자료는 이쪽입니다.</p><p class="now" id="now-doc"></p></div>
+    <div class="cbar"><b>보고서형</b><span>A4 · 개조식 · 표지·목차·개요 + 본문</span><button type="button" class="cbtn" data-make="보고서 문서(A4) · 보고서형">지시문 복사</button></div>
     <div class="car" aria-label="문서 8쪽"><div class="dpage">
       <figure><div class="page"><div class="in">
         <div class="d-cover"><div class="k">2026년도 교육 프로그램 운영 계획</div><h5>학부모 독서교실<br>운영 계획(안)</h5><div class="d-sub">2026 가을 학기 · 1차 보고</div></div>
@@ -695,8 +695,13 @@ body:has(#tray:not([hidden])) .toast{bottom:calc(35vh + 14px + env(safe-area-ins
         <div class="d-att"><div>붙임 &nbsp;1. 프로그램 세부 일정 1부.</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. 예산 산출 내역 1부.&nbsp;&nbsp; 끝.</div></div>
         <div class="pno">- 6 -</div>
       </div></div><figcaption><b>⑧ 마무리·붙임</b>기대 효과 · 행정 사항 · 붙임 · 끝</figcaption></figure>
-      </div>
-      <div class="dpage">
+      </div></div>
+  </section>
+
+  <section class="sec" id="doc2" aria-labelledby="h-doc2">
+    <div class="sec-head"><h2 id="h-doc2">문서 ② 제안서형 (A4)</h2><p>기획서·제안서·직무수행계획서처럼 <b>읽는 이를 설득하는 문서</b>. 로마 숫자 섹션과 서술식, 4쪽 견본. 회의 자료에는 쓰지 않습니다.</p><p class="now" id="now-doc2"></p></div>
+    <div class="cbar"><b>제안서형</b><span>A4 · 서술식 · 섹션 띠</span><button type="button" class="cbtn" data-make="보고서 문서(A4) · 제안서형(기획서·제안서·직무수행계획서처럼 설득하는 문서)">지시문 복사</button></div>
+    <div class="car" aria-label="제안서형 4쪽"><div class="dpage">
       <figure><div class="page pr"><div class="in">
         <div class="pr-top">제안서</div>
         <div class="pr-title">청소년 미술 체험 프로그램<br>「나의 첫 전시」 운영 제안</div>
