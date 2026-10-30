@@ -247,24 +247,33 @@ class Doc:
 
     # ---------- 목차(장만, 1쪽 고정)
     def toc_page(self):
+        # 목차 1쪽: 장 제목 + 절 제목 한 줄(보조색) + 쪽번호. 덩어리 전체를 쪽 세로 가운데에 놓는다
         C, S = self.C, self.S; rows = []
-        for title, no, _ in self.entries:
+        descw = self.CW - 30*mm - 2*mm
+        for title, no, si in self.entries:
             pg = self.toc_pages.get((title, no), "")
+            sec = self.d["sections"][si-1]; subs = [x.get("title", "") for x in sec.get("subs", []) if x.get("title")]
+            desc = " · ".join(subs)
+            while desc and stringWidth(desc, "B-R", 9) > descw: desc = desc[:-4].rstrip(" ·") + "…"
+            cell = [Paragraph(esc(title), S["t1"])] + ([Paragraph(esc(desc), ParagraphStyle("td2", parent=S["lb"], spaceBefore=0.8*mm))] if desc else [])
             if self.kind == "proposal":
-                num = Table([[Paragraph(no, ParagraphStyle("rn", parent=S["rom"], textColor=hx(C["main"])))]], colWidths=[11*mm], rowHeights=[8*mm])
+                num = Table([[Paragraph(no, ParagraphStyle("rn", parent=S["rom"], fontSize=11, textColor=hx(C["main"])))]], colWidths=[12*mm], rowHeights=[11*mm])
                 num.setStyle(TableStyle([("BACKGROUND", (0, 0), (-1, -1), hx(C["tint"])), ("VALIGN", (0, 0), (-1, -1), "MIDDLE"), ("ALIGN", (0, 0), (-1, -1), "CENTER")]))
             else:
                 num = Paragraph(no, S["tno"])
-            rows.append([num, Paragraph(esc(title), S["t1"]), Paragraph(str(pg), S["tn"])])
-        pad = 3.2*mm if len(rows) <= 12 else 1.8*mm
+            rows.append([num, cell, Paragraph(str(pg), S["tn"])])
+        n = len(rows); pad = 3.2*mm if n <= 9 else 2.2*mm if n <= 12 else 1.2*mm
         t = Table(rows, colWidths=[16*mm, self.CW - 30*mm, 14*mm])
         st = [("VALIGN", (0, 0), (-1, -1), "MIDDLE"), ("TOPPADDING", (0, 0), (-1, -1), pad), ("BOTTOMPADDING", (0, 0), (-1, -1), pad),
               ("LEFTPADDING", (0, 0), (-1, -1), 0), ("RIGHTPADDING", (0, 0), (-1, -1), 0), ("LINEBELOW", (0, 0), (-1, -1), 0.4, hx(C["line"]))]
         if self.kind == "proposal": st += [("LINEABOVE", (0, 0), (-1, 0), 1, hx(C["main"])), ("LINEBELOW", (0, -1), (-1, -1), 1, hx(C["main"]))]
         t.setStyle(TableStyle(st))
-        head = [Paragraph("목 차", ParagraphStyle("tp", parent=S["hp"], alignment=TA_CENTER, spaceAfter=1*mm)), Paragraph("CONTENTS", ParagraphStyle("cts", parent=S["sm"], alignment=TA_CENTER, spaceAfter=8*mm))] \
-               if self.kind == "proposal" else [Paragraph("목차", S["hp"])]
-        return head + [t, PageBreak()]
+        head = [Paragraph("목 차", ParagraphStyle("tp", parent=S["hp"], alignment=TA_CENTER, spaceAfter=1*mm)), Paragraph("CONTENTS", ParagraphStyle("cts", parent=S["sm"], alignment=TA_CENTER, spaceAfter=8*mm))]
+        block = head + [t]
+        fh = self.H - 18*mm - 22*mm
+        used = sum(f.wrap(self.CW, fh)[1] + getattr(getattr(f, "style", None), "spaceAfter", 0) for f in block)
+        top = max(0, (fh - used) / 2 - 6*mm)
+        return [Spacer(1, top)] + block + [PageBreak()]
 
     # ---------- 개요
     def overview(self):
