@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 밤비의 서류뭉치 · 한페이지(A4 1장) 생성기  make_one.py
-  python make_one.py --schema                      # content.json 예시
+  python make_one.py --schema --form schedule      # 그 양식의 content.json 예시
   python make_one.py content.json --form promo --pal b3 --font ng --style base [--illust 그림.png] -o out.pdf
   --form  promo 홍보형(모집·행사·전시, 위 색 띠) · guide 안내형(절차·공지) · schedule 일정형(타임라인) · poster 포스터형(큰 숫자)
   --pal --font --style 은 make_doc.py와 같다.  --no-emph 강조 끄기
@@ -37,6 +37,13 @@ SAMPLE = {
   "big": {"number": "12. 31.", "line": "이수 이벤트 신청\\n잊지 마세요", "grid": [["대상", "K-MOOC 수강생"], ["방법", "누리집 신청서"], ["기간", "11. 3. ~ 12. 31."], ["문의", "교육팀 000-0000"]]},
   "org": "원격교육지원센터", "contact": "교육팀 · 053-000-0000 · kmooc@example.ac.kr"
 }
+# 양식별 예시(--schema --form X): 각 양식에 맞는 블록 2~4개만 골라 그대로 통과하는 예시
+FORM_BLOCKS = {"promo": ["info2", "steps", "note"], "guide": ["steps", "table", "checklist", "note"], "schedule": ["timeline", "info2", "note"], "poster": []}
+def sample_for(form):
+    d = {k: v for k, v in SAMPLE.items() if k not in ("blocks", "big")}; d["form"] = form
+    if form == "poster": d["big"] = SAMPLE["big"]; return d
+    d["blocks"] = [b for t in FORM_BLOCKS[form] for b in SAMPLE["blocks"] if b["type"] == t]; return d
+
 NOTE = """# content.json 규칙
 # - form: promo(홍보형) guide(안내형) schedule(일정형) poster(포스터형). 명령줄 --form 이 우선.
 # - blocks: 원문에 있는 내용으로 2~4개만. 종류: info2(라벨·값 2단) key3(핵심 3칸) steps(진행 순서) table(표, 열 4개까지)
@@ -132,17 +139,27 @@ class One:
 
     def blk_table(self, c, b, x, y, w):
         C = self.C; head = [str(h) for h in b.get("head", [])]; rows = [[str(v) for v in r] for r in b.get("rows", [])]; n = len(head) or len(rows[0])
-        colw = b.get("colw"); ws = [w*cc/sum(colw) for cc in colw] if colw and len(colw) == n else [w/n]*n
         NUM = re.compile(r"^[\d,.\s~()월화수목금토일\-–]+$")
         numcol = [i > 0 and all(NUM.match(r[i].strip()) for r in rows if i < len(r) and r[i].strip()) for i in range(n)]
+        colw = b.get("colw")
+        if colw and len(colw) == n: ws = [w*cc/sum(colw) for cc in colw]
+        else:  # 글 길이에 맞춘 칸 너비(가장 긴 글 + 여백), 남는 폭은 비례 배분
+            need = [max([stringWidth(head[i], "B", 11) if i < len(head) else 0] + [stringWidth(r[i], "R", 12) for r in rows if i < len(r)]) + 6*mm for i in range(n)]
+            grow = [i for i in range(n) if i > 0 and not numcol[i]] or [i for i in range(n) if not numcol[i]] or list(range(n))
+            extra = w - sum(need)
+            if extra >= 0: ws = [q + (extra*q/sum(need[j] for j in grow) if i in grow else 0) for i, q in enumerate(need)]
+            else: ws = [w*q/sum(need) for q in need]
+        for r in rows:
+            for i, v in enumerate(r[:n]):
+                if c is None and stringWidth(v, "R", 12) > ws[i] - 3*mm: self.errs.append(f"표 칸 글 '{v[:12]}'이 칸을 넘칩니다. 줄이거나 열을 줄이세요")
         rh = 8*mm; tot = 0
         def row(vals, yy, font, color, bold_line):
             xx = x
             for i, v in enumerate(vals[:n]):
                 if c:
                     c.setFont(font, 12 if font == "R" else 11); c.setFillColor(color)
-                    if numcol[i] and i > 0: c.drawRightString(xx + ws[i] - 1.5*mm, yy - rh + 2.7*mm, v)
-                    else: c.drawString(xx + (0 if i == 0 else 1.5*mm), yy - rh + 2.7*mm, v)
+                    if numcol[i]: c.drawRightString(xx + ws[i] - 1.5*mm, yy - rh + 2.7*mm, v)
+                    else: c.drawString(xx + (0 if i == 0 else (5*mm if numcol[i-1] else 1.5*mm)), yy - rh + 2.7*mm, v)
                 xx += ws[i]
             if c:
                 c.setStrokeColor(hx(C["main"]) if bold_line else hx(C["line"])); c.setLineWidth(1.2 if bold_line else 0.5); c.line(x, yy - rh, x + w, yy - rh)
@@ -284,7 +301,7 @@ def main():
     ap.add_argument("--form", default=None, choices=["promo", "guide", "schedule", "poster"]); ap.add_argument("--pal", default="b3"); ap.add_argument("--font", default="ng", choices=list(B.FONTS))
     ap.add_argument("--style", default="base", choices=["base", "light", "rich"]); ap.add_argument("--illust", default=None); ap.add_argument("--fonts-dir", default=None); ap.add_argument("--no-emph", dest="emph", action="store_false"); ap.add_argument("-o", "--out")
     a = ap.parse_args()
-    if a.schema: print(NOTE + json.dumps(SAMPLE, ensure_ascii=False, indent=2)); return
+    if a.schema: print(NOTE + json.dumps(sample_for(a.form or "promo"), ensure_ascii=False, indent=2)); return
     if not a.content: ap.print_help(); return
     if a.pal not in B.PAL: B.log("색 id가 없음"); sys.exit(1)
     B.log("make_one.py sha256 " + B.self_hash(os.path.abspath(__file__)) + " (고치지 않았는지 대조용)")

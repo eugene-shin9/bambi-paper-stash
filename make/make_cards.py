@@ -57,7 +57,9 @@ class Cards:
 
     def why(self):
         w = self.d["why"]; img, p, M = self.numbered("01", w.get("title", ""), self.C["tint"] if self.style != "light" else "FFFFFF")
-        t = w.get("text", ""); h = p.height(t, px(33), S*K - 2*M, lh=1.6); p.text(M, S*K - M - h, t, px(33), self.col("sub"), "r", S*K - 2*M, lh=1.6)
+        t = w.get("text", ""); y = M + px(330); h = p.height(t, px(46), S*K - 2*M, lh=1.55)
+        if y + h > S*K - M: self.errs.append("why.text가 길어 한 장에 안 들어감. 두세 문장으로 줄이기"); return img
+        p.text(M, y, t, px(46), self.col("ink"), "r", S*K - 2*M, lh=1.55)
         return img
 
     def what(self):
