@@ -1077,7 +1077,7 @@ const ILL=()=>ILLS[illust]||"";
 function kitPrompt(script,cmd,json){const base="https://raw.githubusercontent.com/eugene-shin9/bambi-paper-stash/main/make/";
   let t="첨부: "+(json?"":"자료 파일 ")+"(+ 가능하면 bambi_doc_kit.zip)\n1. 첨부에 zip이 있으면 풀어 "+script+"·bambi_common.py·fonts/를 둔다. 없으면 "+base+script+" 와 "+base+"bambi_common.py 를 내려받는다(글꼴은 스크립트가 스스로 받는다). 둘 다 안 되면 만들지 말고 \"키트 zip을 첨부해 줘\"라고만 답한다. 스크립트·글꼴·크기는 고치지 않는다.\n";
   if(json)t+="2. 아래 JSON을 글자 그대로 content.json으로 저장한다.\n";
-  else t+="2. python "+script+" --schema 를 실행해 예시를 본 뒤, 첨부 자료의 내용만으로 content.json을 쓴다. 원문에 없는 날짜·수치·담당자는 넣지 않고, 번호(1. 가. 1))는 쓰지 않는다.\n";
+  else t+="2. python "+script+" --schema"+((cmd.match(/ --form \w+/)||[""])[0])+" 를 실행해 예시를 본 뒤, 첨부 자료의 내용만으로 content.json을 쓴다. 원문에 없는 날짜·수치·담당자는 넣지 않고, 번호(1. 가. 1))는 쓰지 않는다.\n";
   t+="3. python "+script+" content.json "+cmd+"\n4. 오류가 나오면 스크립트가 아니라 content.json만 고쳐 다시 실행한다.\n5. 완료 줄과 미리보기(PNG)를 그대로 보여 주고 결과 파일을 내려받기로 준다.\n";
   if(json)t+="\n```json\n"+JSON.stringify(json,null,1)+"\n```\n";return t}
 function kitArgs(){return "--pal "+(lastP||PALS[0]).id+" --font "+(FONTS[fnt]?fnt:"ng")+" --style "+(sty||"base")}
@@ -1087,7 +1087,7 @@ function defPrompt(p,m){m=m||"";
   if(/^한페이지/.test(m)){const f={홍보형:"promo",안내형:"guide",일정형:"schedule",포스터형:"poster"};const k=Object.keys(f).find(x=>m.includes(x));return kitPrompt("make_one.py",kitArgs()+(k?" --form "+f[k]:""))}
   if(/^PPT/.test(m))return kitPrompt("make_ppt.py","--pal "+(lastP||PALS[0]).id+" --style "+(sty||"base"));
   if(/^카드뉴스/.test(m))return kitPrompt("make_cards.py",kitArgs());
-  return "첨부: 자료 파일 (+ 가능하면 bambi_doc_kit.zip)\n1. 첨부에 zip이 있으면 풀어 두고, 없으면 https://raw.githubusercontent.com/eugene-shin9/bambi-paper-stash/main/make/ 에서 bambi_common.py와 필요한 스크립트를 내려받는다. 둘 다 안 되면 만들지 말고 \"키트 zip을 첨부해 줘\"라고만 답한다. 스크립트는 고치지 않는다.\n2. 자료를 보고 양식을 고른다: 여러 쪽 보고·회의 자료 → make_doc.py(--type report) · 기획서·제안서 → make_doc.py(--type proposal) · 모집·안내 한 장 → make_one.py(--form promo|guide|schedule|poster) · 발표 → make_ppt.py · SNS 여러 장 → make_cards.py. 고른 이유를 한 줄로 밝힌다.\n3. python <스크립트> --schema 를 실행해 예시를 본 뒤, 첨부 자료의 내용만으로 content.json을 쓴다. 원문에 없는 값은 넣지 않고, 번호는 쓰지 않는다.\n4. python <스크립트> content.json "+kitArgs()+" (make_ppt.py는 --font 없이)\n5. 오류가 나오면 content.json만 고쳐 다시 실행하고, 완료 줄과 미리보기를 보여 준 뒤 결과 파일을 내려받기로 준다.\n"}
+  return "첨부: 자료 파일 (+ 가능하면 bambi_doc_kit.zip)\n1. 첨부에 zip이 있으면 풀어 두고, 없으면 https://raw.githubusercontent.com/eugene-shin9/bambi-paper-stash/main/make/ 에서 bambi_common.py와 필요한 스크립트를 내려받는다. 둘 다 안 되면 만들지 말고 \"키트 zip을 첨부해 줘\"라고만 답한다. 스크립트는 고치지 않는다.\n2. 자료를 보고 양식을 고른다: 여러 쪽 보고·회의 자료 → make_doc.py(--type report) · 기획서·제안서 → make_doc.py(--type proposal) · 모집·안내 한 장 → make_one.py(--form promo|guide|schedule|poster) · 발표 → make_ppt.py · SNS 여러 장 → make_cards.py. 고른 이유를 한 줄로 밝힌다.\n3. python <스크립트> --schema 를 실행해(make_one.py는 --form 도 함께) 예시를 본 뒤, 첨부 자료의 내용만으로 content.json을 쓴다. 원문에 없는 값은 넣지 않고, 번호는 쓰지 않는다.\n4. python <스크립트> content.json "+kitArgs()+" (make_ppt.py는 --font 없이)\n5. 오류가 나오면 content.json만 고쳐 다시 실행하고, 완료 줄과 미리보기를 보여 준 뒤 결과 파일을 내려받기로 준다.\n"}
 function updPrompt(p){p=p||lastP;if(!p)return;const m=makeStr();
   if(!aiEdited){ap.value=defPrompt(p,m);return}
   let v=ap.value.replace(/이 규격서대로 .+? 색, .+? 스타일로 파일\(PDF\)로 만들어 줘\. 그림 생성기[^\n]*\./,colorLine(p));
